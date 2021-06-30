@@ -1,0 +1,165 @@
+# temp files, OS junk and dotfiles
+*.bak
+*.swp
+*.tmp
+*~
+.cvs
+.DS_Store
+.listing
+.svn
+Thumbs.db
+
+# wp core (as of 5.2.2)
+/db-config.php
+/index.php
+/license.txt
+/readme.html
+/wp-activate.php
+/wp-admin
+/wp-app.php
+/wp-atom.php
+/wp-blog-header.php
+/wp-comments-post.php
+/wp-commentsrss2.php
+/wp-config-sample.php
+/wp-content/index.php
+/wp-content/plugins/akismet
+/wp-content/plugins/hello.php
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+/wp-content/themes/twentyten
+/wp-content/themes/twentyeleven
+/wp-content/themes/twentytwelve
+/wp-content/themes/twentythirteen
+/wp-content/themes/twentyfourteen
+/wp-content/themes/twentyfifteen
+/wp-content/themes/twentysixteen
+/wp-content/themes/twentyseventeen
+/wp-content/themes/twentynineteen
+/wp-content/themes/twentytwenty
+/wp-content/themes/twentytwentyone
+/wp-cron.php
+/wp-feed.php
+/wp-includes
+/wp-links-opml.php
+/wp-load.php
+/wp-login.php
+/wp-mail.php
+/wp-pass.php
+/wp-rdf.php
+/wp-register.php
+/wp-rss.php
+/wp-rss2.php
+/wp-settings.php
+/wp-signup.php
+/wp-trackback.php
+/xmlrpc.php
+
+# wordpress config, user-content and caches
+cache/
+sitemap.xml
+sitemap.xml.gz
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir
+wp-content/cache/
+wp-content/cache/supercache/
+wp-content/managewp/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
+wp-content/languages/
+wp-content/settings/
+wordfence-waf.php
+
+# WordPress debugging files & logs
+*.log
+debug.log
+log.txt
+
+# Third-party files and leftovers
+gt-cache/
+ics-importer-cache/
+imagecache.*
+pclzip-*.gz
+wp-content/w3-.*
+wp-content/w3tc.*
+gallery/*
+album/*
+wp-content/updraft/
+wp-content/ai1wm-backups/
+wp-content/wflogs/
+
+# This should never happen
+wp-content/plugins
+
+# wpengine specific
+.smushit-status
+_wpeprivate
+wp-content/advanced-cache.php
+wp-content/mu-plugins/limit-login-attempts/
+wp-content/mu-plugins/mu-plugin.php
+wp-content/mu-plugins/slt-force-strong-passwords.php
+wp-content/mu-plugins/wpengine-common/
+wp-content/object-cache.php
+wp-content/plugins/hyperdb*
+wp-content/plugins/wpengine-snapshot/snapshots/
+
+# flywheel specific
+wp-content/flywheel-config/
+
+# large/disallowed file types
+# a CDN should be used for these
+*.3gp
+*.3gpp
+*.asf
+*.asx
+*.avi
+*.bin
+*.deb
+*.dll
+{*.dmg
+*.exe
+*.flv
+*.hqx
+*.img
+*.iso
+*.kar
+*.m4a
+*.m4v
+*.mid
+*.midi
+*.mng
+*.mov
+*.mp3
+*.mp4
+*.mpeg
+*.mpg
+*.msi
+*.msm
+*.msp
+*.ogg
+*.ra
+*.webm
+*.wmv
+
+# don't commit database dumpfiles
+*.sql
+
+# javascript ate the world
+node_modules/
+
+# Let's try ignoring sourcemaps
+*.css.map
+
+# basic-wordpress-vagrant v0.3.0 adds links to Kint and XHProf. Ignore them
+/kint
+/xhprof
+
+# error logs
+*error_log*
+
+# digital ocean/serverpilot
+.user.ini
