@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Antwerp_Regular";
+    src: url("../fonts/antwerp/Antwerp_Regular.otf");
+}
+
+.antwerp-regular  {
+    font-family: "Antwerp_Regular";
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Graphik-Regular";
+    src: url("../fonts/graphik/Graphik-Regular.otf");
+}
+
+@font-face {
+    font-family: "Graphik-Bold";
+    src: url("../fonts/graphik/Graphik-Bold.otf");
+}
+
+@font-face {
+    font-family: "Graphik-Semibold";
+    src: url("../fonts/graphik/Graphik-Semibold.otf");
+}
+
+.graphik-regular, .graphik-bold, .graphik-semibold {
+    font-weight: normal;
+    font-style: normal;
+}
+
+.graphik-bold {
+    font-family: "Graphik-Bold";
+} 
+
+.graphik-semibold {
+    font-family: "Graphik-Semibold";
+}
+
+.graphik-regular {
+    font-family: "Graphik-Regular";
+}
+    
+
+

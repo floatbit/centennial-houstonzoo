@@ -1,0 +1,10 @@
+.input-style {
+    @extend .form-input-text;
+    @extend .color-white;
+    padding: rem-calc(4) rem-calc(42) rem-calc(12);
+    border-radius: rem-calc(26);
+    line-height: rem-calc(36);
+    outline: none;
+    border: 2px solid $white;
+    background: none;
+}

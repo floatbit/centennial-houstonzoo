@@ -91,8 +91,6 @@ add_theme_support('post-thumbnails');
 
 add_theme_support( 'menus' );
 
-require_once(_DIR_.'/shortcodes.php');
-
 // add acf global content page
 if( function_exists('acf_add_options_page') ) {
   acf_add_options_page(array(
@@ -100,3 +98,10 @@ if( function_exists('acf_add_options_page') ) {
     'menu_title'  => 'Global Content',
   ));
 }
+
+
+
+
+
+
+require_once(__DIR__.'/shortcodes.php');
