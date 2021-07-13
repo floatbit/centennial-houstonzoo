@@ -41,10 +41,15 @@ add_filter('body_class', 'centennial_houstonzoo_body_class');
 // add css and javascript
 function centennial_houstonzoo_css_js() {
   // wp_enqueue_script( 'flickity-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array(), '', true );
+  wp_enqueue_script( 'flickity-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array());
+  wp_enqueue_script( 'flickity-js-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.js', array());
+  wp_enqueue_script( 'flickity-js-hash', 'https://unpkg.com/flickity-hash@1/hash.js', array());
   wp_enqueue_script( 'global', get_template_directory_uri() . '/assets/js/global.min.js', array(), CSS_JS_VERSION, true );
   wp_enqueue_script( 'pages', get_template_directory_uri() . '/assets/js/pages.min.js', array(), CSS_JS_VERSION, true );
+  wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.min.js', array(), CSS_JS_VERSION, true );
   // css
   // wp_enqueue_style( 'flickity-css', 'https://unpkg.com/flickity@2/dist/flickity.min.css', array(), '', 'all' );
+  wp_enqueue_style( 'flickity-css', 'https://unpkg.com/flickity@2/dist/flickity.min.css', array(), '', 'all' );
   wp_enqueue_style( 'app', get_template_directory_uri() . '/assets/css/app.css', array(), CSS_JS_VERSION, 'all' );
 }
 add_action('wp_enqueue_scripts', 'centennial_houstonzoo_css_js');
@@ -85,6 +90,8 @@ add_theme_support('post-thumbnails');
 // add_image_size( 'person_image', 610, 480, TRUE);
 
 add_theme_support( 'menus' );
+
+require_once(_DIR_.'/shortcodes.php');
 
 // add acf global content page
 if( function_exists('acf_add_options_page') ) {

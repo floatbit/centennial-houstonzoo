@@ -23,9 +23,10 @@ h1 {
 }
 
 header {
-  background-color: $success-color;
-  color: $black;
-  padding: 0.5rem 0;
+  background-color: transparent;
+  position: absolute;
+  z-index: 15;
+  width: 100%;
   @include breakpoint(medium) {
     padding: 1.5rem 0;
   }
@@ -35,14 +36,62 @@ header {
   p {
     margin: 0;
   }
+
+  .middle-content {
+    text-align: center;
+  }
+
+  .right-content {
+    text-align: right;
+  }
 }
 
 footer {
-  background-color: $primary-color;
+  background-color: green;
   color: $black;
-  padding: 1rem 0;
+  padding-top: rem-calc(72);
+  padding-bottom: rem-calc(80);
   p {
     margin: 0;
+  }
+
+  .footer-links {
+    display: grid;
+
+    .footer-link {
+      @include fluid-props(12px, 16px, margin-bottom);
+      
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .footer-social-media {
+    display: grid;
+
+    .donate-button {
+      @include fluid-props(12px, 16px, margin-bottom);
+    }
+
+    .icon-desc {
+      @include fluid-props(8px, 10px, margin-bottom);
+    }
+  }
+
+  .bottom-content-container {
+    @include fluid-props(32px, 40px, margin-top);
+  }
+
+  .footer-right-content {
+
+    .footer-logo-container {
+      @include fluid-props(28px, 32px, margin-bottom);
+    }
+
+    .footer-address-container {
+
+    }
   }
 }
 

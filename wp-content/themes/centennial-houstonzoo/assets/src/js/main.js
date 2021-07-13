@@ -2,6 +2,17 @@ $(document).foundation();
 
 jQuery(document).ready(function($) {
 
+	$('.carousel-main').flickity({
+		cellSelector: '.carousel-cell',
+		cellAlign: 'left',
+		draggable: false,
+		pageDots: true,
+		fade: true,
+		hash: true,
+		prevNextButtons: false,
+		selectedAttraction: 0.2, 
+	}); 
+  
 	// Adds Flex Video to YouTube and Vimeo Embeds
   $('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function() {
     $(this).parent().addClass('responsive-embed widescreen')
