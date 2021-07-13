@@ -1,0 +1,59 @@
+.button {
+    @extend .bg-color-light-green;
+    @extend .color-white;
+    & > {
+        @extend .color-white;
+        @extend .button-label;
+    }
+    padding: rem-calc(16) rem-calc(42);
+    border-radius: rem-calc(26);
+    display: inline-block;
+
+    &.transparent {
+        border: 1px solid $white;
+        background: transparent;
+    }
+
+    &.bright-green {
+        @extend .bg-color-bright-green;   
+        border: 1px solid $bright-green;     
+    }
+
+    &.btn-arrow-right {
+        position: relative;
+        &::after {
+            content: url(../img/icon-arrow-right.svg);
+            margin-left: rem-calc(8);
+            position: absolute;
+            right: 10%;
+            transition: right 250ms ease;
+        } 
+    }
+}
+
+.no-touchevents {
+    .button:hover {
+        @extend .bg-color-dark-green;
+        border-color: $light-green;
+    
+        & > {
+            @extend .color-white;
+        }
+
+        &.transparent {
+            @extend .bg-color-white;
+            @extend .color-light-green;
+            border-color: $white;
+        }
+
+        &.bright-green {
+            @extend .color-black;
+            background: transparent;
+            border-color: $black;
+        }
+
+        &.btn-arrow-right::after {
+            right: 7%;
+        }
+    }
+}
