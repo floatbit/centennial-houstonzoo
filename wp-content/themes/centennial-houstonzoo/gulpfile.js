@@ -6,7 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify');
 
-var proxyServer = 'localhost.foundation6';
+var proxyServer = 'centennial-houstonzoo.localhost';
 
 var sassPaths = [
   'node_modules/foundation-sites/scss',
@@ -85,8 +85,8 @@ gulp.task('sass', function () {
 gulp.task('browser-sync', function() {
   var files = [
     'assets/css/app.css',
-    '*/**/*.php',
-    '*/*.php',
+    '//.php',
+    '/.php',
     '*.php'
   ];
   browserSync.init(files, {
@@ -96,21 +96,22 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('default', ['sass', 'scripts'], function() {
-  gulp.watch(['assets/src/**/*.scss'], ['sass']);
-  gulp.watch(['assets/src/**/*.js'], ['scripts']);
+  gulp.watch(['assets/src/*/.scss'], ['sass']);
+  gulp.watch(['assets/src/*/.js'], ['scripts']);
 });
 
 gulp.task('watch', ['sass', 'scripts'], function() {
   gulp.watch(['assets/src/**/*.scss'], ['sass']);
   gulp.watch(['assets/src/**/*.js'], ['scripts']);
+  gulp.watch(['assets/src/**/*.js'], ['scripts-concat']);
 });
 
 gulp.task('browser', ['sass', 'scripts', 'browser-sync'], function() {
-  gulp.watch(['assets/src/**/*.scss'], ['sass']);
-  gulp.watch(['assets/src/**/*.js'], ['scripts']);
+  gulp.watch(['assets/src/*/.scss'], ['sass']);
+  gulp.watch(['assets/src/*/.js'], ['scripts']);
 });
 
 gulp.task('browser-scripts-concat', ['sass', 'scripts-concat', 'browser-sync'], function() {
-  gulp.watch(['assets/src/**/*.scss'], ['sass']);
-  gulp.watch(['assets/src/**/*.js'], ['scripts-concat']);
+  gulp.watch(['assets/src/*/.scss'], ['sass']);
+  gulp.watch(['assets/src/*/.js'], ['scripts-concat']);
 });

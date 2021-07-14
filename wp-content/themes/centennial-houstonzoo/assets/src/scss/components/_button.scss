@@ -1,0 +1,70 @@
+.button {
+    @extend .bg-color-light-green;
+    @extend .color-white;
+    & > , &:visited, &:link {
+        @extend .color-white;
+        @extend .button-label;
+    }
+    padding: rem-calc(10) rem-calc(42);
+    border-radius: rem-calc(26);
+    line-height: rem-calc(20);
+    display: inline-block;
+    border: 0;
+    cursor: pointer;
+
+    &.button-extra-height {
+        padding: rem-calc(15) rem-calc(42);
+    }
+
+    &.transparent {
+        border: 1px solid $white;
+        background: transparent;
+    }
+
+    &.bright-green {
+        @extend .bg-color-bright-green;   
+        border: 1px solid $bright-green;     
+    }
+
+    &.btn-arrow-right {
+        @extend .arrow-for-button;
+    }
+}
+
+.arrow-for-button {
+    position: relative;
+    &::after {
+        content: url(../img/icon-arrow-right.svg);
+        margin-left: rem-calc(8);
+        position: absolute;
+        right: 10%;
+        transition: right 250ms ease;
+    } 
+}
+
+.no-touchevents {
+    .button:hover {
+        @extend .bg-color-dark-green;
+        border-color: $light-green;
+    
+        & > {
+            @extend .color-white;
+        }
+
+        &.transparent {
+            @extend .bg-color-white;
+            @extend .color-light-green;
+            border-color: $white;
+        }
+
+        &.bright-green {
+            @extend .color-black;
+            background: transparent;
+            border-color: $black;
+        }
+
+        &.btn-arrow-right::after {
+            right: 7%;
+        }
+    }
+}

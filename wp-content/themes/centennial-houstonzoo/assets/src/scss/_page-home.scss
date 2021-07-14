@@ -1,2 +1,54 @@
 .page-template-page-home main {
+    #home {
+        min-height: 100vh;
+        position: relative;
+
+        .transparent-panel {
+            position: absolute;
+            width: 50%;
+            z-index: 10;
+            opacity: 0.75; 
+            min-height: 100vh;
+            background: linear-gradient(90deg, #00332f 15%, rgba(255,255,255,0) 100%)
+        }
+
+        .desc-container {
+            position: absolute;
+            top: rem-calc(240);
+            left: rem-calc(152);
+            z-index: 15;
+        }
+
+        .item-container {
+            min-height: 100vh;
+            min-width: 100vw;
+            position: relative;
+            z-index: 15;
+
+            .title-container {
+                position: absolute;
+                bottom: rem-calc(52);
+                left: rem-calc(56);
+            }
+        }
+
+        .flickity-page-dots {
+            text-align: left;
+            z-index: 15;
+            margin-bottom: rem-calc(134);
+            margin-left: rem-calc(48);
+
+            .dot {
+                height: 14px;
+                width: 14px;
+                background-color: transparent;
+                opacity: 1;
+                border: 1px solid $light-blue;
+
+                &.is-selected {
+                    @extend .bg-color-light-blue;
+                }
+            }
+        }
+    }
 }

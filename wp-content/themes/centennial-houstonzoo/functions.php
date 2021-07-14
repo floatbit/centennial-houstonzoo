@@ -41,10 +41,14 @@ add_filter('body_class', 'centennial_houstonzoo_body_class');
 // add css and javascript
 function centennial_houstonzoo_css_js() {
   // wp_enqueue_script( 'flickity-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array(), '', true );
+  wp_enqueue_script( 'flickity-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array());
+  wp_enqueue_script( 'flickity-js-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.js', array());
+  wp_enqueue_script( 'flickity-js-hash', 'https://unpkg.com/flickity-hash@1/hash.js', array());
   wp_enqueue_script( 'global', get_template_directory_uri() . '/assets/js/global.min.js', array(), CSS_JS_VERSION, true );
   wp_enqueue_script( 'pages', get_template_directory_uri() . '/assets/js/pages.min.js', array(), CSS_JS_VERSION, true );
   // css
   // wp_enqueue_style( 'flickity-css', 'https://unpkg.com/flickity@2/dist/flickity.min.css', array(), '', 'all' );
+  wp_enqueue_style( 'flickity-css', 'https://unpkg.com/flickity@2/dist/flickity.min.css', array(), '', 'all' );
   wp_enqueue_style( 'app', get_template_directory_uri() . '/assets/css/app.css', array(), CSS_JS_VERSION, 'all' );
 }
 add_action('wp_enqueue_scripts', 'centennial_houstonzoo_css_js');
@@ -93,3 +97,42 @@ if( function_exists('acf_add_options_page') ) {
     'menu_title'  => 'Global Content',
   ));
 }
+
+function centennial_houstonzoo_zoo_connection() {
+  return array(
+    'member'    => 'Member', 
+    'zoo_crew'  => 'Zoo Crew', 
+    'volunteer' => 'Volunteer', 
+    'staff'     => 'Staff',
+    'zoo_guest' => 'Zoo Guest',
+    'donor'     => 'Donor' 
+  );
+}
+
+add_filter( 'gform_pre_render_1', 'centennial_houstonzoo_zoo_connection_field' );
+add_filter( 'gform_pre_validation_1', 'centennial_houstonzoo_zoo_connection_field' );
+add_filter( 'gform_pre_submission_filter_1', 'centennial_houstonzoo_zoo_connection_field' );
+add_filter( 'gform_admin_pre_render_1', 'centennial_houstonzoo_zoo_connection_field' );
+function centennial_houstonzoo_zoo_connection_field( $form ) {
+
+  foreach ($form['fields'] as &$field) {
+		if ($field->inputName == 'zoo-connection-selection') {
+
+      $zoo_connection = centennial_houstonzoo_zoo_connection('training_goal');
+
+			$choices = [];
+			foreach ($zoo_connection as $key => $value) {
+				$choices[] = ['text' => $value, 'value' => $key];
+			}
+
+			$field->choices = $choices;
+    }
+	}
+	return $form;
+}
+
+
+
+
+
+require_once(__DIR__.'/shortcodes.php');

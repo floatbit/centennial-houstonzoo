@@ -1,0 +1,34 @@
+.page-template-page-100-years main {
+    #intro {
+        .intro-image {            
+            @include fluid-props(390px, 600px, height);
+            position: relative;
+
+            .transparent-intro-panel {
+                position: absolute;
+                @extend .bg-color-darker-green;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                opacity: 0.55;
+            }
+
+            .intro-desc {
+                @include fluid-props(224px, 300px, margin-top);
+                text-align: center;
+                z-index: 15;
+            }
+        }
+    }
+
+    #looking-forward {
+        @include fluid-props(60px, 136px, margin-top);
+        @include fluid-props(52px, 132px, margin-bottom);
+
+        .desc-container {
+            .title-container {
+                @include fluid-props(10px, 32px, margin-bottom);
+            }
+        }
+    }
+}
