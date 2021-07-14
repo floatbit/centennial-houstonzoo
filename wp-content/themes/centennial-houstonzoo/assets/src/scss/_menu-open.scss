@@ -1,19 +1,72 @@
 .menu-open-container {
     min-height: 100vh;
+    height: 100vh;    
+    overflow-y: scroll;
     position: fixed;
 	width: 100%;
 	top: -100%;
 	left: 0;
 	z-index: 100;
     transition: all 250ms;
-    
+    @include fluid-props(32px, 32px, padding-top);
+    @include fluid-props(32px, 32px, padding-bottom);
+
     .header-container {
+        @include fluid-props(46px, 124px, padding-bottom);
+        
         position: relative;
         text-align: center;
+        .right-content {
+            text-align: right;
+            .fal::before {
+                @include fluid-type(20px, 24px);
+            }
+        }
+    }
+
+    .menu-container {
+        .left-section, .right-section {
+            @include breakpoint (medium) {
+                @include fluid-props(16px, 32px, padding-top);
+                @include fluid-props(48px, 82px, padding-left);
+                @include fluid-props(48px, 82px, padding-right);
+            }
+        }
+        .left-section {
+            text-align: center;
+            @include breakpoint (small only) {
+                border-bottom: 1px solid $white;
+                .menu-item:last-of-type {
+                    padding-bottom: rem-calc(45);    
+                }
+            }
+            @include breakpoint (medium) {
+                border-right: 1px solid $white;
+            }
+            .menu-item {
+                @include fluid-props(32px, 72px, padding-bottom);
+                p {
+                    margin: 0;
+                }
+            }
+        }
+        .right-section {
+            .content-right {
+                @include breakpoint (small only) {
+                    padding-top: rem-calc(50);                        
+                }
+                .title {
+                    @include fluid-props(20px, 38px, margin-bottom);
+                }
+                .text {
+                    @include fluid-props(16px, 34px, margin-bottom);
+                }
+            }
+        }
     }
 
     &.active {
         top: 0; 
-        backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px) brightness(0.6);
     }
 }

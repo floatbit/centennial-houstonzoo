@@ -33,6 +33,9 @@
             transition: right 250ms ease;
         } 
     }
+    &:visited {
+        text-decoration: none;
+    }
 }
 
 .no-touchevents {

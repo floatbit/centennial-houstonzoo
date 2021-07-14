@@ -16,7 +16,7 @@
 			<div class="grid-x">
 				<div class="cell medium-4">
 					<?php print the_content(); ?>
-					<a href="#" class="button transparent">
+					<a href="#menu-open" class="button transparent">
 						SHARE YOUR STORY
 					</a>
 				</div>

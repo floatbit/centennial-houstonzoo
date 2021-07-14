@@ -6,6 +6,10 @@ html {
   overflow-x: hidden;
   max-width: 100%;
   width: 100%;
+  
+  &.disable-scroll {
+    overflow: hidden;
+  }
 }
 
 .h1-style, .h2-style, .h3-style, .form-input-text {

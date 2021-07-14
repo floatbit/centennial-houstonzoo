@@ -10,7 +10,7 @@
         <img src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
       </div>
       <div class="cell medium-3 right-content">
-        <a href="#" class="fal fa-bars color-white"></a>
+        <a href="#menu-open" class="fal fa-bars color-white"></a>
       </div>
     </div>
   </div>
