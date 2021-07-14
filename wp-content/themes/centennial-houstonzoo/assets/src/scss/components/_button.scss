@@ -1,13 +1,16 @@
 .button {
     @extend .bg-color-light-green;
     @extend .color-white;
-    & > {
+    & > , &:visited, &:link {
         @extend .color-white;
         @extend .button-label;
     }
     padding: rem-calc(10) rem-calc(42);
     border-radius: rem-calc(26);
+    line-height: rem-calc(20);
     display: inline-block;
+    border: 0;
+    cursor: pointer;
 
     &.button-extra-height {
         padding: rem-calc(15) rem-calc(42);
@@ -24,18 +27,19 @@
     }
 
     &.btn-arrow-right {
-        position: relative;
-        &::after {
-            content: url(../img/icon-arrow-right.svg);
-            margin-left: rem-calc(8);
-            position: absolute;
-            right: 10%;
-            transition: right 250ms ease;
-        } 
+        @extend .arrow-for-button;
     }
-    &:visited {
-        text-decoration: none;
-    }
+}
+
+.arrow-for-button {
+    position: relative;
+    &::after {
+        content: url(../img/icon-arrow-right.svg);
+        margin-left: rem-calc(8);
+        position: absolute;
+        right: 10%;
+        transition: right 250ms ease;
+    } 
 }
 
 .no-touchevents {

@@ -1,10 +1,99 @@
 .input-style {
     @extend .form-input-text;
     @extend .color-white;
-    padding: rem-calc(4) rem-calc(42) rem-calc(12);
+    padding: rem-calc(3) rem-calc(26) rem-calc(9);
     border-radius: rem-calc(26);
     line-height: rem-calc(36);
     outline: none;
-    border: 2px solid $white;
+    border: 1px solid $white;
     background: none;
+    width: 100%;
+}
+
+.input-style-checkbox {
+    margin: 0 0.5rem 0 0 !important;
+    opacity: 0;
+    cursor: pointer;
+    & + label:before {
+        content: '';
+        @include fluid-props(5px, 7px, margin-top);
+        margin-left: rem-calc(-22);
+        margin-right: rem-calc(16);
+        width: rem-calc(16);
+        height: rem-calc(16);
+        border: 1px solid $white;
+        background: transparent;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: text-top;
+    }
+
+    &:checked + label:before {
+        background: $white;
+        cursor: pointer;
+    }
+}
+
+.gf_browser_chrome {
+    ul {
+        list-style: none;
+        margin: 0;
+    }
+
+    .gform_body {
+        #gform_page_1_1 {
+            #field_1_16, #field_1_3, #field_1_4 {
+                .gfield_label {
+                    @extend .caption-semibold;
+                    @extend .color-light-green;
+                    padding-bottom: rem-calc(8);
+                    display: block;
+                }
+            }
+        }
+        .gfield_select,
+        input[type=number],
+        input[type=tel],
+        input[type=text], 
+        input[type=email],
+        textarea {
+            @extend .input-style;
+            margin-bottom: rem-calc(26);
+        }
+        textarea {
+            @extend .button-label;
+        }
+        input[type=checkbox] {
+            @extend .input-style-checkbox;
+        }
+        .gfield_checkbox {
+            column-count: 2;
+            label {
+                @extend .form-input-text;
+                cursor: pointer;
+            }
+        }
+        .gfield_label {
+            @extend .h5-style;
+            @extend .color-white;
+            text-transform: capitalize;
+        }
+        #field_1_5 .gfield_label {
+            &::after {
+                content: ' (Check all that apply)';
+                @include fluid-type(12px, 14px);
+            }
+        }
+    }
+
+    .gform_page_footer {
+        @include fluid-props(30px, 28px, margin-top);
+        input[type=button] {
+            @extend .arrow-for-button;
+            width: 100%;
+        }
+        .gform_previous_button {
+            display: none;
+        }
+    }
 }

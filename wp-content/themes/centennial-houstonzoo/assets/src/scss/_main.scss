@@ -16,7 +16,7 @@ html {
   display: none;
 }
 
-.h1-style, .h2-style, .h3-style, .form-input-text {
+.h1-style, .h1-style-large, .h2-style, .h3-style, .form-input-text {
   @extend .antwerp-regular;  
 }
 
@@ -29,7 +29,10 @@ html {
 }
 
 h1 {
-  @extend .h1-style; 
+  @extend .h1-style;
+  &.large {
+    @extend .h1-style-large;
+  } 
 }
 
 h2 {
@@ -53,6 +56,9 @@ h5 {
 
 p {
   @extend .p-style;
+  &.bold {
+    font-weight: bold;
+  }
 }
 
 .form-input-text {
@@ -61,6 +67,7 @@ p {
 
 .caption, .caption-semibold {
   @include fluid-type(8px, 12px); 
+  text-transform: uppercase;
 }
 
 .button-label {
@@ -70,6 +77,10 @@ p {
 
 .h1-style {
   @include fluid-type(36px, 53px);
+}
+
+.h1-style-large {
+  @include fluid-type(44px, 64px);
 }
 
 .h2-style {

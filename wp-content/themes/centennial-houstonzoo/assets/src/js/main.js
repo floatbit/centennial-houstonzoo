@@ -3,14 +3,41 @@ $(document).foundation();
 var mainHandler = {
   $menuOpenContainer = $(".menu-open-container"),
   $html = $("html"),
+  $menuItem = $(".menu-item"),
+  $contentRight = $('.content-right'), 
+  $yourStoryContainer = $('.your-story-container'),
+  $defaultContent = $('.default-content'), 
 
   openMenu = function(e){
-    $menuOpenContainer.toggleClass('active');
-    $html.toggleClass("disable-scroll");
+    this.$menuOpenContainer.toggleClass('active');
+    this.$html.toggleClass("disable-scroll");
+    this.$yourStoryContainer.removeClass('active');
+    this.$defaultContent.addClass('active');
+  },
+
+  init = function(e){
+    var self = this;
+
+    self.$menuItem.on("click", function(){
+      var selectedId = this.getAttribute('data-id');
+      var $menuSelected = $('.menu-item[data-id='+selectedId+']');
+
+      self.$menuItem.removeClass('active');
+      $menuSelected.addClass('active');
+
+      if (selectedId == 1) {
+        self.$contentRight.removeClass('active');
+        self.$yourStoryContainer.addClass('active');        
+      }
+
+    });
+    
   }
 }
 
 jQuery(document).ready(function($) {
+
+  mainHandler.init();
 
   $('[href="#menu-open"]').on("click", function(e) {
     e.preventDefault;
