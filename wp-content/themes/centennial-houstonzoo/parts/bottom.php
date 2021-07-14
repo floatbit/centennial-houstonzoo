@@ -24,12 +24,12 @@
 						<div class="footer-social-media">
 							<a href="#" class="donate-button color-white">DONATE</a>
 							<span class="icon-desc color-white">CONNECT : </span>
-							<div class="icon-container flex-container align-justify">
-								<a href="<?php print $social_media_links['facebook']; ?>"><i class="fab fa-facebook-square color-white"></i></a>
-								<a href="<?php print $social_media_links['twitter']; ?>"><i class="fab fa-twitter color-white"></i></a>
-								<a href="<?php print $social_media_links['instagram']; ?>"><i class="fab fa-instagram color-white"></i></a>
-								<a href="<?php print $social_media_links['pinterest']; ?>"><i class="fab fa-pinterest color-white"></i></a>
-								<a href="<?php print $social_media_links['youtube']; ?>"><i class="fab fa-youtube color-white"></i></a>
+							<div class="icon-container">
+								<a class="icon-item" href="<?php print $social_media_links['facebook']; ?>"><i class="fab fa-facebook-square color-white"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['twitter']; ?>"><i class="fab fa-twitter color-white"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['instagram']; ?>"><i class="fab fa-instagram color-white"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['pinterest']; ?>"><i class="fab fa-pinterest color-white"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['youtube']; ?>"><i class="fab fa-youtube color-white"></i></a>
 							</div>
 						</div>
 					</div>

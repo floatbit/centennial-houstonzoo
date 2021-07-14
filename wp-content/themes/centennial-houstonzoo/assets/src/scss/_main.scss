@@ -145,6 +145,10 @@ footer {
     .icon-desc {
       @include fluid-props(8px, 10px, margin-bottom);
     }
+
+    .icon-container .icon-item {
+      @include fluid-props(16px, 20px, margin-right);
+    }
   }
 
   .bottom-content-container {
