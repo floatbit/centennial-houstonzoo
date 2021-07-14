@@ -1,6 +1,19 @@
 $(document).foundation();
 
+var mainHandler = {
+  $menuOpenContainer = $(".menu-open-container"),
+
+  openMenu = function(e){
+    $($menuOpenContainer).toggleClass('active');
+  }
+}
+
 jQuery(document).ready(function($) {
+
+  $('body').on("click", '[href="#menu-open"]', function(e) {
+    e.preventDefault;
+    mainHandler.openMenu();
+	})
 
 	// Adds Flex Video to YouTube and Vimeo Embeds
   $('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function() {

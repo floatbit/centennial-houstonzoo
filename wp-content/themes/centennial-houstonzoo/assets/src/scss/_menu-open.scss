@@ -1,0 +1,19 @@
+.menu-open-container {
+    min-height: 100vh;
+    position: fixed;
+	width: 100%;
+	top: -100%;
+	left: 0;
+	z-index: 100;
+    transition: all 250ms;
+    
+    .header-container {
+        position: relative;
+        text-align: center;
+    }
+
+    &.active {
+        top: 0; 
+        backdrop-filter: blur(6px);
+    }
+}
