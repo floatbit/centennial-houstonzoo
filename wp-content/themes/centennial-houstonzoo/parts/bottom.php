@@ -1,6 +1,7 @@
 <?php
 	$address = get_field('address', 'option');
   	$social_media_links = get_field('social_media', 'option');
+	  $donate = get_field('donate', 'option');
 ?>
 
 <footer class="bg-color-dark-green">
@@ -22,7 +23,7 @@
 					</div>
 					<div class="cell medium-6">
 						<div class="footer-social-media">
-							<a href="#" class="donate-button color-white">DONATE</a>
+							<a href="<?php print $donate['url']; ?>" class="donate-button color-white"><?php print $donate['title']; ?></a>
 							<span class="icon-desc color-white">CONNECT : </span>
 							<div class="icon-container">
 								<a class="icon-item" href="<?php print $social_media_links['facebook']; ?>"><i class="fab fa-facebook-square color-white"></i></a>

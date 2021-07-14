@@ -8,6 +8,10 @@ html {
   width: 100%;
 }
 
+.hide {
+  display: none;
+}
+
 .h1-style, .h2-style, .h3-style, .form-input-text {
   @extend .antwerp-regular;  
 }
@@ -92,15 +96,16 @@ p {
 
 header {
   background-color: transparent;
-  position: absolute;
-  z-index: 15;
+  z-index: 100;
   width: 100%;
-  @include breakpoint(medium) {
-    padding: 1.5rem 0;
-  }
-  @include breakpoint(large) {
-    padding: 2rem 0;
-  }
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+
+  @include fluid-props(44px, 52px, padding-top);
+  @include fluid-props(44px, 52px, padding-bottom);
+
   p {
     margin: 0;
   }
@@ -111,14 +116,25 @@ header {
 
   .right-content {
     text-align: right;
+    a {
+      @extend .color-white;
+    }
+  }
+
+  &.scrolled {
+    @extend .bg-color-white;
+
+    .right-content {
+      a {
+        @extend .color-black;
+      }
+    }
   }
 }
 
 footer {
-  background-color: green;
-  color: $black;
-  padding-top: rem-calc(72);
-  padding-bottom: rem-calc(80);
+  @include fluid-props(60px, 72px, padding-top);
+  @include fluid-props(68px, 80px, padding-bottom);
   p {
     margin: 0;
   }
@@ -158,7 +174,7 @@ footer {
   .footer-right-content {
 
     .footer-logo-container {
-      @include fluid-props(28px, 32px, margin-bottom);
+      @include fluid-props(16px, 20px, margin-bottom);
     }
 
     .footer-address-container {

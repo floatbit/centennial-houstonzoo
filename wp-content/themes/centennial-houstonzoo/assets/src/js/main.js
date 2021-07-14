@@ -12,6 +12,18 @@ jQuery(document).ready(function($) {
 		prevNextButtons: false,
 		selectedAttraction: 0.2, 
 	}); 
+
+  $(window).on("scroll", function() {
+    if($(window).scrollTop() > 50) {
+        $("header").addClass("scrolled");
+        $(".logo-white").addClass("hide");
+        $(".logo-black").removeClass("hide");
+    } else {
+        $("header").removeClass("scrolled");
+        $(".logo-black").addClass("hide");
+        $(".logo-white").removeClass("hide");
+    }
+  });
   
 	// Adds Flex Video to YouTube and Vimeo Embeds
   $('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function() {

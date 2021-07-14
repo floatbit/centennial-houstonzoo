@@ -3,6 +3,15 @@
         min-height: 100vh;
         position: relative;
 
+        .transparent-panel {
+            position: absolute;
+            width: 50%;
+            z-index: 10;
+            opacity: 0.75;
+            min-height: 100vh;
+            background: linear-gradient(90deg, #00332f 15%, rgba(255,255,255,0) 100%)
+        }
+
         .desc-container {
             position: absolute;
             top: rem-calc(240);
@@ -14,6 +23,7 @@
             min-height: 100vh;
             min-width: 100vw;
             position: relative;
+            z-index: 15;
 
             .title-container {
                 position: absolute;
@@ -26,6 +36,7 @@
             bottom: rem-calc(88);
             left: rem-calc(56);
             text-align: left;
+            z-index: 15;
         }
     }
 }

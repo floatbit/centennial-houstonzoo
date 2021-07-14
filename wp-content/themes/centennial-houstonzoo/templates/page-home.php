@@ -12,6 +12,7 @@
 
 <main>
 	<section id="home">
+		<div class="transparent-panel"></div>
 		<div class="desc-container">
 			<div class="grid-x">
 				<div class="cell medium-4">
@@ -29,9 +30,9 @@
 					$tiny_title = $item['title'];
 				?>
 				<div class="carousel-cell">
-					<div class="item-container background-cover" style="background:url(<?php print $image_url; ?>)">
+					<div class="item-container background-cover" style="background-image:url(<?php print $image_url; ?>)">
 						<div class="title-container">
-							<?php print $tiny_title; ?>
+							<p class="bold color-light-blue"><?php print $tiny_title; ?></p>
 						</div>
 					</div>
 				</div>
