@@ -6,7 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify');
 
-var proxyServer = 'localhost.foundation6';
+var proxyServer = 'centennial-houstonzoo.localhost';
 
 var sassPaths = [
   'node_modules/foundation-sites/scss',
@@ -101,8 +101,9 @@ gulp.task('default', ['sass', 'scripts'], function() {
 });
 
 gulp.task('watch', ['sass', 'scripts'], function() {
-  gulp.watch(['assets/src/*/.scss'], ['sass']);
-  gulp.watch(['assets/src/*/.js'], ['scripts']);
+  gulp.watch(['assets/src/**/*.scss'], ['sass']);
+  gulp.watch(['assets/src/**/*.js'], ['scripts']);
+  gulp.watch(['assets/src/**/*.js'], ['scripts-concat']);
 });
 
 gulp.task('browser', ['sass', 'scripts', 'browser-sync'], function() {

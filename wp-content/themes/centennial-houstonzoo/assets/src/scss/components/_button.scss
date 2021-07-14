@@ -5,9 +5,13 @@
         @extend .color-white;
         @extend .button-label;
     }
-    padding: rem-calc(16) rem-calc(42);
+    padding: rem-calc(10) rem-calc(42);
     border-radius: rem-calc(26);
     display: inline-block;
+
+    &.button-extra-height {
+        padding: rem-calc(15) rem-calc(42);
+    }
 
     &.transparent {
         border: 1px solid $white;
@@ -28,6 +32,9 @@
             right: 10%;
             transition: right 250ms ease;
         } 
+    }
+    &:visited {
+        text-decoration: none;
     }
 }
 

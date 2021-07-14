@@ -1,6 +1,21 @@
 $(document).foundation();
 
+var mainHandler = {
+  $menuOpenContainer = $(".menu-open-container"),
+  $html = $("html"),
+
+  openMenu = function(e){
+    $menuOpenContainer.toggleClass('active');
+    $html.toggleClass("disable-scroll");
+  }
+}
+
 jQuery(document).ready(function($) {
+
+  $('[href="#menu-open"]').on("click", function(e) {
+    e.preventDefault;
+    mainHandler.openMenu();
+	});
 
 	$('.carousel-main').flickity({
 		cellSelector: '.carousel-cell',
