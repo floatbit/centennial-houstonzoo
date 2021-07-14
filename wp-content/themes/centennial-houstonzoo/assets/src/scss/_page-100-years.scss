@@ -1,3 +1,46 @@
 .page-template-page-100-years main {
-    
+    #intro {
+        .intro-image {            
+            @include fluid-props(390px, 600px, height);
+            @include fluid-props(224px, 300px, padding-top);
+
+            .intro-desc {
+                text-align: center;
+            }
+        }
+    }
+
+    #hero {
+
+    }
+
+    #statistic {
+        position: relative;
+
+        .transparent-panel {
+            position: absolute;
+            width: 50%;
+            z-index: 10;
+            opacity: 0.75;
+            @include fluid-props(526px, 960px, height);
+            background: linear-gradient(90deg, $darker-green 10%, rgba(255,255,255,0) 100%)
+        }
+
+        .statistic-image {
+            @include fluid-props(526px, 960px, height);
+            @include fluid-props(56px, 144px, padding-top);
+            @include fluid-props(48px, 136px, padding-bottom);
+        }
+    }
+
+    #looking-forward {
+        @include fluid-props(60px, 136px, margin-top);
+        @include fluid-props(52px, 132px, margin-bottom);
+
+        .desc-container {
+            .title-container {
+                @include fluid-props(10px, 32px, margin-bottom);
+            }
+        }
+    }
 }
