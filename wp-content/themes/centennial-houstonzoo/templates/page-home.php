@@ -13,16 +13,16 @@
 <main>
 	<section id="home">
 		<div class="transparent-panel"></div>
-		<div class="desc-container">
+		<!-- <div class="desc-container">
 			<div class="grid-x">
-				<div class="cell medium-4">
+				<div class="cell medium-4 color-white">
 					<?php print the_content(); ?>
 					<a href="#menu-open" class="button transparent">
 						SHARE YOUR STORY
 					</a>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="carousel carousel-main">
 			<?php foreach($hero_item as $item): ?>
 				<?php

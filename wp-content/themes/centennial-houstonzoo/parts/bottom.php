@@ -16,21 +16,21 @@
 				<div class="grid-x grid-margin-x">
 					<div class="cell medium-6">
 						<div class="footer-links">
-							<a href="#100-years"class="footer-link color-white">100 YEARS</a>
-							<a href="#share-your-story"class="footer-link color-white">SHARE YOUR STORY</a>
-							<a href="#your-zoo-transformed"class="footer-link color-white">YOUR ZOO TRANSFORMED</a>
+							<a href="#100-years"class="footer-link color-light-blue">100 YEARS</a>
+							<a href="#share-your-story"class="footer-link color-light-blue">SHARE YOUR STORY</a>
+							<a href="#your-zoo-transformed"class="footer-link color-light-blue">YOUR ZOO TRANSFORMED</a>
 						</div>
 					</div>
 					<div class="cell medium-6">
 						<div class="footer-social-media">
-							<a href="<?php print $donate['url']; ?>" class="donate-button color-white"><?php print $donate['title']; ?></a>
-							<span class="icon-desc color-white">CONNECT : </span>
+							<a href="<?php print $donate['url']; ?>" class="donate-button color-light-blue"><?php print $donate['title']; ?></a>
+							<span class="icon-desc bold color-white">CONNECT : </span>
 							<div class="icon-container">
-								<a class="icon-item" href="<?php print $social_media_links['facebook']; ?>"><i class="fab fa-facebook-square color-white"></i></a>
-								<a class="icon-item" href="<?php print $social_media_links['twitter']; ?>"><i class="fab fa-twitter color-white"></i></a>
-								<a class="icon-item" href="<?php print $social_media_links['instagram']; ?>"><i class="fab fa-instagram color-white"></i></a>
-								<a class="icon-item" href="<?php print $social_media_links['pinterest']; ?>"><i class="fab fa-pinterest color-white"></i></a>
-								<a class="icon-item" href="<?php print $social_media_links['youtube']; ?>"><i class="fab fa-youtube color-white"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['facebook']; ?>"><i class="fab fa-facebook-square color-light-blue"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['twitter']; ?>"><i class="fab fa-twitter color-light-blue"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['instagram']; ?>"><i class="fab fa-instagram color-light-blue"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['pinterest']; ?>"><i class="fab fa-pinterest color-light-blue"></i></a>
+								<a class="icon-item" href="<?php print $social_media_links['youtube']; ?>"><i class="fab fa-youtube color-light-blue"></i></a>
 							</div>
 						</div>
 					</div>

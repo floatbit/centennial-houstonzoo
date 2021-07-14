@@ -33,10 +33,22 @@
         }
 
         .flickity-page-dots {
-            bottom: rem-calc(88);
-            left: rem-calc(56);
             text-align: left;
             z-index: 15;
+            margin-bottom: rem-calc(134);
+            margin-left: rem-calc(48);
+
+            .dot {
+                height: 14px;
+                width: 14px;
+                background-color: transparent;
+                opacity: 1;
+                border: 1px solid $light-blue;
+
+                &.is-selected {
+                    @extend .bg-color-light-blue;
+                }
+            }
         }
     }
 }

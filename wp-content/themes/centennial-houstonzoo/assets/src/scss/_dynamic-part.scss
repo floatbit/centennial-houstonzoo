@@ -1,0 +1,48 @@
+.dynamic-content-container {
+    @include fluid-props(52px, 104px, margin-top);
+    @include fluid-props(96px, 104px, margin-bottom);
+    position: relative;
+
+    .content-desc {
+
+        h3 {
+            @extend .color-dark-green;
+        }
+    }
+
+    .content-image {
+        @include breakpoint (medium) {
+            margin-top: rem-calc(-68);
+        }
+
+        &.right-image {
+            text-align: center;
+        }
+    }
+    
+    .transparent-panel {
+        position: absolute;
+        width: 50%;
+        z-index: 10;
+        opacity: 0.8;
+        @include fluid-props(526px, 960px, height);
+
+        &.dark-green {
+            background: linear-gradient(90deg, $dark-green 10%, rgba(255,255,255,0) 100%);
+        }
+
+        &.darker-green {
+            background: linear-gradient(90deg, $darker-green 10%, rgba(255,255,255,0) 100%);
+        }
+    }
+
+    .bg-image {
+        @include fluid-props(526px, 960px, height);
+        @include fluid-props(56px, 144px, padding-top);
+        @include fluid-props(48px, 136px, padding-bottom);
+
+        .desc-container {
+            z-index: 15;
+        }
+    }
+}
