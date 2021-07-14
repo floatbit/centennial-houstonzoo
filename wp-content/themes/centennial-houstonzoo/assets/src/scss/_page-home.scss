@@ -1,2 +1,31 @@
 .page-template-page-home main {
+    #home {
+        min-height: 100vh;
+        position: relative;
+
+        .desc-container {
+            position: absolute;
+            top: rem-calc(240);
+            left: rem-calc(152);
+            z-index: 15;
+        }
+
+        .item-container {
+            min-height: 100vh;
+            min-width: 100vw;
+            position: relative;
+
+            .title-container {
+                position: absolute;
+                bottom: rem-calc(52);
+                left: rem-calc(56);
+            }
+        }
+
+        .flickity-page-dots {
+            bottom: rem-calc(88);
+            left: rem-calc(56);
+            text-align: left;
+        }
+    }
 }
