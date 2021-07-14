@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Graphik';
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  src: url('../webfonts/Graphik-Semibold.eot'); /* IE9 */
+  src: url('../webfonts/Graphik-Semibold.eot?#iefix') format('embedded-opentype'), /* IE8 */
+       url('../webfonts/Graphik-Semibold.woff2') format('woff2'), /* Modern */
+       url('../webfonts/Graphik-Semibold.woff') format('woff'), /* Standard */
+       url('../webfonts/Graphik-Semibold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
