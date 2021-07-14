@@ -4,8 +4,8 @@
     $bg_color = $part_params['bg_color'];
 ?>
 
-<div class="grid-container">
-    <div class="dynamic-content-container">
+<div class="dynamic-content-container">
+    <div class="grid-container">
         <div class="grid-x grid-margin-x <?php print $bg_color; ?>">
             <div class="cell medium-6">
                 <div class="content-image">

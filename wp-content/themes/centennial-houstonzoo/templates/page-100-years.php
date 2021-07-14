@@ -15,6 +15,7 @@
 <main>
 	<section id="intro">
 		<div class="intro-image background-cover" style="background-image:url(<?php print $intro_image; ?>)">
+			<div class="transparent-intro-panel"></div>
 			<div class="grid-x">
 				<div class="cell intro-desc">
 					<h1 class="large color-white"><?php print the_title(); ?></h1>
@@ -57,7 +58,8 @@
 	</section>
 
 	<section id="looking-forward">
-		<div class="grid-container desc-container">
+		<div class="grid-container">
+			<div class="desc-container">
 				<div class="title-container">
 					<p class="color-dark-green"><?php print $lf_items['eyebrow']; ?></p>
 				</div>
@@ -69,6 +71,7 @@
 						<p><?php print $lf_items['description']; ?></p>
 					</div>
 				</div>
+			</div>
 			<div class="grid-x grid-margin-x">
 				<div class="cell medium-6">
 					<?php if ($lf_items['info_content']['left_content'] != null) : ?>

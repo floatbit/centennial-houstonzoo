@@ -2,34 +2,22 @@
     #intro {
         .intro-image {            
             @include fluid-props(390px, 600px, height);
-            @include fluid-props(224px, 300px, padding-top);
+            position: relative;
+
+            .transparent-intro-panel {
+                position: absolute;
+                @extend .bg-color-darker-green;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                opacity: 0.55;
+            }
 
             .intro-desc {
+                @include fluid-props(224px, 300px, margin-top);
                 text-align: center;
+                z-index: 15;
             }
-        }
-    }
-
-    #hero {
-
-    }
-
-    #statistic {
-        position: relative;
-
-        .transparent-panel {
-            position: absolute;
-            width: 50%;
-            z-index: 10;
-            opacity: 0.75;
-            @include fluid-props(526px, 960px, height);
-            background: linear-gradient(90deg, $darker-green 10%, rgba(255,255,255,0) 100%)
-        }
-
-        .statistic-image {
-            @include fluid-props(526px, 960px, height);
-            @include fluid-props(56px, 144px, padding-top);
-            @include fluid-props(48px, 136px, padding-bottom);
         }
     }
 
