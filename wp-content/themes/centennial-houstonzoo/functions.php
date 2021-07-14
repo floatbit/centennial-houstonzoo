@@ -98,6 +98,38 @@ if( function_exists('acf_add_options_page') ) {
   ));
 }
 
+function centennial_houstonzoo_zoo_connection() {
+  return array(
+    'member'    => 'Member', 
+    'zoo_crew'  => 'Zoo Crew', 
+    'volunteer' => 'Volunteer', 
+    'staff'     => 'Staff',
+    'zoo_guest' => 'Zoo Guest',
+    'donor'     => 'Donor' 
+  );
+}
+
+add_filter( 'gform_pre_render_1', 'centennial_houstonzoo_zoo_connection_field' );
+add_filter( 'gform_pre_validation_1', 'centennial_houstonzoo_zoo_connection_field' );
+add_filter( 'gform_pre_submission_filter_1', 'centennial_houstonzoo_zoo_connection_field' );
+add_filter( 'gform_admin_pre_render_1', 'centennial_houstonzoo_zoo_connection_field' );
+function centennial_houstonzoo_zoo_connection_field( $form ) {
+
+  foreach ($form['fields'] as &$field) {
+		if ($field->inputName == 'zoo-connection-selection') {
+
+      $zoo_connection = centennial_houstonzoo_zoo_connection('training_goal');
+
+			$choices = [];
+			foreach ($zoo_connection as $key => $value) {
+				$choices[] = ['text' => $value, 'value' => $key];
+			}
+
+			$field->choices = $choices;
+    }
+	}
+	return $form;
+}
 
 
 

@@ -45,13 +45,20 @@
             }
             .menu-item {
                 @include fluid-props(32px, 72px, padding-bottom);
+                opacity: 0.4;
+                cursor: pointer;
                 p {
                     margin: 0;
+                }
+
+                &.active {
+                    opacity: 1;
                 }
             }
         }
         .right-section {
             .content-right {
+                display: none;
                 @include breakpoint (small only) {
                     padding-top: rem-calc(50);                        
                 }
@@ -61,6 +68,9 @@
                 .text {
                     @include fluid-props(16px, 34px, margin-bottom);
                 }
+                &.active {
+                    display: block;
+                }
             }
         }
     }
@@ -68,5 +78,14 @@
     &.active {
         top: 0; 
         backdrop-filter: blur(6px) brightness(0.6);
+    }
+}
+
+.no-touchevents {
+    .menu-open-container .menu-container .left-section .menu-item:hover {
+        .title-text {
+            @extend .antwerp-regular-italic;
+            @extend .color-white;
+        }
     }
 }

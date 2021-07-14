@@ -3,10 +3,22 @@
     src: url("../fonts/antwerp/Antwerp_Regular.otf");
 }
 
-.antwerp-regular  {
-    font-family: "Antwerp_Regular";
+@font-face {
+    font-family: "Antwerp_RegularItalic";
+    src: url("../fonts/antwerp/Antwerp_RegularItalic.otf");
+}
+
+.antwerp-regular, .antwerp-regular-italic {
     font-weight: normal;
     font-style: normal;
+}
+
+.antwerp-regular  {
+    font-family: "Antwerp_Regular";
+}
+
+.antwerp-regular-italic {
+    font-family: "Antwerp_RegularItalic";
 }
 
 @font-face {
