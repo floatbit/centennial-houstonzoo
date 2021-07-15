@@ -26,6 +26,10 @@
     color: $black;
 }
 
+.color-gray {
+    color: $gray;
+}
+
 // background
 .bg-color-white {
     background-color: $white;
@@ -52,5 +56,9 @@
 }
 
 .bg-color-black {
-    color: $black;
+    background-color: $black;
+}
+
+.bg-color-gray {
+    background-color: $gray;
 }
