@@ -12,6 +12,23 @@ html {
   }
 }
 
+.grid-container {
+  &.double {
+    @include breakpoint (large) {
+      padding-right: (map-get($grid-container-padding, 'large')) * 2;
+      padding-left: (map-get($grid-container-padding, 'large')) * 2;
+    }
+    @include breakpoint (medium) {
+      padding-right: (map-get($grid-container-padding, 'medium')) * 2;
+      padding-left: (map-get($grid-container-padding, 'medium')) * 2;
+    }
+    @include breakpoint (small) {
+      padding-right: (map-get($grid-container-padding, 'small')) * 2;
+      padding-left: (map-get($grid-container-padding, 'small')) * 2;
+    }
+  }
+}
+
 .hide {
   display: none;
 }
@@ -125,16 +142,21 @@ header {
     margin: 0;
   }
 
-  .middle-content {
-    text-align: center;
-  }
+  .head-container {
+    @include fluid-props(28px, 56px, margin-right);
+    @include fluid-props(28px, 56px, margin-left);
 
-  .right-content {
-    text-align: right;
-    font-size: 24px;
-
-    a {
-      @extend .color-white;
+    .middle-content {
+      text-align: center;
+    }
+  
+    .right-content {
+      text-align: right;
+      font-size: 24px;
+  
+      a {
+        @extend .color-white;
+      }
     }
   }
 
@@ -152,8 +174,23 @@ header {
 footer {
   @include fluid-props(60px, 72px, padding-top);
   @include fluid-props(68px, 80px, padding-bottom);
+
   p {
     margin: 0;
+  }
+
+  .logo-container{
+
+    @include breakpoint (small only) {
+      margin-bottom: rem-calc(28);
+      text-align: center;
+    }
+
+    img {
+      @include fluid-props(200px, 296px, width);
+      @include fluid-props(52px, 76px, height);
+    }
+    
   }
 
   .footer-links {
@@ -162,14 +199,20 @@ footer {
     .footer-link {
       @include fluid-props(12px, 16px, margin-bottom);
       
-      &:last-of-type {
-        margin-bottom: 0;
+      @include breakpoint (medium) {
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }
 
   .footer-social-media {
     display: grid;
+
+    @include breakpoint (small only) {
+      margin-bottom: rem-calc(40);
+    }
 
     .donate-button {
       @include fluid-props(12px, 16px, margin-bottom);

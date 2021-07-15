@@ -1,13 +1,6 @@
 .dynamic-content-container {
     position: relative;
-    @include fluid-props(80px, 104px, margin-bottom);
-    &:first-of-type {
-        @include fluid-props(52px, 104px, margin-top);
-    }
-    &:last-of-type {
-        margin-bottom: 0;
-    }
-
+    
     .content-desc {
 
         h3, .eyebrow {
@@ -23,17 +16,28 @@
         }
     }
 
-    .content-image {
-        @include breakpoint (medium) {
-            margin-top: rem-calc(-68);
-        }
+    .side-image-content {
+        @include fluid-props(52px, 92px, padding-top);
+        @include fluid-props(88px, 172px, padding-bottom);
+    
+        .content-image {
+            @include breakpoint (medium) {
+                margin-top: rem-calc(-120);
+            }
+    
+            @include breakpoint (small only) {
+                margin-bottom: rem-calc(28);
+            }
 
-        @include breakpoint (small only) {
-            margin-bottom: rem-calc(28);
-        }
-
-        &.right-image {
-            text-align: center;
+            &.left-image {
+                @include breakpoint (small only) {
+                    margin-top: rem-calc(-88);
+                }
+            }
+    
+            &.right-image {
+                text-align: center;
+            }
         }
     }
     
@@ -53,7 +57,7 @@
         }
     }
 
-    .bg-image {
+    .bg-image-content {
         @include fluid-props(526px, 960px, height);
         @include fluid-props(56px, 144px, padding-top);
         @include fluid-props(48px, 136px, padding-bottom);
