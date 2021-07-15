@@ -14,10 +14,12 @@
             @extend .color-dark-green;
         }
 
+        h2, .eyebrow {
+            @include fluid-props(12px, 16px, margin-bottom);
+        }
+
         h3 {
-            @include breakpoint (small only) {
-                margin-bottom: rem-calc(16);
-            }
+            @include fluid-props(16px, 20px, margin-bottom);
         }
     }
 

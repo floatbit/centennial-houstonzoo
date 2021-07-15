@@ -10,6 +10,7 @@
 	$intro_image = get_field('intro');
 	$mix_content_items = get_field('mix_content');
 	$lf_items = get_field('looking_forward');
+	$lf_array = array_chunk($lf_items['info_content'],4);
 ?>
 
 <main>
@@ -72,42 +73,28 @@
 					</div>
 				</div>
 			</div>
-			<div class="grid-x grid-margin-x">
-				<div class="cell medium-6">
-					<?php if ($lf_items['info_content']['left_content'] != null) : ?>
-						<?php foreach ($lf_items['info_content']['left_content'] as $item): ?>
-							<div class="grid-x grid-margin-x">
-								<div class="cell small-1">
-									<img class="info-logo" src="<?php print $item['image']; ?>">
-								</div>
-								<div class="cell small-11">
-									<div class="info-title">
-										<h4><?php print $item['title'] ?></h4>
-										<?php print $item['description'] ?>
-									</div>
-								</div>
-							</div>
-						<?php endforeach; ?>
-					<?php endif; ?>
+			<?php if ($lf_items['info_content'] != null) : ?>
+				<div class="items-container">
+					<div class="grid-x grid-margin-x">
+						<div class="cell medium-6">
+							<?php 
+								set_query_var( 'part_params', array(
+									'looping_item' => $lf_array[0]
+								));
+								get_template_part( 'parts/looking-forward-loop' );
+							?>
+						</div>
+						<div class="cell medium-6">
+							<?php 
+								set_query_var( 'part_params', array(
+									'looping_item' => $lf_array[1]
+								));
+								get_template_part( 'parts/looking-forward-loop' );
+							?>
+						</div>
+					</div>
 				</div>
-				<div class="cell medium-6">
-					<?php if ($lf_items['info_content']['right_content'] != null) : ?>
-						<?php foreach ($lf_items['info_content']['right_content'] as $item): ?>
-							<div class="grid-x grid-margin-x">
-								<div class="cell small-1">
-									<img class="info-logo" src="<?php print $item['image']; ?>">
-								</div>
-								<div class="cell small-11">
-									<div class="info-title">
-										<h4><?php print $item['title'] ?></h4>
-										<?php print $item['description'] ?>
-									</div>
-								</div>
-							</div>
-						<?php endforeach; ?>
-					<?php endif; ?>
-				</div>
-			</div>
+			<?php endif; ?>
 		</div>
 	</section>
 </main>

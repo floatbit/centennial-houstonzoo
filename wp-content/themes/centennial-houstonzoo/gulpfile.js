@@ -27,7 +27,8 @@ var concatScripts = [
   {
     'scripts': [
       'assets/src/js/page-about.js',
-      'assets/src/js/page-home.js'
+      'assets/src/js/page-home.js',
+      'assets/src/js/page-100-years.js'
     ],
     'output': 'pages.js'
   }
