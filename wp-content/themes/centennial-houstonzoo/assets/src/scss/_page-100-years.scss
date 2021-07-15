@@ -4,15 +4,6 @@
             @include fluid-props(390px, 600px, height);
             position: relative;
 
-            .transparent-intro-panel {
-                position: absolute;
-                @extend .bg-color-darker-green;
-                height: 100%;
-                width: 100%;
-                top: 0;
-                opacity: 0.55;
-            }
-
             .intro-desc {
                 @include fluid-props(224px, 300px, margin-top);
                 text-align: center;

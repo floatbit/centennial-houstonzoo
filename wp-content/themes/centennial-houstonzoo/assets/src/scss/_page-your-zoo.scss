@@ -1,0 +1,46 @@
+.page-template-page-your-zoo-transformed main {
+    #intro {
+        .intro-image {            
+            @include fluid-props(390px, 600px, height);
+            position: relative;
+
+            .intro-desc {
+                @include fluid-props(224px, 300px, margin-top);
+                text-align: center;
+                z-index: 15;
+
+                p {
+                    @include fluid-props(32px, 444px, margin-right);
+                    @include fluid-props(32px, 444px, margin-left);
+                }
+            }
+        }
+    }
+
+    #completed-projects {
+        margin: 128px 0;
+
+        .projects-container {
+            .project-item-container {
+                @include fluid-props(28px, 40px, margin-bottom);
+                .image-container {
+                    @include fluid-props(12px, 16px, margin-bottom);
+                    img {
+                        width: 100%;
+                    }
+                }
+                .title-container {
+                }
+                .eyebrow-container {
+                    @include fluid-props(20px, 16px, margin-bottom);
+                }
+    
+                .description-container {
+                    .desc-content {
+                        @include fluid-props(16px, 24px, margin-bottom);
+                    }
+                }
+            }
+        }
+    }
+}

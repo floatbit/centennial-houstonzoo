@@ -39,21 +39,21 @@ jQuery(document).ready(function($) {
 
   mainHandler.init();
 
-  $('[href="#menu-open"]').on("click", function(e) {
-    e.preventDefault;
-    mainHandler.openMenu();
-	});
-
-	$('.carousel-main').flickity({
+  $('.your-zoo-carousel-main').flickity({
 		cellSelector: '.carousel-cell',
 		cellAlign: 'left',
-		draggable: false,
-		pageDots: true,
+		draggable: true,
+		pageDots: false,
 		fade: true,
 		hash: true,
 		prevNextButtons: false,
 		selectedAttraction: 0.2, 
-	}); 
+	});
+
+  $('[href="#menu-open"]').on("click", function(e) {
+    e.preventDefault;
+    mainHandler.openMenu();
+	});
 
   $(window).on("scroll", function() {
     if($(window).scrollTop() > 50) {

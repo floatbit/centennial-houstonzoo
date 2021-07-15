@@ -29,6 +29,25 @@ html {
   }
 }
 
+.transparent-intro-panel {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  opacity: 0.55;
+
+  &.blue {
+    background-color: #231F20;
+    //@extend .bg-color-darker-blue;
+
+  }
+
+  &.green {
+    @extend .bg-color-darker-green;
+
+  }
+}
+
 .hide {
   display: none;
 }

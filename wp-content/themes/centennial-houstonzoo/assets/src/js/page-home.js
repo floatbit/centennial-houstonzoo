@@ -25,6 +25,17 @@ var homeHandler = {
     }
 }
 jQuery(document).ready(function($) {
+    $('.home-carousel-main').flickity({
+		cellSelector: '.carousel-cell',
+		cellAlign: 'left',
+		draggable: false,
+		pageDots: true,
+		fade: true,
+		hash: true,
+		prevNextButtons: false,
+		selectedAttraction: 0.2, 
+	});
+
     $(window).on('resize, load', function() {
         homeHandler.resizeHero();
 	}).trigger('resize');
