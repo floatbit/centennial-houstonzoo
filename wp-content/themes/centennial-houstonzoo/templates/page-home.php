@@ -14,7 +14,7 @@
 	<section id="home">
 		<div class="home-container show-for-medium">
 			<div class="hero-container">
-				<div class="carousel home-carousel-main">
+				<div class="carousel carousel-main">
 					<?php foreach($hero_item as $item): ?>
 						<?php
 							$image_url = $item['image'];

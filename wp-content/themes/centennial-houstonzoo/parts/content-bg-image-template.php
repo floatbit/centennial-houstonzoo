@@ -6,7 +6,7 @@
 ?>
 <div class="dynamic-content-container">
     <div class="half-transparent-panel <?php print $panel_color; ?>" data-specified-id=<?php print $specified_id; ?>></div>
-        <div class="bg-image-content background-cover" style="background-image:url(<?php print $image; ?>)" data-specified-id=<?php print $specified_id; ?>>
+    <div class="bg-image-content background-cover" style="background-image:url(<?php print $image; ?>)" data-specified-id=<?php print $specified_id; ?>>
         <div class="grid-container">
             <div class="grid-x">
                 <div class="cell medium-3 desc-container color-white">

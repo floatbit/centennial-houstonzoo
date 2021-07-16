@@ -59,8 +59,9 @@
     }
 
     .bg-image-content {
-        height: auto;
-        //@include fluid-props(526px, 960px, height);
+        //height: auto;
+        width: 100vw;
+        @include fluid-props(526px, 960px, height);
         @include fluid-props(56px, 144px, padding-top);
         @include fluid-props(48px, 136px, padding-bottom);
 

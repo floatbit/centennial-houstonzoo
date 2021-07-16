@@ -41,11 +41,21 @@
 				<div class="carousel your-zoo-carousel-main">
 					<?php foreach($item['contents'] as $itemContent): ?>
 						<div class="carousel-cell">
+							<!-- <div class="bg-image background-cover" style="background-image:url(<?php print $itemContent['image']; ?>)">
+								<div class="grid-container">
+									<div class="grid-x">
+										<div class="cell medium-3 desc-container color-white">
+											<?php print $itemContent['description']; ?>
+										</div>
+									</div>
+								</div>
+							</div> -->
 							<?php 
 								set_query_var( 'part_params', array(
 									'description' => $itemContent['description'],
 									'image' => $itemContent['image'],
-									'panel_color' => $itemContent['panel_color']
+									'panel_color' => 'darker-green',
+									'specified_id' => 'your-zoo'
 								));
 								get_template_part( 'parts/content-bg-image-template' );
 							?>
@@ -82,7 +92,7 @@
 										<?php print $item['description']; ?>
 									</div>
 									<div class="link-content">
-										<a href="#<?php print $item['cta']; ?>" class="button transparent border-color-light-green">
+										<a href="<?php print $item['cta']; ?>" class="button transparent border-color-light-green">
 											LEARN MORE
 										</a>
 									</div>
