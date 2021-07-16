@@ -7,12 +7,15 @@ var mainHandler = {
   $contentRight = $('.content-right'), 
   $yourStoryContainer = $('.your-story-container'),
   $defaultContent = $('.default-content'), 
+  $leftSection = $('.left-section'),
 
   openMenu = function(e){
     this.$menuOpenContainer.toggleClass('active');
     this.$html.toggleClass("disable-scroll");
     this.$yourStoryContainer.removeClass('active');
     this.$defaultContent.addClass('active');
+    this.$menuItem.addClass('active');
+    this.$leftSection.removeClass('hide-for-small-only');
   },
 
   init = function(e){
@@ -27,17 +30,81 @@ var mainHandler = {
 
       if (selectedId == 1) {
         self.$contentRight.removeClass('active');
-        self.$yourStoryContainer.addClass('active');        
+        self.$yourStoryContainer.addClass('active');
+        self.$leftSection.addClass('hide-for-small-only');        
       }
-
+      
     });
     
   }
 }
 
+var gfHandler = {
+  fieldName = 'input_16',
+  fieldPhone = 'input_4',
+  fieldEmail = 'input_3',
+  fieldVisit = 'input_13',
+  fieldVisitTime = 'input_15',
+  fieldZooMemory = 'input_6',
+  $input = $('.ginput_container').find('input[type=text],input[type=email],input[type=tel],input[type=number]'),
+  $fieldHidden = $('#field_1_12'),
+  $fieldReview = [],
+  $htmlContainer = '<li id="field_review"></li>',
+
+  init = function(e) {
+    var self = this;
+    var name = '', email = '', phone = '', visit = '', visitTime = '', zooMemory = '';
+    
+    self.$fieldReview = self.$fieldHidden.after($htmlContainer).next();
+    console.log( $fieldReview );
+
+    $input.on("change, keyup", function(e){
+      switch (this.name) {
+        case fieldName:
+          name = this.value 
+          break;
+        case fieldEmail:
+          email = this.value;
+          break;
+        case fieldPhone:
+          phone = this.value;
+          break;
+        case fieldVisit:
+          visit = this.value;
+          break;
+        case fieldVisitTime:
+          visitTime = this.value;
+          break;
+        case fieldZooMemory: 
+          zooMemory = this.value;
+          break;
+      }
+    })
+
+    $(document).on('gform_post_render', function (event, form_id, current_page) {
+      var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
+      var visits = '';
+      if (name) {
+        if ( visit && visitTime ) {
+          visits = '<span class="">'+visit+', '+visitTime+'</span>';
+        }         
+        $rev.append('<div class="form-input-text">'+name+visits+'</div>');
+      }
+      $rev.append('<p>'+email+', '+phone+'</p>');      
+      $rev.append('<p>'+zooMemory+'</p>');
+      //$rev.append($obj);
+      //console.log($obj);
+
+    });
+
+  }
+
+}
+
 jQuery(document).ready(function($) {
 
   mainHandler.init();
+  gfHandler.init();
 
   $('.your-zoo-carousel-main').flickity({
 		cellSelector: '.carousel-cell',

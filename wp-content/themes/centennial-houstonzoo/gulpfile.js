@@ -20,15 +20,15 @@ var concatScripts = [
       'node_modules/motion-ui/dist/motion-ui.js',
       'node_modules/foundation-sites/dist/js/foundation.js',
       'assets/src/js/modernizr-custom.js',
-      'assets/src/js/main.js'
+      'assets/src/js/main.js',
     ],
     'output': 'global.js'
   },
   {
     'scripts': [
+      'assets/src/js/page-100-years.js',
       'assets/src/js/page-about.js',
-      'assets/src/js/page-home.js',
-      'assets/src/js/page-100-years.js'
+      'assets/src/js/page-home.js'
     ],
     'output': 'pages.js'
   }
