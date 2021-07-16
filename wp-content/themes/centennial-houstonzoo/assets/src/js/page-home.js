@@ -25,7 +25,7 @@ var homeHandler = {
     }
 }
 jQuery(document).ready(function($) {
-    $('.home-carousel-main').flickity({
+    $('.carousel-main').flickity({
 		cellSelector: '.carousel-cell',
 		cellAlign: 'left',
 		draggable: false,

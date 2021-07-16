@@ -1,5 +1,44 @@
 $(document).foundation();
+var thousandYears = {
+  resizeLookingForwardItems: function() {
+    jQuery('.info-item-container').each(function() {
+      var arrLeft = [];
+      var arrRight = [];
+      jQuery('.left-item-content').children('.content-container').each(function(index){
+        $content = jQuery(this);
+        var contentHeight = parseFloat($content.height());
+        var tempArr = [contentHeight, $content];
+        arrLeft.push(tempArr);
+      })
+      jQuery('.right-item-content').children('.content-container').each(function(index){
+        $content = jQuery(this);
+        var contentHeight = parseFloat($content.height());
+        var tempArr = [contentHeight, $content];
+        arrRight.push(tempArr);
+      })
+      console.log(arrLeft);
+      //console.log(arrRight);
+      $.each(arrLeft, function( index, value ) {
+        var firstHeight = value[0];
+        $firstContent = value[1];
+        var secondValue = arrRight[index];
+        console.log(index);
+        var secondHeight = secondValue[0];
+        $secondContent = secondValue[1];
 
+        if (firstHeight > secondHeight) {
+          $secondContent.css({
+            'height': firstHeight+"px"
+          });
+        } else if (firstHeight < secondHeight) {
+          $firstContent.css({
+            'height': secondHeight+"px"
+          });
+        }
+      })
+    });
+  }
+}
 var mainHandler = {
   $menuOpenContainer = $(".menu-open-container"),
   $html = $("html"),
@@ -161,8 +200,9 @@ jQuery(document).ready(function($) {
 		fade: true,
 		hash: true,
 		prevNextButtons: false,
+    adaptiveHeight: true,
 		selectedAttraction: 0.2, 
-	});
+	}).resize();
 
   $(window).on("scroll", function() {
     if($(window).scrollTop() > 50) {
@@ -176,64 +216,24 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $(window).on('load', function() {
+  $(window).on('resize, load', function() {
     $('.bg-image-content').each(function() {
       $content = $(this);
-      $transPanel = $('.half-transparent-panel');
-      var newHeight = parseFloat($content.height());
+      var specifiedId = this.getAttribute('data-specified-id');
+      $transPanel = $(".half-transparent-panel[data-specified-id="+specifiedId+"]");
+      var contentPadTop = parseFloat($content.css('padding-top'));
+      var contentPadBot = parseFloat($content.css('padding-bottom'));
+      var contentHeight = parseFloat($content.height());
+      var newHeight = contentHeight + contentPadTop + contentPadBot;
       $transPanel.css({
         'height': newHeight+"px"
       });
       console.log(newHeight);
     })
-  });
+  }).trigger('resize');
 
-/*   $(window).on('load', function() {
-    $('.info-item-container').each(function() {
-      $leftContent = $(".left-item-content");
-      $rightContent = $(".right-item-content");
-      $leftItems = $leftContent.className('content-container');
-      $rightItems = $rightContent.className('content-container');
-      console.log($leftItems);
-      console.log($rightItems);
-    })
-  }); */
-
-  $('[href="#show-description"]').on("click", function(e){
-    e.preventDefault();
-    var id = this.getAttribute('data-id');
-    var specificId = this.getAttribute('data-specific-id');
-    $item = $(".content-container[data-id="+specificId+id+"]");
-    $itemDesc = $(".info-desc[data-id="+specificId+id+"]");
-    $itemContainer = $(".info-item-container");
-    
-    id++;
-    var nextId = id;
-    $nextItem = $(".content-container[data-id="+specificId+nextId+"]");
-    
-    if ($item.hasClass('set-focus')) {
-        $item.removeClass('set-focus');
-    } else {
-        $item.addClass('set-focus');
-    }
-
-    if ($nextItem.hasClass('next-item')) {
-      $nextItem.removeClass('next-item');
-    } else {
-        $nextItem.addClass('next-item');
-    }
-
-    if ($itemDesc.hasClass('hide')) {
-        $itemDesc.removeClass('hide');
-    } else {
-        $itemDesc.addClass('hide');
-    }
-
-    if ($itemContainer.hasClass('open-desc')) {
-      $itemContainer.removeClass('open-desc');
-    } else {
-        $itemContainer.addClass('open-desc');
-    }
+  $(window).on('load', function() {
+    thousandYears.resizeLookingForwardItems();
   });
   
 	// Adds Flex Video to YouTube and Vimeo Embeds

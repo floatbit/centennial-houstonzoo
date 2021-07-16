@@ -48,6 +48,10 @@ html {
   }
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .hide {
   display: none;
 }
@@ -259,6 +263,10 @@ footer {
 
     .icon-container .icon-item {
       @include fluid-props(16px, 20px, margin-right);
+    }
+
+    .icon-item {
+      @include fluid-type(20px, 24px)
     }
   }
 

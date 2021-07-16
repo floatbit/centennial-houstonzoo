@@ -1,29 +1,22 @@
 .page-template-page-home main {
     .home-container {
-        min-height: 100vh;
         position: relative;
-
-        .hero-item-container {
-            min-height: 100vh;
+        min-height: 100vh;
+        .hero-container {
+            position: absolute;
             min-width: 100vw;
-            position: absolute;
-            z-index: 15;
-            padding-top: rem-calc(804);
-            padding-left: rem-calc(56);
-        }
+    
+            .hero-item-container {
+                min-height: 100vh;
+                min-width: 100vw;
+                z-index: 15;
+                padding-top: rem-calc(844);
+                padding-left: rem-calc(56);
 
-        .hero-transparent-panel {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            bottom: 0;
-            //z-index: 10;
-            opacity: 0.75;
-            background: linear-gradient(90deg, $green-gradation 10%, rgba(255,255,255,0) 100%);
-
-            @include breakpoint (small only) {
-                background: linear-gradient(to top, $green-gradation 15%, rgba(255,255,255,0) 100%);
-                width: 100%;
+                .title-container {
+                    position: relative;
+                    z-index: 15;
+                }
             }
         }
 
@@ -33,26 +26,63 @@
             @include fluid-props(48px, 238px, padding-bottom);
             @include fluid-props(0px, 152px, padding-left);
         }
+    }
 
+    .hero-transparent-panel {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        opacity: 0.75;
+        background: linear-gradient(90deg, $green-gradation 10%, rgba(255,255,255,0) 100%);
+
+        @include breakpoint (small only) {
+            background: linear-gradient(to top, $green-gradation 15%, rgba(255,255,255,0) 80%);
+        }
     }
 
     .small-home-container {
+        position: relative;
         .small-hero-container{
+            position: relative;
 
             .hero-item-container {
                 height: rem-calc(392);
                 width: 100vw;
                 padding-top: rem-calc(332);
                 padding-left: rem-calc(32);
+
+                .title-container {
+                    position: relative;
+                    z-index: 15;
+                }
+            }
+
+            .small-hero-transparent-panel {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                bottom: 0;
+                opacity: 0.75;
+                background: linear-gradient(to top, $cyan 15%, rgba(255,255,255,0) 30%);
             }
         }   
+
+        .small-desc-container {
+            padding: 28px 32px 48px 32px;
+
+            .small-content-container {
+                position: relative;
+                z-index: 15;
+            }
+        }
     }
 
     .flickity-page-dots {
         width: auto;
         text-align: left;
         z-index: 15;
-        @include fluid-props(92px, 116px, margin-bottom);
+        @include fluid-props(92px, 136px, margin-bottom);
         @include fluid-props(32px, 56px, margin-left);
 
         .dot {

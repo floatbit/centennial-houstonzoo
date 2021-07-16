@@ -14,7 +14,7 @@
 	<section id="home">
 		<div class="home-container show-for-medium">
 			<div class="hero-container">
-				<div class="carousel home-carousel-main">
+				<div class="carousel carousel-main">
 					<?php foreach($hero_item as $item): ?>
 						<?php
 							$image_url = $item['image'];
@@ -26,11 +26,11 @@
 									<p class="bold color-light-blue"><?php print $tiny_title; ?></p>
 								</div>
 							</div>
+							<div class="hero-transparent-panel"></div>
 						</div>
 					<?php endforeach; ?>	
 				</div>
 			</div>
-			<div class="hero-transparent-panel"></div>
 			<div class="desc-container">
 				<div class="grid-x">
 					<div class="cell medium-4 color-white">
@@ -56,13 +56,14 @@
 									<p class="bold color-light-blue"><?php print $tiny_title; ?></p>
 								</div>
 							</div>
+							<div class="small-hero-transparent-panel"></div>
 						</div>
 					<?php endforeach; ?>	
 				</div>
 			</div>
-			<div class="small-desc-container">
+			<div class="small-desc-container bg-color-cyan">
 				<div class="grid-x">
-					<div class="cell medium-4 color-white">
+					<div class="cell medium-4 color-white small-content-container">
 						<?php print the_content(); ?>
 						<a href="#menu-open" class="button transparent">
 							SHARE YOUR STORY
@@ -70,6 +71,7 @@
 					</div>
 				</div>
 			</div>
+			<div class="hero-transparent-panel"></div>
 		</div>
 	</section>
 </main>
