@@ -46,7 +46,8 @@
         width: 50%;
         z-index: 10;
         opacity: 0.8;
-        @include fluid-props(526px, 960px, height);
+        height: auto;
+        //@include fluid-props(526px, 960px, height);
 
         &.dark-green {
             background: linear-gradient(90deg, $dark-green 10%, rgba(255,255,255,0) 100%);
@@ -58,7 +59,8 @@
     }
 
     .bg-image-content {
-        @include fluid-props(526px, 960px, height);
+        height: auto;
+        //@include fluid-props(526px, 960px, height);
         @include fluid-props(56px, 144px, padding-top);
         @include fluid-props(48px, 136px, padding-bottom);
 

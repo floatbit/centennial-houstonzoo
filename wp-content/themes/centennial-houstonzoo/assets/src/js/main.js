@@ -67,6 +67,18 @@ jQuery(document).ready(function($) {
     }
   });
 
+  $(window).on('load', function() {
+    $('.bg-image-content').each(function() {
+      $content = $(this);
+      $transPanel = $('.half-transparent-panel');
+      var newHeight = parseFloat($content.height());
+      $transPanel.css({
+        'height': newHeight+"px"
+      });
+      console.log(newHeight);
+    })
+  });
+
 /*   $(window).on('load', function() {
     $('.info-item-container').each(function() {
       $leftContent = $(".left-item-content");
