@@ -189,6 +189,44 @@
                                     "mime_types": ""
                                 },
                                 {
+                                    "key": "field_60f1509631aae",
+                                    "label": "Eyebrow",
+                                    "name": "eyebrow",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_60f150a631aaf",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
                                     "key": "field_60f03229319bd",
                                     "label": "Description",
                                     "name": "description",
@@ -358,7 +396,7 @@
                             "name": "cta",
                             "type": "url",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -390,5 +428,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626356833
+    "modified": 1626429640
 }

@@ -15,6 +15,51 @@ function clearShowDesc() {
 
 var yearHandler = {
 
+    resizeLookingForwardItems: function() {
+        jQuery('.info-item-container').each(function() {
+            var arrLeft = [];
+            var arrRight = [];
+            jQuery('.left-item-content').children('.content-container').each(function(index){
+                $content = jQuery(this);
+                var contentHeight = parseFloat($content.height());
+                
+                var tempArr = [contentHeight, $content];
+                arrLeft.push(tempArr);
+            })
+            jQuery('.right-item-content').children('.content-container').each(function(index){
+                $content = jQuery(this);
+                var contentHeight = parseFloat($content.height());
+                var tempArr = [contentHeight, $content];
+                arrRight.push(tempArr);
+            })
+            $.each(arrLeft, function( index, value ) {
+                var firstHeight = value[0];
+                $firstContent = value[1];
+                var id = index;
+                id++;
+                if (id < arrRight.length) {            
+                    var secondValue = arrRight[index];
+                    var secondHeight = secondValue[0];
+                    $secondContent = secondValue[1];
+                    console.log('first height');
+                    console.log(firstHeight);
+                    console.log('second height');
+                    console.log(secondHeight);
+            
+                    if (firstHeight > secondHeight) {
+                        $secondContent.css({
+                            'height': firstHeight+"px"
+                        });
+                    } else if (firstHeight < secondHeight) {
+                        $firstContent.css({
+                            'height': secondHeight+"px"
+                        });
+                    }
+                }
+            })
+        });
+      },
+
     showDescription: function(self) {
             var id = self.getAttribute('data-id');
             var specificId = self.getAttribute('data-specific-id');
@@ -26,7 +71,7 @@ var yearHandler = {
             var nextId = id;
             $nextItem = jQuery(".content-container[data-id="+specificId+nextId+"]");
             
-            if (!$item.hasClass('set-focus')) {
+            if ($item.includes('set-focus')) {
                 console.log('yes he does');
                 clearShowDesc();
             } else {
@@ -71,4 +116,8 @@ var yearHandler = {
 
 jQuery(document).ready(function($) {
     yearHandler.onHoverClick();
+
+    $(window).on('load', function() {
+        yearHandler.resizeLookingForwardItems();
+    });
 })
