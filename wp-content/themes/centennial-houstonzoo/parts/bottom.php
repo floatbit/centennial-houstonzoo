@@ -4,7 +4,7 @@
 	  $donate = get_field('donate', 'option');
 ?>
 
-<footer class="bg-color-dark-green">
+<footer class="bg-color-darker-green">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x align-middle">
 			<div class="cell medium-4">
@@ -18,9 +18,9 @@
 						<div class="grid-x grid-margin-x">
 							<div class="cell medium-6">
 								<div class="footer-links">
-									<a href="#100-years"class="footer-link button-label color-light-blue">100 YEARS</a>
+									<a href="/100-years"class="footer-link button-label color-light-blue">100 YEARS</a>
 									<a href="#share-your-story"class="footer-link button-label color-light-blue">SHARE YOUR STORY</a>
-									<a href="#your-zoo-transformed"class="footer-link button-label color-light-blue">YOUR ZOO TRANSFORMED</a>
+									<a href="/your-zoo-transformed"class="footer-link button-label color-light-blue">YOUR ZOO TRANSFORMED</a>
 								</div>
 							</div>
 							<div class="cell medium-6">
