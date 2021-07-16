@@ -89,6 +89,7 @@
             @extend .textarea-label;
             margin-top: rem-calc(14);
             margin-bottom: rem-calc(14);
+            resize: none;
         }
         input[type=checkbox] {
             @extend .input-style-checkbox;
@@ -104,6 +105,12 @@
             @extend .h5-style;
             @extend .color-white;
             text-transform: capitalize;
+        }
+        #field_1_20 {
+            @include fluid-props(16px, 26px, margin-bottom);
+            h5 {
+                margin: 0;
+            }
         }
         #field_1_5 .gfield_label {
             &::after {
@@ -210,7 +217,7 @@
         }
     }
 
-    img.gform_ajax_spinner, .gform_page_footer .gform_previous_button, .ginput_counter, .gf_progressbar_wrapper .gf_progressbar_title {
+    img.gform_ajax_spinner, .gform_page_footer .gform_previous_button, .ginput_counter, .gf_progressbar_wrapper .gf_progressbar_title, .instruction {
         display: none;
     }
 }

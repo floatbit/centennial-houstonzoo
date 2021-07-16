@@ -21,20 +21,31 @@ var mainHandler = {
   init = function(e){
     var self = this;
 
-    self.$menuItem.on("click", function(){
+    self.$menuItem.on("click", function(e){
+      e.stopPropagation();
       var selectedId = this.getAttribute('data-id');
       var $menuSelected = $('.menu-item[data-id='+selectedId+']');
 
       self.$menuItem.removeClass('active');
-      $menuSelected.addClass('active');
-
-      if (selectedId == 1) {
-        self.$contentRight.removeClass('active');
-        self.$yourStoryContainer.addClass('active');
-        self.$leftSection.addClass('hide-for-small-only');        
-      }
-      
+      $menuSelected.addClass('active');     
     });
+  
+    $('[href="#menu-open"]').on("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      mainHandler.openMenu();
+    });
+
+    $('[href="#share-your-story"]').on("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!self.$menuOpenContainer.hasClass('active')) {
+        mainHandler.openMenu();
+      }
+      self.$contentRight.removeClass('active');
+      self.$yourStoryContainer.addClass('active');
+      self.$leftSection.addClass('hide-for-small-only');      
+    });   
     
   }
 }
@@ -50,13 +61,46 @@ var gfHandler = {
   $fieldHidden = $('#field_1_12'),
   $fieldReview = [],
   $htmlContainer = '<li id="field_review"></li>',
+  $htmlFileUpload = '<li id="field_uploads"></li>',
+  $fieldBeforeDynamic = $('#field_1_20'),
+  totalsItems = 2,
+  yearStart = 2000,
+
+  templateUpload = function(){
+    var $items = '';
+    var $years = '';
+    var currentYear = new Date().getFullYear() + 1;
+
+    for (let i = yearStart; i < currentYear; i++) {
+      $years += '<option value="'+i+'">'+i+'</option>';      
+    }
+
+    for (let i = 0; i < totalsItems; i++) {
+      $items += 
+      '<div class="uploads-item" data-id="'+i+'">'+
+        '<div class="flex-container">'+
+          '<p class="input-field flex-child-auto">'+
+            '<input type="file" name="file_upload[]" size="25" accept=".jpg,.png" />'+
+          '</p>'+
+          '<p class="input-field flex-child-shrink">'+
+            '<select name="input_year" id="input_year_'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
+              $years+
+            '</select>'+
+          '</p>'+
+        '</div>'+
+        '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
+        '<textarea name="input_caption" id="input_caption_'+i+'" class="textarea medium" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+   
+      '</div>';        
+    }
+
+    return $items;
+  },
 
   init = function(e) {
     var self = this;
     var name = '', email = '', phone = '', visit = '', visitTime = '', zooMemory = '';
     
     self.$fieldReview = self.$fieldHidden.after($htmlContainer).next();
-    console.log( $fieldReview );
 
     $input.on("change, keyup", function(e){
       switch (this.name) {
@@ -92,13 +136,16 @@ var gfHandler = {
       }
       $rev.append('<p>'+email+', '+phone+'</p>');      
       $rev.append('<p>'+zooMemory+'</p>');
-      //$rev.append($obj);
-      //console.log($obj);
+
+      // uploads handle
+      var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
+      var $html = self.templateUpload();
+      console.log($html);
+      $uploads.append($html);
+      self.generateSelect();
 
     });
-
   }
-
 }
 
 jQuery(document).ready(function($) {
@@ -115,11 +162,6 @@ jQuery(document).ready(function($) {
 		hash: true,
 		prevNextButtons: false,
 		selectedAttraction: 0.2, 
-	});
-
-  $('[href="#menu-open"]').on("click", function(e) {
-    e.preventDefault;
-    mainHandler.openMenu();
 	});
 
   $(window).on("scroll", function() {
@@ -156,9 +198,6 @@ jQuery(document).ready(function($) {
     id++;
     var nextId = id;
     $nextItem = $(".content-container[data-id="+specificId+nextId+"]");
-
-    
-    console.log(specificId+nextId);
     
     if ($item.hasClass('set-focus')) {
         $item.removeClass('set-focus');
