@@ -106,21 +106,21 @@ jQuery(document).ready(function($) {
   mainHandler.init();
   gfHandler.init();
 
-  $('[href="#menu-open"]').on("click", function(e) {
-    e.preventDefault;
-    mainHandler.openMenu();
-	});
-
-	$('.carousel-main').flickity({
+  $('.your-zoo-carousel-main').flickity({
 		cellSelector: '.carousel-cell',
 		cellAlign: 'left',
-		draggable: false,
-		pageDots: true,
+		draggable: true,
+		pageDots: false,
 		fade: true,
 		hash: true,
 		prevNextButtons: false,
 		selectedAttraction: 0.2, 
-	}); 
+	});
+
+  $('[href="#menu-open"]').on("click", function(e) {
+    e.preventDefault;
+    mainHandler.openMenu();
+	});
 
   $(window).on("scroll", function() {
     if($(window).scrollTop() > 50) {
@@ -131,6 +131,57 @@ jQuery(document).ready(function($) {
         $("header").removeClass("scrolled");
         $(".logo-black").addClass("hide");
         $(".logo-white").removeClass("hide");
+    }
+  });
+
+/*   $(window).on('load', function() {
+    $('.info-item-container').each(function() {
+      $leftContent = $(".left-item-content");
+      $rightContent = $(".right-item-content");
+      $leftItems = $leftContent.className('content-container');
+      $rightItems = $rightContent.className('content-container');
+      console.log($leftItems);
+      console.log($rightItems);
+    })
+  }); */
+
+  $('[href="#show-description"]').on("click", function(e){
+    e.preventDefault();
+    var id = this.getAttribute('data-id');
+    var specificId = this.getAttribute('data-specific-id');
+    $item = $(".content-container[data-id="+specificId+id+"]");
+    $itemDesc = $(".info-desc[data-id="+specificId+id+"]");
+    $itemContainer = $(".info-item-container");
+    
+    id++;
+    var nextId = id;
+    $nextItem = $(".content-container[data-id="+specificId+nextId+"]");
+
+    
+    console.log(specificId+nextId);
+    
+    if ($item.hasClass('set-focus')) {
+        $item.removeClass('set-focus');
+    } else {
+        $item.addClass('set-focus');
+    }
+
+    if ($nextItem.hasClass('next-item')) {
+      $nextItem.removeClass('next-item');
+    } else {
+        $nextItem.addClass('next-item');
+    }
+
+    if ($itemDesc.hasClass('hide')) {
+        $itemDesc.removeClass('hide');
+    } else {
+        $itemDesc.addClass('hide');
+    }
+
+    if ($itemContainer.hasClass('open-desc')) {
+      $itemContainer.removeClass('open-desc');
+    } else {
+        $itemContainer.addClass('open-desc');
     }
   });
   

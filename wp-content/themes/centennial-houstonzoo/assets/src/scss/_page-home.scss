@@ -1,53 +1,72 @@
 .page-template-page-home main {
-    #home {
+    .home-container {
         min-height: 100vh;
         position: relative;
 
-        .transparent-panel {
-            position: absolute;
-            width: 50%;
-            z-index: 10;
-            opacity: 0.75; 
-            min-height: 100vh;
-            background: linear-gradient(90deg, #00332f 15%, rgba(255,255,255,0) 100%)
-        }
-
-        .desc-container {
-            position: absolute;
-            top: rem-calc(240);
-            left: rem-calc(152);
-            z-index: 15;
-        }
-
-        .item-container {
+        .hero-item-container {
             min-height: 100vh;
             min-width: 100vw;
-            position: relative;
+            position: absolute;
             z-index: 15;
+            padding-top: rem-calc(804);
+            padding-left: rem-calc(56);
+        }
 
-            .title-container {
-                position: absolute;
-                bottom: rem-calc(52);
-                left: rem-calc(56);
+        .hero-transparent-panel {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            //z-index: 10;
+            opacity: 0.75;
+            background: linear-gradient(90deg, $green-gradation 10%, rgba(255,255,255,0) 100%);
+
+            @include breakpoint (small only) {
+                background: linear-gradient(to top, $green-gradation 15%, rgba(255,255,255,0) 100%);
+                width: 100%;
             }
         }
 
-        .flickity-page-dots {
-            text-align: left;
-            z-index: 15;
-            margin-bottom: rem-calc(134);
-            margin-left: rem-calc(48);
+        .desc-container {
+            position: relative;
+            @include fluid-props(440px, 240px, padding-top);
+            @include fluid-props(48px, 238px, padding-bottom);
+            @include fluid-props(0px, 152px, padding-left);
+        }
 
-            .dot {
-                height: 14px;
-                width: 14px;
-                background-color: transparent;
-                opacity: 1;
-                border: 1px solid $light-blue;
+    }
 
-                &.is-selected {
-                    @extend .bg-color-light-blue;
-                }
+    .small-home-container {
+        .small-hero-container{
+
+            .hero-item-container {
+                height: rem-calc(392);
+                width: 100vw;
+                padding-top: rem-calc(332);
+                padding-left: rem-calc(32);
+            }
+        }   
+    }
+
+    .flickity-page-dots {
+        width: auto;
+        text-align: left;
+        z-index: 15;
+        @include fluid-props(92px, 116px, margin-bottom);
+        @include fluid-props(32px, 56px, margin-left);
+
+        .dot {
+            @include fluid-props(12px, 16px, height);
+            @include fluid-props(12px, 16px, width);
+            background-color: transparent;
+            opacity: 1;
+            border: 1px solid $light-blue;
+
+            &:first-of-type {
+                margin-left: 0;
+            }
+            &.is-selected {
+                @extend .bg-color-light-blue;
             }
         }
     }

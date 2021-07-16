@@ -4,15 +4,6 @@
             @include fluid-props(390px, 600px, height);
             position: relative;
 
-            .transparent-intro-panel {
-                position: absolute;
-                @extend .bg-color-darker-green;
-                height: 100%;
-                width: 100%;
-                top: 0;
-                opacity: 0.55;
-            }
-
             .intro-desc {
                 @include fluid-props(224px, 300px, margin-top);
                 text-align: center;
@@ -21,15 +12,20 @@
         }
     }
 
+    #mix-content {
+        @include fluid-props(60px, 132px, margin-bottom);
+    }
+
+
     #looking-forward {
-        @include fluid-props(60px, 136px, margin-top);
         @include fluid-props(52px, 132px, margin-bottom);
 
         .desc-container {
             @include fluid-props(10px, 32px, margin-bottom);
         }
 
-        .items-container {
+
+        .info-item-container {
             .content-container {
                 border-top: 1px solid $dark-green;
                 padding: 10px 0;
@@ -38,9 +34,24 @@
                     border-bottom: 1px solid $dark-green;
                 }
 
+                &.next-item {
+                    border-top: none;
+                }
+
                 .info-logo {
                     @include fluid-props(58px, 68px, height);
                     @include fluid-props(58px, 68px, width);
+                }
+            }
+            &.open-desc {
+                .content-container {
+                    &.set-focus{
+                        border-bottom: 1px solid $dark-green;
+                    }
+                }
+                .content-container:not(.set-focus) {
+                    opacity: 0.5;
+
                 }
             }
         }
