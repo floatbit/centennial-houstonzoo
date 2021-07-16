@@ -1,13 +1,17 @@
 .input-style {
     @extend .form-input-text;
     @extend .color-white;
-    padding: rem-calc(3) rem-calc(26) rem-calc(9);
+    padding: rem-calc(6) rem-calc(26) rem-calc(6);
     border-radius: rem-calc(26);
     line-height: rem-calc(36);
     outline: none;
     border: 1px solid $white;
     background: none;
     width: 100%;
+    &::placeholder {
+        @extend .color-white;
+        opacity: 0.5;
+    }
 }
 
 .input-style-checkbox {
@@ -34,15 +38,15 @@
     }
 }
 
-.gf_browser_chrome {
+.gform_wrapper {
     ul {
         list-style: none;
         margin: 0;
     }
 
     .gform_body {
-        #gform_page_1_1 {
-            #field_1_16, #field_1_3, #field_1_4 {
+        #gform_page_1_1, #gform_page_1_3 {
+            #field_1_16, #field_1_3, #field_1_4, #field_1_9 {
                 .gfield_label {
                     @extend .caption-semibold;
                     @extend .color-light-green;
@@ -51,6 +55,27 @@
                 }
             }
         }
+        #gform_page_1_4 {
+            .gfield_checkbox {
+                column-count: 1;
+                margin-left: rem-calc(24);
+                label {
+                    @extend .caption;
+                    text-transform: none;
+                    display: inherit;
+
+                    a {
+                        text-decoration: underline;
+                        @extend .color-white;
+                    }
+                    &::before {
+                        vertical-align: sub;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
         .gfield_select,
         input[type=number],
         input[type=tel],
@@ -61,7 +86,9 @@
             margin-bottom: rem-calc(26);
         }
         textarea {
-            @extend .button-label;
+            @extend .textarea-label;
+            margin-top: rem-calc(14);
+            margin-bottom: rem-calc(14);
         }
         input[type=checkbox] {
             @extend .input-style-checkbox;
@@ -84,6 +111,7 @@
                 @include fluid-type(12px, 14px);
             }
         }
+
     }
 
     .gform_page_footer {
@@ -92,8 +120,97 @@
             @extend .arrow-for-button;
             width: 100%;
         }
-        .gform_previous_button {
+    }
+    .gform_heading .gform_title {
+        text-align: center;
+        margin-bottom: rem-calc(40);
+        @include breakpoint (medium) {
             display: none;
         }
+    }
+
+    #gf_page_steps_1 {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem-calc(48);
+        border-top: 1px solid $white;
+        position: relative;
+        z-index: 0;
+        
+        .gf_step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: rem-calc(-10);
+
+            .gf_step_number {
+                @extend .caption-semibold; 
+                padding-left: rem-calc(16);
+                &::before {
+                    content: '';
+                    display: block;
+                    width: rem-calc(29);
+                    height: rem-calc(29);
+                    border-radius: 20px;
+                    border: 1px solid $white;
+                    position: absolute;
+                    z-index: -1;
+                    margin-left: -11px;
+                    margin-top: -6px;
+                    @extend .bg-color-darker-green;
+                }
+            }
+
+            .gf_step_number, .gf_step_label {
+                padding-left: rem-calc(16);
+            }
+
+            &.gf_step_active {
+                .gf_step_number::before {
+                    @extend .bg-color-light-green;
+                    border: $light-green;
+                }
+                .gf_step_label {
+                    @extend .color-light-green;
+                }
+            }
+
+            &#gf_step_1_1 {
+                margin-left: rem-calc(-20);
+            }
+            
+            &#gf_step_1_4 {
+                @include fluid-props (-4px, -10px, margin-right) ;
+            }
+        }
+
+        .gf_step_label {
+            @extend .tiny-text;
+            text-align: center;   
+            @include fluid-props (-6px, -13px, margin-top) ;
+        }
+        
+        #gf_step_1_2, #gf_step_1_3 {
+            .gf_step_label::first-line {
+                @extend .tiny-text;
+            }
+            .gf_step_label {
+                @extend .graphik-regular;
+            }
+        }
+
+        .gf_step_clear {
+            display: none;
+        }
+    } 
+
+    .gf_progressbar_percentage {
+        span {
+            display: none;
+        }
+    }
+
+    img.gform_ajax_spinner, .gform_page_footer .gform_previous_button, .ginput_counter, .gf_progressbar_wrapper .gf_progressbar_title {
+        display: none;
     }
 }

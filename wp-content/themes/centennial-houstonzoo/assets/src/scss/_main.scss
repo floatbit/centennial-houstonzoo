@@ -17,14 +17,14 @@ html {
 }
 
 .h1-style, .h1-style-large, .h2-style, .h3-style, .form-input-text {
-  @extend .antwerp-regular;  
+  @extend .libre-regular;  
 }
 
-.h4-style, .caption-semibold, .button-label, .h5-style-semibold {
+.h4-style, .caption-semibold, .button-label, .h5-style-semibold, .tiny-text, .eyebrow {
   @extend .graphik-semibold;
 }
 
-.caption, .p-style, .h5-style {
+.caption, .p-style, .h5-style, .textarea-label {
   @extend .graphik-regular;
 }
 
@@ -70,8 +70,20 @@ p {
   text-transform: uppercase;
 }
 
-.button-label {
+.tiny-text {
+  @include fluid-type(9px, 10px); 
+  text-transform: uppercase;
+}
+
+.button-label, .textarea-label {
   @include fluid-type(11px, 14px); 
+}
+
+.textarea-label {
+  line-height: 1.5;
+}
+
+.button-label {
   text-transform: uppercase;
 }
 
@@ -99,8 +111,12 @@ p {
   @include fluid-type(18px, 20px);
 }
 
-.p-style {
+.p-style, .eyebrow {
   @include fluid-type(14px, 16px);
+}
+
+.eyebrow {
+  @extend .color-dark-green;
 }
 
 .background-cover {

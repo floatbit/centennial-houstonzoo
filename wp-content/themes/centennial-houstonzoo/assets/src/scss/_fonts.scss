@@ -1,39 +1,42 @@
-@font-face {
-    font-family: "Antwerp_Regular";
-    src: url("../fonts/antwerp/Antwerp_Regular.otf");
-}
-
-@font-face {
-    font-family: "Antwerp_RegularItalic";
-    src: url("../fonts/antwerp/Antwerp_RegularItalic.otf");
-}
-
-.antwerp-regular, .antwerp-regular-italic {
+.libre-regular, .libre-regular-italic {
     font-weight: normal;
     font-style: normal;
 }
 
-.antwerp-regular  {
-    font-family: "Antwerp_Regular";
+.libre-regular  {
+    font-family: 'Libre Baskerville', serif;
 }
 
-.antwerp-regular-italic {
-    font-family: "Antwerp_RegularItalic";
+.libre-regular-italic {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
 }
 
 @font-face {
     font-family: "Graphik-Regular";
-    src: url("../fonts/graphik/Graphik-Regular.otf");
+    src: url('../webfonts/Graphik-Regular.eot'); /* IE9 */
+    src: url('../webfonts/Graphik-Regular.eot?#iefix') format('embedded-opentype'), /* IE8 */
+        url('../webfonts/Graphik-Regular.woff2') format('woff2'), /* Modern */
+        url('../webfonts/Graphik-Regular.woff') format('woff'), /* Standard */
+        url('../webfonts/Graphik-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face {
-    font-family: "Graphik-Bold";
-    src: url("../fonts/graphik/Graphik-Bold.otf");
+    font-family: "Graphik-Bold";    
+    src: url('../webfonts/Graphik-Bold.eot'); /* IE9 */
+    src: url('../webfonts/Graphik-Bold.eot?#iefix') format('embedded-opentype'), /* IE8 */
+        url('../webfonts/Graphik-Bold.woff2') format('woff2'), /* Modern */
+        url('../webfonts/Graphik-Bold.woff') format('woff'), /* Standard */
+        url('../webfonts/Graphik-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face {
     font-family: "Graphik-Semibold";
-    src: url("../fonts/graphik/Graphik-Semibold.otf");
+    src: url('../webfonts/Graphik-Semibold.eot'); /* IE9 */
+    src: url('../webfonts/Graphik-Semibold.eot?#iefix') format('embedded-opentype'), /* IE8 */
+        url('../webfonts/Graphik-Semibold.woff2') format('woff2'), /* Modern */
+        url('../webfonts/Graphik-Semibold.woff') format('woff'), /* Standard */
+        url('../webfonts/Graphik-Semibold.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 .graphik-regular, .graphik-bold, .graphik-semibold {

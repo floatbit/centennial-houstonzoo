@@ -105,7 +105,7 @@ function centennial_houstonzoo_zoo_connection() {
     'volunteer' => 'Volunteer', 
     'staff'     => 'Staff',
     'zoo_guest' => 'Zoo Guest',
-    'donor'     => 'Donor' 
+    'donor'     => 'Donor',
   );
 }
 
@@ -118,7 +118,7 @@ function centennial_houstonzoo_zoo_connection_field( $form ) {
   foreach ($form['fields'] as &$field) {
 		if ($field->inputName == 'zoo-connection-selection') {
 
-      $zoo_connection = centennial_houstonzoo_zoo_connection('training_goal');
+      $zoo_connection = centennial_houstonzoo_zoo_connection();
 
 			$choices = [];
 			foreach ($zoo_connection as $key => $value) {
@@ -126,12 +126,148 @@ function centennial_houstonzoo_zoo_connection_field( $form ) {
 			}
 
 			$field->choices = $choices;
+    } elseif ($field->inputName == 'terms-and-condition') {
+			$choices = [];
+
+      $choices[] = [
+        'text' => 'I accept and agree to the terms and conditions of the <a href="/">Houston Zoo Participant and Photo Release.</a> ', 
+        'value' => 'yes'
+      ];
+			
+      $field->choices = $choices;
     }
 	}
 	return $form;
 }
 
+function centennial_houstonzoo_acf_connection_choices( $field ) {
+  $field['choices'] = array();
+  $choices = centennial_houstonzoo_zoo_connection();
+  if( is_array($choices) ) {
+      foreach( $choices as $value => $label ) {
+          $field['choices'][$value] = $label;
+      }
+  }
+  return $field;
+}
+add_filter('acf/load_field/name=zoo_connection', 'centennial_houstonzoo_acf_connection_choices');
 
+
+function centennial_houstonzoo_create_posttype() {
+  register_post_type( 'your_story',
+    array(
+      'labels'        => array(
+        'name'          => __( 'Your Stories' ),
+        'singular_name' => __( 'Your Story' )
+      ),
+      'public'        => true,
+      'has_archive'   => true,
+      'rewrite'       => array('slug' => 'your_story'),
+      'show_in_rest'  => true,
+      'supports'      => array('story'),
+      'menu_icon'     => 'dashicons-text',
+    )
+  );
+}
+add_action( 'init', 'centennial_houstonzoo_create_posttype' );
+
+function centennial_houstonzoo_upload_file($file_url) {   
+  $upload_dir = wp_upload_dir();    
+  $file_data  = file_get_contents( $file_url );    
+  $filename   = basename( $file_url );    
+  
+  if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+    $file = $upload_dir['path'] . '/' . $filename;
+  } else {
+    $file = $upload_dir['basedir'] . '/' . $filename;
+  }    
+
+  file_put_contents( $file, $file_data );
+  $wp_filetype = wp_check_filetype( $filename, null );
+  
+  $attachment = array(
+    'post_mime_type' => $wp_filetype['type'],
+    'post_title' => sanitize_file_name( $filename ),
+    'post_content' => '',
+    'post_status' => 'inherit'
+  );
+  
+  $attach_id = wp_insert_attachment( $attachment, $file );
+  
+  require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+  $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+  wp_update_attachment_metadata( $attach_id, $attach_data );
+
+  return $attach_id;
+}
+
+add_action( 'gform_after_submission_1', 'centennial_houstonzoo_set_post_content', 10, 2 );
+function centennial_houstonzoo_set_post_content( $entry, $form ) { 
+  $field_zoo_conn_id    = 5;
+  $field_zoo_conn       = GFFormsModel::get_field( $form, $field_zoo_conn_id );
+  $field_zoo_conn_value = is_object( $field_zoo_conn ) ? $field_zoo_conn->get_value_export( $entry, $field_zoo_conn_id, true ) : '';
+  $arr_field_zoo_conn = explode(',', $field_zoo_conn_value);
+  $arr_field_zoo_conn = array_map('trim', $arr_field_zoo_conn);
+
+  $arr_result = [];
+  foreach ($field_zoo_conn->choices as $item) {
+    foreach ($arr_field_zoo_conn as $selected) {
+      if ($selected == $item['text']) {
+        $arr_result[] = $item['value'];
+        continue;
+      }
+    }
+  }
+
+
+  $post_id = wp_insert_post(
+    array (
+      'post_type' => 'your_story',
+      'post_title' => rgar( $entry, '16' ), 
+      'post_status' => 'publish',
+      'comment_status' => 'closed',   
+      'ping_status' => 'closed',
+      'meta_input' => array(
+        'name'            => rgar( $entry, '16' ),
+        'email'           => rgar( $entry, '3' ),
+        'phone'           => rgar( $entry, '4' ),
+        'zoo_connection'  => $arr_result,
+        'zoo_memory'      => rgar( $entry, '6' ),
+        'visit_since'       => '111',
+        'visit_since_time'  => 'month'
+      )      
+    )
+  );
+
+  $row = array(
+    'file'    => $attach_id,
+    'year'    => rgar( $entry, '5' ),
+    'caption' => rgar( $entry, '6' )
+  );
+  add_row('documents', $row, $post_id); 
+  
+  /*
+  var_dump( $arr_field_zoo_conn ); 
+  if ($post_id) {
+    // insert post meta
+    add_post_meta($post_id, '_your_custom_1', $custom1);
+    add_post_meta($post_id, '_your_custom_2', $custom2);
+    add_post_meta($post_id, '_your_custom_3', $custom3);
+  }
+
+  $row = array(
+    'folder'      => rgar( $entry, '7' ),
+    'file'        => $attach_id,
+    'title'       => rgar( $entry, '5' ),
+    'description' => rgar( $entry, '6' ),
+    'upload_date' => $now
+  );
+  add_row('documents', $row);  
+*/
+    
+  GFAPI::delete_entry( $entry['id'] );
+}
 
 
 

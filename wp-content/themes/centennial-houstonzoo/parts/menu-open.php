@@ -41,7 +41,7 @@
 							<a href="<?php print $donate ?>" class="button bright-green">Donate</a>
 						</div>
 						<div class="content-right your-story-container color-white">
-							<?php print do_shortcode( '[gravityform id="1" title="false" ajax=true]' ) ?>
+							<?php print do_shortcode( '[gravityform id="1" ajax=true]' ) ?>
 						</div>
 					</div>
 				</div>
