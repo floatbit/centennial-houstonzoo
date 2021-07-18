@@ -10,14 +10,12 @@
                 min-height: 100vh;
                 min-width: 100vw;
                 z-index: 15;
-                padding-top: rem-calc(844);
-                padding-left: rem-calc(56);
 
                 .title-container {
-                    //position: relative;
-                    z-index: 15;
                     position: absolute;
-                    bottom: 47px;
+                    z-index: 15;
+                    bottom: rem-calc(51);
+                    left: rem-calc(56);
                 }
             }
         }

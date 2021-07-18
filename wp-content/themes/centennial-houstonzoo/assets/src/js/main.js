@@ -1,45 +1,4 @@
 $(document).foundation();
-var thousandYears = {
-  resizeLookingForwardItems: function() {
-    jQuery('.info-item-container').each(function() {
-      var arrLeft = [];
-      var arrRight = [];
-      jQuery('.left-item-content').children('.content-container').each(function(index){
-        $content = jQuery(this);
-        var contentHeight = parseFloat($content.height());
-        var tempArr = [contentHeight, $content];
-        arrLeft.push(tempArr);
-      })
-      jQuery('.right-item-content').children('.content-container').each(function(index){
-        $content = jQuery(this);
-        var contentHeight = parseFloat($content.height());
-        var tempArr = [contentHeight, $content];
-        arrRight.push(tempArr);
-      })
-      console.log(arrLeft);
-      //console.log(arrRight);
-      $.each(arrLeft, function( index, value ) {
-        var firstHeight = value[0];
-        $firstContent = value[1];
-        var secondValue = arrRight[index];
-        console.log(index);
-        var secondHeight = secondValue[0];
-        $secondContent = secondValue[1];
-
-        if (firstHeight > secondHeight) {
-          $secondContent.css({
-            'height': firstHeight+"px"
-          });
-        } else if (firstHeight < secondHeight) {
-          $firstContent.css({
-            'height': secondHeight+"px"
-          });
-        }
-      })
-    });
-  }
-}
-
 var mainHandler = {
   $menuOpenContainer = $(".menu-open-container"),
   $html = $("html"),
@@ -303,8 +262,46 @@ var gfHandler = {
   }
 }
 
+var yourZooHandler = {
+	showDescription: function() {
+		jQuery('[href="#show-project-desc"]').on("click", function(e){
+			e.preventDefault();
+			var id = this.getAttribute('data-id');
+			$button = $(this);
+			$item = jQuery(".description-container[data-id="+id+"]");
+			$itemContainer = jQuery(".project-item-container[data-id="+id+"]");
+			$itemProjectContainer = jQuery(".projects-container");
+			
+			if ($button.hasClass('is-active')) {
+				$button.removeClass('is-active');
+			} else {
+				$button.addClass('is-active');
+			}
+
+			if ($itemContainer.hasClass('set-focus')) {
+				$itemContainer.removeClass('set-focus');
+			} else {
+				$itemContainer.addClass('set-focus');
+			}
+
+			if ($item.hasClass('hide')) {
+				$item.removeClass('hide');
+			} else {
+				$item.addClass('hide');
+			}
+
+			if ($itemProjectContainer.hasClass('open-desc')) {
+				$itemProjectContainer.removeClass('open-desc');
+			} else {
+				$itemProjectContainer.addClass('open-desc');
+			}
+		});
+	}
+}
+
 jQuery(document).ready(function($) {
 
+  yourZooHandler.showDescription();
   mainHandler.init();
   gfHandler.init();
 
@@ -315,9 +312,8 @@ jQuery(document).ready(function($) {
 		draggable: true,
 		pageDots: false,
 		fade: true,
-		hash: true,
+		hash: false,
 		prevNextButtons: false,
-    adaptiveHeight: true,
 		selectedAttraction: 0.2, 
 	}).resize();
 
@@ -334,7 +330,7 @@ jQuery(document).ready(function($) {
   });
 
   $(window).on('resize, load', function() {
-    $('.bg-image-content').each(function() {
+    $('.dynamic-content-container').children('.bg-image-content').each(function() {
       $content = $(this);
       var specifiedId = this.getAttribute('data-specified-id');
       $transPanel = $(".half-transparent-panel[data-specified-id="+specifiedId+"]");
@@ -348,10 +344,6 @@ jQuery(document).ready(function($) {
       console.log(newHeight);
     })
   }).trigger('resize');
-
-  $(window).on('load', function() {
-    thousandYears.resizeLookingForwardItems();
-  });
   
 	// Adds Flex Video to YouTube and Vimeo Embeds
   $('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function() {

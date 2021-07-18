@@ -10,6 +10,7 @@
 	$intro_image = get_field('intro');
 	$main_content_items = get_field('main_content');
 	$completed_projects = get_field('completed_projects');
+	$i = 0;
 ?>
 
 <main>
@@ -41,21 +42,15 @@
 				<div class="carousel your-zoo-carousel-main">
 					<?php foreach($item['contents'] as $itemContent): ?>
 						<div class="carousel-cell">
-							<!-- <div class="bg-image background-cover" style="background-image:url(<?php print $itemContent['image']; ?>)">
-								<div class="grid-container">
-									<div class="grid-x">
-										<div class="cell medium-3 desc-container color-white">
-											<?php print $itemContent['description']; ?>
-										</div>
-									</div>
-								</div>
-							</div> -->
 							<?php 
 								set_query_var( 'part_params', array(
+									'eyebrow' => $itemContent['eyebrow'],
+									'title' => $itemContent['title'],
 									'description' => $itemContent['description'],
 									'image' => $itemContent['image'],
 									'panel_color' => 'darker-green',
-									'specified_id' => 'your-zoo'
+									'specified_id' => 'your-zoo',
+									'small_size' => true
 								));
 								get_template_part( 'parts/content-bg-image-template' );
 							?>
@@ -74,28 +69,40 @@
 			<div class="projects-container">
 				<div class="grid-x grid-margin-x">
 					<?php foreach($completed_projects['projects'] as $item):?>
+						<?php $i++; ?>
 						<div class="cell small-6 medium-4">
-							<div class="project-item-container">
+							<div class="project-item-container" data-id=<?php print $i; ?>>
 								<div class="image-container">
 									<img src="<?php print $item['image']; ?>">
 								</div>
-								<div class="title-container">
-									<h4><?php print $item['title']; ?></h4>
+								<div class="grid-x grid-margin-x">
+									<div class="cell small-9">
+										<div class="title-container">
+											<h4><?php print $item['title']; ?></h4>
+										</div>
+									</div>
+									<div class="cell small-3">
+										<div class="show-desc-project-container">
+											<a href="#show-project-desc" class="button-plus" data-id=<?php print $i; ?>></a>
+										</div>
+									</div>
 								</div>
 								<div class="eyebrow-container">
 									<p class="eyebrow color-light-green">
 										<?php print $item['eyebrow']; ?>
 									</p>
 								</div>
-								<div class="description-container">
+								<div class="description-container hide" data-id=<?php print $i; ?>>
 									<div class="desc-content">
 										<?php print $item['description']; ?>
 									</div>
-									<div class="link-content">
-										<a href="<?php print $item['cta']; ?>" class="button transparent border-color-light-green">
-											LEARN MORE
-										</a>
-									</div>
+									<?php if ($item['cta'] != null): ?>
+										<div class="link-content">
+											<a href="<?php print $item['cta']; ?>" class="button green-outer">
+												LEARN MORE
+											</a>
+										</div>
+									<?php endif; ?>
 								</div>
 							</div>
 						</div>

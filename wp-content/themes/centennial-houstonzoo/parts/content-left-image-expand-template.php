@@ -15,10 +15,8 @@
                         <img src="<?php print $image; ?>">
                     </div>
                     <?php if($can_expand == true): ?>
-                        <div class="expand-button-container">
-                            <a href="#expand-image" class="button expand fill">
-                                <?php print $expand_text; ?>
-                            </a>
+                        <div class="flex-container align-middle expand-button-container">
+                            <a href="#expand-image" class="button-plus fill"></a><span class="button-label color-dark-green"><?php print $expand_text; ?></span>
                         </div>
                     <?php endif;?>
                 </div>

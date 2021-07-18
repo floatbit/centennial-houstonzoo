@@ -39,6 +39,14 @@
                 text-align: center;
             }
         }
+
+        .expand-button-container {
+            @include fluid-props(32px, 20px, margin-top);
+
+            a {
+                @include fluid-props(8px, 12px, margin-right);
+            }
+        }
     }
     
     .half-transparent-panel {
@@ -47,7 +55,8 @@
         z-index: 10;
         opacity: 0.8;
         height: auto;
-        //@include fluid-props(526px, 960px, height);
+        top: 0;
+        bottom: 0;
 
         &.dark-green {
             background: linear-gradient(90deg, $dark-green 10%, rgba(255,255,255,0) 100%);
@@ -55,6 +64,16 @@
 
         &.darker-green {
             background: linear-gradient(90deg, $darker-green 10%, rgba(255,255,255,0) 100%);
+        }
+
+        @include breakpoint(small only) {
+            &.dark-green {
+                background: linear-gradient(to top, $dark-green 10%, rgba(255,255,255,0) 80%);
+            }
+    
+            &.darker-green {
+                background: linear-gradient(to top, $darker-green 10%, rgba(255,255,255,0) 80%);
+            }
         }
     }
 
@@ -65,8 +84,41 @@
         @include fluid-props(56px, 144px, padding-top);
         @include fluid-props(48px, 136px, padding-bottom);
 
+        &.small-size {
+            padding-top : rem-calc(88);
+            padding-bottom : rem-calc(84);
+            height : rem-calc(600);
+        }
+
         .desc-container {
+            position: relative;
             z-index: 15;
         }
+    }
+
+    .small-bg-image-content {
+        .small-bg-image-container {
+            position: relative;
+
+            .small-bg-item-image {
+                width: 100vw;
+                padding : 0 rem-calc(28);
+                padding-top : rem-calc(268);
+                padding-bottom : rem-calc(24);
+                height : rem-calc(390);
+
+                .title-container{
+                    position: relative;
+                    z-index: 15;
+                }
+            }
+        }
+
+        .small-descriptionn-container {
+            padding : 0 30px;
+            padding-top : rem-calc(40);
+            padding-bottom : rem-calc(55);
+        }
+        
     }
 }

@@ -1,0 +1,9 @@
+<svg id="Component_4_4" data-name="Component 4 – 4" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
+  <g id="Group_70" data-name="Group 70" transform="translate(-918 -1019)">
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(918 1019)" fill="none" stroke="#00b189" stroke-width="1">
+      <circle cx="13.5" cy="13.5" r="13.5" stroke="none"/>
+      <circle cx="13.5" cy="13.5" r="13" fill="none"/>
+    </g>
+  </g>
+  <line id="Line_29" data-name="Line 29" x1="16" transform="translate(5.5 13.5)" fill="none" stroke="#00b189" stroke-width="1"/>
+</svg>

@@ -43,7 +43,18 @@
             transition: right 250ms ease;
         }
     }
+    
+    &.plus {
+        @extend .button-plus;
+    }
+
+    &.green-outer {
+        @extend .bg-color-transparent;
+        border: 1px solid $light-green;
+        @extend .color-light-green;
+    }
 }
+
 
 .arrow-for-button {
     position: relative;
@@ -53,6 +64,19 @@
         position: absolute;
         transition: right 250ms ease;
     } 
+}
+
+.button-plus {
+    content: url(../img/Plus-Button.svg);
+    transition: left 250ms ease;
+
+    &.is-active {
+        content: url(../img/Strip-Button.svg);
+    }
+
+    &.fill {
+        content: url(../img/Plus-Button-Fill.svg);
+    }
 }
 
 .no-touchevents {
@@ -82,6 +106,18 @@
 
         &.button-back::before {
             left: 5%;
+        }
+    }
+
+    .button-plus:hover {
+        content: url(../img/Plus-Button-Fill.svg);
+
+        &.is-active {
+            content: url(../img/Strip-Button.svg);
+        }
+
+        &.fill {
+            content: url(../img/Plus-Button.svg);
         }
     }
 }

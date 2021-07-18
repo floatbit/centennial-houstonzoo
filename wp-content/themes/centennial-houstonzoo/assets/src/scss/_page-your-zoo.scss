@@ -17,30 +17,46 @@
         }
     }
 
-    #main-content {
-    }
-
     #completed-projects {
-        margin: 128px 0;
+        @include fluid-props(48px, 128px, margin-top);
+        @include fluid-props(48px, 134px, margin-bottom);
 
         .projects-container {
             .project-item-container {
                 @include fluid-props(28px, 40px, margin-bottom);
+
                 .image-container {
                     @include fluid-props(12px, 16px, margin-bottom);
                     img {
                         width: 100%;
                     }
                 }
-                .title-container {
+
+                .show-desc-project-container {
+                    text-align: right
                 }
+
                 .eyebrow-container {
                     @include fluid-props(20px, 16px, margin-bottom);
                 }
     
                 .description-container {
+
                     .desc-content {
+
                         @include fluid-props(16px, 24px, margin-bottom);
+                    }
+                }
+            }
+
+            &.open-desc {
+
+                .project-item-container:not(.set-focus) {
+                    opacity: 0.5;
+
+                    .show-desc-project-container a {
+                        pointer-events: none;
+                        cursor: default;
                     }
                 }
             }
