@@ -14,8 +14,10 @@
                 padding-left: rem-calc(56);
 
                 .title-container {
-                    position: relative;
+                    //position: relative;
                     z-index: 15;
+                    position: absolute;
+                    bottom: 47px;
                 }
             }
         }

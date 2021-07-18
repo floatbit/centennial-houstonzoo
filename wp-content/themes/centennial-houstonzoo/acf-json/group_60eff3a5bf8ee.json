@@ -191,7 +191,7 @@
                     "key": "field_60eff911ba598",
                     "label": "Year",
                     "name": "year",
-                    "type": "date_picker",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -200,9 +200,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "Y",
-                    "return_format": "Y",
-                    "first_day": 1
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 },
                 {
                     "key": "field_60eff94bba599",
@@ -243,5 +245,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626355887
+    "modified": 1626450344
 }

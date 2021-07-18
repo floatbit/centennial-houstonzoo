@@ -29,6 +29,20 @@
     &.btn-arrow-right {
         @extend .arrow-for-button;
     }
+
+    &.button-back {
+        background: none;
+        position: relative;
+        padding-right: 0;
+        @extend .color-light-green;
+        &::before {
+            content: url(../img/icon-arrow-left.svg);
+            margin-right: rem-calc(10);
+            position: absolute;
+            left: 10%;
+            transition: right 250ms ease;
+        }
+    }
 }
 
 .arrow-for-button {
@@ -37,7 +51,6 @@
         content: url(../img/icon-arrow-right.svg);
         margin-left: rem-calc(8);
         position: absolute;
-        right: 10%;
         transition: right 250ms ease;
     } 
 }
@@ -65,6 +78,10 @@
 
         &.btn-arrow-right::after {
             right: 7%;
+        }
+
+        &.button-back::before {
+            left: 5%;
         }
     }
 }

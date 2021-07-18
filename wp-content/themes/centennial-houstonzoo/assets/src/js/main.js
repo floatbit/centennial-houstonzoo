@@ -39,6 +39,7 @@ var thousandYears = {
     });
   }
 }
+
 var mainHandler = {
   $menuOpenContainer = $(".menu-open-container"),
   $html = $("html"),
@@ -47,6 +48,7 @@ var mainHandler = {
   $yourStoryContainer = $('.your-story-container'),
   $defaultContent = $('.default-content'), 
   $leftSection = $('.left-section'),
+  $buttonBack = $('.button-back'),
 
   openMenu = function(e){
     this.$menuOpenContainer.toggleClass('active');
@@ -55,6 +57,7 @@ var mainHandler = {
     this.$defaultContent.addClass('active');
     this.$menuItem.addClass('active');
     this.$leftSection.removeClass('hide-for-small-only');
+    this.$buttonBack.addClass('hide');
   },
 
   init = function(e){
@@ -77,15 +80,26 @@ var mainHandler = {
 
     $('[href="#share-your-story"]').on("click", function(e) {
       e.preventDefault();
-      e.stopPropagation();
       if (!self.$menuOpenContainer.hasClass('active')) {
         mainHandler.openMenu();
       }
       self.$contentRight.removeClass('active');
       self.$yourStoryContainer.addClass('active');
       self.$leftSection.addClass('hide-for-small-only');      
+      self.$buttonBack.removeClass('hide');
+      
     });   
-    
+
+    $('[href=#menu-open-back]').on("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      self.$menuItem.addClass('active');
+      self.$leftSection.removeClass('hide-for-small-only');            
+      self.$contentRight.addClass('active');
+      self.$yourStoryContainer.removeClass('active');
+      self.$buttonBack.addClass('hide');
+    })
+  
   }
 }
 
@@ -96,7 +110,8 @@ var gfHandler = {
   fieldVisit = 'input_13',
   fieldVisitTime = 'input_15',
   fieldZooMemory = 'input_6',
-  $input = $('.ginput_container').find('input[type=text],input[type=email],input[type=tel],input[type=number]'),
+  $input = $('.ginput_container').find('input[type=text], input[type=email], input[type=tel], input[type=number]'),
+  $inputFile = $('body').find('input_file'),
   $fieldHidden = $('#field_1_12'),
   $fieldReview = [],
   $htmlContainer = '<li id="field_review"></li>',
@@ -104,6 +119,8 @@ var gfHandler = {
   $fieldBeforeDynamic = $('#field_1_20'),
   totalsItems = 2,
   yearStart = 2000,
+  $htmlHasInputedFile = null,
+  $selectIdentifier = $('.ginput_container select'),
 
   templateUpload = function(){
     var $items = '';
@@ -117,31 +134,101 @@ var gfHandler = {
     for (let i = 0; i < totalsItems; i++) {
       $items += 
       '<div class="uploads-item" data-id="'+i+'">'+
-        '<div class="flex-container">'+
-          '<p class="input-field flex-child-auto">'+
-            '<input type="file" name="file_upload[]" size="25" accept=".jpg,.png" />'+
-          '</p>'+
-          '<p class="input-field flex-child-shrink">'+
-            '<select name="input_year" id="input_year_'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
+        '<div class="grid-x">'+
+          '<div class="cell small-7 input-field">'+
+            '<input type="file" class="input_file" name="file_upload[]" size="25" accept=".jpg,.png" />'+
+          '</div>'+
+          '<div class="cell small-5 input-field">'+
+            '<select name="input_year[]" id="input_year_'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
               $years+
             '</select>'+
-          '</p>'+
+          '</div>'+
         '</div>'+
         '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
-        '<textarea name="input_caption" id="input_caption_'+i+'" class="textarea medium" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+   
+        '<textarea name="input_caption[]" id="input_caption_'+i+'" class="textarea medium" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+   
       '</div>';        
     }
 
     return $items;
   },
 
+  comboStyled = function(e) {
+    $('body').find('.ginput_container select, .input-field select').each(function(){
+      var $this = $(this), numberOfOptions = $(this).children('option').length;
+      var $name = $this.attr('name');
+  
+      $this.parent().parent().addClass($name);
+      $this.addClass('select-hidden');
+      $this.wrap('<div class="select"></div>');
+      $this.after('<div class="select-styled"></div>');
+      
+      var $styledSelect = $this.next('div.select-styled');
+      $styledSelect.text($this.children('option').eq(0).text());
+  
+      var $list = $('<ul />', {
+        'class': 'select-options'
+      }).insertAfter($styledSelect);
+  
+      for (var i = 0; i < numberOfOptions; i++) {
+      if ($this.children('option').eq(i).is(':selected')) {
+        $styledSelect.text($this.children('option').eq(i).text());
+      }
+      }
+  
+      $styledSelect.on("click", function(e) {
+          e.stopPropagation();
+          $('div.select-styled.active').not(this).each(function(){
+            $(this).removeClass('active').next('ul.select-options').hide();
+          });
+          var $selectOptions = $(this).closest('.select').find('.select-options').empty();
+          for (var i = 0; i < numberOfOptions; i++) {
+            if ( $this.children('option').eq(i).text() !== '') {
+              var liProps = {
+                text: $this.children('option').eq(i).text(),
+                rel: $this.children('option').eq(i).val(),
+                class: ($this.children('option').eq(i).attr('disabled') ? 'disabled' : '') + $this.children('option').eq(i).val(),
+              };
+              $('<li />', liProps).appendTo($selectOptions);
+            }
+          }			
+          $selectOptions.find('li').on("click", function(e) {
+            e.stopPropagation();
+            if (!$(e.target).is('.disabled')) {
+              $styledSelect.removeClass('active');
+              $this.val($(this).attr('rel')).trigger("change");
+              $selectOptions.hide();		
+            }
+          });	
+      $(this).toggleClass('active').next('ul.select-options').toggle();
+      })
+  
+        $this.on("change", function() {
+        // sync select's value with front label
+          var currentValue = $this.val();
+          $styledSelect.removeClass('selected');
+          for (var i = 0; i < numberOfOptions; i++) {
+            if ($this.children('option').eq(i).attr('value') == currentValue) {
+              $styledSelect.text($this.children('option').eq(i).text());
+              if ($this.children('option').eq(i).val()) {
+                $styledSelect.addClass('selected');
+              }
+            }
+          }	
+        });
+  
+      $(document).on("click", function() {
+      $styledSelect.removeClass('active');
+      $list.hide();
+      })
+    });
+  },
+
   init = function(e) {
     var self = this;
     var name = '', email = '', phone = '', visit = '', visitTime = '', zooMemory = '';
-    
-    self.$fieldReview = self.$fieldHidden.after($htmlContainer).next();
 
-    $input.on("change, keyup", function(e){
+    self.$fieldReview = self.$fieldHidden.after($htmlContainer).next();
+    self.$input.on("change, keyup", function(e){
       switch (this.name) {
         case fieldName:
           name = this.value 
@@ -162,7 +249,8 @@ var gfHandler = {
           zooMemory = this.value;
           break;
       }
-    })
+    });
+    self.comboStyled();
 
     $(document).on('gform_post_render', function (event, form_id, current_page) {
       var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
@@ -173,16 +261,44 @@ var gfHandler = {
         }         
         $rev.append('<div class="form-input-text">'+name+visits+'</div>');
       }
-      $rev.append('<p>'+email+', '+phone+'</p>');      
-      $rev.append('<p>'+zooMemory+'</p>');
+      $rev.append('<p>'+email + (phone) ? ', ' : ''+phone+'</p>');      
+      $rev.append('<p>'+zooMemory+'</p>');   
+      if (self.$htmlHasInputedFile != null) {
+        $rev.after().append(self.$htmlHasInputedFile[0]);
+      }    
 
       // uploads handle
-      var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
-      var $html = self.templateUpload();
-      console.log($html);
-      $uploads.append($html);
-      self.generateSelect();
+      if (self.$htmlHasInputedFile == null) {
+        var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
+        var $html = self.templateUpload();
+        $uploads.append($html);    
 
+        $uploads.children().each(function(){
+          var id = this.getAttribute('data-id');
+          var $input = $(this).children().children().children()[0];
+          var $yearInput = $(this).children().children().children()[1];
+
+          $($input).on("change", function(e){
+            var $previewContainer = $('<div id="image-prev-'+id+'" class="gf-image-upload-preview"><div class="remove-button" title="Remove image"></div><img/></div>').appendTo($rev);
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $previewContainer.find('img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL( $input.files[0] );	
+            self.$htmlHasInputedFile = $uploads;
+          });
+
+          $($yearInput).on("change", function(e){
+            self.$htmlHasInputedFile = $uploads;
+          })
+        })
+      }
+
+      if (self.$htmlHasInputedFile != null) {
+        $('body').find('#field_1_20').after(self.$htmlHasInputedFile);
+      }
+
+      self.comboStyled();
     });
   }
 }
@@ -191,6 +307,7 @@ jQuery(document).ready(function($) {
 
   mainHandler.init();
   gfHandler.init();
+
 
   $('.your-zoo-carousel-main').flickity({
 		cellSelector: '.carousel-cell',
