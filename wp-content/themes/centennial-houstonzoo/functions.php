@@ -221,6 +221,7 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
     }
   }
 
+  //var_dump($_FILES);
 
   $post_id = wp_insert_post(
     array (
@@ -235,38 +236,94 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
         'phone'           => rgar( $entry, '4' ),
         'zoo_connection'  => $arr_result,
         'zoo_memory'      => rgar( $entry, '6' ),
-        'visit_since'       => '111',
-        'visit_since_time'  => 'month'
+        'visit_since'       => rgar( $entry, '13' ),
+        'visit_since_time'  => rgar( $entry, '15' ),
       )      
     )
   );
 
-  $row = array(
-    'file'    => $attach_id,
-    'year'    => rgar( $entry, '5' ),
-    'caption' => rgar( $entry, '6' )
-  );
-  add_row('documents', $row, $post_id); 
-  
-  /*
-  var_dump( $arr_field_zoo_conn ); 
-  if ($post_id) {
-    // insert post meta
-    add_post_meta($post_id, '_your_custom_1', $custom1);
-    add_post_meta($post_id, '_your_custom_2', $custom2);
-    add_post_meta($post_id, '_your_custom_3', $custom3);
-  }
+  // handle for repeater of files
+  $inputCapt = array_values(array_filter($_POST['input_caption']));
+  $inputYr = array_values(array_filter($_POST['input_year']));
 
-  $row = array(
-    'folder'      => rgar( $entry, '7' ),
-    'file'        => $attach_id,
-    'title'       => rgar( $entry, '5' ),
-    'description' => rgar( $entry, '6' ),
-    'upload_date' => $now
-  );
-  add_row('documents', $row);  
-*/
-    
+  $wordpress_upload_dir = wp_upload_dir();
+  // $wordpress_upload_dir['path'] is the full server path to wp-content/uploads/2017/05, for multisite works good as well
+  // $wordpress_upload_dir['url'] the absolute URL to the same folder, actually we do not need it, just to show the link to file
+
+  $uploaded_files = $_FILES['file_upload'];
+  $number_of_files = count($uploaded_files['name']);
+  $any_file_uploaded = FALSE;
+
+  for ($idx = 0; $idx < $number_of_files; $idx++) {
+
+    $filename = $_POST['file_name'][$idx];
+    $uploaded_filename = $uploaded_files['name'][$idx];
+    $uploaded_tmpname = $uploaded_files['tmp_name'][$idx];
+
+    // this script can be used also to handle non-named file upload such as profile image, so handle accordingly
+    if (is_null($_POST['file_name'])) {
+      if (empty($uploaded_filename)) continue;
+    } else {
+      if (!$filename || empty($uploaded_filename)) continue;
+    }
+
+    $any_file_uploaded = TRUE;
+
+    $new_file_path = $wordpress_upload_dir['path'] . '/' . $uploaded_filename;
+    $new_file_mime = mime_content_type($uploaded_tmpname);
+
+    if ($uploaded_files['error'][$idx]) {
+      switch ($uploaded_files['error'][$idx]) {
+        case UPLOAD_ERR_INI_SIZE:
+          $file_size = wp_max_upload_size() / 1024 / 1024;
+          $error_message = 'Maximum file size of '.$file_size.'MB is exceeded. Please try smaller file.';
+          break;
+        case UPLOAD_ERR_CANT_WRITE:
+          $error_message = 'There is an issue writing your file to our system. Please contact us.';
+          break;
+        default:
+          $error_message = 'There is an uploading issue. Please try again later.';
+      }
+      generate_error($error_message);
+    }
+
+    if ($uploaded_files['size'][$idx] > wp_max_upload_size()) generate_error('Maximum file size of '.wp_max_upload_size().'is exceeded.');
+
+    if (!in_array($new_file_mime, get_allowed_mime_types())) generate_error('We do not allow you to upload this kind of file.');
+
+    $i = 1; // number of tries when the file with the same name is already exists
+    while (file_exists($new_file_path)) {
+      $i++;
+      $new_file_path = $wordpress_upload_dir['path'] . '/' . $i . '_' . $uploaded_filename;
+    }
+
+    // looks like everything is OK
+    if (move_uploaded_file($uploaded_tmpname, $new_file_path)) {
+
+      $upload_id = wp_insert_attachment(array(
+        'guid'           => $new_file_path,
+        'post_mime_type' => $new_file_mime,
+        'post_title'     => preg_replace('/\.[^.]+$/', '', $uploaded_filename),
+        'post_content'   => '',
+        'post_status'    => 'inherit'
+      ), $new_file_path);
+
+      // wp_generate_attachment_metadata() won't work if you do not include this file
+      require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+      // Generate and save the attachment metas into the database
+      wp_update_attachment_metadata($upload_id, wp_generate_attachment_metadata($upload_id, $new_file_path));
+      
+      $row = array(
+        'file'    => $upload_id,
+        'year'    => $inputYr[$idx],
+        'caption' => $inputCapt[$idx]
+      );
+      add_row('photos_n_video', $row, $post_id); 
+
+    }
+  }
+      
   GFAPI::delete_entry( $entry['id'] );
 }
 

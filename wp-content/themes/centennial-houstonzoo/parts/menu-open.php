@@ -10,11 +10,11 @@
 			
 		<div class="header-container">
 			<div class="grid-x grid-margin-x">
-				<div class="cell medium-offset-3 medium-6 small-6">
+				<div class="cell medium-offset-3 medium-6 small-6 left-content">
 					<a href="/" class="hide-for-small-only">
 						<img src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
 					</a>
-					<a href="#menu-open-back" class="caption-semibold show-for-small-only">
+					<a href="#menu-open-back" class="button button-label button-back show-for-small-only">
 						BACK TO MENU
 					</a>
 				</div>
@@ -33,8 +33,8 @@
 								<div class="menu-item active" data-id="<?php print $key; ?>">
 									<a href="<?php print $list_menu['cta'] ?>" class="">
 										<h2 class="color-light-blue title-text"><?php print $list_menu['title'] ?></h2>
+										<p class="color-white"><?php print $list_menu['text'] ?></p>
 									</a>
-									<p class="color-white"><?php print $list_menu['text'] ?></p>
 								</div>
 							<?php endforeach; ?>
 						<?php endif; ?>

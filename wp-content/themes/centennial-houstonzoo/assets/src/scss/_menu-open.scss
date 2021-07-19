@@ -16,6 +16,11 @@
         
         position: relative;
         text-align: center;
+        .left-content {
+            @include breakpoint (small only) {
+                text-align: left;
+            }
+        }
         .right-content {
             text-align: right;
             .fal::before {
@@ -60,7 +65,7 @@
             .content-right {
                 display: none;
                 @include breakpoint (small only) {
-                    padding-top: rem-calc(50);                        
+                    padding-top: rem-calc(30);                        
                 }
                 .title {
                     @include fluid-props(20px, 38px, margin-bottom);

@@ -38,6 +38,72 @@
     }
 }
 
+.select-hidden {
+    display: none;
+}
+
+.select-options,
+.select-styled {
+    @extend .input-style;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 16px) center;
+}
+
+.select-styled{
+    &.active {
+        display: none;
+    }    
+    background-repeat: no-repeat !important;
+    background-position: 95% 50% !important;
+    background-image: url(../img/icon-arrow-down.svg) !important;
+}
+
+.select-options {
+    display: none;
+    padding: 0;
+    margin: 0;
+	margin-bottom: rem-calc(36);
+    background-image: url(../img/icon-arrow-up.svg);
+    background-position: calc(100% - 16px) 20px;
+    li {
+        @extend .form-input-text;
+        padding: rem-calc(6) rem-calc(26);     
+        &::before {
+            content: '';
+        }        
+        margin: 0;
+    }
+}
+
+#field_uploads {
+    .uploads-item {
+        &.selected {
+            .grid-input, .gfield_label, .textarea-uploads, .button-plus {
+                display: none;
+            }
+        }
+        &.input {
+            .review-container {
+                display: none;
+            }
+        }
+        &.edit {
+            .button-plus {
+                display: none;
+            }
+            .file-label {
+                opacity: 0; 
+            }
+        }
+
+        .file-label {
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+    }
+}
+
 .gform_wrapper {
     ul {
         list-style: none;
@@ -76,6 +142,7 @@
             }
         }
 
+        .select-styled,
         .gfield_select,
         input[type=number],
         input[type=tel],
@@ -90,6 +157,9 @@
             margin-top: rem-calc(14);
             margin-bottom: rem-calc(14);
             resize: none;
+        }
+        .textarea-uploads {
+            height: rem-calc(100);
         }
         input[type=checkbox] {
             @extend .input-style-checkbox;
@@ -116,6 +186,20 @@
             &::after {
                 content: ' (Check all that apply)';
                 @include fluid-type(12px, 14px);
+            }
+        }
+
+        #field_1_13 {
+            width: 25%;
+            margin-right: 5%;
+        }
+        #field_1_15 {
+            width: 70%;
+        }
+        #field_1_15, #field_1_13 {
+            display: inline-table;
+            @include breakpoint (small only) {
+                width: 47.5%;
             }
         }
 
@@ -187,7 +271,7 @@
             }
             
             &#gf_step_1_4 {
-                @include fluid-props (-4px, -10px, margin-right) ;
+                @include fluid-props (-6px, -10px, margin-right) ;
             }
         }
 

@@ -30,6 +30,20 @@
         @extend .arrow-for-button;
     }
 
+    &.button-back {
+        background: none;
+        position: relative;
+        padding-right: 0;
+        @extend .color-light-green;
+        &::before {
+            content: url(../img/icon-arrow-left.svg);
+            margin-right: rem-calc(10);
+            position: absolute;
+            left: 10%;
+            transition: right 250ms ease;
+        }
+    }
+
     &.plus {
         @extend .button-plus;
     }
@@ -48,20 +62,26 @@
         content: url(../img/icon-arrow-right.svg);
         margin-left: rem-calc(8);
         position: absolute;
-        right: 10%;
         transition: right 250ms ease;
     } 
 }
 
 .button-plus {
-    content: url(../img/Plus-Button.svg);
     transition: left 250ms ease;
+    display: flex;
+    align-items: center;
+    &::before {
+        content: url(../img/Plus-Button.svg);
+        @include fluid-props(20px, 30px, height);
+        @include fluid-props(20px, 30px, width);
+        margin-right: rem-calc(10);
+    }
 
-    &.is-active {
+    &.is-active::before {
         content: url(../img/Strip-Button.svg);
     }
 
-    &.fill {
+    &.fill::before {
         content: url(../img/Plus-Button-Fill.svg);
     }
 }
@@ -90,16 +110,22 @@
         &.btn-arrow-right::after {
             right: 7%;
         }
+
+        &.button-back::before {
+            left: 5%;
+        }
     }
 
     .button-plus:hover {
-        content: url(../img/Plus-Button-Fill.svg);
+        &::before { 
+            content: url(../img/Plus-Button-Fill.svg);
+        }
 
-        &.is-active {
+        &.is-active::before { 
             content: url(../img/Strip-Button.svg);
         }
 
-        &.fill {
+        &.fill::before {
             content: url(../img/Plus-Button.svg);
         }
     }
