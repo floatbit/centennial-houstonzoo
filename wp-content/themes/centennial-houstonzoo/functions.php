@@ -46,7 +46,6 @@ function centennial_houstonzoo_css_js() {
   wp_enqueue_script( 'flickity-js-hash', 'https://unpkg.com/flickity-hash@1/hash.js', array());
   wp_enqueue_script( 'global', get_template_directory_uri() . '/assets/js/global.min.js', array(), CSS_JS_VERSION, true );
   wp_enqueue_script( 'pages', get_template_directory_uri() . '/assets/js/pages.min.js', array(), CSS_JS_VERSION, true );
-  wp_enqueue_script( '100-years-page', get_template_directory_uri() . '/assets/js/page-100-years.min.js', array(), CSS_JS_VERSION, true );
   // css
   // wp_enqueue_style( 'flickity-css', 'https://unpkg.com/flickity@2/dist/flickity.min.css', array(), '', 'all' );
   wp_enqueue_style( 'flickity-css', 'https://unpkg.com/flickity@2/dist/flickity.min.css', array(), '', 'all' );

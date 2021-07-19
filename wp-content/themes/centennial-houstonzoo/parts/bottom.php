@@ -44,7 +44,7 @@
 										<p class="caption color-white">The Houston Zoo is a registered 501(c)(3) organization.</p>
 									</div>
 									<div class="cell medium-5">
-										<p class="caption color-white">© 2021 Houston Zoo Privacy Policy</p>
+										<p class="caption color-white">© 2021 Houston Zoo <a href="#" class="caption color-white underline">Privacy Policy</a></p>
 									</div>
 								</div>
 							</div>
@@ -71,7 +71,7 @@
 									<p class="caption color-white">© 2021 Houston Zoo</p>
 								</div>
 								<div class="cell small-3">
-									<p class="caption color-white underline">Privacy Policy</p>
+									<a href="#" class="caption color-white underline">Privacy Policy</a>
 								</div>
 							</div>
 						</div>

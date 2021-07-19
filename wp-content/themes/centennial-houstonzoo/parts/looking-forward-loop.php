@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="cell small-9">
-                <div class="info-title">
+                <div class="info-title flex-container align-middle">
                     <a href="#show-description" data-id=<?php print $i; ?> data-specific-id=<?php print $specific_id; ?>>
                         <h4 class="title-content color-black"><?php print $item['title'] ?></h4>
                     </a>
