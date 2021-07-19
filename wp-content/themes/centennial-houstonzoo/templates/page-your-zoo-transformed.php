@@ -83,7 +83,7 @@
 									</div>
 									<div class="cell small-3">
 										<div class="show-desc-project-container">
-											<a href="#show-project-desc" class="button-plus-no-text" data-id=<?php print $i; ?>></a>
+											<a href="#show-project-desc" class="button-plus-no-text" data-id=<?php print $i; ?> data-count-item="<?php print count($completed_projects['projects']); ?>"></a>
 										</div>
 									</div>
 								</div>

@@ -3,6 +3,7 @@ var yourZooHandler = {
 		jQuery('[href="#show-project-desc"]').on("click", function(e){
 			e.preventDefault();
 			var id = this.getAttribute('data-id');
+			var totalItem = this.getAttribute('data-count-item');
 			$button = $(this);
 			$item = jQuery(".description-container[data-id="+id+"]");
 			$itemContainer = jQuery(".project-item-container[data-id="+id+"]");
@@ -19,7 +20,7 @@ var yourZooHandler = {
 				} else {
 					var oddEven = id % 2;
 					var nextId = id;
-					if (oddEven > 0 && !$itemContainer.last()) {
+					if (oddEven > 0 && id < totalItem) {
 						nextId++;
 					}
 					$clonedContent = $item.clone();
