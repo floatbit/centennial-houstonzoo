@@ -12,7 +12,7 @@
 			<div class="grid-x grid-margin-x">
 				<div class="cell medium-offset-3 medium-6 small-6 left-content">
 					<a href="/" class="hide-for-small-only">
-						<img src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
+						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
 					</a>
 					<a href="#menu-open-back" class="button button-label button-back show-for-small-only">
 						BACK TO MENU

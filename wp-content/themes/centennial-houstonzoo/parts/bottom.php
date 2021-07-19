@@ -10,7 +10,7 @@
 			<div class="cell medium-4">
 				<a href="/">
 					<div class="logo-container">
-						<img src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
+						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
 					</div>
 				</a>
 			</div>
@@ -51,8 +51,8 @@
 						</div>
 					</div>
 					<div class="cell medium-4 footer-right-content">
-						<img class="footer-logo-container show-for-medium" src="<?php print TEMPLATE_IMAGE_PATH."/Footer-Logo.svg"; ?>">
-						<img class="footer-logo-container show-for-small-only" src="<?php print TEMPLATE_IMAGE_PATH."/Small-Footer-Logo.svg"; ?>">
+						<img class="footer-logo-container show-for-medium" src="<?php print TEMPLATE_IMAGE_PATH."/logo-footer.svg"; ?>">
+						<img class="footer-logo-container show-for-small-only" src="<?php print TEMPLATE_IMAGE_PATH."/logo-small-footer.svg"; ?>">
 						<div class="footer-address-container">
 							<div class="grid-x">
 								<div class="cell small-6 medium-12">

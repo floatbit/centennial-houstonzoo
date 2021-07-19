@@ -10,8 +10,8 @@
 			</div>
 			<div class="cell small-9 medium-6 middle-content">
 				<a href="/">
-					<img class="logo-white" src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
-					<img class="logo-black hide" src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo-Black.svg"; ?>">
+					<img class="logo-white" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
+					<img class="logo-black hide" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main-black.svg"; ?>">
 				</a>
 			</div>
 			<div class="cell small-3 medium-3 right-content">

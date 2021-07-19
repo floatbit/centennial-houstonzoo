@@ -71,18 +71,18 @@
     display: flex;
     align-items: center;
     &::before {
-        content: url(../img/Plus-Button.svg);
+        content: url(../img/icon-plus.svg);
         @include fluid-props(20px, 30px, height);
         @include fluid-props(20px, 30px, width);
         margin-right: rem-calc(10);
     }
 
     &.is-active::before {
-        content: url(../img/Strip-Button.svg);
+        content: url(../img/icon-strip.svg);
     }
 
     &.fill::before {
-        content: url(../img/Plus-Button-Fill.svg);
+        content: url(../img/icon-plus-fill.svg);
     }
 }
 
@@ -118,15 +118,15 @@
 
     .button-plus:hover {
         &::before { 
-            content: url(../img/Plus-Button-Fill.svg);
+            content: url(../img/icon-plus-fill.svg);
         }
 
         &.is-active::before { 
-            content: url(../img/Strip-Button.svg);
+            content: url(../img/icon-strip-fill.svg);
         }
 
         &.fill::before {
-            content: url(../img/Plus-Button.svg);
+            content: url(../img/icon-plus.svg);
         }
     }
 }

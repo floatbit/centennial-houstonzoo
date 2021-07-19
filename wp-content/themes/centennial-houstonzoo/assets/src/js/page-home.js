@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
 		selectedAttraction: 0.2, 
 	});
 
-    $(window).on('resize, load, responsivelly', function() {
+    $(window).on('resize, load, scroll', function() {
         homeHandler.resizeHero();
 	});
 })
