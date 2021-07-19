@@ -70,7 +70,6 @@ var gfHandler = {
   fieldVisitTime = 'input_15',
   fieldZooMemory = 'input_6',
   $input = $('.ginput_container').find('input[type=text], input[type=email], input[type=tel], input[type=number]'),
-  $inputFile = $('body').find('input_file'),
   $fieldHidden = $('#field_1_12'),
   $fieldReview = [],
   $htmlContainer = '<li id="field_review"></li>',
@@ -80,6 +79,7 @@ var gfHandler = {
   yearStart = 2000,
   $htmlHasInputedFile = null,
   $selectIdentifier = $('.ginput_container select'),
+  $gformPageFooter = $('.gform_page_footer'), 
 
   templateUpload = function(){
     var $items = '';
@@ -94,11 +94,13 @@ var gfHandler = {
   
       $items += 
       '<div class="uploads-item input '+((i>0) ? 'hide': '')+'" data-id="'+i+'">'+
-        '<div class="grid-x grid-input">'+
+        '<div class="grid-x grid-margin-x grid-input">'+
           '<div class="cell small-7 input-field">'+
-            '<input type="file" class="input_file" data-id="'+i+'" name="file_upload[]" size="25" accept=".jpg,.png" />'+
+            '<input type="file" class="input_file hide" id="input_file_'+i+'" data-id="'+i+'" name="file_upload[]" size="25" accept=".jpg,.png,.giv,.mov" />'+
+            '<label class="label-input" data-id="'+i+'" for="input_file_'+i+'">Upload file</label>'+
+            '<span class="clear-img" data-id="'+i+'" ></span>'+
           '</div>'+
-          '<div class="cell small-5 input-field">'+
+          '<div class="cell small-5 input-field-cmb">'+
             '<select name="input_year[]" id="input_year_'+i+'" data-id="'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
               $years+
             '</select>'+
@@ -110,9 +112,11 @@ var gfHandler = {
           '<span class="button-label color-white"> Add another photo or video </span>'+ 
         '</a>'+   
         '<div class="review-container flex-container">'+
-          '<p class="file-label button-label" data-id="'+i+'" ></p>'+
-          '<a href="#actions-button" class="button editmode" data-id="'+i+'" >EDIT</a>'+
-          '<a href="#delete-item" class="button btn-clr" data-id="'+i+'" >X</a>'+
+          '<p class="file-label button-label" data-id="'+i+'"></p>'+
+          '<div class="flex-container">'+
+            '<a href="#actions-button" class="button editmode" data-id="'+i+'" >EDIT</a>'+
+            '<a href="#delete-item" class="button button-close" data-id="'+i+'" ></a>'+
+          '</div>'+
         '</div>'+
       '</div>';        
     }
@@ -121,7 +125,7 @@ var gfHandler = {
   },
 
   comboStyled = function(e) {
-    $('body').find('.ginput_container select, .input-field select').each(function(){
+    $('body').find('.ginput_container select, .input-field select, .input-field-cmb select').each(function(){
       var $this = $(this), numberOfOptions = $(this).children('option').length;
       var $name = $this.attr('name');
   
@@ -191,6 +195,51 @@ var gfHandler = {
     });
   },
 
+  clearItems = function(id, file_only = false) {
+
+    var $currInputFile = $('.input_file[data-id="'+id+'"]');
+    var $currInputFileText = $('.file-label[data-id="'+id+'"]');
+    var $labelInput = $('.label-input[data-id="'+id+'"]');
+    
+    $currInputFile.val('');
+    $currInputFileText.val('');
+    $labelInput.text('Upload file');
+
+    if (file_only == false) { 
+      var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
+      var $selectedYear =  $('.select-year[data-id="'+id+'"]');
+      var $textareaUploads =  $('.textarea-uploads[data-id="'+id+'"]');
+
+      $selectedYear.prop('selectedIndex',0);
+      $($selectedYear.parent().find('.select-styled')).text("Year");
+      $textareaUploads.val('');
+      $uploadsItem.removeClass('selected');
+      $uploadsItem.addClass('input');
+    }    
+  },
+
+  inputHandler = function(id, filename) {
+    var $fileLabel = $('.file-label[data-id="'+id+'"]');
+    var $labelInput = $('.label-input[data-id="'+id+'"]');
+    var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
+    var $nextItem = $('.uploads-item[data-id='+parseInt(id+1)+']');
+    $fileLabel.text(filename);
+    $labelInput.text(filename);
+    
+    $labelInput.parent().addClass('selected');
+
+    if ((filename !== '') && (!$uploadsItem.hasClass('edit'))) {
+      $uploadsItem.removeClass('input');
+      $uploadsItem.addClass('selected');
+      $nextItem.removeClass('hide');
+    }
+
+    if (filename == '') {
+      $labelInput.text('Upload file');
+      $labelInput.parent().removeClass('selected');
+    }
+  },
+
   init = function(e) {
     var self = this;
     var name = '', email = '', phone = '', visit = '', visitTime = '', zooMemory = '';
@@ -241,29 +290,46 @@ var gfHandler = {
         var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
         var $html = self.templateUpload();
         $uploads.append($html); 
+        self.comboStyled();
            
         $uploads.find('[href="#show-next-item"]').on("click", function(e) {
           e.preventDefault();
           var id = $(this).parents()[0].getAttribute('data-id');
+          var filename = $(' input.input_file[data-id="'+id+'"]').val().split('\\').pop();
           var nextId = parseInt(id+1);
           var $nextItem = $(this).parent().parent().find('.uploads-item[data-id='+nextId+']');
-          
-          $(this).addClass('hide');
-          $nextItem.removeClass('hide');
+          if (filename == '') {
+            alert('Cannot add new item, fill current item first.');
+          } else {
+            $(this).addClass('hide');
+            $nextItem.removeClass('hide');
+          }
         });
+        
+        $uploads.find('.clear-img').on("click", function(e) {
+          var id = this.getAttribute('data-id');
+          $(this).parent().removeClass('selected');
+          self.clearItems(id, true);
+          self.inputHandler(id, '');
+        }); 
 
         $uploads.find('[href="#actions-button"]').on("click", function(e) {
           e.preventDefault();
           var id = this.getAttribute('data-id');
           var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
+          var filename = $(' input.input_file[data-id="'+id+'"]').val().split('\\').pop();
           
-          $uploadsItem.toggleClass('edit');
-          $uploadsItem.toggleClass('selected');
-
-          if ($uploadsItem.hasClass('edit')) {
-            $(this).text('SAVE');
+          if (filename == '') {
+            alert('File must be selected.')
           } else {
-            $(this).text('EDIT');
+            $uploadsItem.toggleClass('edit');
+            $uploadsItem.toggleClass('selected');
+
+            if ($uploadsItem.hasClass('edit')) {
+              $(this).text('SAVE');
+            } else {
+              $(this).text('EDIT');
+            }
           }
           
         });
@@ -271,35 +337,18 @@ var gfHandler = {
         $uploads.find('[href="#delete-item"]').on("click", function(e) {
           e.preventDefault();
           var id = this.getAttribute('data-id');
-          var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
-          var $currInputFile = $('.input_file[data-id="'+id+'"]');
-          var $currInputFileText = $('.file-label[data-id="'+id+'"]');
-          var $selectedYear =  $('.select-year[data-id="'+id+'"]');
-          var $textareaUploads =  $('.textarea-uploads[data-id="'+id+'"]');
-
-          $currInputFile.val('');
-          $currInputFileText.val('');
-          $selectedYear.prop('selectedIndex',0);
-          $($selectedYear.parent().find('.select-styled')).text("Year");
-          $textareaUploads.val('');
-          $uploadsItem.removeClass('selected');
-          $uploadsItem.addClass('input');
-                                
+          if (confirm('Delete Item ?')) {
+            self.clearItems(id);         
+            $('.uploads-item').removeClass('input');
+            $('.uploads-item').not('.selected, [data-id="'+id+'"]').addClass('hide');
+            $('.uploads-item[data-id="'+id+'"]').addClass('input');
+          }                       
         });
           
         $uploads.find(' input.input_file ').on("change", function() {
           var filename = $(this).val().split('\\').pop();
           var id = this.getAttribute('data-id');
-          var $fileLabel = $('.file-label[data-id="'+id+'"]');
-          var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
-          var $nextItem = $(this).parent().parent().find('.uploads-item[data-id='+parseInt(id+1)+']');
-          $fileLabel.text(filename);
-          
-          if ((filename !== '') && (!$uploadsItem.hasClass('edit'))) {
-            $uploadsItem.removeClass('input');
-            $uploadsItem.addClass('selected');
-            $nextItem.removeClass('hide');
-          } 
+          self.inputHandler(id, filename);
         });
 
         $uploads.children().each(function(){
@@ -320,25 +369,65 @@ var gfHandler = {
           $($yearInput).on("change", function(e){
             self.$htmlHasInputedFile = $uploads;
           })
-        })
+        });
+        
       }
 
       if (self.$htmlHasInputedFile != null) {
         var $inputedData = $('body').find('#field_1_20').after(self.$htmlHasInputedFile).next();
+        console.log($inputedData.children());
 
         $inputedData.children().each(function(e){
           var id = this.getAttribute('data-id');
           var $currInputFile = $('.input_file[data-id="'+id+'"]');
-          console.log(id);
-          console.log($currInputFile.val());
+          var filename = $currInputFile.val().split('\\').pop();
+
+          if (filename) {
+            var caption = $('.textarea-uploads[data-id="'+id+'"]').val();
+            var $html = 
+            '<div class="item-review" data-id="'+id+'">'+
+              '<div class="flex-container">'+
+                '<p class="file-label button-label" data-id="'+id+'" >'+filename+'</p>'+
+                '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
+                '<a href="#delete-item" class="button btn-clr" data-id="'+id+'" >X</a>'+
+              '</div>'+
+              '<div class="flex-container">'+
+                '<img src="" class="img-review" data-id="'+id+'" >'+
+                '<p class="" >'+caption+'</p>'+
+              '</div>'+
+            '</div>';
+
+            var $obj = $rev.after($html).next();            
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $obj.find('.img-review').attr('src', e.target.result);
+            }
+            reader.readAsDataURL($currInputFile[0].files[0]);
+
+            $obj.find('[href="#review-edit-button"]').on("click", function(e){
+              e.preventDefault();
+              var id = this.getAttribute('data-id');
+              self.$gformPageFooter.find(".gform_previous_button").click();
+              $('[href="#actions-button"][data-id="'+id+'"]').click();
+              //console.log($(self.$buttonPrev[0]));
+            });
+
+            $obj.find('[href="#delete-item"]').on("click", function(e){
+              e.preventDefault();
+              var id = this.getAttribute('data-id');
+              self.clearItems(id);
+              $('.item-review[data-id="'+id+'"]').remove();
+
+            });            
+
+            self.comboStyled(); 
+          }
         });
       }
 
-      self.comboStyled();
     });
 
     
-
   }
 }
 

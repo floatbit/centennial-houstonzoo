@@ -88,6 +88,18 @@
                 display: none;
             }
         }
+        &.edit, &.selected {
+            border-top: 1px;
+            border-bottom: 1px;
+            border-left: 0;
+            border-right: 0;
+            border-style: solid;
+            border-color: $dark-green;     
+            @include fluid-props(16px, 20px, padding-top);
+            @include fluid-props(16px, 20px, padding-bottom);
+            @include fluid-props(36px, 60px, margin-bottom);
+        }
+            
         &.edit {
             .button-plus {
                 display: none;
@@ -97,9 +109,53 @@
             }
         }
 
-        .file-label {
+        .gfield_label {
+            @extend .caption-semibold;
+            @extend .color-light-green;
+        }
+
+        .input-field {
+            position: relative;
+            &.selected {
+                .label-input::after  {
+                    content: none;
+                }
+                .clear-img {
+                    display: flex;
+                }
+            }
+        }
+        
+        .review-container, .review-container .flex-container {
+            justify-content: space-between;
+            .button {
+                @extend .caption-semibold;
+                @include fluid-props(20px, 24px, height);
+                padding: rem-calc(3) rem-calc(20);
+                
+            }
+        }
+
+        .label-input {
+            cursor: pointer;
             overflow: hidden;
             word-wrap: break-word;
+        }
+
+        .clear-img {
+            cursor: pointer;    
+            content: url(../img/icon-close.svg);
+            @include fluid-props(10px, 12px, height);
+            @include fluid-props(10px, 12px, width);
+            position: absolute;
+            top: 24%;
+            right: 16px;
+            display: none;
+        }
+
+        .file-label {
+            overflow: hidden;
+            margin: 0;
         }
     }
 }
@@ -148,21 +204,47 @@
         input[type=tel],
         input[type=text], 
         input[type=email],
+        input[type=file], 
+        .label-input,
         textarea {
             @extend .input-style;
             margin-bottom: rem-calc(26);
         }
-        textarea {
+        textarea, .textarea-uploads {
             @extend .textarea-label;
             margin-top: rem-calc(14);
             margin-bottom: rem-calc(14);
             resize: none;
         }
         .textarea-uploads {
+            padding-top: rem-calc(16);
+            padding-bottom: rem-calc(16);
             height: rem-calc(100);
         }
         input[type=checkbox] {
             @extend .input-style-checkbox;
+        }
+        
+        .label-input {
+            @extend .button-label;
+            display: block;
+            text-align: center;
+            position: relative;
+            @include fluid-props(40px, 46px, height);
+
+            &::after {
+                content: url(../img/icon-upload.svg);
+                @include fluid-props(20px, 30px, height);
+                @include fluid-props(20px, 30px, width);
+                margin-left: rem-calc(10);
+            }
+            &.selected {
+                &::after {
+                    content: url(../img/icon-close.svg);
+                    right: 0;
+                    position: absolute;
+                }
+            }
         }
         .gfield_checkbox {
             column-count: 2;
