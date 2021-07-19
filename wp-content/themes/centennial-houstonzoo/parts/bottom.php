@@ -10,7 +10,7 @@
 			<div class="cell medium-4">
 				<a href="/">
 					<div class="logo-container">
-						<img src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
+						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
 					</div>
 				</a>
 			</div>
@@ -44,15 +44,15 @@
 										<p class="caption color-white">The Houston Zoo is a registered 501(c)(3) organization.</p>
 									</div>
 									<div class="cell medium-5">
-										<p class="caption color-white">© 2021 Houston Zoo Privacy Policy</p>
+										<p class="caption color-white">© 2021 Houston Zoo <a href="#" class="caption color-white underline">Privacy Policy</a></p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="cell medium-4 footer-right-content">
-						<img class="footer-logo-container show-for-medium" src="<?php print TEMPLATE_IMAGE_PATH."/Footer-Logo.svg"; ?>">
-						<img class="footer-logo-container show-for-small-only" src="<?php print TEMPLATE_IMAGE_PATH."/Small-Footer-Logo.svg"; ?>">
+						<img class="footer-logo-container show-for-medium" src="<?php print TEMPLATE_IMAGE_PATH."/logo-footer.svg"; ?>">
+						<img class="footer-logo-container show-for-small-only" src="<?php print TEMPLATE_IMAGE_PATH."/logo-small-footer.svg"; ?>">
 						<div class="footer-address-container">
 							<div class="grid-x">
 								<div class="cell small-6 medium-12">
@@ -71,7 +71,7 @@
 									<p class="caption color-white">© 2021 Houston Zoo</p>
 								</div>
 								<div class="cell small-3">
-									<p class="caption color-white underline">Privacy Policy</p>
+									<a href="#" class="caption color-white underline">Privacy Policy</a>
 								</div>
 							</div>
 						</div>

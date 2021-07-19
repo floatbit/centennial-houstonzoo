@@ -37,4 +37,15 @@ var yourZooHandler = {
 
 jQuery(document).ready(function($) {
     yourZooHandler.showDescription();
+
+	$('.your-zoo-carousel-main').flickity({
+		cellSelector: '.carousel-cell',
+		cellAlign: 'left',
+		draggable: true,
+		pageDots: false,
+		fade: true,
+		hash: false,
+		prevNextButtons: false,
+		selectedAttraction: 0.2, 
+	}).resize();
 })
