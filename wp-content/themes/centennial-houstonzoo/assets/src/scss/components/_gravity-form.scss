@@ -76,63 +76,65 @@
     }
 }
 
-#field_uploads {
-    .uploads-item {
-        &.selected {
-            .grid-input, .gfield_label, .textarea-uploads, .button-plus {
-                display: none;
-            }
-        }
-        &.input {
-            .review-container {
-                display: none;
-            }
-        }
-        &.edit, &.selected {
-            border-top: 1px;
-            border-bottom: 1px;
-            border-left: 0;
-            border-right: 0;
-            border-style: solid;
-            border-color: $dark-green;     
-            @include fluid-props(16px, 20px, padding-top);
-            @include fluid-props(16px, 20px, padding-bottom);
-            @include fluid-props(36px, 60px, margin-bottom);
-        }
-            
-        &.edit {
-            .button-plus {
-                display: none;
-            }
-            .file-label {
-                opacity: 0; 
-            }
-        }
-
-        .gfield_label {
-            @extend .caption-semibold;
-            @extend .color-light-green;
-        }
-
-        .input-field {
-            position: relative;
+.gform_body {
+    #field_uploads {
+        @include fluid-props(36px, 60px, margin-bottom);
+    }
+    
+    #field_uploads, #field_review {
+        .uploads-item {
+            margin-bottom: -1px;
             &.selected {
-                .label-input::after  {
-                    content: none;
+                .grid-input, .gfield_label, .textarea-uploads, .button-plus {
+                    display: none;
                 }
-                .clear-img {
-                    display: flex;
+                &:not(:last-of-type) { 
+                    margin-bottom: -1px;
                 }
             }
-        }
-        
-        .review-container, .review-container .flex-container {
-            justify-content: space-between;
-            .button {
+            &.input {
+                @include fluid-props(16px, 20px, padding-top);
+                @include fluid-props(16px, 20px, padding-bottom);
+                .review-container {
+                    display: none;
+                }
+            }
+                    
+            &.edit {
+                .button-plus {
+                    display: none;
+                }
+                .file-label {
+                    opacity: 0; 
+                }
+            }
+
+            .gfield_label {
                 @extend .caption-semibold;
-                @include fluid-props(20px, 24px, height);
-                padding: rem-calc(3) rem-calc(20);
-                
+                @extend .color-light-green;
+            }
+
+            .input-field {
+                position: relative;
+                &.selected {
+                    .label-input::after  {
+                        content: none;
+                    }
+                    .clear-img {
+                        display: flex;
+                    }
+                }
+            }
+        
+            .clear-img {
+                cursor: pointer;    
+                content: url(../img/icon-close.svg);
+                @include fluid-props(10px, 12px, height);
+                @include fluid-props(10px, 12px, width);
+                position: absolute;
+                top: rem-calc(19);
+                right: 16px;
+                display: none;
             }
         }
 
@@ -141,24 +143,53 @@
             overflow: hidden;
             word-wrap: break-word;
         }
+    }
 
-        .clear-img {
-            cursor: pointer;    
-            content: url(../img/icon-close.svg);
-            @include fluid-props(10px, 12px, height);
-            @include fluid-props(10px, 12px, width);
-            position: absolute;
-            top: 24%;
-            right: 16px;
-            display: none;
-        }
+    .file-label {
+        overflow: hidden;
+        margin: 0;
+        word-break: break-all;
+    }
 
-        .file-label {
-            overflow: hidden;
-            margin: 0;
+    .review-container, .review-container .flex-container {
+        justify-content: space-between;
+        .button {
+            @extend .caption-semibold;
+            @include fluid-props(20px, 24px, height);
+            padding: rem-calc(3) rem-calc(20);
+            
         }
     }
+
+    .item-review {
+        &:not(:last-of-type) { 
+            margin-bottom: -1px;
+        }
+        .review-container {
+            align-items: center; 
+        }
+        .image-container {
+            @include fluid-props (24px, 22px, margin-top);
+            justify-content: stretch;
+            img {
+                width: rem-calc(67);
+                height: rem-calc(67);
+                @include fluid-props (20px, 30px, margin-right);
+            }
+        }
+    }
+    #field_uploads .uploads-item.edit, #field_uploads .uploads-item.selected, .item-review {
+        border-top: 1px;
+        border-bottom: 1px;
+        border-left: 0;
+        border-right: 0;
+        border-style: solid;
+        border-color: $dark-green;     
+        @include fluid-props(16px, 20px, padding-top);
+        @include fluid-props(16px, 20px, padding-bottom);
+    }
 }
+
 
 .gform_wrapper {
     ul {
@@ -230,7 +261,7 @@
             display: block;
             text-align: center;
             position: relative;
-            @include fluid-props(40px, 46px, height);
+            @include fluid-props(40px, 50px, height);
 
             &::after {
                 content: url(../img/icon-upload.svg);
