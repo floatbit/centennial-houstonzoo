@@ -15,7 +15,7 @@
                 <div class="cell <?php print ($small_size == true) ? 'medium-5' : 'small-9 medium-3' ?>">
                     <div class="desc-container color-white">
                         <p class="eyebrow color-white"><?php print $eyebrow; ?></p>
-                        <h3><?php print $title; ?></h3>
+                        <h3 class="color-light-blue"><?php print $title; ?></h3>
                         <?php print $description; ?>
                     </div>
                 </div>
@@ -28,10 +28,10 @@
                 <div class="small-bg-item-image background-cover" style="background-image:url(<?php print $image; ?>)">
                     <div class="title-container">
                         <p class="eyebrow color-white"><?php print $eyebrow; ?></p>
-                        <h3 class="color-white"><?php print $title; ?></h3>
+                        <h3 class="color-light-blue"><?php print $title; ?></h3>
                     </div>
                 </div>
-                <div class="half-transparent-panel <?php print $panel_color; ?>"></div>
+                <div class="half-transparent-panel <?php print $panel_color; ?> <?php print ($small_size == true) ? 'small-size' : '' ?>"></div>
             </div>
             <div class="small-descriptionn-container bg-color-darker-green color-white">
                 <?php print $description; ?>

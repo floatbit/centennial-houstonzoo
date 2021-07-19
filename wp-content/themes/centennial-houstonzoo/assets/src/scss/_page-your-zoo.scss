@@ -1,11 +1,12 @@
 .page-template-page-your-zoo-transformed main {
     #intro {
         .intro-image {            
-            @include fluid-props(390px, 600px, height);
+            @include fluid-props(390px, 600px, min-height);
             position: relative;
 
             .intro-desc {
-                @include fluid-props(224px, 300px, margin-top);
+                @include fluid-props(148px, 268px, margin-top);
+                @include fluid-props(48px, 158px, margin-bottom);
                 text-align: center;
                 z-index: 15;
 

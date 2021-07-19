@@ -436,7 +436,7 @@ jQuery(document).ready(function($) {
   mainHandler.init();
   gfHandler.init();
 
-  $(window).on("scroll", function() {
+  $(window).on("load, scroll", function() {
     if($(window).scrollTop() > 50) {
         $("header").addClass("scrolled");
         $(".logo-white").addClass("hide");
