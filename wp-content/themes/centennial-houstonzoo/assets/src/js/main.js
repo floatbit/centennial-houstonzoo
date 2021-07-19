@@ -83,7 +83,7 @@ var gfHandler = {
 
   templateUpload = function(){
     var $items = '';
-    var $years = '';
+    var $years = '<option>Year</option>';
     var currentYear = new Date().getFullYear() + 1;
 
     for (let i = yearStart; i < currentYear; i++) {
@@ -91,20 +91,29 @@ var gfHandler = {
     }
 
     for (let i = 0; i < totalsItems; i++) {
+  
       $items += 
-      '<div class="uploads-item" data-id="'+i+'">'+
-        '<div class="grid-x">'+
+      '<div class="uploads-item input '+((i>0) ? 'hide': '')+'" data-id="'+i+'">'+
+        '<div class="grid-x grid-input">'+
           '<div class="cell small-7 input-field">'+
-            '<input type="file" class="input_file" name="file_upload[]" size="25" accept=".jpg,.png" />'+
+            '<input type="file" class="input_file" data-id="'+i+'" name="file_upload[]" size="25" accept=".jpg,.png" />'+
           '</div>'+
           '<div class="cell small-5 input-field">'+
-            '<select name="input_year[]" id="input_year_'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
+            '<select name="input_year[]" id="input_year_'+i+'" data-id="'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
               $years+
             '</select>'+
           '</div>'+
         '</div>'+
         '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
-        '<textarea name="input_caption[]" id="input_caption_'+i+'" class="textarea medium" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+   
+        '<textarea name="input_caption[]" id="input_caption_'+i+'" data-id="'+i+'"  class="textarea textarea-uploads" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+
+        '<a href="#show-next-item" class="button-plus fill"> '+
+          '<span class="button-label color-white"> Add another photo or video </span>'+ 
+        '</a>'+   
+        '<div class="review-container flex-container">'+
+          '<p class="file-label button-label" data-id="'+i+'" ></p>'+
+          '<a href="#actions-button" class="button editmode" data-id="'+i+'" >EDIT</a>'+
+          '<a href="#delete-item" class="button btn-clr" data-id="'+i+'" >X</a>'+
+        '</div>'+
       '</div>';        
     }
 
@@ -212,6 +221,7 @@ var gfHandler = {
     self.comboStyled();
 
     $(document).on('gform_post_render', function (event, form_id, current_page) {
+      // fill for review section
       var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
       var visits = '';
       if (name) {
@@ -224,13 +234,73 @@ var gfHandler = {
       $rev.append('<p>'+zooMemory+'</p>');   
       if (self.$htmlHasInputedFile != null) {
         $rev.after().append(self.$htmlHasInputedFile[0]);
-      }    
+      }       
 
       // uploads handle
       if (self.$htmlHasInputedFile == null) {
         var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
         var $html = self.templateUpload();
-        $uploads.append($html);    
+        $uploads.append($html); 
+           
+        $uploads.find('[href="#show-next-item"]').on("click", function(e) {
+          e.preventDefault();
+          var id = $(this).parents()[0].getAttribute('data-id');
+          var nextId = parseInt(id+1);
+          var $nextItem = $(this).parent().parent().find('.uploads-item[data-id='+nextId+']');
+          
+          $(this).addClass('hide');
+          $nextItem.removeClass('hide');
+        });
+
+        $uploads.find('[href="#actions-button"]').on("click", function(e) {
+          e.preventDefault();
+          var id = this.getAttribute('data-id');
+          var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
+          
+          $uploadsItem.toggleClass('edit');
+          $uploadsItem.toggleClass('selected');
+
+          if ($uploadsItem.hasClass('edit')) {
+            $(this).text('SAVE');
+          } else {
+            $(this).text('EDIT');
+          }
+          
+        });
+
+        $uploads.find('[href="#delete-item"]').on("click", function(e) {
+          e.preventDefault();
+          var id = this.getAttribute('data-id');
+          var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
+          var $currInputFile = $('.input_file[data-id="'+id+'"]');
+          var $currInputFileText = $('.file-label[data-id="'+id+'"]');
+          var $selectedYear =  $('.select-year[data-id="'+id+'"]');
+          var $textareaUploads =  $('.textarea-uploads[data-id="'+id+'"]');
+
+          $currInputFile.val('');
+          $currInputFileText.val('');
+          $selectedYear.prop('selectedIndex',0);
+          $($selectedYear.parent().find('.select-styled')).text("Year");
+          $textareaUploads.val('');
+          $uploadsItem.removeClass('selected');
+          $uploadsItem.addClass('input');
+                                
+        });
+          
+        $uploads.find(' input.input_file ').on("change", function() {
+          var filename = $(this).val().split('\\').pop();
+          var id = this.getAttribute('data-id');
+          var $fileLabel = $('.file-label[data-id="'+id+'"]');
+          var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
+          var $nextItem = $(this).parent().parent().find('.uploads-item[data-id='+parseInt(id+1)+']');
+          $fileLabel.text(filename);
+          
+          if ((filename !== '') && (!$uploadsItem.hasClass('edit'))) {
+            $uploadsItem.removeClass('input');
+            $uploadsItem.addClass('selected');
+            $nextItem.removeClass('hide');
+          } 
+        });
 
         $uploads.children().each(function(){
           var id = this.getAttribute('data-id');
@@ -254,11 +324,21 @@ var gfHandler = {
       }
 
       if (self.$htmlHasInputedFile != null) {
-        $('body').find('#field_1_20').after(self.$htmlHasInputedFile);
+        var $inputedData = $('body').find('#field_1_20').after(self.$htmlHasInputedFile).next();
+
+        $inputedData.children().each(function(e){
+          var id = this.getAttribute('data-id');
+          var $currInputFile = $('.input_file[data-id="'+id+'"]');
+          console.log(id);
+          console.log($currInputFile.val());
+        });
       }
 
       self.comboStyled();
     });
+
+    
+
   }
 }
 

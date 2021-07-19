@@ -33,8 +33,8 @@
 								<div class="menu-item active" data-id="<?php print $key; ?>">
 									<a href="<?php print $list_menu['cta'] ?>" class="">
 										<h2 class="color-light-blue title-text"><?php print $list_menu['title'] ?></h2>
+										<p class="color-white"><?php print $list_menu['text'] ?></p>
 									</a>
-									<p class="color-white"><?php print $list_menu['text'] ?></p>
 								</div>
 							<?php endforeach; ?>
 						<?php endif; ?>

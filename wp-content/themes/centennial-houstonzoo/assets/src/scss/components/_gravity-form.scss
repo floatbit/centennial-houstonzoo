@@ -76,6 +76,34 @@
     }
 }
 
+#field_uploads {
+    .uploads-item {
+        &.selected {
+            .grid-input, .gfield_label, .textarea-uploads, .button-plus {
+                display: none;
+            }
+        }
+        &.input {
+            .review-container {
+                display: none;
+            }
+        }
+        &.edit {
+            .button-plus {
+                display: none;
+            }
+            .file-label {
+                opacity: 0; 
+            }
+        }
+
+        .file-label {
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+    }
+}
+
 .gform_wrapper {
     ul {
         list-style: none;
@@ -130,6 +158,9 @@
             margin-bottom: rem-calc(14);
             resize: none;
         }
+        .textarea-uploads {
+            height: rem-calc(100);
+        }
         input[type=checkbox] {
             @extend .input-style-checkbox;
         }
@@ -166,7 +197,7 @@
             width: 70%;
         }
         #field_1_15, #field_1_13 {
-            display: inline-block;
+            display: inline-table;
             @include breakpoint (small only) {
                 width: 47.5%;
             }
