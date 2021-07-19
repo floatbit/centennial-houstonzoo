@@ -31,20 +31,21 @@ var yearHandler = {
                 var tempArr = [contentHeight, $content];
                 arrRight.push(tempArr);
             })
-            $.each(arrLeft, function( key, value ) {
+            $.each(arrLeft, function(value, index ) {
+                alert( index + ": " + value );
                 var firstHeight = value[0];
                 $firstContent = value[1];
-                var id = key;
+                var id = index;
                 id++;
                 if (id < arrRight.length) {
-                    var secondValue = arrRight[key];
+                    var secondValue = arrRight[index];
                     var secondHeight = secondValue[0];
                     $secondContent = secondValue[1];
                     /* console.log('first height');
                     console.log(firstHeight); */
                     console.log('second height');
                     console.log(secondHeight); 
-                    console.log(key); 
+                    console.log(index); 
             
                     if (firstHeight > secondHeight) {
                         $secondContent.css({
