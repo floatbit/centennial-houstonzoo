@@ -52,7 +52,7 @@
 					set_query_var( 'part_params', array(
 						'description' => $item['description'],
 						'image' => $item['image'],
-						'panel_color' => 'dark-green',
+						'panel_color' => 'darker-green',
 						'specified_id' => '100-years'
 					));
 					get_template_part( 'parts/content-bg-image-template' );

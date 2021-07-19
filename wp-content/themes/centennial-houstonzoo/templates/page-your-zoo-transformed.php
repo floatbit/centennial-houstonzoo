@@ -44,7 +44,7 @@
 						<div class="carousel-cell">
 							<?php 
 								set_query_var( 'part_params', array(
-									'eyebrow' => $itemContent['eyebrow'],
+									'eyebrow' => 'Current Projects',
 									'title' => $itemContent['title'],
 									'description' => $itemContent['description'],
 									'image' => $itemContent['image'],
@@ -83,7 +83,7 @@
 									</div>
 									<div class="cell small-3">
 										<div class="show-desc-project-container">
-											<a href="#show-project-desc" class="button-plus" data-id=<?php print $i; ?>></a>
+											<a href="#show-project-desc" class="button-plus-no-text" data-id=<?php print $i; ?>></a>
 										</div>
 									</div>
 								</div>

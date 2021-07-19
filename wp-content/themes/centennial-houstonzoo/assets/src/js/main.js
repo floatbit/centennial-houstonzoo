@@ -448,7 +448,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $(window).on('resize, load', function() {
+  $(window).on('resize, load, scroll', function() {
     $('.dynamic-content-container').children('.bg-image-content').each(function() {
       $content = $(this);
       var specifiedId = this.getAttribute('data-specified-id');
