@@ -8,9 +8,11 @@
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x align-middle">
 			<div class="cell medium-4">
-				<div class="logo-container">
-					<img src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
-				</div>
+				<a href="/">
+					<div class="logo-container">
+						<img src="<?php print TEMPLATE_IMAGE_PATH."/Main-Logo.svg"; ?>">
+					</div>
+				</a>
 			</div>
 			<div class="cell medium-8">
 				<div class="grid-x grid-margin-x">
@@ -25,7 +27,7 @@
 							</div>
 							<div class="cell medium-6">
 								<div class="footer-social-media">
-									<a href="<?php print $donate['url']; ?>" class="donate-button button-label color-light-blue"><?php print $donate['title']; ?></a>
+								<a href="<?php print $donate['url']; ?>" target="_blank"" class="donate-button button-label color-light-blue"><?php print $donate['title']; ?></a>
 									<span class="icon-desc button-label color-white">CONNECT : </span>
 									<div class="icon-container">
 										<a class="icon-item" href="<?php print $social_media_links['facebook']; ?>"><i class="fab fa-facebook-square color-light-blue"></i></a>

@@ -186,7 +186,14 @@ header {
     @include fluid-props(28px, 56px, margin-left);
 
     .middle-content {
-      text-align: center;
+      @include breakpoint (medium) {
+        text-align: center;
+      }
+
+      a img {
+        @include fluid-props(44px, 76px, height);
+        @include fluid-props(168px, 296px, width);
+      }
     }
   
     .right-content {

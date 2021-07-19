@@ -43,7 +43,7 @@
 						<div class="content-right default-content color-white active">
 							<h3 class="title"><?php print $menu_title; ?></h3>
 							<p class="text"><?php print $menu_text; ?></p>
-							<a href="<?php print $donate ?>" class="button bright-green">Donate</a>
+							<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green"><?php print $donate['title']; ?></a>
 						</div>
 						<div class="content-right your-story-container color-white">
 							<?php print do_shortcode( '[gravityform id="1" ajax=true]' ) ?>

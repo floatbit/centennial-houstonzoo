@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			<?php if ($lf_items['info_content'] != null) : ?>
-				<div class="info-item-container show-for-medium">
+				<div class="info-item-container">
 					<div class="grid-x grid-margin-x">
 						<div class="cell medium-6 left-item-content">
 							<?php 
@@ -93,19 +93,6 @@
 								set_query_var( 'part_params', array(
 									'looping_item' => $lf_array[1],
 									'specific_id' => 'right'
-								));
-								get_template_part( 'parts/looking-forward-loop' );
-							?>
-						</div>
-					</div>
-				</div>
-				<div class="info-item-container show-for-small-only">
-					<div class="grid-x grid-margin-x">
-						<div class="cell">
-							<?php 
-								set_query_var( 'part_params', array(
-									'looping_item' => $lf_items['info_content'],
-									'specific_id' => 'small'
 								));
 								get_template_part( 'parts/looking-forward-loop' );
 							?>

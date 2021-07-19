@@ -42,6 +42,17 @@
                     @include fluid-props(58px, 68px, height);
                     @include fluid-props(58px, 68px, width);
                 }
+                
+            }
+
+            .right-item-content {
+                .content-container {
+                    @include breakpoint (small only) {
+                        &:first-of-type {
+                            border-top: none;
+                        }
+                    }
+                }
             }
             &.open-desc {
                 .content-container {

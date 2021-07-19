@@ -66,13 +66,15 @@
             background: linear-gradient(90deg, $darker-green 10%, rgba(255,255,255,0) 100%);
         }
 
-        @include breakpoint(small only) {
-            &.dark-green {
-                background: linear-gradient(to top, $dark-green 10%, rgba(255,255,255,0) 80%);
-            }
-    
-            &.darker-green {
-                background: linear-gradient(to top, $darker-green 10%, rgba(255,255,255,0) 80%);
+        &.small-size {
+            @include breakpoint(small only) {
+                &.dark-green {
+                    background: linear-gradient(to top, $dark-green 10%, rgba(255,255,255,0) 80%);
+                }
+        
+                &.darker-green {
+                    background: linear-gradient(to top, $darker-green 10%, rgba(255,255,255,0) 80%);
+                }
             }
         }
     }
@@ -80,7 +82,7 @@
     .bg-image-content {
         //height: auto;
         width: 100vw;
-        @include fluid-props(526px, 960px, height);
+        @include fluid-props(526px, 960px, min-height);
         @include fluid-props(56px, 144px, padding-top);
         @include fluid-props(48px, 136px, padding-bottom);
 
@@ -93,6 +95,10 @@
         .desc-container {
             position: relative;
             z-index: 15;
+
+            .eyebrow {
+                @extend .color-white;
+            }
         }
     }
 

@@ -19,32 +19,32 @@ var yearHandler = {
         jQuery('.info-item-container').each(function() {
             var arrLeft = [];
             var arrRight = [];
-            jQuery('.left-item-content').children('.content-container').each(function(index){
+            jQuery('.left-item-content').find('.title-content').each(function(index){
                 $content = jQuery(this);
                 var contentHeight = parseFloat($content.height());
-                
                 var tempArr = [contentHeight, $content];
                 arrLeft.push(tempArr);
             })
-            jQuery('.right-item-content').children('.content-container').each(function(index){
+            jQuery('.right-item-content').find('.title-content').each(function(index){
                 $content = jQuery(this);
                 var contentHeight = parseFloat($content.height());
                 var tempArr = [contentHeight, $content];
                 arrRight.push(tempArr);
             })
-            $.each(arrLeft, function( index, value ) {
+            $.each(arrLeft, function( key, value ) {
                 var firstHeight = value[0];
                 $firstContent = value[1];
-                var id = index;
+                var id = key;
                 id++;
-                if (id < arrRight.length) {            
-                    var secondValue = arrRight[index];
+                if (id < arrRight.length) {
+                    var secondValue = arrRight[key];
                     var secondHeight = secondValue[0];
                     $secondContent = secondValue[1];
-                    console.log('first height');
-                    console.log(firstHeight);
+                    /* console.log('first height');
+                    console.log(firstHeight); */
                     console.log('second height');
-                    console.log(secondHeight);
+                    console.log(secondHeight); 
+                    console.log(key); 
             
                     if (firstHeight > secondHeight) {
                         $secondContent.css({
@@ -71,7 +71,7 @@ var yearHandler = {
             var nextId = id;
             $nextItem = jQuery(".content-container[data-id="+specificId+nextId+"]");
             
-            if ($item.includes('set-focus')) {
+            if ($item.hasClass('set-focus')) {
                 console.log('yes he does');
                 clearShowDesc();
             } else {

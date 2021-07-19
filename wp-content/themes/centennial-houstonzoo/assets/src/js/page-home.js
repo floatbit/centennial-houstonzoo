@@ -11,7 +11,6 @@ var homeHandler = {
                 $hero.css({
                     'height': newHeight+"px"
                 });
-                console.log(newHeight);
             });
         }
     }
