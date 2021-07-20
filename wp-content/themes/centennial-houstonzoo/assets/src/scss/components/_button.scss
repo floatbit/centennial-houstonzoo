@@ -100,6 +100,20 @@
     }
 }
 
+.button-plus-no-text {
+    content: url(../img/icon-plus.svg);
+    @include fluid-props(20px, 30px, height);
+    @include fluid-props(20px, 30px, width);
+
+    &.is-active {
+        content: url(../img/icon-strip.svg);
+    }
+
+    &.fill {
+        content: url(../img/icon-plus-fill.svg);
+    }
+}
+
 .no-touchevents {
     .button:hover {
         @extend .bg-color-dark-green;
@@ -148,6 +162,18 @@
         
         &.white::before {
             background-image: url(../img/icon-plus-white.svg);
+        }
+    }
+
+    .button-plus-no-text:hover {
+        content: url(../img/icon-plus-fill.svg);
+
+        &.is-active { 
+            content: url(../img/icon-strip-fill.svg);
+        }
+
+        &.fill {
+            content: url(../img/icon-plus.svg);
         }
     }
 }

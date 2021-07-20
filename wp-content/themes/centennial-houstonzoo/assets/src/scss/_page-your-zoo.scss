@@ -61,6 +61,11 @@
                     }
                 }
             }
+            .small-description-container {
+                @include breakpoint(small only) {
+                    margin-bottom: rem-calc(40);
+                }
+            }
         }
     }
 }

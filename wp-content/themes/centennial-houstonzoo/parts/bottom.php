@@ -6,7 +6,7 @@
 
 <footer class="bg-color-darker-green">
 	<div class="grid-container">
-		<div class="grid-x grid-margin-x align-middle">
+		<div class="grid-x grid-margin-x">
 			<div class="cell medium-4">
 				<a href="/">
 					<div class="logo-container">
@@ -66,13 +66,8 @@
 							<div class="organization-container">
 								<p class="caption color-white">The Houston Zoo is a registered 501(c)(3) organization.</p>
 							</div>
-							<div class="grid-x">
-								<div class="cell small-4">
-									<p class="caption color-white">© 2021 Houston Zoo</p>
-								</div>
-								<div class="cell small-3">
-									<a href="#" class="caption color-white underline">Privacy Policy</a>
-								</div>
+							<div class="privacy-container">
+								<p class="caption color-white">© 2021 Houston Zoo <a href="#" class="caption color-white underline">Privacy Policy</a></p>
 							</div>
 						</div>
 					</div>

@@ -70,11 +70,11 @@
         bottom: 0;
 
         &.dark-green {
-            background: linear-gradient(90deg, $dark-green 10%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(90deg, $dark-green 25%, rgba(255,255,255,0) 100%);
         }
 
         &.darker-green {
-            background: linear-gradient(90deg, $darker-green 10%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(90deg, $darker-green 25%, rgba(255,255,255,0) 100%);
         }
 
         &.small-size {
