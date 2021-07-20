@@ -35,13 +35,13 @@ var mainHandler = {
     $('[href="#menu-open"]').on("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
-      mainHandler.openMenu();
+      self.openMenu();
     });
 
     $('[href="#share-your-story"]').on("click", function(e) {
       e.preventDefault();
       if (!self.$menuOpenContainer.hasClass('active')) {
-        mainHandler.openMenu();
+        self.openMenu();
       }
       self.$contentRight.removeClass('active');
       self.$yourStoryContainer.addClass('active');
@@ -78,7 +78,7 @@ var gfHandler = {
   $htmlHasInputedFile = null,
   $selectIdentifier = $('.ginput_container select'),
   $gformPageFooter = $('.gform_body').find('#gform_previous_button_1'), 
-  name = '', email = '', phone = '', visit = '', visitTime = '', zooMemory = '', conn = '',
+  name = '', email = '', phone = '', 
 
   templateUpload = function(){
     var $items = '';
@@ -89,8 +89,7 @@ var gfHandler = {
       $years += '<option value="'+i+'">'+i+'</option>';      
     }
 
-    for (let i = 0; i < totalsItems; i++) {
-  
+    for (let i = 0; i < totalsItems; i++) {  
       $items += 
       '<div class="uploads-item input '+((i>0) ? 'hide': '')+'" data-id="'+i+'">'+
         '<div class="grid-x grid-margin-x grid-input">'+
@@ -108,9 +107,9 @@ var gfHandler = {
         '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
         '<textarea name="input_caption[]" id="input_caption_'+i+'" data-id="'+i+'"  class="textarea textarea-uploads" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+
         ((i+1 == totalsItems) ? '' :
-        '<a href="#show-next-item" class="button-plus white"> '+
-          '<span class="button-label color-white"> Add another photo or video </span>'+ 
-        '</a>')+   
+          '<a href="#show-next-item" class="button-plus white"> '+
+            '<span class="button-label color-white"> Add another photo or video </span>'+ 
+          '</a>')+   
         '<div class="review-container flex-container">'+
           '<p class="file-label button-label color-dark-green" data-id="'+i+'"></p>'+ 
           '<div class="flex-container">'+
@@ -201,7 +200,6 @@ var gfHandler = {
   },
 
   clearItems = function(id, file_only = false) {
-
     var $currInputFile = $('.input_file[data-id="'+id+'"]');
     var $currInputFileText = $('.file-label[data-id="'+id+'"]');
     var $labelInput = $('.label-input[data-id="'+id+'"]');
@@ -263,11 +261,19 @@ var gfHandler = {
 
   getFilename = function(id){
     var $obj = $('.input_file[data-id="'+id+'"]');
-    console.log($obj.files);
-    if ($obj.length > 0) {
+    
+    if ($obj) {
       var tmpName = $obj.val().split('\\').pop();
-      var size = '';//$obj.files.size;
-      return tmpName + size;
+      var file = $obj[0].files[0];
+      var totalSizeMb = 0;
+      if (file !== undefined) {
+        totalSizeMb = file.size  / Math.pow(1024,2);
+      }
+      if (tmpName != '') {
+        return tmpName  + ' (' + totalSizeMb.toFixed(2) + ' MB)';
+      } else {
+        return "";
+      }
     } else {
       return "";
     }
@@ -285,30 +291,32 @@ var gfHandler = {
       // fill for review section
       var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
       var visits = '';
-      self.zooMemory = $('body').find('textarea[id="input_1_6"]').val();
+      var conn = '';
+      var zooMemory = $('body').find('textarea[id="input_1_6"]').val();
+
       if (self.name) {
-        self.visit = $('body').find('input[id="input_1_13"]').val();
-        self.visitTime = $('body').find('select[id="input_1_15"]').find(":selected").text();
-        self.conn = ''; 
+        var visit = $('body').find('input[id="input_1_13"]').val();
+        var visitTime = $('body').find('select[id="input_1_15"]').find(":selected").text();
+
         $('body').find('.gfield_checkbox[id="input_1_5"]').children().each(function(){
           var val = $(this).find('input:checked').val();
           if (val) {
-            self.conn += val + ',';
+            conn += val + ',';
           }
         }); 
 
-        if ( (self.conn != '') || (self.visit != '') || (self.visitTime != '')) {
-          visits = '<span class="button-label"> ('+self.conn+' '+self.visit+' '+self.visitTime+')</span>';
+        if ( (conn != '') || (visit != '') || (visitTime != '')) {
+          visits = '<span class="button-label"> ('+conn+' '+visit+' '+visitTime+')</span>';
         } 
         $rev.append('<div class="form-input-text">'+ self.name + visits+'</div>');
       }
       $rev.append('<p>'+self.email + ', ' + self.phone + '</p>');      
-      $rev.append('<p class="zoo-memory"><i>'+self.zooMemory+'</i></p>');   
+      $rev.append('<p class="zoo-memory"><i>'+zooMemory+'</i></p>');   
       if (self.$htmlHasInputedFile != null) {
         $rev.after().append(self.$htmlHasInputedFile[0]);
       }       
 
-       // uploads handle
+      // uploads handle
       if (self.$htmlHasInputedFile == null) {
         var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
         var $html = self.templateUpload();
@@ -414,7 +422,6 @@ var gfHandler = {
           var id = this.getAttribute('data-id');
           var count = parseInt( parseInt(id) + 1);
           var $currInputFile = $('.input_file[data-id="'+id+'"]');
-          //var filename = $currInputFile.val().split('\\').pop();
           var filename = self.getFilename(id);
 
           if (filename) {
