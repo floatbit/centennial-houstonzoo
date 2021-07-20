@@ -61,7 +61,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="cell medium-12 show-for-small-only bottom-content-container">
+					<div class="cell show-for-small-only bottom-content-container">
 						<div class="small-copyright-container">
 							<div class="organization-container">
 								<p class="caption color-white">The Houston Zoo is a registered 501(c)(3) organization.</p>

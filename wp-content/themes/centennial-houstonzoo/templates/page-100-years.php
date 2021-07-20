@@ -7,7 +7,7 @@
 <?php get_header();?>
 
 <?php
-	$intro_image = get_field('intro');
+	$intro_image = get_the_post_thumbnail_url();
 	$mix_content_items = get_field('mix_content');
 	$lf_items = get_field('looking_forward');
 	$lf_array = array_chunk($lf_items['info_content'],4);
@@ -62,7 +62,7 @@
 	</section>
 
 	<section id="looking-forward">
-		<div class="grid-container double">
+		<div class="grid-container double-medium">
 			<div class="desc-container">
 				<div class="title-container">
 					<p class="color-dark-green"><?php print $lf_items['eyebrow']; ?></p>

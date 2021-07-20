@@ -64,6 +64,7 @@ jQuery(document).ready(function($) {
 		pageDots: false,
 		fade: true,
 		hash: false,
+		adaptiveHeight: true,
 		prevNextButtons: false,
 		selectedAttraction: 0.2, 
 	}).resize();

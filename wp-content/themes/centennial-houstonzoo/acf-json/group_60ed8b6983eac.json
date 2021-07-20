@@ -3,30 +3,6 @@
     "title": "100 Years Fields",
     "fields": [
         {
-            "key": "field_60ed8ca8e2ec5",
-            "label": "Intro",
-            "name": "intro",
-            "type": "image",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_60ed8d0f8ef80",
             "label": "Mix Content",
             "name": "mix_content",
@@ -492,5 +468,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626706297
+    "modified": 1626801527
 }
