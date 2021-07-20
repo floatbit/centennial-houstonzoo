@@ -130,7 +130,7 @@ function centennial_houstonzoo_zoo_connection_field( $form ) {
 			$choices = [];
 
       $choices[] = [
-        'text' => 'I accept and agree to the terms and conditions of the <a href="/">Houston Zoo Participant and Photo Release.</a> ', 
+        'text' => 'I accept and agree to the terms and conditions of the <span data-open="terms-reveal"><u>Houston Zoo Participant and Photo Release</u>.</span> ', 
         'value' => 'yes'
       ];
 			
@@ -326,6 +326,10 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
   GFAPI::delete_entry( $entry['id'] );
 }
 
+add_filter( 'gform_next_button', 'centennial_houstonzoo_form_next_button', 10, 2 );
+function centennial_houstonzoo_form_next_button( $button, $form ) {
+    return "<button class='button gform_next_button' id='gform_next_button_{$form['id']}'><span>Next</span><span class='fas fa-arrow-right'></span></button>";
+}
 
 
 require_once(__DIR__.'/shortcodes.php');

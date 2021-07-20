@@ -9,17 +9,20 @@
 	z-index: 100;
     transition: all 250ms;
     @include fluid-props(32px, 32px, padding-top);
-    @include fluid-props(32px, 32px, padding-bottom);
+    @include fluid-props(72px, 124px, padding-bottom);
 
     .header-container {
         @include fluid-props(46px, 124px, padding-bottom);
+        @include fluid-props(28px, 56px, margin-right);
+        @include fluid-props(28px, 56px, margin-left);
         
         position: relative;
-        text-align: center;
-        .left-content {
+        .logo-content {
+            text-align: center;
             @include breakpoint (small only) {
                 text-align: left;
             }
+
         }
         .right-content {
             text-align: right;
@@ -61,7 +64,9 @@
                 }
             }
         }
-        .right-section {
+        .right-section {        
+            display: flex;
+            align-items: center;
             .content-right {
                 display: none;
                 @include breakpoint (small only) {
@@ -77,12 +82,52 @@
                     display: block;
                 }
             }
+            .default-content {
+                margin-bottom: auto;
+            }
         }
     }
 
     &.active {
         top: 0; 
         backdrop-filter: blur(6px) brightness(0.6);
+    }
+}
+
+#terms-reveal {
+    @include fluid-props(54px, 98px, padding-top);
+    @include fluid-props(16px, 34px, padding-bottom);
+    position: relative;
+    width: 100%;
+    @include breakpoint (medium) {
+        max-width: rem-calc(746);
+    }
+
+    .close-button {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include fluid-props(20px, 40px, margin);
+        @include fluid-type(34px, 42px);
+    }
+
+    .cell-container {
+        text-align: center;
+        h3, .content-container {
+            text-align: left;
+        }
+        .button {
+            margin-top: rem-calc(16);
+            width: 100%;
+            @include breakpoint (medium) {
+                max-width: rem-calc(455);
+            }
+        }
+        .content-container {
+            @extend .caption;
+            text-transform: none !important;
+        }
     }
 }
 

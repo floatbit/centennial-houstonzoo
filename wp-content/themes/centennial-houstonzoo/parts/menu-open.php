@@ -5,25 +5,25 @@
 	$donate		= get_field('donate', 'option');
 ?>
 <div class="menu-open-container">
-	
-	<div class="grid-container">
-			
-		<div class="header-container">
-			<div class="grid-x grid-margin-x">
-				<div class="cell medium-offset-3 medium-6 small-6 left-content">
-					<a href="/" class="hide-for-small-only">
-						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
-					</a>
-					<a href="#menu-open-back" class="button button-label button-back show-for-small-only">
-						BACK TO MENU
-					</a>
-				</div>
-				<div class="cell medium-3 small-6 right-content">
-					<a href="#menu-open" class="fal fa-times color-white"></a>
-				</div>
+	<div class="header-container">
+		<div class="grid-x grid-margin-x align-middle">
+			<div class="cell medium-3 show-for-medium">
+				<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green button-inside-menu hide"><?php print $donate['title']; ?></a>
+			</div>
+			<div class="cell medium-6 small-6 logo-content">
+				<a href="/" class="hide-for-small-only">
+					<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
+				</a>
+				<a href="#menu-open-back" class="button button-label button-back show-for-small-only">
+					BACK TO MENU
+				</a>
+			</div>
+			<div class="cell medium-3 small-6 right-content">
+				<a href="#menu-open" class="fal fa-times color-white"></a>
 			</div>
 		</div>
-
+	</div>
+	<div class="grid-container">	
 		<div class="menu-container">
 			<div class="grid-y">
 				<div class="grid-x grid-padding-x">
@@ -53,5 +53,31 @@
 			</div>
 		</div>
 	</div>
+</div>
 
+<?php
+	$page = get_page_by_path( 'terms-and-conditions' );	
+?>
+<div class="reveal" id="terms-reveal" data-reveal>
+  <div class="grid-container">
+	  <div class="grid-x">
+		  <div class="cell cell-container">
+			<h3 class="color-dark-green small"> 
+				<?php print get_the_title( $page ); ?> 
+			</h3>
+			<div class="content-container">
+				<?php print apply_filters('the_content', $page->post_content ); ?>
+			</div>
+			
+			<button class="button" data-close aria-label="Close modal" type="button">
+				Accept & agree
+			</button>
+
+		  </div>
+	  </div>
+  </div>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true" class="fal fa-times color-dark-green"></span>
+  </button>
 </div>

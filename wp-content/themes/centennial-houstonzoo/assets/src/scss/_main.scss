@@ -77,6 +77,9 @@ h2 {
 
 h3 {
   @extend .h3-style;
+  &.small {
+    @include fluid-type(18px, 24px);   
+  }
 }
 
 h4 {
@@ -101,9 +104,12 @@ p {
   @include fluid-type(18px, 24px);   
 } 
 
+.caption-semibold {
+  text-transform: uppercase;
+}
+
 .caption, .caption-semibold {
   @include fluid-type(8px, 12px); 
-  text-transform: uppercase;
 }
 
 .tiny-text {
@@ -116,7 +122,7 @@ p {
 }
 
 .textarea-label {
-  line-height: 1.5;
+  line-height: 1.5 !important;
 }
 
 .button-label {
