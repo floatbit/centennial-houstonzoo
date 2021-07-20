@@ -8,7 +8,7 @@
 	<div class="header-container">
 		<div class="grid-x grid-margin-x align-middle">
 			<div class="cell medium-3 show-for-medium">
-				<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green"><?php print $donate['title']; ?></a>
+				<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green button-inside-menu hide"><?php print $donate['title']; ?></a>
 			</div>
 			<div class="cell medium-6 small-6 logo-content">
 				<a href="/" class="hide-for-small-only">

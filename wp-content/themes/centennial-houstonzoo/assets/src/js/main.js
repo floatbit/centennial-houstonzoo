@@ -8,6 +8,7 @@ var mainHandler = {
   $defaultContent = $('.default-content'), 
   $leftSection = $('.left-section'),
   $buttonBack = $('.button-back'),
+  $buttonInsideMenu = $('.button-inside-menu'),
 
   openMenu = function(e){
     this.$menuOpenContainer.toggleClass('active');
@@ -46,6 +47,7 @@ var mainHandler = {
       self.$yourStoryContainer.addClass('active');
       self.$leftSection.addClass('hide-for-small-only');      
       self.$buttonBack.removeClass('hide');
+      self.$buttonInsideMenu.removeClass('hide');
       
     });   
 
@@ -58,7 +60,6 @@ var mainHandler = {
       self.$yourStoryContainer.removeClass('active');
       self.$buttonBack.addClass('hide');
     })
-  
   }
 }
 
