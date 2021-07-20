@@ -8,17 +8,24 @@
 
 <div class="dynamic-content-container">
     <div class="grid-container">
-        <div class="side-image-content">
+        <div class="side-image-content expand-content">
             <div class="grid-x grid-margin-x">
                 <div class="cell medium-6">
-                    <div class="content-image left-image">
-                        <img src="<?php print $image; ?>">
-                    </div>
-                    <?php if($can_expand == true): ?>
-                        <div class="flex-container align-middle expand-button-container">
-                            <a href="#expand-image" class="button-plus fill"></a><span class="button-label color-dark-green"><?php print $expand_text; ?></span>
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-8 medium-12">
+                            <div class="content-image left-image">
+                                <img src="<?php print $image; ?>">
+                                <img src="<?php print $image; ?>" class="reveal full" id="example" data-reveal>
+                            </div>
                         </div>
-                    <?php endif;?>
+                        <?php if($can_expand == true): ?>
+                            <div class="cell small-4 medium-12">
+                                <div class="flex-container align-middle expand-button-container">
+                                    <a data-open="example" class="button-plus fill button-label color-dark-green"><?php print $expand_text; ?></a>
+                                </div>
+                            </div>
+                        <?php endif;?>
+                    </div>
                 </div>
                 <div class="cell medium-6">
                     <div class="content-desc">

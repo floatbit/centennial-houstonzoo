@@ -66,20 +66,18 @@ var gfHandler = {
   fieldName = 'input_16',
   fieldPhone = 'input_4',
   fieldEmail = 'input_3',
-  fieldVisit = 'input_13',
-  fieldVisitTime = 'input_15',
-  fieldZooMemory = 'input_6',
-  $input = $('.ginput_container').find('input[type=text], input[type=email], input[type=tel], input[type=number]'),
+  $input = $('.ginput_container').find('input[type=text], input[type=email], input[type=tel], input[type=number], textarea[name="input_6"]'),
   $fieldHidden = $('#field_1_12'),
   $fieldReview = [],
   $htmlContainer = '<li id="field_review"></li>',
   $htmlFileUpload = '<li id="field_uploads"></li>',
   $fieldBeforeDynamic = $('#field_1_20'),
-  totalsItems = 2,
+  totalsItems = 10,
   yearStart = 2000,
   $htmlHasInputedFile = null,
   $selectIdentifier = $('.ginput_container select'),
   $gformPageFooter = $('.gform_body').find('#gform_previous_button_1'), 
+  name = '', email = '', phone = '', visit = '', visitTime = '', zooMemory = '', conn = '',
 
   templateUpload = function(){
     var $items = '';
@@ -109,8 +107,8 @@ var gfHandler = {
         '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
         '<textarea name="input_caption[]" id="input_caption_'+i+'" data-id="'+i+'"  class="textarea textarea-uploads" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+
         ((i+1 == totalsItems) ? '' :
-        '<a href="#show-next-item" class="button-plus fill"> '+
-          '<span class="button-label color-white hover-fill"> Add another photo or video </span>'+ 
+        '<a href="#show-next-item" class="button-plus white"> '+
+          '<span class="button-label color-white"> Add another photo or video </span>'+ 
         '</a>')+   
         '<div class="review-container flex-container">'+
           '<p class="file-label button-label color-dark-green" data-id="'+i+'"></p>'+ 
@@ -249,52 +247,68 @@ var gfHandler = {
     }
   },
 
-  init = function(e) {
+  onChangeEvents = function(){
     var self = this;
-    var name = '', email = '', phone = '', visit = '', visitTime = '', zooMemory = '';
-
-    self.$fieldReview = self.$fieldHidden.after($htmlContainer).next();
-    self.$input.on("change, keyup", function(e){
-      switch (this.name) {
-        case fieldName:
-          name = this.value 
-          break;
-        case fieldEmail:
-          email = this.value;
-          break;
-        case fieldPhone:
-          phone = this.value;
-          break;
-        case fieldVisit:
-          visit = this.value;
-          break;
-        case fieldVisitTime:
-          visitTime = this.value;
-          break;
-        case fieldZooMemory: 
-          zooMemory = this.value;
-          break;
+    this.$input.on("change, keyup, input", function(e){
+      console.log(this);
+      if (this.name == self.fieldName) {
+        self.name = this.value 
+      } else if (this.name == self.fieldEmail) {
+        self.email = this.value;
+      } else if (this.name == self.fieldPhone) {
+        self.phone = this.value;
       }
     });
+  },
+
+  getFilename = function(id){
+    var $obj = $('.input_file[data-id="'+id+'"]');
+    console.log($obj);
+    if ($obj.length > 0) {
+      var tmpName = $obj.val().split('\\').pop();
+      var size = $obj.files[0].size;
+      return tmpName + size;
+    } else {
+      return "";
+    }
+  },
+
+  init = function(e) {
+    var self = this;
+
+    self.$fieldReview = self.$fieldHidden.after($htmlContainer).next();
+    self.onChangeEvents();
     self.comboStyled();
 
     $(document).on('gform_post_render', function (event, form_id, current_page) {
+      self.onChangeEvents();
       // fill for review section
       var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
       var visits = '';
-      if (name) {
-        if ( visit && visitTime ) {
-          visits = '<span class="">'+visit+', '+visitTime+'</span>';
-        }         
-        $rev.append('<div class="form-input-text">'+name+visits+'</div>');
+      self.zooMemory = $('body').find('textarea[id="input_1_6"]').val();
+      if (self.name) {
+        self.visit = $('body').find('input[id="input_1_13"]').val();
+        self.visitTime = $('body').find('select[id="input_1_15"]').find(":selected").text();
+        self.conn = ''; 
+        $('body').find('.gfield_checkbox[id="input_1_5"]').children().each(function(){
+          var val = $(this).find('input:checked').val();
+          if (val) {
+            self.conn += val + ',';
+          }
+        }); 
+
+        if ( (self.conn != '') || (self.visit != '') || (self.visitTime != '')) {
+          visits = '<span class="button-label"> ('+self.conn+' '+self.visit+' '+self.visitTime+')</span>';
+        } 
+        $rev.append('<div class="form-input-text">'+ self.name + visits+'</div>');
       }
-      $rev.append('<p>'+email + (phone) ? ', ' : ''+phone+'</p>');      
-      $rev.append('<p>'+zooMemory+'</p>');   
+      $rev.append('<p>'+self.email + ', ' + self.phone + '</p>');      
+      $rev.append('<p class="zoo-memory"><i>'+self.zooMemory+'</i></p>');   
       if (self.$htmlHasInputedFile != null) {
         $rev.after().append(self.$htmlHasInputedFile[0]);
       }       
 
-      // uploads handle
+       // uploads handle
       if (self.$htmlHasInputedFile == null) {
         var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
         var $html = self.templateUpload();
@@ -306,10 +320,9 @@ var gfHandler = {
       }
 
       $uploads.children().each(function(){  
-        console.log(this);
         var id = this.getAttribute('data-id');
-        var filename = $(' input.input_file[data-id="'+id+'"]').val().split('\\').pop();
-        
+        var filename = self.getFilename(id);
+
         if (filename != '') {
           self.inputHandler(id, filename, true);
         }
@@ -319,7 +332,7 @@ var gfHandler = {
         e.preventDefault();
         e.stopPropagation();
         var id = $(this).parents()[0].getAttribute('data-id');
-        var filename = $(' input.input_file[data-id="'+id+'"]').val().split('\\').pop();
+        var filename = self.getFilename(id);
 
         if (filename == '') {
           alert('Cannot add new item, fill current item first.');
@@ -339,7 +352,7 @@ var gfHandler = {
         e.preventDefault();
         var id = this.getAttribute('data-id');
         var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
-        var filename = $(' input.input_file[data-id="'+id+'"]').val().split('\\').pop();
+        var filename = self.getFilename(id);
         
         if (filename == '') {
           alert('File must be selected.')
@@ -401,7 +414,8 @@ var gfHandler = {
           var id = this.getAttribute('data-id');
           var count = parseInt( parseInt(id) + 1);
           var $currInputFile = $('.input_file[data-id="'+id+'"]');
-          var filename = $currInputFile.val().split('\\').pop();
+          //var filename = $currInputFile.val().split('\\').pop();
+          var filename = self.getFilename(id);
 
           if (filename) {
             var caption = $('.textarea-uploads[data-id="'+id+'"]').val();
@@ -437,7 +451,6 @@ var gfHandler = {
           $("#gform_target_page_number_1").val("3");  
           $("#gform_1").trigger("submit",[true]);
 
-          console.log(id);
           $($('.btn-act[data-id="'+id+'"]')[0]).click();
         });
 
@@ -463,7 +476,7 @@ jQuery(document).ready(function($) {
   mainHandler.init();
   gfHandler.init();
 
-  $(window).on("scroll", function() {
+  $(window).on("load, scroll", function() {
     if($(window).scrollTop() > 50) {
         $("header").addClass("scrolled");
         $(".logo-white").addClass("hide");

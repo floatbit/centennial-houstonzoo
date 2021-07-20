@@ -5,25 +5,25 @@
 	$donate		= get_field('donate', 'option');
 ?>
 <div class="menu-open-container">
-	
-	<div class="grid-container">
-			
-		<div class="header-container">
-			<div class="grid-x grid-margin-x">
-				<div class="cell medium-offset-3 medium-6 small-6 left-content">
-					<a href="/" class="hide-for-small-only">
-						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
-					</a>
-					<a href="#menu-open-back" class="button button-label button-back show-for-small-only">
-						BACK TO MENU
-					</a>
-				</div>
-				<div class="cell medium-3 small-6 right-content">
-					<a href="#menu-open" class="fal fa-times color-white"></a>
-				</div>
+	<div class="header-container">
+		<div class="grid-x grid-margin-x align-middle">
+			<div class="cell medium-3 show-for-medium">
+				<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green"><?php print $donate['title']; ?></a>
+			</div>
+			<div class="cell medium-6 small-6 logo-content">
+				<a href="/" class="hide-for-small-only">
+					<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
+				</a>
+				<a href="#menu-open-back" class="button button-label button-back show-for-small-only">
+					BACK TO MENU
+				</a>
+			</div>
+			<div class="cell medium-3 small-6 right-content">
+				<a href="#menu-open" class="fal fa-times color-white"></a>
 			</div>
 		</div>
-
+	</div>
+	<div class="grid-container">	
 		<div class="menu-container">
 			<div class="grid-y">
 				<div class="grid-x grid-padding-x">

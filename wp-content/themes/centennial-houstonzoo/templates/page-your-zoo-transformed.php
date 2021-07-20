@@ -70,7 +70,7 @@
 				<div class="grid-x grid-margin-x">
 					<?php foreach($completed_projects['projects'] as $item):?>
 						<?php $i++; ?>
-						<div class="cell small-6 medium-4">
+						<div class="cell small-6 medium-4 project-id-container" data-id=<?php print $i; ?>>
 							<div class="project-item-container" data-id=<?php print $i; ?>>
 								<div class="image-container">
 									<img src="<?php print $item['image']; ?>">

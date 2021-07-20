@@ -143,6 +143,9 @@
             overflow: hidden;
             word-wrap: break-word;
         }
+        .zoo-memory {
+            @include fluid-props(48px, 60px, margin-bottom);
+        }
     }
 
     .file-label {
@@ -245,11 +248,11 @@
             @extend .textarea-label;
             margin-top: rem-calc(14);
             margin-bottom: rem-calc(14);
+            padding-top: rem-calc(16);
+            padding-bottom: rem-calc(16);
             resize: none;
         }
         .textarea-uploads {
-            padding-top: rem-calc(16);
-            padding-bottom: rem-calc(16);
             height: rem-calc(100);
         }
         input[type=checkbox] {
@@ -306,13 +309,21 @@
             width: 25%;
             margin-right: 5%;
         }
+        
         #field_1_15 {
             width: 70%;
         }
+        
         #field_1_15, #field_1_13 {
             display: inline-table;
             @include breakpoint (small only) {
                 width: 47.5%;
+            }
+        }
+
+        #field_1_5 , #field_1_17 {
+            .validation_message {
+                margin: 0 !important;
             }
         }
 
@@ -323,6 +334,16 @@
         input[type=button] {
             @extend .arrow-for-button;
             width: 100%;
+            @include breakpoint (large) {
+                padding: rem-calc(15px) 0px;
+            }
+            &::after {
+                content: "";
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url(../img/icon-arrow-right.svg);
+                margin-left: rem-calc(10);
+            }
         }
     }
     .gform_heading .gform_title {
@@ -407,14 +428,36 @@
             display: none;
         }
     } 
+   
+    .gfield_description.validation_message {
+        @include fluid-props (-16px, -24px, margin-top);
+        @include fluid-props (16px, 24px, margin-bottom);
+    }
 
-    .gf_progressbar_percentage {
-        span {
-            display: none;
+    #gform_next_button_1 {
+        width: 100%;
+        span:last-of-type {
+            margin-left: rem-calc(10);
         }
     }
 
-    img.gform_ajax_spinner, .gform_page_footer .gform_previous_button, .ginput_counter, .gf_progressbar_wrapper .gf_progressbar_title, .instruction {
+    .gf_progressbar_percentage span,
+    img.gform_ajax_spinner, .gform_page_footer .gform_previous_button, .ginput_counter, 
+    .gf_progressbar_wrapper .gf_progressbar_title, .instruction, .validation_error, .gfield_required {
         display: none;
+    }
+}
+
+.gform_confirmation_message_1  {
+    h2 {
+        margin: 0;
+    }
+}
+
+.no-touchevents {
+    .gform_page_footer {
+        input[type=button]::after {
+            margin-left: rem-calc(16);
+        }
     }
 }

@@ -34,7 +34,7 @@ html {
   height: 100%;
   width: 100%;
   top: 0;
-  opacity: 0.55;
+  opacity: 0.65;
 
   &.blue {
     background-color: #231F20;
@@ -120,7 +120,7 @@ p {
 }
 
 .textarea-label {
-  line-height: 1.5;
+  line-height: 1.5 !important;
 }
 
 .button-label {
@@ -132,7 +132,7 @@ p {
 }
 
 .h1-style-large {
-  @include fluid-type(44px, 64px);
+  @include fluid-type(36px, 64px);
 }
 
 .h2-style {

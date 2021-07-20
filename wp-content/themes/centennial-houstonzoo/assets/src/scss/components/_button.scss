@@ -82,18 +82,21 @@
     display: flex;
     align-items: center;
     &::before {
-        content: url(../img/icon-plus.svg);
+        content: "";
         @include fluid-props(20px, 30px, height);
         @include fluid-props(20px, 30px, width);
         margin-right: rem-calc(10);
+        background-image: url(../img/icon-plus.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     &.is-active::before {
-        content: url(../img/icon-strip.svg);
+        background-image: url(../img/icon-strip.svg);
     }
 
-    &.fill::before {
-        content: url(../img/icon-plus-fill.svg);
+    &.fill::before, &.white::before {
+        background-image: url(../img/icon-plus-fill.svg);
     }
 }
 
@@ -132,15 +135,19 @@
 
     .button-plus:hover {
         &::before { 
-            content: url(../img/icon-plus-fill.svg);
+            background-image: url(../img/icon-plus-fill.svg);
         }
 
         &.is-active::before { 
-            content: url(../img/icon-strip-fill.svg);
+            background-image: url(../img/icon-strip-fill.svg);
         }
 
         &.fill::before {
-            content: url(../img/icon-plus.svg);
+            background-image: url(../img/icon-plus.svg);
+        }
+        
+        &.white::before {
+            background-image: url(../img/icon-plus-white.svg);
         }
     }
 }
