@@ -94,6 +94,43 @@
     }
 }
 
+#terms-reveal {
+    @include fluid-props(54px, 98px, padding-top);
+    @include fluid-props(16px, 34px, padding-bottom);
+    position: relative;
+    width: 100%;
+    @include breakpoint (medium) {
+        max-width: rem-calc(746);
+    }
+
+    .close-button {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include fluid-props(20px, 40px, margin);
+        @include fluid-type(34px, 42px);
+    }
+
+    .cell-container {
+        text-align: center;
+        h3, .content-container {
+            text-align: left;
+        }
+        .button {
+            margin-top: rem-calc(16);
+            width: 100%;
+            @include breakpoint (medium) {
+                max-width: rem-calc(455);
+            }
+        }
+        .content-container {
+            @extend .caption;
+            text-transform: none !important;
+        }
+    }
+}
+
 .no-touchevents {
     .menu-open-container .menu-container .left-section .menu-item:hover {
         .title-text {

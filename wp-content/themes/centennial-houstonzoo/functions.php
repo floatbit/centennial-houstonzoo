@@ -130,7 +130,7 @@ function centennial_houstonzoo_zoo_connection_field( $form ) {
 			$choices = [];
 
       $choices[] = [
-        'text' => 'I accept and agree to the terms and conditions of the <a href="/">Houston Zoo Participant and Photo Release.</a> ', 
+        'text' => 'I accept and agree to the terms and conditions of the <span data-open="terms-reveal"><u>Houston Zoo Participant and Photo Release</u>.</span> ', 
         'value' => 'yes'
       ];
 			

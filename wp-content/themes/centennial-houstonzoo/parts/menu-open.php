@@ -53,5 +53,31 @@
 			</div>
 		</div>
 	</div>
+</div>
 
+<?php
+	$page = get_page_by_path( 'terms-and-conditions' );	
+?>
+<div class="reveal" id="terms-reveal" data-reveal>
+  <div class="grid-container">
+	  <div class="grid-x">
+		  <div class="cell cell-container">
+			<h3 class="color-dark-green small"> 
+				<?php print get_the_title( $page ); ?> 
+			</h3>
+			<div class="content-container">
+				<?php print apply_filters('the_content', $page->post_content ); ?>
+			</div>
+			
+			<button class="button" data-close aria-label="Close modal" type="button">
+				Accept & agree
+			</button>
+
+		  </div>
+	  </div>
+  </div>
+
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true" class="fal fa-times color-dark-green"></span>
+  </button>
 </div>

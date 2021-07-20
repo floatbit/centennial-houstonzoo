@@ -250,7 +250,6 @@ var gfHandler = {
   onChangeEvents = function(){
     var self = this;
     this.$input.on("change, keyup, input", function(e){
-      console.log(this);
       if (this.name == self.fieldName) {
         self.name = this.value 
       } else if (this.name == self.fieldEmail) {
@@ -263,10 +262,10 @@ var gfHandler = {
 
   getFilename = function(id){
     var $obj = $('.input_file[data-id="'+id+'"]');
-    console.log($obj);
+    console.log($obj.files);
     if ($obj.length > 0) {
       var tmpName = $obj.val().split('\\').pop();
-      var size = $obj.files[0].size;
+      var size = '';//$obj.files.size;
       return tmpName + size;
     } else {
       return "";
@@ -381,8 +380,8 @@ var gfHandler = {
       });
         
       $uploads.find(' input.input_file ').on("change", function() {
-        var filename = $(this).val().split('\\').pop();
         var id = this.getAttribute('data-id');
+        var filename = self.getFilename(id);
         self.inputHandler(id, filename);
       });
 
