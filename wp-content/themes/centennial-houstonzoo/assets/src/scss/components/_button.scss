@@ -98,19 +98,14 @@
     &.fill::before, &.white::before {
         background-image: url(../img/icon-plus-fill.svg);
     }
-}
 
-.button-plus-no-text {
-    content: url(../img/icon-plus.svg);
-    @include fluid-props(20px, 30px, height);
-    @include fluid-props(20px, 30px, width);
+    &.no-text {
+        justify-content: flex-end;
 
-    &.is-active {
-        content: url(../img/icon-strip.svg);
-    }
-
-    &.fill {
-        content: url(../img/icon-plus-fill.svg);
+        &::before {
+            margin-right: 0px;
+            margin-left: 0px;
+        }
     }
 }
 

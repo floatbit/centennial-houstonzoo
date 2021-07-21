@@ -20,7 +20,7 @@ var yourZooHandler = {
 				} else {
 					var oddEven = id % 2;
 					var nextId = id;
-					if (oddEven > 0 && id < totalItem) {
+					if (oddEven > 0 && id < (totalItem-1)) {
 						nextId++;
 					}
 					$clonedContent = $item.clone();

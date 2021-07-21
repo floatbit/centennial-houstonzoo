@@ -10,7 +10,6 @@
 	$intro_image = get_the_post_thumbnail_url();
 	$main_content_items = get_field('main_content');
 	$completed_projects = get_field('completed_projects');
-	$i = 0;
 ?>
 
 <main>
@@ -64,15 +63,14 @@
 	<section id="completed-projects">
 		<div class="grid-container">
 			<div class="title-content">
-				<p class="bold color-light-green"><?php print $completed_projects['eyebrow']; ?></p>
+				<p class="eyebrow bold color-dark-green"><?php print $completed_projects['eyebrow']; ?></p>
 			</div>
 			<div class="projects-container">
 				<div class="grid-x grid-margin-x">
-					<?php foreach($completed_projects['projects'] as $item):?>
-						<?php $i++; ?>
-						<div class="cell small-6 medium-4 project-id-container" data-id=<?php print $i; ?>>
-							<div class="project-item-container" data-id=<?php print $i; ?>>
-								<a href="#show-project-desc" data-id=<?php print $i; ?> data-count-item=<?php print count($completed_projects['projects']); ?>>
+					<?php foreach($completed_projects['projects'] as $key => $item):?>
+						<div class="cell small-6 medium-4 project-id-container" data-id=<?php print $key; ?>>
+							<div class="project-item-container" data-id=<?php print $key; ?>>
+								<a href="#show-project-desc" data-id=<?php print $key; ?> data-count-item=<?php print count($completed_projects['projects']); ?>>
 									<div class="image-container">
 										<img src="<?php print $item['image']; ?>">
 									</div>
@@ -84,7 +82,7 @@
 										</div>
 										<div class="cell small-3">
 											<div class="show-desc-project-container">
-												<span class="show-desc button-plus-no-text" data-id=<?php print $i; ?>></span>
+												<span class="show-desc button-plus no-text" data-id=<?php print $key; ?>></span>
 											</div>
 										</div>
 									</div>
@@ -94,7 +92,7 @@
 										</p>
 									</div>
 								</a>
-								<div class="description-container hide" data-id=<?php print $i; ?>>
+								<div class="description-container hide" data-id=<?php print $key; ?>>
 									<div class="desc-content">
 										<?php print $item['description']; ?>
 									</div>

@@ -55,7 +55,16 @@
             }
 
             .expand-button-container {
-                @include fluid-props(0, 20px, margin-top);
+                @include fluid-props(0px, 20px, margin-top);
+
+                a::before {
+                    @include fluid-props(16px, 30px, height);
+                    @include fluid-props(16px, 30px, width);
+                    @include fluid-props(4px, 12px, margin-right);
+                    @include breakpoint(small only) {
+                        margin-left: rem-calc(6);
+                    }
+                }
             }
         }
     }

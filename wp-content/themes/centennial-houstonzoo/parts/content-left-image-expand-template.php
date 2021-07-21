@@ -15,7 +15,12 @@
                         <div class="cell small-8 medium-12">
                             <div class="content-image left-image">
                                 <img src="<?php print $image; ?>">
-                                <img src="<?php print $image; ?>" class="reveal full" id="example" data-reveal>
+                                <div class="image-reveal full reveal" id="example" data-reveal>
+                                    <a class="close-button" data-close type="button">
+                                        <span class="color-black">&times;</span>
+                                    </a>
+                                    <img src="<?php print $image; ?>">
+                                </div>
                             </div>
                         </div>
                         <?php if($can_expand == true): ?>

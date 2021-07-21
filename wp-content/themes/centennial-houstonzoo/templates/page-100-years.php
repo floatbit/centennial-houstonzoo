@@ -65,7 +65,7 @@
 		<div class="grid-container double-medium">
 			<div class="desc-container">
 				<div class="title-container">
-					<p class="color-dark-green"><?php print $lf_items['eyebrow']; ?></p>
+					<p class="eyebrow bold color-dark-green"><?php print $lf_items['eyebrow']; ?></p>
 				</div>
 				<div class="grid-x grid-margin-x">
 					<div class="cell medium-6">
