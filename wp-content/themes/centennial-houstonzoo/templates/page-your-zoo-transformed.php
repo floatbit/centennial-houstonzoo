@@ -71,20 +71,20 @@
 					<?php foreach($completed_projects['projects'] as $item):?>
 						<?php $i++; ?>
 						<div class="cell small-6 medium-4 project-id-container" data-id=<?php print $i; ?>>
-							<!-- <a href="#show-project-desc" data-id=<?php print $i; ?> data-count-item="<?php print count($completed_projects['projects']); ?>"> -->
-								<div class="project-item-container" data-id=<?php print $i; ?>>
+							<div class="project-item-container" data-id=<?php print $i; ?>>
+								<a href="#show-project-desc" data-id=<?php print $i; ?> data-count-item=<?php print count($completed_projects['projects']); ?>>
 									<div class="image-container">
 										<img src="<?php print $item['image']; ?>">
 									</div>
 									<div class="grid-x grid-margin-x">
 										<div class="cell small-9">
 											<div class="title-container">
-												<h4><?php print $item['title']; ?></h4>
+												<h4 class="color-black"><?php print $item['title']; ?></h4>
 											</div>
 										</div>
 										<div class="cell small-3">
 											<div class="show-desc-project-container">
-												<a href="#show-project-desc" class="button-plus-no-text" data-id=<?php print $i; ?> data-count-item="<?php print count($completed_projects['projects']); ?>"></a>
+												<span class="show-desc button-plus-no-text" data-id=<?php print $i; ?>></span>
 											</div>
 										</div>
 									</div>
@@ -93,20 +93,20 @@
 											<?php print $item['eyebrow']; ?>
 										</p>
 									</div>
-									<div class="description-container hide" data-id=<?php print $i; ?>>
-										<div class="desc-content">
-											<?php print $item['description']; ?>
-										</div>
-										<?php if ($item['cta'] != null): ?>
-											<div class="link-content">
-												<a href="<?php print $item['cta']; ?>" class="button green-outer">
-													LEARN MORE
-												</a>
-											</div>
-										<?php endif; ?>
+								</a>
+								<div class="description-container hide" data-id=<?php print $i; ?>>
+									<div class="desc-content">
+										<?php print $item['description']; ?>
 									</div>
+									<?php if ($item['cta'] != null): ?>
+										<div class="link-content">
+											<a href="<?php print $item['cta']; ?>" class="button green-outer">
+												LEARN MORE
+											</a>
+										</div>
+									<?php endif; ?>
 								</div>
-							<!-- </a> -->
+							</div>
 						</div>
 					<?php endforeach; ?>
 				</div>
