@@ -11,7 +11,7 @@
         <div class="side-image-content expand-content">
             <div class="grid-x grid-margin-x">
                 <div class="cell medium-6">
-                    <div class="grid-x grid-margin-x">
+                    <div class="grid-x">
                         <div class="cell small-8 medium-12">
                             <div class="content-image left-image">
                                 <img src="<?php print $image; ?>">
@@ -20,7 +20,7 @@
                         </div>
                         <?php if($can_expand == true): ?>
                             <div class="cell small-4 medium-12">
-                                <div class="flex-container align-middle expand-button-container">
+                                <div class="expand-button-container">
                                     <a data-open="example" class="button-plus fill button-label color-dark-green"><?php print $expand_text; ?></a>
                                 </div>
                             </div>

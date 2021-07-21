@@ -3,30 +3,6 @@
     "title": "Your Zoo Transformed Fields",
     "fields": [
         {
-            "key": "field_60ed8eb7d0232",
-            "label": "Intro",
-            "name": "intro",
-            "type": "image",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_60f02fbc319b5",
             "label": "Main Content",
             "name": "main_content",
@@ -409,5 +385,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626706238
+    "modified": 1626801541
 }

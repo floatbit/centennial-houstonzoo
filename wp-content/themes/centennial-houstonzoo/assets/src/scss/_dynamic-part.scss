@@ -18,11 +18,11 @@
 
     .side-image-content {
         @include fluid-props(52px, 92px, padding-top);
-        @include fluid-props(88px, 172px, padding-bottom);
+        @include fluid-props(68px, 108px, padding-bottom);
     
         .content-image {
             @include breakpoint (medium) {
-                margin-top: rem-calc(-120);
+                margin-top: rem-calc(-128);
             }
     
             @include breakpoint (small only) {
@@ -31,7 +31,7 @@
 
             &.left-image {
                 @include breakpoint (small only) {
-                    margin-top: rem-calc(-88);
+                    margin-top: rem-calc(-84);
                 }
             }
     
@@ -42,8 +42,12 @@
 
         &.expand-content{
             @include fluid-props(32px, 92px, padding-top);
+            @include fluid-props(64px, 88px, padding-bottom);
 
             .content-image.left-image {
+                @include breakpoint (small only) {
+                    margin-top: rem-calc(-64);
+                }
                 img {
                     @include fluid-props(164px, 356px, height);
                     @include fluid-props(208px, 456px, width);
@@ -51,11 +55,7 @@
             }
 
             .expand-button-container {
-                @include fluid-props(32px, 20px, margin-top);
-    
-                a {
-                    /* @include fluid-props(8px, 12px, margin-right); */
-                }
+                @include fluid-props(0, 20px, margin-top);
             }
         }
     }
@@ -101,7 +101,8 @@
         &.small-size {
             padding-top : rem-calc(88);
             padding-bottom : rem-calc(84);
-            min-height : rem-calc(600);
+            /* min-height : rem-calc(600); */
+            min-height: fit-content;
         }
 
         .desc-container {

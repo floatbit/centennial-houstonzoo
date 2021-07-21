@@ -4,7 +4,7 @@ var yourZooHandler = {
 			e.preventDefault();
 			var id = this.getAttribute('data-id');
 			var totalItem = this.getAttribute('data-count-item');
-			$button = $(this);
+			$button = jQuery(".show-desc[data-id="+id+"]");
 			$item = jQuery(".description-container[data-id="+id+"]");
 			$itemContainer = jQuery(".project-item-container[data-id="+id+"]");
 			$itemProjectContainer = jQuery(".projects-container");
@@ -64,6 +64,7 @@ jQuery(document).ready(function($) {
 		pageDots: false,
 		fade: true,
 		hash: false,
+		adaptiveHeight: true,
 		prevNextButtons: false,
 		selectedAttraction: 0.2, 
 	}).resize();

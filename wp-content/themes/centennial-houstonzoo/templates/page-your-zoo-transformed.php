@@ -7,7 +7,7 @@
 <?php get_header();?>
 
 <?php
-	$intro_image = get_field('intro');
+	$intro_image = get_the_post_thumbnail_url();
 	$main_content_items = get_field('main_content');
 	$completed_projects = get_field('completed_projects');
 	$i = 0;
@@ -64,7 +64,7 @@
 	<section id="completed-projects">
 		<div class="grid-container">
 			<div class="title-content">
-				<p class="color-light-green"><?php print $completed_projects['eyebrow']; ?></p>
+				<p class="bold color-light-green"><?php print $completed_projects['eyebrow']; ?></p>
 			</div>
 			<div class="projects-container">
 				<div class="grid-x grid-margin-x">
@@ -72,26 +72,28 @@
 						<?php $i++; ?>
 						<div class="cell small-6 medium-4 project-id-container" data-id=<?php print $i; ?>>
 							<div class="project-item-container" data-id=<?php print $i; ?>>
-								<div class="image-container">
-									<img src="<?php print $item['image']; ?>">
-								</div>
-								<div class="grid-x grid-margin-x">
-									<div class="cell small-9">
-										<div class="title-container">
-											<h4><?php print $item['title']; ?></h4>
+								<a href="#show-project-desc" data-id=<?php print $i; ?> data-count-item=<?php print count($completed_projects['projects']); ?>>
+									<div class="image-container">
+										<img src="<?php print $item['image']; ?>">
+									</div>
+									<div class="grid-x grid-margin-x">
+										<div class="cell small-9">
+											<div class="title-container">
+												<h4 class="color-black"><?php print $item['title']; ?></h4>
+											</div>
+										</div>
+										<div class="cell small-3">
+											<div class="show-desc-project-container">
+												<span class="show-desc button-plus-no-text" data-id=<?php print $i; ?>></span>
+											</div>
 										</div>
 									</div>
-									<div class="cell small-3">
-										<div class="show-desc-project-container">
-											<a href="#show-project-desc" class="button-plus-no-text" data-id=<?php print $i; ?> data-count-item="<?php print count($completed_projects['projects']); ?>"></a>
-										</div>
+									<div class="eyebrow-container">
+										<p class="eyebrow color-light-green">
+											<?php print $item['eyebrow']; ?>
+										</p>
 									</div>
-								</div>
-								<div class="eyebrow-container">
-									<p class="eyebrow color-light-green">
-										<?php print $item['eyebrow']; ?>
-									</p>
-								</div>
+								</a>
 								<div class="description-container hide" data-id=<?php print $i; ?>>
 									<div class="desc-content">
 										<?php print $item['description']; ?>

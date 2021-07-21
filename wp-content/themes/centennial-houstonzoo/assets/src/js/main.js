@@ -261,7 +261,7 @@ var gfHandler = {
 
   getFilename = function(id){
     var $obj = $('.input_file[data-id="'+id+'"]');
-    
+
     if ($obj) {
       var tmpName = $obj.val().split('\\').pop();
       var file = $obj[0].files[0];
@@ -495,7 +495,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $(window).on('resize, load, scroll', function() {
+/*   $(window).on('resize, load, scroll', function() {
     $('.dynamic-content-container').children('.bg-image-content').each(function() {
       $content = $(this);
       var specifiedId = this.getAttribute('data-specified-id');
@@ -508,7 +508,7 @@ jQuery(document).ready(function($) {
         'height': newHeight+"px"
       });
     })
-  }).trigger('resize');
+  }).trigger('resize'); */
   
 	// Adds Flex Video to YouTube and Vimeo Embeds
   $('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function() {

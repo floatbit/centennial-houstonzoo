@@ -54,11 +54,8 @@
 
                 .project-item-container:not(.set-focus) {
                     opacity: 0.5;
-
-                    .show-desc-project-container a {
-                        pointer-events: none;
-                        cursor: default;
-                    }
+                    pointer-events: none;
+                    cursor: default;
                 }
             }
             .small-description-container {

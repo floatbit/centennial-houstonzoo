@@ -14,8 +14,12 @@
             <div class="grid-x">
                 <div class="cell <?php print ($small_size == true) ? 'medium-5' : 'small-9 medium-3' ?>">
                     <div class="desc-container color-white">
-                        <p class="eyebrow color-white"><?php print $eyebrow; ?></p>
-                        <h3 class="color-light-blue"><?php print $title; ?></h3>
+                        <?php if($eyebrow != null): ?>
+                            <p class="eyebrow color-white"><?php print $eyebrow; ?></p>
+                        <?php endif; ?>
+                        <?php if($title != null): ?>
+                            <h3 class="color-light-blue"><?php print $title; ?></h3>
+                        <?php endif; ?>
                         <?php print $description; ?>
                     </div>
                 </div>
