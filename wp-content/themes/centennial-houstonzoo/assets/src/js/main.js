@@ -261,7 +261,7 @@ var gfHandler = {
 
   getFilename = function(id){
     var $obj = $('.input_file[data-id="'+id+'"]');
-    
+
     if ($obj) {
       var tmpName = $obj.val().split('\\').pop();
       var file = $obj[0].files[0];

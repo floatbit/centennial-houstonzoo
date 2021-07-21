@@ -78,7 +78,7 @@
 
 .gform_body {
     #field_uploads {
-        @include fluid-props(36px, 60px, margin-bottom);
+        @include fluid-props(10px, 20px, margin-bottom);
     }
     
     #field_uploads, #field_review {
