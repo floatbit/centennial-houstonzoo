@@ -37,7 +37,17 @@
         cursor: pointer;
     }
 }
+.ginput_container_select, .input-field-cmb {
+    .select {
+        position: relative;
+    }
+}
 
+.input-field-cmb {
+    .select-styled {
+        background-position: 88% 50% !important;
+    }
+}
 .select-hidden {
     display: none;
 }
@@ -48,6 +58,7 @@
     cursor: pointer;
     background-repeat: no-repeat;
     background-position: calc(100% - 16px) center;
+    position: absolute;
 }
 
 .select-styled{
@@ -66,6 +77,15 @@
 	margin-bottom: rem-calc(36);
     background-image: url(../img/icon-arrow-up.svg);
     background-position: calc(100% - 16px) 20px;
+    backdrop-filter: brightness(0.5);
+    max-height: 60vh;
+    overflow: overlay;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { 
+        display: none;
+    }
+    
     li {
         @extend .form-input-text;
         padding: rem-calc(6) rem-calc(26);     
@@ -74,6 +94,14 @@
         }        
         margin: 0;
     }
+}
+
+.container {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 .gform_body {
@@ -86,7 +114,7 @@
             margin-bottom: -1px;
             &.selected {
                 .grid-input, .gfield_label, .textarea-uploads, .button-plus {
-                    display: none;
+                    display: none !important;
                 }
                 &:not(:last-of-type) { 
                     margin-bottom: -1px;
@@ -313,6 +341,10 @@
         
         #field_1_15 {
             width: 70%;
+            .select-options,
+            .select-styled {
+                top: rem-calc(-34);
+            }
         }
         
         #field_1_15, #field_1_13 {
