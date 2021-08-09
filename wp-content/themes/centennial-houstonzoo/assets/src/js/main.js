@@ -100,9 +100,9 @@ var gfHandler = {
   templateUpload = function(){
     var $items = '';
     var $years = '<option>Year</option>';
-    var currentYear = new Date().getFullYear() + 1;
+    var currentYear = new Date().getFullYear() ;
 
-    for (let i = yearStart; i < currentYear; i++) {
+    for (let i = currentYear; i > yearStart; i--) {
       $years += '<option value="'+i+'">'+i+'</option>';      
     }
 
@@ -110,7 +110,7 @@ var gfHandler = {
       $items += 
       '<div class="uploads-item input '+((i>0) ? 'hide': '')+'" data-id="'+i+'">'+
         '<div class="grid-x grid-margin-x grid-input">'+
-          '<div class="cell small-7 input-field">'+
+          '<div class="cell small-9 input-field">'+
             '<input type="file" class="input_file hide" id="input_file_'+i+'" data-id="'+i+'" name="file_upload[]" size="25" accept=".jpg,.png,.giv,.mov" />'+
             '<label class="label-input" data-id="'+i+'" for="input_file_'+i+'">Upload file</label>'+
             '<span class="clear-img" data-id="'+i+'" ></span>'+
@@ -138,6 +138,38 @@ var gfHandler = {
     }
 
     return $items;
+  },
+
+  rearrangeData = function(index){
+    /*
+    var $deletedObj = null;
+    var idx = index;
+    var firstData = true;
+    $('body').find('#field_uploads').children().each(function(){
+      var $child = $(this);
+      var currID = $child.data('id');
+      if (currID == idx) {
+        $child.attr('data-id','999');
+        $('body').find('[data-id='+idx+']').attr('data-id', '999');
+        $child.addClass('hide');
+        $child.removeClass('input');
+        $deletedObj = $child;
+        $child.remove;
+      } else {
+        if ((firstData) && ($child.hasClass('hide'))) {
+          $child.removeClass('hide');
+          $child.addClass('input');
+          firstData = false;
+        }
+        $('body').find('[data-id='+currID+']').attr('data-id', idx);
+        $('body').find('.item-no[data-id='+idx+']').html = parseInt(idx + 1);
+        idx++;
+      }
+    })
+    $('body').find('#field_uploads').append($deletedObj);
+    $('body').find('[data-id=999]').attr('data-id', parseInt(self.totalsItems-1));
+    console.log($deletedObj);
+    */
   },
 
   comboStyled = function(onlyFunction = false) {
@@ -245,7 +277,10 @@ var gfHandler = {
     var $labelInput = $('.label-input[data-id="'+id+'"]');
     var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
     var $nextItem = $('.uploads-item[data-id='+nextID+']');
-    $fileLabel.text(nextID+'.  '+filename);
+    
+    $fileLabel.text('.  '+filename);
+    $fileLabel.prepend('<span class="item-no" data-id="'+id+'">'+nextID+'</span>');
+    
     $labelInput.text(filename);
     $labelInput.parent().addClass('selected');
 
@@ -254,6 +289,7 @@ var gfHandler = {
         $uploadsItem.addClass('selected');
         $uploadsItem.removeClass('input');  
         $nextItem.removeClass('hide');
+        $nextItem.addClass('input');
       }
     }
 
@@ -402,6 +438,7 @@ var gfHandler = {
           $('.uploads-item').removeClass('input');
           $('.uploads-item').not('.selected, [data-id="'+id+'"]').addClass('hide');
           $('.uploads-item[data-id="'+id+'"]').addClass('input');
+          gfHandler.rearrangeData(id);
         }                       
       });
         
@@ -446,7 +483,7 @@ var gfHandler = {
             var $html = 
             '<li class="item-review" data-id="'+id+'">'+
               '<div class="review-container flex-container">'+
-                '<p class="file-label button-label color-dark-green" data-id="'+id+'" >'+count+'.  '+filename+'</p>'+
+                '<p class="file-label button-label color-dark-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
                 '<div class="flex-container">'+
                   '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
                   '<a href="#delete-item" class="button button-close" data-id="'+id+'" ></a>'+
