@@ -10,19 +10,19 @@
     <div class="grid-container">
         <div class="side-image-content">
             <div class="grid-x grid-margin-x">
-                <div class="cell medium-6">
+                <div class="cell medium-7 large-6 large-offset-1">
                     <div class="content-desc">
                         <p class="eyebrow"><?php print $eyebrow; ?></p>
                         <h2><?php print $title; ?></h2>
                         <div class="show-for-medium"><?php print $description; ?></div>
                     </div>
                 </div>
-                <div class="cell small-4 medium-6">
+                <div class="cell small-5 medium-7 large-6 large-offset-1">
                     <div class="content-image right-image">
                         <img src="<?php print $image; ?>">
                     </div>
                 </div>
-                <div class="cell small-8 show-for-small-only">
+                <div class="cell small-9 show-for-small-only">
                     <div class="content-desc">
                         <?php print $description; ?>
                     </div>

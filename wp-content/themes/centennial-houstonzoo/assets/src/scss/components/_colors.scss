@@ -75,3 +75,9 @@
 .bg-color-cyan {
     background-color: $cyan;
 }
+
+.no-touchevents {
+    a.color-light-blue:hover {
+        color: $light-blue;
+    }
+}

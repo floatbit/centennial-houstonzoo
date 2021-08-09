@@ -6,11 +6,11 @@
 ?>
 <div class="menu-open-container">
 	<div class="header-container">
-		<div class="grid-x grid-margin-x align-middle">
-			<div class="cell medium-3 show-for-medium">
+		<div class="grid-x grid-margin-x align-top">
+			<div class="cell medium-4 show-for-medium">
 				<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green button-inside-menu hide"><?php print $donate['title']; ?></a>
 			</div>
-			<div class="cell medium-6 small-6 logo-content">
+			<div class="cell medium-6 small-7 logo-content">
 				<a href="/" class="hide-for-small-only">
 					<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
 				</a>
@@ -18,7 +18,7 @@
 					BACK TO MENU
 				</a>
 			</div>
-			<div class="cell medium-3 small-6 right-content">
+			<div class="cell medium-4 small-7 right-content">
 				<a href="#menu-open" class="fal fa-times color-white"></a>
 			</div>
 		</div>
@@ -27,7 +27,7 @@
 		<div class="menu-container">
 			<div class="grid-y">
 				<div class="grid-x grid-padding-x">
-					<div class="cell medium-6 left-section">
+					<div class="cell medium-7 left-section">
 						<?php if ($list_menus): ?>
 							<?php foreach ($list_menus as $key => $list_menu): ?>
 								<div class="menu-item active" data-id="<?php print $key; ?>">
@@ -39,11 +39,11 @@
 							<?php endforeach; ?>
 						<?php endif; ?>
 					</div>
-					<div class="cell medium-6 right-section">
+					<div class="cell medium-7 right-section">
 						<div class="content-right default-content color-white active">
 							<h3 class="title"><?php print $menu_title; ?></h3>
 							<p class="text"><?php print $menu_text; ?></p>
-							<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green"><?php print $donate['title']; ?></a>
+							<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green">Donate Now</a>
 						</div>
 						<div class="content-right your-story-container color-white">
 							<?php print do_shortcode( '[gravityform id="1" ajax=true]' ) ?>
@@ -62,17 +62,12 @@
   <div class="grid-container">
 	  <div class="grid-x">
 		  <div class="cell cell-container">
-			<h3 class="color-dark-green small"> 
-				<?php print get_the_title( $page ); ?> 
-			</h3>
-			<div class="content-container">
-				<?php print apply_filters('the_content', $page->post_content ); ?>
-			</div>
-			
-			<button class="button" data-close aria-label="Close modal" type="button">
-				Accept & agree
-			</button>
-
+				<h3 class="color-dark-green small"> 
+					<?php print get_the_title( $page ); ?> 
+				</h3>
+				<div class="content-container">
+					<?php print apply_filters('the_content', $page->post_content ); ?>
+				</div>
 		  </div>
 	  </div>
   </div>

@@ -2,7 +2,7 @@
     @extend .form-input-text;
     @extend .color-white;
     padding: rem-calc(6) rem-calc(26) rem-calc(6);
-    border-radius: rem-calc(26);
+    border-radius: rem-calc(28);
     line-height: rem-calc(36);
     outline: none;
     border: 1px solid $white;
@@ -150,7 +150,7 @@
 
     .file-label {
         overflow: hidden;
-        margin: 0;
+        margin: 0 rem-calc(16) 0 0 ;
         word-break: break-all;
     }
 
@@ -159,7 +159,8 @@
         .button {
             @extend .caption-semibold;
             @include fluid-props(20px, 24px, height);
-            padding: rem-calc(3) rem-calc(20);
+            @include fluid-props(20px, 24px, line-height);
+            padding: 0 rem-calc(20);
             
         }
     }
@@ -202,7 +203,7 @@
 
     .gform_body {
         #gform_page_1_1, #gform_page_1_3 {
-            #field_1_16, #field_1_3, #field_1_4, #field_1_9 {
+            #field_1_16, #field_1_3, #field_1_4, #field_1_9, #field_uploads {
                 .gfield_label {
                     @extend .caption-semibold;
                     @extend .color-light-green;
@@ -242,15 +243,18 @@
         .label-input,
         textarea {
             @extend .input-style;
-            margin-bottom: rem-calc(26);
+            margin-bottom: rem-calc(28);
+        }
+        .ginput_container_textarea {
+            margin-bottom: rem-calc(28);
         }
         textarea, .textarea-uploads {
             @extend .textarea-label;
-            margin-top: rem-calc(14);
-            margin-bottom: rem-calc(14);
+            margin-bottom: rem-calc(16);
             padding-top: rem-calc(16);
             padding-bottom: rem-calc(16);
             resize: none;
+            border-radius: rem-calc(16);
         }
         .textarea-uploads {
             height: rem-calc(100);
@@ -280,6 +284,9 @@
                 }
             }
         }
+        .gfield_html {
+            margin-bottom: rem-calc(8);
+        }
         .gfield_checkbox {
             column-count: 2;
             label {
@@ -291,12 +298,6 @@
             @extend .h5-style;
             @extend .color-white;
             text-transform: capitalize;
-        }
-        #field_1_20 {
-            @include fluid-props(16px, 26px, margin-bottom);
-            h5 {
-                margin: 0;
-            }
         }
         #field_1_5 .gfield_label {
             &::after {
@@ -331,12 +332,10 @@
 
     .gform_page_footer {
         @include fluid-props(30px, 28px, margin-top);
+        display: flex;
+        justify-content: space-between;
         input[type=button] {
             @extend .arrow-for-button;
-            width: 100%;
-            @include breakpoint (large) {
-                padding: rem-calc(15px) 0px;
-            }
             &::after {
                 content: "";
                 background-repeat: no-repeat;
@@ -358,19 +357,29 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: rem-calc(48);
-        border-top: 1px solid $white;
         position: relative;
         z-index: 0;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            right: 24px;
+            border-top: 1px solid $white;
+        }
         
         .gf_step {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: rem-calc(-10);
+            z-index: 1;
 
             .gf_step_number {
                 @extend .caption-semibold; 
-                padding-left: rem-calc(16);
+                font-size: rem-calc(12);
+                text-align: center;
+                display: inline-block;
                 &::before {
                     content: '';
                     display: block;
@@ -386,10 +395,6 @@
                 }
             }
 
-            .gf_step_number, .gf_step_label {
-                padding-left: rem-calc(16);
-            }
-
             &.gf_step_active {
                 .gf_step_number::before {
                     @extend .bg-color-light-green;
@@ -398,14 +403,6 @@
                 .gf_step_label {
                     @extend .color-light-green;
                 }
-            }
-
-            &#gf_step_1_1 {
-                margin-left: rem-calc(-20);
-            }
-            
-            &#gf_step_1_4 {
-                @include fluid-props (-6px, -10px, margin-right) ;
             }
         }
 
@@ -434,15 +431,26 @@
         @include fluid-props (16px, 24px, margin-bottom);
     }
 
-    #gform_next_button_1 {
-        width: 100%;
+    .gform_next_button, .gform_previous_button {
+        width: 48%;
+    }
+
+    .gform_previous_button {
+        span:first-of-type {
+            margin-right: rem-calc(10);
+            transition: transform 250ms;
+        }
+    }
+
+    .gform_next_button {
         span:last-of-type {
             margin-left: rem-calc(10);
+            transition: transform 250ms;
         }
     }
 
     .gf_progressbar_percentage span,
-    img.gform_ajax_spinner, .gform_page_footer .gform_previous_button, .ginput_counter, 
+    img.gform_ajax_spinner, .gform_page_footer .ginput_counter, 
     .gf_progressbar_wrapper .gf_progressbar_title, .instruction, .validation_error, .gfield_required {
         display: none;
     }
@@ -458,6 +466,16 @@
     .gform_page_footer {
         input[type=button]::after {
             margin-left: rem-calc(16);
+        }
+    }
+    .gform_previous_button:hover {
+        span:first-of-type {
+            transform: translateX(-6px);
+        }
+    }
+    .gform_next_button:hover {
+        span:last-of-type {
+            transform: translateX(6px);
         }
     }
 }

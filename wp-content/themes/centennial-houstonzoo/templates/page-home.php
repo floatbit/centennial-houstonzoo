@@ -31,11 +31,11 @@
 					<?php endforeach; ?>	
 				</div>
 			</div>
-			<div class="desc-container">
-				<div class="grid-x">
-					<div class="cell medium-4 color-white">
+			<div class="grid-container desc-container">
+				<div class="grid-x grid-margin-x">
+					<div class="cell medium-5 large-offset-1 color-white">
 						<?php print the_content(); ?>
-						<a href="#menu-open" class="button transparent">
+						<a href="#share-your-story" class="button transparent">
 							SHARE YOUR STORY
 						</a>
 					</div>
@@ -63,7 +63,7 @@
 			</div>
 			<div class="small-desc-container bg-color-cyan">
 				<div class="grid-x">
-					<div class="cell medium-4 color-white small-content-container">
+					<div class="cell medium-5 color-white small-content-container">
 						<?php print the_content(); ?>
 						<a href="#menu-open" class="button transparent">
 							SHARE YOUR STORY

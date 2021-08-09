@@ -9,23 +9,30 @@
                 @include fluid-props(48px, 158px, margin-bottom);
                 text-align: center;
                 z-index: 15;
-
-                p {
-                    @include fluid-props(32px, 444px, margin-right);
-                    @include fluid-props(32px, 444px, margin-left);
-                }
             }
+        }
+    }
+
+    .your-zoo-carousel-main {
+        .carousel-cell {
+            width: 100%;
         }
     }
 
     #completed-projects {
         @include fluid-props(48px, 128px, margin-top);
-        @include fluid-props(48px, 134px, margin-bottom);
+        @include fluid-props(48px, 128px, margin-bottom);
 
         .projects-container {
+            .project-id-container {
+                @include breakpoint(large) {
+                    width: calc(33.33333% - 1.875rem);
+                }
+            }
             .project-item-container {
-                @include fluid-props(28px, 40px, margin-bottom);
-
+                h4, .eyebrow {
+                    letter-spacing: 0;
+                }
                 .image-container {
                     @include fluid-props(12px, 16px, margin-bottom);
                     img {
@@ -37,10 +44,6 @@
                     text-align: right
                 }
 
-                .eyebrow-container {
-                    @include fluid-props(20px, 16px, margin-bottom);
-                }
-    
                 .description-container {
 
                     .desc-content {

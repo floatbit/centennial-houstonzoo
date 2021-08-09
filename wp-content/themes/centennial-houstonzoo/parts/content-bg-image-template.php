@@ -11,8 +11,8 @@
     <div class="half-transparent-panel <?php print ($small_size == true) ? 'small-size show-for-medium' : '' ?> <?php print $panel_color; ?>" data-specified-id=<?php print $specified_id; ?>></div>
     <div class="bg-image-content background-cover <?php print ($small_size == true) ? 'small-size show-for-medium' : '' ?>" style="background-image:url(<?php print $image; ?>)" data-specified-id=<?php print $specified_id; ?>>
         <div class="grid-container">
-            <div class="grid-x">
-                <div class="cell <?php print ($small_size == true) ? 'medium-5' : 'small-9 medium-3' ?>">
+            <div class="grid-x grid-margin-x">
+                <div class="cell <?php print ($small_size == true) ? 'medium-6 large-offset-1' : 'small-9 medium-6 large-4 large-offset-1' ?>">
                     <div class="desc-container color-white">
                         <?php if($eyebrow != null): ?>
                             <p class="eyebrow color-white"><?php print $eyebrow; ?></p>

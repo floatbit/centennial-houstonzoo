@@ -8,7 +8,7 @@
 	left: 0;
 	z-index: 100;
     transition: all 250ms;
-    @include fluid-props(32px, 32px, padding-top);
+    @include fluid-props(44px, 52px, padding-top);
     @include fluid-props(72px, 124px, padding-bottom);
 
     .header-container {
@@ -26,9 +26,7 @@
         }
         .right-content {
             text-align: right;
-            .fal::before {
-                @include fluid-type(20px, 24px);
-            }
+            font-size: 24px;
         }
     }
 
@@ -55,6 +53,9 @@
                 @include fluid-props(32px, 72px, padding-bottom);
                 opacity: 0.4;
                 cursor: pointer;
+                .title-text {
+                    margin-bottom: rem-calc(8);
+                }
                 p {
                     margin: 0;
                 }
@@ -74,9 +75,6 @@
                 }
                 .title {
                     @include fluid-props(20px, 38px, margin-bottom);
-                }
-                .text {
-                    @include fluid-props(16px, 34px, margin-bottom);
                 }
                 &.active {
                     display: block;

@@ -23,6 +23,7 @@ jQuery(document).ready(function($) {
 		cellAlign: 'left',
 		draggable: false,
 		pageDots: true,
+        autoPlay: 6000,
 		fade: true,
 		hash: true,
 		prevNextButtons: false,
@@ -31,5 +32,5 @@ jQuery(document).ready(function($) {
 
     $(window).on('resize, load, scroll', function() {
         homeHandler.resizeHero();
-	});
+	}).trigger("scroll");
 })

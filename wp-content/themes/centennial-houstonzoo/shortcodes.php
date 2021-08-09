@@ -1,6 +1,6 @@
 <?php
     function centennial_houstonzoo_eyebrow_shortcode($atts = array(), $content = null ) {
-        $html = '<div class="eyebrow">'.trim($content).'</div>';
+        $html = '<p class="eyebrow">'.trim($content).'</p>';
         return $html;
     }
 

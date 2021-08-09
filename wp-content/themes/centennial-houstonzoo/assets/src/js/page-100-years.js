@@ -96,24 +96,24 @@ var yearHandler = {
             self.showDescription(this);
         })
 
-        jQuery('#looking-forward').find(".content-container").on("mouseover", function(e){
-            e.preventDefault();
-            if ($topContainer.hasClass('open-desc')) {
-                if (!jQuery(this).hasClass('set-focus')) {
-                    var id = this.getAttribute('data-id');
-                    var specificId = this.getAttribute('data-specific-id');
-                    $showDesc = jQuery(".button-show-desc[data-id="+id+"][data-specific-id="+specificId+"]");
-                    $showDesc.click();
-                }
-            }
-        });
+        // jQuery('#looking-forward').find(".content-container").on("mouseover", function(e){
+        //     e.preventDefault();
+        //     if ($topContainer.hasClass('open-desc')) {
+        //         if (!jQuery(this).hasClass('set-focus')) {
+        //             var id = this.getAttribute('data-id');
+        //             var specificId = this.getAttribute('data-specific-id');
+        //             $showDesc = jQuery(".button-show-desc[data-id="+id+"][data-specific-id="+specificId+"]");
+        //             $showDesc.click();
+        //         }
+        //     }
+        // });
         
-        jQuery('#looking-forward').find(".info-item-container").on("mouseleave", function(e){
-            e.preventDefault();
-            if ($topContainer.hasClass('open-desc')) {
-                clearShowDesc();
-            }
-        });
+        // jQuery('#looking-forward').find(".info-item-container").on("mouseleave", function(e){
+        //     e.preventDefault();
+        //     if ($topContainer.hasClass('open-desc')) {
+        //         clearShowDesc();
+        //     }
+        // });
     }
 }
 

@@ -22,7 +22,7 @@
     
         .content-image {
             @include breakpoint (medium) {
-                margin-top: rem-calc(-128);
+                @include fluid-props(-84px, -128px, margin-top);
             }
     
             @include breakpoint (small only) {
@@ -34,10 +34,6 @@
                     margin-top: rem-calc(-84);
                 }
             }
-    
-            &.right-image {
-                text-align: center;
-            }
         }
 
         &.expand-content{
@@ -46,7 +42,7 @@
 
             .content-image.left-image {
                 @include breakpoint (small only) {
-                    margin-top: rem-calc(-64);
+                    margin-top: rem-calc(-56);
                 }
                 img {
                     @include fluid-props(164px, 356px, height);
@@ -56,14 +52,17 @@
 
             .expand-button-container {
                 @include fluid-props(0px, 20px, margin-top);
-
+                a {
+                    display: inline-flex;
+                    align-items: flex-start;
+                    @include breakpoint(medium) {
+                        align-items: center;
+                    }
+                }
                 a::before {
                     @include fluid-props(16px, 30px, height);
                     @include fluid-props(16px, 30px, width);
                     @include fluid-props(4px, 12px, margin-right);
-                    @include breakpoint(small only) {
-                        margin-left: rem-calc(6);
-                    }
                 }
             }
         }
@@ -71,12 +70,22 @@
     
     .half-transparent-panel {
         position: absolute;
-        width: 50%;
         z-index: 10;
         opacity: 0.8;
         height: auto;
         top: 0;
         bottom: 0;
+
+        width: calc(65% + #{map-get($grid-container-padding, small)});
+        @include breakpoint(medium) {
+            width: calc(50% + #{map-get($grid-container-padding, medium)});
+        }
+        @include breakpoint(large) {
+            width: calc(50% + #{map-get($grid-container-padding, large)});
+        }
+        @media print, screen and (min-width: $global-width) {
+            width: calc(50% + 60px + (100% - #{$global-width}) / 2);
+        }
 
         &.dark-green {
             background: linear-gradient(90deg, $dark-green 25%, rgba(255,255,255,0) 100%);
@@ -87,8 +96,14 @@
         }
 
         &.small-size {
+            width: 100%;
+            @include breakpoint(large) {
+                width: calc(75% + #{map-get($grid-container-padding, large)});
+            }
+            @media print, screen and (min-width: $global-width) {
+                width: calc(75% + 60px + (100% - #{$global-width}) / 2);
+            }
             @include breakpoint(small only) {
-                width: 100%;
                 &.dark-green {
                     background: linear-gradient(to top, $dark-green 25%, rgba(255,255,255,0) 100%);
                 }
@@ -101,17 +116,13 @@
     }
 
     .bg-image-content {
-        //height: auto;
-        width: 100vw;
-        @include fluid-props(526px, 960px, min-height);
+        width: 100%;
         @include fluid-props(56px, 144px, padding-top);
         @include fluid-props(48px, 136px, padding-bottom);
 
         &.small-size {
             padding-top : rem-calc(88);
             padding-bottom : rem-calc(84);
-            /* min-height : rem-calc(600); */
-            min-height: fit-content;
         }
 
         .desc-container {
@@ -120,6 +131,10 @@
 
             .eyebrow {
                 @extend .color-white;
+            }
+            hr {
+                @include fluid-props(32px, 48px, margin-top);
+                @include fluid-props(32px, 48px, margin-bottom);              
             }
         }
     }
