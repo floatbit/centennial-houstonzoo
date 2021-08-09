@@ -67,7 +67,16 @@ var mainHandler = {
       self.$buttonBack.removeClass('hide');
       self.$buttonInsideMenu.removeClass('hide');
       
-    });   
+    });
+    
+    var urlHash = window.location.hash;
+		if (urlHash) {
+      urlHash = urlHash.substring(1);
+      if (urlHash == 'share-your-story') {
+        $('[href="#share-your-story"]').eq(0).trigger("click");
+      }
+      
+    }
 
     $('[href=#menu-open-back]').on("click", function(e) {
       e.preventDefault();
