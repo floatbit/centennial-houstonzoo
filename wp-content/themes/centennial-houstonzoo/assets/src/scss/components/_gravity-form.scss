@@ -187,7 +187,7 @@
         .button {
             @extend .caption-semibold;
             @include fluid-props(20px, 24px, height);
-            @include fluid-props(20px, 24px, line-height);
+            @include fluid-props(22px, 26px, line-height);
             padding: 0 rem-calc(20);
             
         }

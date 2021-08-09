@@ -137,7 +137,7 @@ var gfHandler = {
             '<span class="button-label color-white"> Add another photo or video </span>'+ 
           '</a>')+   
         '<div class="review-container flex-container">'+
-          '<p class="file-label button-label color-dark-green" data-id="'+i+'"></p>'+ 
+          '<p class="file-label button-label color-light-green" data-id="'+i+'"></p>'+ 
           '<div class="flex-container">'+
             '<a href="#actions-button" class="button btn-act editmode" data-id="'+i+'" >EDIT</a>'+
             '<a href="#delete-item" class="button button-close" data-id="'+i+'" ></a>'+
@@ -492,7 +492,7 @@ var gfHandler = {
             var $html = 
             '<li class="item-review" data-id="'+id+'">'+
               '<div class="review-container flex-container">'+
-                '<p class="file-label button-label color-dark-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
+                '<p class="file-label button-label color-light-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
                 '<div class="flex-container">'+
                   '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
                   '<a href="#delete-item" class="button button-close" data-id="'+id+'" ></a>'+
