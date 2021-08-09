@@ -11,14 +11,32 @@ var mainHandler = {
   $buttonInsideMenu = $('.button-inside-menu'),
 
   openMenu = function(e){
+    var self = this;
     this.$menuOpenContainer.toggleClass('active');
-    this.$html.toggleClass("disable-scroll");
+    if (this.$menuOpenContainer.is('.active')) {
+      this.$html.addClass('disable-scroll');
+			jQuery("body, header").css({'padding-right': this.scrollBarWidth+'px'});
+    } else {
+      setTimeout(function() {
+        self.$html.removeClass('disable-scroll');
+        jQuery("body, header").css({'padding-right': 0});  
+      })
+    }
     this.$yourStoryContainer.removeClass('active');
     this.$defaultContent.addClass('active');
     this.$menuItem.addClass('active');
     this.$leftSection.removeClass('hide-for-small-only');
     this.$buttonBack.addClass('hide');
   },
+
+	scrollBarWidth: 17,
+
+	getScrollBarWidth: function() {
+		var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
+				widthWithScroll = $('<div>').css({width: '100%'}).appendTo($outer).outerWidth();
+		$outer.remove();
+		this.scrollBarWidth = 100 - widthWithScroll;
+	},
 
   init = function(e){
     var self = this;
@@ -77,7 +95,6 @@ var gfHandler = {
   yearStart = 2000,
   $htmlHasInputedFile = null,
   $selectIdentifier = $('.ginput_container select'),
-  $gformPageFooter = $('.gform_body').find('#gform_previous_button_1'), 
   name = '', email = '', phone = '', 
 
   templateUpload = function(){
@@ -105,7 +122,7 @@ var gfHandler = {
           '</div>'+
         '</div>'+
         '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
-        '<textarea name="input_caption[]" id="input_caption_'+i+'" data-id="'+i+'"  class="textarea textarea-uploads" tabindex="16" placeholder="50 words max" aria-invalid="false" rows="10" cols="50"></textarea>'+
+        '<textarea name="input_caption[]" id="input_caption_'+i+'" data-id="'+i+'"  class="textarea textarea-uploads" tabindex="16" placeholder="200 characters max" aria-invalid="false" rows="10" cols="50"></textarea>'+
         ((i+1 == totalsItems) ? '' :
           '<a href="#show-next-item" class="button-plus white"> '+
             '<span class="button-label color-white"> Add another photo or video </span>'+ 
@@ -206,7 +223,7 @@ var gfHandler = {
     
     $currInputFile.val('');
     $currInputFileText.val('');
-    $labelInput.text('Upload file');
+    $labelInput.text('Select file');
     $currInputFile.parent().removeClass('selected');
 
     if (file_only == false) { 
@@ -241,7 +258,7 @@ var gfHandler = {
     }
 
     if (filename == '') {
-      $labelInput.text('Upload file');
+      $labelInput.text('Select file');
       $labelInput.parent().removeClass('selected');
     }
   },
@@ -380,7 +397,7 @@ var gfHandler = {
       $uploads.find('[href="#delete-item"]').on("click", function(e) {
         e.preventDefault();
         var id = this.getAttribute('data-id');
-        if (confirm('Delete Item ?')) {
+        if (confirm('Are you sure you want to delete this item?')) {
           self.clearItems(id);         
           $('.uploads-item').removeClass('input');
           $('.uploads-item').not('.selected, [data-id="'+id+'"]').addClass('hide');
@@ -465,7 +482,7 @@ var gfHandler = {
           e.preventDefault();
           var id = this.getAttribute('data-id');
           
-          if (confirm('Delete Item ?')) {
+          if (confirm('Are you sure you want to delete this item?')) {
             self.clearItems(id);
             $('.item-review[data-id="'+id+'"]').remove();
           }
@@ -480,11 +497,16 @@ var gfHandler = {
 
 jQuery(document).ready(function($) {
 
+  var myElement = document.querySelector("header");
+  var headroom  = new Headroom(myElement);
+  
+  headroom.init();
+
   mainHandler.init();
   gfHandler.init();
 
   $(window).on("load, scroll", function() {
-    if($(window).scrollTop() > 50) {
+    if($(window).scrollTop() > $(window).height() / 2) {
         $("header").addClass("scrolled");
         $(".logo-white").addClass("hide");
         $(".logo-black").removeClass("hide");

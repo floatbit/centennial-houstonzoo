@@ -5,9 +5,10 @@
         @extend .color-white;
         @extend .button-label;
     }
-    padding: rem-calc(10) rem-calc(42);
+    padding: 0 rem-calc(42);
     border-radius: rem-calc(26);
-    line-height: rem-calc(20);
+    line-height: rem-calc(40);
+    height: rem-calc(40);
     display: inline-block;
     border: 0;
     cursor: pointer;
@@ -125,9 +126,8 @@
         }
 
         &.bright-green {
-            @extend .color-black;
-            background: transparent;
-            border-color: $black;
+            background: $darker-green;
+            border-color: $darker-green;
         }
 
         &.btn-arrow-right::after {

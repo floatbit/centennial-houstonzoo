@@ -58,7 +58,7 @@
         },
         {
             "key": "field_60ecfb8812fa3",
-            "label": "Link Donate",
+            "label": "Donate Link",
             "name": "donate",
             "type": "link",
             "instructions": "",
@@ -221,7 +221,7 @@
         },
         {
             "key": "field_60ee43a59b4b7",
-            "label": "List Menus",
+            "label": "Menu List",
             "name": "list_menus",
             "type": "repeater",
             "instructions": "",

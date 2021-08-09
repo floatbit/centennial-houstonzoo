@@ -24,7 +24,6 @@
             position: relative;
             @include fluid-props(440px, 240px, padding-top);
             @include fluid-props(48px, 238px, padding-bottom);
-            @include fluid-props(0px, 152px, padding-left);
         }
     }
 

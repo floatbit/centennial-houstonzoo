@@ -8,12 +8,12 @@
     <div class="grid-container">
         <div class="side-image-content">
             <div class="grid-x grid-margin-x">
-                <div class="cell medium-6">
+                <div class="cell medium-7 large-5 large-offset-1">
                     <div class="content-image left-image">
                         <img src="<?php print $image; ?>">
                     </div>
                 </div>
-                <div class="cell medium-6">
+                <div class="cell medium-7 large-6 large-offset-1">
                 <div class="content-desc">
                         <?php print $description; ?>
                     </div>

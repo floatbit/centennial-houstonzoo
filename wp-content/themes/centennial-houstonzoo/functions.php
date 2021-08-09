@@ -44,6 +44,7 @@ function centennial_houstonzoo_css_js() {
   wp_enqueue_script( 'flickity-js', 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js', array());
   wp_enqueue_script( 'flickity-js-fade', 'https://unpkg.com/flickity-fade@1/flickity-fade.js', array());
   wp_enqueue_script( 'flickity-js-hash', 'https://unpkg.com/flickity-hash@1/hash.js', array());
+  wp_enqueue_script( 'headroom-js', 'https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js', array(), '', true );
   wp_enqueue_script( 'global', get_template_directory_uri() . '/assets/js/global.min.js', array(), CSS_JS_VERSION, true );
   wp_enqueue_script( 'pages', get_template_directory_uri() . '/assets/js/pages.min.js', array(), CSS_JS_VERSION, true );
   // css
@@ -328,8 +329,27 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
 
 add_filter( 'gform_next_button', 'centennial_houstonzoo_form_next_button', 10, 2 );
 function centennial_houstonzoo_form_next_button( $button, $form ) {
-    return "<button class='button gform_next_button' id='gform_next_button_{$form['id']}'><span>Next</span><span class='fas fa-arrow-right'></span></button>";
+  $button = str_replace('<input', '<button', $button);
+  $button .= '<span>Continue</span><span class="fas fa-arrow-right"></span></button>';
+  return $button;
 }
 
+add_filter( 'gform_previous_button', 'centennial_houstonzoo_form_previous_button', 10, 2 );
+function centennial_houstonzoo_form_previous_button( $button, $form ) {
+  $button = str_replace('<input', '<button', $button);
+  $button .= '<span class="fas fa-arrow-left"></span><span>Back</span></button>';
+  return $button;
+}
+
+function centennial_houstonzoo_custom_phone_format($phone_formats) {
+  $phone_formats['hzo'] = array(
+    'label' => 'HZO custom format',
+    'mask' => '999.999.9999',
+    'regex' => '/^(\d{3})\.(\d{3})\.(\d{4})$/',
+    'instruction' => '###.###.####',
+  );
+  return $phone_formats;
+}
+add_filter( 'gform_phone_formats', 'centennial_houstonzoo_custom_phone_format');
 
 require_once(__DIR__.'/shortcodes.php');

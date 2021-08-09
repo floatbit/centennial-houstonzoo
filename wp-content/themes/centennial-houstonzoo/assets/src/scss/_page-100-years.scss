@@ -16,6 +16,11 @@
         @include fluid-props(60px, 132px, margin-bottom);
     }
 
+    #100-years {
+        p {
+            margin-bottom: 0;
+        }
+    }
 
     #looking-forward {
         @include fluid-props(52px, 132px, margin-bottom);
@@ -26,6 +31,10 @@
 
 
         .info-item-container {
+            h4 {
+                letter-spacing: 0;
+                line-height: 1.25;
+            }
             .content-container {
                 border-top: 1px solid $dark-green;
                 padding: 10px 0;
@@ -39,8 +48,11 @@
                 }
 
                 .info-logo {
-                    @include fluid-props(58px, 68px, height);
                     @include fluid-props(58px, 68px, width);
+                }
+                .info-desc {
+                    margin-top: rem-calc(8);
+                    margin-bottom: rem-calc(8);
                 }
             }
 

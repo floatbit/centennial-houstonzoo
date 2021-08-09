@@ -62,24 +62,25 @@
 	</section>
 
 	<section id="looking-forward">
-		<div class="grid-container double-medium">
+		<div class="grid-container">
 			<div class="desc-container">
-				<div class="title-container">
-					<p class="eyebrow bold color-dark-green"><?php print $lf_items['eyebrow']; ?></p>
-				</div>
 				<div class="grid-x grid-margin-x">
-					<div class="cell medium-6">
+					<div class="cell medium-7 large-5 large-offset-2">
+						<p class="title-container eyebrow bold color-dark-green"><?php print $lf_items['eyebrow']; ?></p>
 						<h2><?php print $lf_items['title']; ?></h2>
+						<p></p>
 					</div>
-					<div class="cell medium-6">
-						<p><?php print $lf_items['description']; ?></p>
+					<div class="cell medium-7 large-5">
+						<p class="title-container show-for-medium eyebrow bold color-dark-green">&nbsp;</p>
+						<?php print $lf_items['description']; ?>
+						<p></p>
 					</div>
 				</div>
 			</div>
 			<?php if ($lf_items['info_content'] != null) : ?>
 				<div class="info-item-container">
 					<div class="grid-x grid-margin-x">
-						<div class="cell medium-6 left-item-content">
+						<div class="cell medium-7 large-5 large-offset-2 left-item-content">
 							<?php 
 								set_query_var( 'part_params', array(
 									'looping_item' => $lf_array[0],
@@ -88,7 +89,7 @@
 								get_template_part( 'parts/looking-forward-loop' );
 							?>
 						</div>
-						<div class="cell medium-6 right-item-content">
+						<div class="cell medium-7 large-5 right-item-content">
 							<?php 
 								set_query_var( 'part_params', array(
 									'looping_item' => $lf_array[1],

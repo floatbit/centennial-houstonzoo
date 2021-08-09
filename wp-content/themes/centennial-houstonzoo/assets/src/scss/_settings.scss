@@ -80,6 +80,18 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
+// KUDOS
+
+$darker-green: #005851;
+$light-blue: #99D8E9;
+$cyan : #1A92AF;
+$bright-green: #76BC43;
+$light-green: #00B189;
+$dark-green: #00867C;
+$darker-blue: #231F20;
+$green-gradation: #001311;
+$gray: #F5F4F3;
+
 $body-background: $white;
 $body-font-color: $black;
 $body-font-family: 'Libre Baskerville', 'Georgia', serif;
@@ -144,7 +156,7 @@ $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
 $header-lineheight: 1.4;
-$header-margin-bottom: 0.5rem;
+$header-margin-bottom: rem-calc(20);
 $header-styles: (
   small: (
     'h1': ('font-size': 24),
@@ -167,11 +179,11 @@ $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
 $header-small-font-color: $medium-gray;
 $paragraph-lineheight: 1.6;
-$paragraph-margin-bottom: 1rem;
+$paragraph-margin-bottom: 2rem;
 $paragraph-text-rendering: optimizeLegibility;
 $enable-code-inline: true;
 $anchor-color: $primary-color;
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color-hover: $darker-green;
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
@@ -883,7 +895,7 @@ $topbar-unstack-breakpoint: medium;
 
 $xy-grid: true;
 $grid-container: $global-width;
-$grid-columns: 12;
+$grid-columns: 14;
 $grid-margin-gutters: (
   small: 20px,
   medium: 30px
@@ -891,20 +903,8 @@ $grid-margin-gutters: (
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: (
   small: 40px,
-  medium: 100px,
-  large: 160px
+  medium: 60px,
+  large: 96px
 );
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
-
-// KUDOS
-
-$darker-green: #005851;
-$light-blue: #99D8E9;
-$cyan : #1A92AF;
-$bright-green: #76BC43;
-$light-green: #00B189;
-$dark-green: #00867C;
-$darker-blue: #231F20;
-$green-gradation: #001311;
-$gray: #F5F4F3;

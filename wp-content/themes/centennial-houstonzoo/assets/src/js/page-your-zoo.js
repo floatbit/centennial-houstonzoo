@@ -57,6 +57,13 @@ var yourZooHandler = {
 jQuery(document).ready(function($) {
     yourZooHandler.showDescription();
 
+	var maxCarouselHeight = 0;
+	$('.your-zoo-carousel-main .bg-image-content').each(function() {
+		var cellHeight = $(this).children().height();
+		if (cellHeight > maxCarouselHeight) maxCarouselHeight = cellHeight;
+	});
+	$('.your-zoo-carousel-main .bg-image-content').height(maxCarouselHeight);
+
 	$('.your-zoo-carousel-main').flickity({
 		cellSelector: '.carousel-cell',
 		cellAlign: 'left',
@@ -64,7 +71,7 @@ jQuery(document).ready(function($) {
 		pageDots: false,
 		fade: true,
 		hash: false,
-		adaptiveHeight: true,
+		adaptiveHeight: false,
 		prevNextButtons: false,
 		selectedAttraction: 0.2, 
 	}).resize();
