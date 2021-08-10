@@ -96,14 +96,6 @@
     }
 }
 
-.container {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-}
-.container::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
-}
-
 .gform_body {
     #field_uploads {
         @include fluid-props(10px, 20px, margin-bottom);
@@ -170,6 +162,7 @@
             cursor: pointer;
             overflow: hidden;
             word-wrap: break-word;
+            line-break: anywhere;
         }
         .zoo-memory {
             @include fluid-props(48px, 60px, margin-bottom);
@@ -187,7 +180,7 @@
         .button {
             @extend .caption-semibold;
             @include fluid-props(20px, 24px, height);
-            @include fluid-props(20px, 24px, line-height);
+            @include fluid-props(22px, 26px, line-height);
             padding: 0 rem-calc(20);
             
         }
@@ -220,6 +213,28 @@
         @include fluid-props(16px, 20px, padding-top);
         @include fluid-props(16px, 20px, padding-bottom);
     }
+    
+    .container {
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .container::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+
+    input#input_1_13{
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        -moz-appearance: textfield;
+    }
+
+    input#gform_submit_button_1 {
+        width: 50%;
+    }
 }
 
 
@@ -243,11 +258,12 @@
         #gform_page_1_4 {
             .gfield_checkbox {
                 column-count: 1;
-                margin-left: rem-calc(24);
+                margin-left: rem-calc(38);
                 label {
                     @extend .caption;
                     text-transform: none;
                     display: inherit;
+                    position: relative;
 
                     a {
                         text-decoration: underline;
@@ -256,6 +272,9 @@
                     &::before {
                         vertical-align: sub;
                         margin-right: 5px;
+                        position: absolute;
+                        left: -13px;
+                        top: -4px;
                     }
                 }
             }
@@ -490,7 +509,12 @@
 
 .gform_confirmation_message_1  {
     h2 {
-        margin: 0;
+        @extend .color-light-green;
+        //margin: 0;
+    }
+    a {
+        @extend .color-white;
+        text-decoration: underline;
     }
 }
 

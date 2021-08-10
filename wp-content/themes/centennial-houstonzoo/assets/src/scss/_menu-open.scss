@@ -8,8 +8,27 @@
 	left: 0;
 	z-index: 100;
     transition: all 250ms;
-    @include fluid-props(44px, 52px, padding-top);
-    @include fluid-props(72px, 124px, padding-bottom);
+    .menu-open-container-inner {
+        @include fluid-props(44px, 52px, padding-top);
+        @include fluid-props(72px, 124px, padding-bottom);
+        min-height: 100%;
+        position: relative;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $dark-green;
+            opacity: 0.4;
+        }
+        > &:not(.overlay) {
+            z-index: 1;
+        }
+        > .grid-container {
+            position: relative;
+        }
+    }
 
     .header-container {
         @include fluid-props(46px, 124px, padding-bottom);
@@ -55,13 +74,26 @@
                 cursor: pointer;
                 .title-text {
                     margin-bottom: rem-calc(8);
+                    @include breakpoint (large) {
+                        white-space: nowrap;
+                    }
                 }
                 p {
                     margin: 0;
                 }
 
+                &.default {
+                    opacity: 1;
+                    .title-text {
+                        @extend .color-light-blue;
+                    }
+                }
+
                 &.active {
                     opacity: 1;
+                    .title-text {
+                        @extend .color-white;
+                    }
                 }
             }
         }
@@ -90,11 +122,18 @@
         top: 0; 
         backdrop-filter: blur(6px) brightness(0.6);
     }
+    .background-blur {
+        filter: blur(4px);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 }
 
 #terms-reveal {
     @include fluid-props(54px, 98px, padding-top);
-    @include fluid-props(16px, 34px, padding-bottom);
+    @include fluid-props(54px, 98px, padding-bottom);
     position: relative;
     width: 100%;
     @include breakpoint (medium) {

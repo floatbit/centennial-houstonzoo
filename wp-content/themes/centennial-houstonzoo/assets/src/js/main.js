@@ -2,6 +2,7 @@ $(document).foundation();
 var mainHandler = {
   $menuOpenContainer = $(".menu-open-container"),
   $html = $("html"),
+  $body = $('body'),
   $menuItem = $(".menu-item"),
   $contentRight = $('.content-right'), 
   $yourStoryContainer = $('.your-story-container'),
@@ -24,9 +25,19 @@ var mainHandler = {
     }
     this.$yourStoryContainer.removeClass('active');
     this.$defaultContent.addClass('active');
-    this.$menuItem.addClass('active');
+    
+    this.$menuItem.each(function(){
+      $(this).removeClass('active');
+      if ($(this).hasClass('current')) {
+        $(this).addClass('active');
+      } else {
+        $(this).addClass('default');  
+      }
+    })
+
     this.$leftSection.removeClass('hide-for-small-only');
     this.$buttonBack.addClass('hide');
+    this.$body.toggleClass('modal--is-showing');
   },
 
 	scrollBarWidth: 17,
@@ -46,7 +57,7 @@ var mainHandler = {
       var selectedId = this.getAttribute('data-id');
       var $menuSelected = $('.menu-item[data-id='+selectedId+']');
 
-      self.$menuItem.removeClass('active');
+      self.$menuItem.removeClass('default');
       $menuSelected.addClass('active');     
     });
   
@@ -58,6 +69,7 @@ var mainHandler = {
 
     $('[href="#share-your-story"]').on("click", function(e) {
       e.preventDefault();
+      self.$menuItem.removeClass('active');
       if (!self.$menuOpenContainer.hasClass('active')) {
         self.openMenu();
       }
@@ -67,7 +79,16 @@ var mainHandler = {
       self.$buttonBack.removeClass('hide');
       self.$buttonInsideMenu.removeClass('hide');
       
-    });   
+    });
+    
+    var urlHash = window.location.hash;
+		if (urlHash) {
+      urlHash = urlHash.substring(1);
+      if (urlHash == 'share-your-story') {
+        $('[href="#share-your-story"]').eq(0).trigger("click");
+      }
+      
+    }
 
     $('[href=#menu-open-back]').on("click", function(e) {
       e.preventDefault();
@@ -128,7 +149,7 @@ var gfHandler = {
             '<span class="button-label color-white"> Add another photo or video </span>'+ 
           '</a>')+   
         '<div class="review-container flex-container">'+
-          '<p class="file-label button-label color-dark-green" data-id="'+i+'"></p>'+ 
+          '<p class="file-label button-label color-light-green" data-id="'+i+'"></p>'+ 
           '<div class="flex-container">'+
             '<a href="#actions-button" class="button btn-act editmode" data-id="'+i+'" >EDIT</a>'+
             '<a href="#delete-item" class="button button-close" data-id="'+i+'" ></a>'+
@@ -141,35 +162,31 @@ var gfHandler = {
   },
 
   rearrangeData = function(index){
-    /*
     var $deletedObj = null;
     var idx = index;
     var firstData = true;
     $('body').find('#field_uploads').children().each(function(){
       var $child = $(this);
       var currID = $child.data('id');
+      
       if (currID == idx) {
+        $child.data('id', '999');
         $child.attr('data-id','999');
+        $('body').find('[data-id='+idx+']').data('id', '999');
         $('body').find('[data-id='+idx+']').attr('data-id', '999');
         $child.addClass('hide');
-        $child.removeClass('input');
         $deletedObj = $child;
-        $child.remove;
-      } else {
-        if ((firstData) && ($child.hasClass('hide'))) {
-          $child.removeClass('hide');
-          $child.addClass('input');
-          firstData = false;
-        }
+        $child.remove();
+      } else if (currID > idx) {
+        $('body').find('[data-id='+currID+']').data('id', idx);
         $('body').find('[data-id='+currID+']').attr('data-id', idx);
-        $('body').find('.item-no[data-id='+idx+']').html = parseInt(idx + 1);
+        $('body').find('.item-no[data-id='+idx+']').text(parseInt(idx + 1));
         idx++;
-      }
+      } 
     })
     $('body').find('#field_uploads').append($deletedObj);
-    $('body').find('[data-id=999]').attr('data-id', parseInt(self.totalsItems-1));
-    console.log($deletedObj);
-    */
+    $('body').find('[data-id="999"]').data('id', parseInt(self.totalsItems-1));
+    $('body').find('[data-id="999"]').attr('data-id', parseInt(self.totalsItems-1));
   },
 
   comboStyled = function(onlyFunction = false) {
@@ -332,6 +349,197 @@ var gfHandler = {
     }
   },
 
+  reRender = function(){
+    var self = this;
+    // fill for review section
+    var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
+    var visits = '';
+    var conn = '';
+    var zooMemory = $('body').find('textarea[id="input_1_6"]').val();
+
+    if (self.name) {
+      var visit = $('body').find('input[id="input_1_13"]').val();
+      var visitTime = $('body').find('select[id="input_1_15"]').find(":selected").text();
+
+      $('body').find('.gfield_checkbox[id="input_1_5"]').children().each(function(){
+        var val = $(this).find('input:checked').val();
+        if (val) {
+          conn += val + ',';
+        }
+      }); 
+
+      if ( (conn != '') || (visit != '') || (visitTime != '')) {
+        visits = '<span class="button-label"> ('+conn+' '+visit+' '+visitTime+')</span>';
+      } 
+      $rev.append('<div class="form-input-text">'+ self.name + visits+'</div>');
+    }
+    $rev.append('<p>'+self.email + ', ' + self.phone + '</p>');      
+    $rev.append('<p class="zoo-memory"><i>'+zooMemory+'</i></p>');   
+    if (self.$htmlHasInputedFile != null) {
+      $rev.after().append(self.$htmlHasInputedFile[0]);
+    }       
+
+    // uploads handle
+    if (self.$htmlHasInputedFile == null) {
+      var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
+      var $html = self.templateUpload();
+      $uploads.append($html); 
+      self.comboStyled();
+    } else {
+      var $uploads = $('body').find('#field_uploads');
+      self.comboStyled(true);
+    }
+
+    $uploads.children().each(function(){  
+      var id = this.getAttribute('data-id');
+      var filename = self.getFilename(id);
+
+      if (filename != '') {
+        self.inputHandler(id, filename, true);
+      }
+    });
+        
+    $uploads.find('[href="#show-next-item"]').on("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var id = $(this).parents()[0].getAttribute('data-id');
+      var filename = self.getFilename(id);
+
+      if (filename == '') {
+        alert('Cannot add new item, fill current item first.');
+      } else {
+        self.inputHandler(id, filename, true);
+      }
+    });
+
+    $uploads.find('.clear-img').on("click", function(e) {
+      var id = this.getAttribute('data-id');
+      $(this).parent().removeClass('selected');
+      self.clearItems(id, true);
+      self.inputHandler(id, '');
+    }); 
+
+    $uploads.find('[href="#actions-button"]').on("click", function(e) {
+      e.preventDefault();
+      var id = this.getAttribute('data-id');
+      var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
+      var filename = self.getFilename(id);
+      
+      if (filename == '') {
+        alert('File must be selected.')
+      } else {
+        $uploadsItem.toggleClass('edit');
+        $uploadsItem.toggleClass('selected');
+
+        if ($uploadsItem.hasClass('edit')) {
+          $(this).text('SAVE');
+        } else {
+          $(this).text('EDIT');
+        }
+      }
+      
+    });
+
+    $uploads.find('[href="#delete-item"]').on("click", function(e) {
+      e.preventDefault();
+      var id = $(this).data('id');
+      if (confirm('Are you sure you want to delete this item?')) {
+        self.clearItems(id);         
+        /*
+        $('.uploads-item').removeClass('input');
+        $('.uploads-item').not('.selected, [data-id="'+id+'"]').addClass('hide');
+        $('.uploads-item[data-id="'+id+'"]').addClass('input');
+        */
+        gfHandler.rearrangeData(id);
+      }                       
+    });
+      
+    $uploads.find(' input.input_file ').on("change", function() {
+      var id = this.getAttribute('data-id');
+      var filename = self.getFilename(id);
+      self.inputHandler(id, filename);
+    });
+
+    $uploads.children().each(function(){
+      var id = this.getAttribute('data-id');
+      var $input = $(this).children().children().children()[0];
+      var $yearInput = $(this).children().children().children()[1];
+
+      $($input).on("change", function(e){
+        var $previewContainer = $('<div id="image-prev-'+id+'" class="gf-image-upload-preview"><div class="remove-button" title="Remove image"></div><img/></div>').appendTo($rev);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $previewContainer.find('img').attr('src', e.target.result);
+        }
+        reader.readAsDataURL( $input.files[0] );	
+        self.$htmlHasInputedFile = $uploads;
+      });
+
+      $($yearInput).on("change", function(e){
+        self.$htmlHasInputedFile = $uploads;
+      })
+    });
+
+
+    if (self.$htmlHasInputedFile != null) {
+      var $inputedData = $('body').find('#field_1_20').after(self.$htmlHasInputedFile).next();
+
+      $inputedData.children().each(function(e){
+        var id = this.getAttribute('data-id');
+        var count = parseInt( parseInt(id) + 1);
+        var $currInputFile = $('.input_file[data-id="'+id+'"]');
+        var filename = self.getFilename(id);
+
+        if (filename) {
+          var caption = $('.textarea-uploads[data-id="'+id+'"]').val();
+          var $html = 
+          '<li class="item-review" data-id="'+id+'">'+
+            '<div class="review-container flex-container">'+
+              '<p class="file-label button-label color-light-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
+              '<div class="flex-container">'+
+                '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
+                '<a href="#delete-item" class="button button-close" data-id="'+id+'" ></a>'+
+              '</div>'+
+            '</div>'+
+            '<div class="image-container flex-container">'+
+              '<img src="" class="img-review" data-id="'+id+'" >'+
+              '<p class="" >'+caption+'</p>'+
+            '</div>'+
+          '</li>';
+
+          var $obj = $rev.append($html);            
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $obj.find('.img-review[data-id="'+id+'"]').attr('src', e.target.result);
+          }
+          reader.readAsDataURL($currInputFile[0].files[0]);
+        }
+      });
+
+      $rev.find('[href="#review-edit-button"]').on("click", function(e){
+        e.preventDefault();
+        e.stopPropagation();              
+        var id = this.getAttribute('data-id');
+
+        $("#gform_target_page_number_1").val("3");  
+        $("#gform_1").trigger("submit",[true]);
+
+        $($('.btn-act[data-id="'+id+'"]')[0]).click();
+      });
+
+      $rev.find('[href="#delete-item"]').on("click", function(e){
+        e.preventDefault();
+        var id = this.getAttribute('data-id');
+        
+        if (confirm('Are you sure you want to delete this item?')) {
+          self.clearItems(id);
+          $('.item-review[data-id="'+id+'"]').remove();
+          gfHandler.rearrangeData(id);
+        }
+      });            
+    }
+  },
+
   init = function(e) {
     var self = this;
 
@@ -341,191 +549,7 @@ var gfHandler = {
 
     $(document).on('gform_post_render', function (event, form_id, current_page) {
       self.onChangeEvents();
-      // fill for review section
-      var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
-      var visits = '';
-      var conn = '';
-      var zooMemory = $('body').find('textarea[id="input_1_6"]').val();
-
-      if (self.name) {
-        var visit = $('body').find('input[id="input_1_13"]').val();
-        var visitTime = $('body').find('select[id="input_1_15"]').find(":selected").text();
-
-        $('body').find('.gfield_checkbox[id="input_1_5"]').children().each(function(){
-          var val = $(this).find('input:checked').val();
-          if (val) {
-            conn += val + ',';
-          }
-        }); 
-
-        if ( (conn != '') || (visit != '') || (visitTime != '')) {
-          visits = '<span class="button-label"> ('+conn+' '+visit+' '+visitTime+')</span>';
-        } 
-        $rev.append('<div class="form-input-text">'+ self.name + visits+'</div>');
-      }
-      $rev.append('<p>'+self.email + ', ' + self.phone + '</p>');      
-      $rev.append('<p class="zoo-memory"><i>'+zooMemory+'</i></p>');   
-      if (self.$htmlHasInputedFile != null) {
-        $rev.after().append(self.$htmlHasInputedFile[0]);
-      }       
-
-      // uploads handle
-      if (self.$htmlHasInputedFile == null) {
-        var $uploads = $('body').find('#field_1_20').after($htmlFileUpload).next();
-        var $html = self.templateUpload();
-        $uploads.append($html); 
-        self.comboStyled();
-      } else {
-        var $uploads = $('body').find('#field_uploads');
-        self.comboStyled(true);
-      }
-
-      $uploads.children().each(function(){  
-        var id = this.getAttribute('data-id');
-        var filename = self.getFilename(id);
-
-        if (filename != '') {
-          self.inputHandler(id, filename, true);
-        }
-      });
-           
-      $uploads.find('[href="#show-next-item"]').on("click", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var id = $(this).parents()[0].getAttribute('data-id');
-        var filename = self.getFilename(id);
-
-        if (filename == '') {
-          alert('Cannot add new item, fill current item first.');
-        } else {
-          self.inputHandler(id, filename, true);
-        }
-      });
-      
-      $uploads.find('.clear-img').on("click", function(e) {
-        var id = this.getAttribute('data-id');
-        $(this).parent().removeClass('selected');
-        self.clearItems(id, true);
-        self.inputHandler(id, '');
-      }); 
-
-      $uploads.find('[href="#actions-button"]').on("click", function(e) {
-        e.preventDefault();
-        var id = this.getAttribute('data-id');
-        var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
-        var filename = self.getFilename(id);
-        
-        if (filename == '') {
-          alert('File must be selected.')
-        } else {
-          $uploadsItem.toggleClass('edit');
-          $uploadsItem.toggleClass('selected');
-
-          if ($uploadsItem.hasClass('edit')) {
-            $(this).text('SAVE');
-          } else {
-            $(this).text('EDIT');
-          }
-        }
-        
-      });
-
-      $uploads.find('[href="#delete-item"]').on("click", function(e) {
-        e.preventDefault();
-        var id = this.getAttribute('data-id');
-        if (confirm('Are you sure you want to delete this item?')) {
-          self.clearItems(id);         
-          $('.uploads-item').removeClass('input');
-          $('.uploads-item').not('.selected, [data-id="'+id+'"]').addClass('hide');
-          $('.uploads-item[data-id="'+id+'"]').addClass('input');
-          gfHandler.rearrangeData(id);
-        }                       
-      });
-        
-      $uploads.find(' input.input_file ').on("change", function() {
-        var id = this.getAttribute('data-id');
-        var filename = self.getFilename(id);
-        self.inputHandler(id, filename);
-      });
-
-      $uploads.children().each(function(){
-        var id = this.getAttribute('data-id');
-        var $input = $(this).children().children().children()[0];
-        var $yearInput = $(this).children().children().children()[1];
-
-        $($input).on("change", function(e){
-          var $previewContainer = $('<div id="image-prev-'+id+'" class="gf-image-upload-preview"><div class="remove-button" title="Remove image"></div><img/></div>').appendTo($rev);
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            $previewContainer.find('img').attr('src', e.target.result);
-          }
-          reader.readAsDataURL( $input.files[0] );	
-          self.$htmlHasInputedFile = $uploads;
-        });
-
-        $($yearInput).on("change", function(e){
-          self.$htmlHasInputedFile = $uploads;
-        })
-      });
-    
-
-      if (self.$htmlHasInputedFile != null) {
-        var $inputedData = $('body').find('#field_1_20').after(self.$htmlHasInputedFile).next();
-
-        $inputedData.children().each(function(e){
-          var id = this.getAttribute('data-id');
-          var count = parseInt( parseInt(id) + 1);
-          var $currInputFile = $('.input_file[data-id="'+id+'"]');
-          var filename = self.getFilename(id);
-
-          if (filename) {
-            var caption = $('.textarea-uploads[data-id="'+id+'"]').val();
-            var $html = 
-            '<li class="item-review" data-id="'+id+'">'+
-              '<div class="review-container flex-container">'+
-                '<p class="file-label button-label color-dark-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
-                '<div class="flex-container">'+
-                  '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
-                  '<a href="#delete-item" class="button button-close" data-id="'+id+'" ></a>'+
-                '</div>'+
-              '</div>'+
-              '<div class="image-container flex-container">'+
-                '<img src="" class="img-review" data-id="'+id+'" >'+
-                '<p class="" >'+caption+'</p>'+
-              '</div>'+
-            '</li>';
-
-            var $obj = $rev.append($html);            
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              $obj.find('.img-review[data-id="'+id+'"]').attr('src', e.target.result);
-            }
-            reader.readAsDataURL($currInputFile[0].files[0]);
-          }
-        });
-
-        $rev.find('[href="#review-edit-button"]').on("click", function(e){
-          e.preventDefault();
-          e.stopPropagation();              
-          var id = this.getAttribute('data-id');
-
-          $("#gform_target_page_number_1").val("3");  
-          $("#gform_1").trigger("submit",[true]);
-
-          $($('.btn-act[data-id="'+id+'"]')[0]).click();
-        });
-
-        $rev.find('[href="#delete-item"]').on("click", function(e){
-          e.preventDefault();
-          var id = this.getAttribute('data-id');
-          
-          if (confirm('Are you sure you want to delete this item?')) {
-            self.clearItems(id);
-            $('.item-review[data-id="'+id+'"]').remove();
-          }
-        });            
-      }
-
+      self.reRender();
     });
 
     

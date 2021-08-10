@@ -22,7 +22,7 @@
 						?>
 						<div class="carousel-cell">
 							<div class="hero-item-container background-cover" style="background-image:url(<?php print $image_url; ?>)">
-								<div class="title-container">
+								<div class="title-container hide-when-menu-active">
 									<p class="bold color-light-blue"><?php print $tiny_title; ?></p>
 								</div>
 							</div>
@@ -31,7 +31,7 @@
 					<?php endforeach; ?>	
 				</div>
 			</div>
-			<div class="grid-container desc-container">
+			<div class="grid-container desc-container hide-when-menu-active">
 				<div class="grid-x grid-margin-x">
 					<div class="cell medium-5 large-offset-1 color-white">
 						<?php print the_content(); ?>
@@ -52,7 +52,7 @@
 						?>
 						<div class="carousel-cell">
 							<div class="hero-item-container background-cover" style="background-image:url(<?php print $image_url; ?>)">
-								<div class="title-container">
+								<div class="title-container hide-when-menu-active">
 									<p class="bold color-light-blue"><?php print $tiny_title; ?></p>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 			<div class="small-desc-container bg-color-cyan">
-				<div class="grid-x">
+				<div class="grid-x hide-when-menu-active">
 					<div class="cell medium-5 color-white small-content-container">
 						<?php print the_content(); ?>
 						<a href="#menu-open" class="button transparent">

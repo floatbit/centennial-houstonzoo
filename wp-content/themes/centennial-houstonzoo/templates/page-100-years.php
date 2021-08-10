@@ -17,7 +17,7 @@
 	<section id="intro">
 		<div class="intro-image background-cover" style="background-image:url(<?php print $intro_image; ?>)">
 			<div class="grid-x">
-				<div class="cell intro-desc">
+				<div class="cell intro-desc hide-when-menu-active">
 					<h1 class="large color-white"><?php the_title(); ?></h1>
 				</div>
 			</div>
