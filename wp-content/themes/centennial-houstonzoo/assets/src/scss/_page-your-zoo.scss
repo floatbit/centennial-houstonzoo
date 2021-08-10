@@ -54,6 +54,7 @@
 
                 .description-container {
                     .desc-content {
+                        @include fluid-props(16px, 24px, margin-top);
                         @include fluid-props(16px, 24px, margin-bottom);
                     }
                 }

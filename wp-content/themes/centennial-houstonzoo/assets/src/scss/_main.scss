@@ -15,6 +15,9 @@ html {
     .hide-when-menu-active, .flickity-page-dots {
       opacity: 0;
     }
+    main, footer {
+      filter: blur(6px);
+    }
   } 
 }
 
@@ -183,12 +186,26 @@ hr {
 
 .eyebrow {
   @extend .color-dark-green;
+  letter-spacing: 0;
 }
+
+$blend-bg-color: #005851;
 
 .background-cover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  &.blend-background {
+    background-image: var(--bg-url), linear-gradient(90deg, $blend-bg-color 0%, rgba(255,255,255,0) 100%);
+    @include breakpoint(medium) {
+      background-image: var(--bg-url), linear-gradient(90deg, $blend-bg-color 25%, rgba(255,255,255,0) 70%);
+    }
+    background-blend-mode: multiply;
+  }
+  &.blend-background.vertical-blend {
+    background-image: var(--bg-url), linear-gradient(0deg, $blend-bg-color 25%, rgba(255,255,255,0) 50%);
+  }
 }
 
 header {

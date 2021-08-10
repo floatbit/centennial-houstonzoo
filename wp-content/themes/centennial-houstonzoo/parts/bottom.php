@@ -5,7 +5,7 @@
 ?>
 
 <footer class="bg-color-darker-green">
-	<div class="grid-container">
+	<div class="grid-container hide-when-menu-active">
 		<div class="grid-x grid-margin-x">
 			<div class="cell medium-5 large-4 large-offset-1 align-self-middle">
 				<a href="/">
