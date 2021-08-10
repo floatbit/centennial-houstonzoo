@@ -7,7 +7,13 @@ var homeHandler = {
             var descPadTop = parseFloat($desc.css('padding-top'));
             var descPadBot = parseFloat($desc.css('padding-bottom'));
             var descHeight = parseFloat($desc.height());
-            var newHeight = descPadTop + descPadBot + descHeight ; 
+            var newHeight = descPadTop + descPadBot + descHeight ;
+            var currHeight = Math.round(window.innerHeight / (100 / 100));
+
+            if (newHeight < currHeight) {
+                newHeight = currHeight;
+            }
+            
             $hero.css({
                 'height': newHeight+"px"
             });
