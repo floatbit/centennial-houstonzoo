@@ -10,6 +10,12 @@ html {
   &.disable-scroll {
     overflow: hidden;
   }
+  
+  .modal--is-showing {
+    .hide-when-menu-active, .flickity-page-dots {
+      opacity: 0;
+    }
+  } 
 }
 
 .grid-container {

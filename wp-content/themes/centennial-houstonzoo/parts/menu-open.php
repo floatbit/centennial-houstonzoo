@@ -3,8 +3,10 @@
 	$menu_title = get_field('menu_title', 'option');
 	$menu_text	= get_field('menu_text', 'option');
 	$donate		= get_field('donate', 'option');
+	global $post;
 ?>
 <div class="menu-open-container">
+	<div class="background-blur"></div>
 	<div class="header-container">
 		<div class="grid-x grid-margin-x align-top">
 			<div class="cell medium-4 show-for-medium">
@@ -28,9 +30,9 @@
 			<div class="grid-y">
 				<div class="grid-x grid-padding-x">
 					<div class="cell medium-7 left-section">
-						<?php if ($list_menus): ?>
+						<?php if ($list_menus):?>
 							<?php foreach ($list_menus as $key => $list_menu): ?>
-								<div class="menu-item active" data-id="<?php print $key; ?>">
+								<div class="menu-item <?php print (get_permalink($post->ID) == $list_menu['cta']) ? 'current active' : 'default' ?> " data-id="<?php print $key; ?>">
 									<a href="<?php print $list_menu['cta'] ?>" class="">
 										<h2 class="color-light-blue title-text"><?php print $list_menu['title'] ?></h2>
 										<p class="color-white"><?php print $list_menu['text'] ?></p>

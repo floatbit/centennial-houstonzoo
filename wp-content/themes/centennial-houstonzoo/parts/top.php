@@ -3,7 +3,7 @@
 ?>
 
 <header>
-	<div class="head-container">
+	<div class="head-container hide-when-menu-active">
 		<div class="grid-x grid-margin-x">
 			<div class="cell medium-3 left-content show-for-medium">
 				<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green"><?php print $donate['title']; ?></a>

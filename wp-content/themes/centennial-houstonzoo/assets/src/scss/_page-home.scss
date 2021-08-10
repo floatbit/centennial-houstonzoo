@@ -78,6 +78,7 @@
     }
 
     .flickity-page-dots {
+        @extend .hide-when-menu-active;
         width: auto;
         text-align: left;
         z-index: 15;
