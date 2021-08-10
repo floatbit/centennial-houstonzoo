@@ -8,8 +8,27 @@
 	left: 0;
 	z-index: 100;
     transition: all 250ms;
-    @include fluid-props(44px, 52px, padding-top);
-    @include fluid-props(72px, 124px, padding-bottom);
+    .menu-open-container-inner {
+        @include fluid-props(44px, 52px, padding-top);
+        @include fluid-props(72px, 124px, padding-bottom);
+        min-height: 100%;
+        position: relative;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $dark-green;
+            opacity: 0.4;
+        }
+        > &:not(.overlay) {
+            z-index: 1;
+        }
+        > .grid-container {
+            position: relative;
+        }
+    }
 
     .header-container {
         @include fluid-props(46px, 124px, padding-bottom);
