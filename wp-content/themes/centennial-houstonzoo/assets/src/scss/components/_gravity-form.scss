@@ -1,7 +1,10 @@
 .input-style {
     @extend .form-input-text;
     @extend .color-white;
-    padding: rem-calc(6) rem-calc(26) rem-calc(6);
+    padding: rem-calc(6) rem-calc(20) rem-calc(6);
+    @include breakpoint (medium) {
+        padding: rem-calc(6) rem-calc(26) rem-calc(6);    
+    }
     border-radius: rem-calc(28);
     line-height: rem-calc(36);
     outline: none;
@@ -20,7 +23,7 @@
     cursor: pointer;
     & + label:before {
         content: '';
-        @include fluid-props(5px, 7px, margin-top);
+        @include fluid-props(3px, 7px, margin-top);
         margin-left: rem-calc(-22);
         margin-right: rem-calc(16);
         width: rem-calc(16);
@@ -78,9 +81,12 @@
     background-image: url(../img/icon-arrow-up.svg);
     background-position: calc(100% - 16px) 20px;
     backdrop-filter: brightness(0.5);
-    max-height: 60vh;
     overflow: overlay;
     scrollbar-width: none;
+    max-height: 40vh;
+    @include breakpoint (medium) {
+        max-height: 60vh;
+    }
 
     &::-webkit-scrollbar { 
         display: none;
@@ -88,7 +94,10 @@
     
     li {
         @extend .form-input-text;
-        padding: rem-calc(6) rem-calc(26);     
+        padding: rem-calc(6) rem-calc(20) rem-calc(6);
+        @include breakpoint (medium) {
+            padding: rem-calc(6) rem-calc(26) rem-calc(6);    
+        }
         &::before {
             content: '';
         }        
@@ -315,7 +324,8 @@
             display: block;
             text-align: center;
             position: relative;
-            @include fluid-props(40px, 50px, height);
+            height: rem-calc(50);
+            //@include fluid-props(40px, 50px, height);
 
             &::after {
                 content: url(../img/icon-upload.svg);
@@ -335,10 +345,15 @@
             margin-bottom: rem-calc(8);
         }
         .gfield_checkbox {
-            column-count: 2;
+            @include breakpoint (medium) {
+                column-count: 2;
+            }
             label {
                 @extend .form-input-text;
                 cursor: pointer;
+                @include breakpoint (small only) {
+
+                }
             }
         }
         .gfield_label {
@@ -362,7 +377,7 @@
             width: 70%;
             .select-options,
             .select-styled {
-                top: rem-calc(-34);
+                @include fluid-props(-31px, -34px, top);
             }
         }
         
@@ -484,6 +499,11 @@
 
     .gform_next_button, .gform_previous_button {
         width: 48%;
+        padding: 0;
+    }
+
+    #gform_next_button_1_1 {
+        width: 100%;
     }
 
     .gform_previous_button {

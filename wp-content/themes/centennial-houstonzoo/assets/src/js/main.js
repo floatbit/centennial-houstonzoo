@@ -373,7 +373,16 @@ var gfHandler = {
       } 
       $rev.append('<div class="form-input-text">'+ self.name + visits+'</div>');
     }
-    $rev.append('<p>'+self.email + ', ' + self.phone + '</p>');      
+
+    $text = self.email;
+    if ((self.email != '') && (self.phone != '')) {
+      $text += ', ' + self.phone;
+    } else {
+      $text += self.phone;
+    } 
+    if ($text) {
+      $rev.append('<p>'+$text+'</p>');
+    }      
     $rev.append('<p class="zoo-memory"><i>'+zooMemory+'</i></p>');   
     if (self.$htmlHasInputedFile != null) {
       $rev.after().append(self.$htmlHasInputedFile[0]);
