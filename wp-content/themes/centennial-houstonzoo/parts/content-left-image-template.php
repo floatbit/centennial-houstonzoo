@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="cell medium-7 large-6 large-offset-1">
-                <div class="content-desc">
+                    <div class="content-desc">
                         <?php print $description; ?>
                     </div>
                 </div>

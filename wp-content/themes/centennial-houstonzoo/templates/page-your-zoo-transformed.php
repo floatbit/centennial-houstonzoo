@@ -16,8 +16,8 @@
 	<section id="intro">
 		<div class="intro-image background-cover" style="background-image:url(<?php print $intro_image; ?>)">
 			<div class="transparent-intro-panel blue"></div>
-			<div class="grid-x align-center">
-				<div class="cell large-6 intro-desc color-white">
+			<div class="flex-container align-center">
+				<div class="intro-desc color-white">
 					<h1 class="large"><?php print the_title(); ?></h1>
 					<?php print the_content(); ?>
 				</div>
@@ -65,7 +65,7 @@
 			<div class="projects-container">
 				<div class="grid-x grid-margin-x">
 					<div class="cell large-12 large-offset-1">
-						<p class="title-content eyebrow bold color-dark-green"><?php print $completed_projects['eyebrow']; ?></p>
+						<p class="title-content eyebrow color-dark-green"><?php print ucwords(strtolower($completed_projects['eyebrow'])); ?></p>
 						<p></p>
 					</div>
 					<div class="cell large-12 large-offset-1">
@@ -73,7 +73,7 @@
 							<?php foreach($completed_projects['projects'] as $key => $item):?>
 								<div class="cell small-7 project-id-container" data-id=<?php print $key; ?>>
 									<div class="project-item-container" data-id=<?php print $key; ?>>
-										<a href="#show-project-desc" data-id=<?php print $key; ?> data-count-item=<?php print count($completed_projects['projects']); ?>>
+										<a href="#show-project-desc" class="button-show-desc" data-id=<?php print $key; ?> data-count-item=<?php print count($completed_projects['projects']); ?>>
 											<div class="image-container">
 												<img src="<?php print $item['image']; ?>">
 											</div>

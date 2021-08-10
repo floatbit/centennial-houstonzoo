@@ -5,7 +5,7 @@
 
 <?php foreach ($looping_item as $key => $item): ?>
     <div class="content-container" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
-        <div class="grid-x grid-margin-x align-middle">
+        <div class="grid-x grid-margin-x align-middle content-inner-container">
             <div class="cell small-3">
                 <a href="#show-description" class="image-show-desc" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
                     <img class="info-logo" src="<?php print $item['image']; ?>">
@@ -13,7 +13,7 @@
             </div>
             <div class="cell small-11">
                 <div class="info-title flex-container align-middle">
-                    <a href="#show-description" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
+                    <a href="#show-description" class="title-open-button" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
                         <h4 class="title-content color-black"><?php print $item['title'] ?></h4>
                     </a>
                 </div>

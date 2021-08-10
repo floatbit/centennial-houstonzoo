@@ -77,6 +77,9 @@ h2 {
 
 h3 {
   @extend .h3-style;
+  &.medium {
+    @include fluid-type(18px, 32px);
+  }
   &.small {
     @include fluid-type(18px, 24px);   
   }
@@ -267,11 +270,12 @@ footer {
 
     @include breakpoint (small only) {
       margin-bottom: rem-calc(36);
+      text-align: center;
     }
 
     img {
-      @include fluid-props(200px, 296px, width);
-      @include fluid-props(52px, 76px, height);
+      @include fluid-props(192px, 296px, width);
+      @include fluid-props(44px, 76px, height);
     }
     
   }
@@ -281,6 +285,7 @@ footer {
 
     .footer-link {
       @include fluid-props(12px, 16px, margin-bottom);
+      @include fluid-type(12px, 14px);
       
       @include breakpoint (large) {
         &:last-of-type {
@@ -299,15 +304,20 @@ footer {
 
     .donate-button {
       @include fluid-props(12px, 16px, margin-bottom);
+      @include fluid-type(12px, 14px);
     }
 
     .icon-desc {
       @include fluid-props(8px, 10px, margin-bottom);
+      @include fluid-type(12px, 14px);
     }
 
     .icon-container .icon-item {
       @include fluid-props(16px, 20px, margin-right);
-      @include fluid-type(20px, 24px);
+      
+      i{
+        @include fluid-type(24px, 24px);
+      }
     }
   }
 

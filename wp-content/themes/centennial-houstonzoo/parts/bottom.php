@@ -25,8 +25,8 @@
 					</div>
 					<div class="cell large-7">
 						<div class="footer-social-media">
-						<a href="<?php print $donate['url']; ?>" target="_blank"" class="donate-button graphik-bold text-uppercases color-light-blue"><?php print $donate['title']; ?></a>
-							<span class="icon-desc graphik-bold text-uppercase color-white">CONNECT : </span>
+							<a href="<?php print $donate['url']; ?>" target="_blank" class="donate-button graphik-bold text-uppercases color-light-blue"><?php print $donate['title']; ?></a>
+							<span class="icon-desc graphik-bold text-uppercase color-white">CONNECT: </span>
 							<div class="icon-container">
 								<a class="icon-item" href="<?php print $social_media_links['facebook']; ?>"><i class="fab fa-facebook-square color-light-blue"></i></a>
 								<a class="icon-item" href="<?php print $social_media_links['twitter']; ?>"><i class="fab fa-twitter color-light-blue"></i></a>

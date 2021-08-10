@@ -3,6 +3,8 @@
         .intro-image {            
             @include fluid-props(390px, 600px, height);
             position: relative;
+            @extend .bg-color-dark-green;
+            background-blend-mode: multiply;
 
             .intro-desc {
                 @include fluid-props(224px, 300px, margin-top);
@@ -76,6 +78,20 @@
 
                 }
             }
+        }
+    }
+}
+
+.no-touchevents {
+    .content-container {
+        .content-inner-container:hover {
+            .info-title {
+                .title-open-button {
+                    .title-content {
+                        @extend .color-light-green;
+                    }
+                }
+            } 
         }
     }
 }

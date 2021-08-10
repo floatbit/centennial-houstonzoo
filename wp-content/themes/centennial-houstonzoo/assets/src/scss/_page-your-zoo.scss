@@ -7,6 +7,7 @@
             .intro-desc {
                 @include fluid-props(148px, 268px, margin-top);
                 @include fluid-props(48px, 158px, margin-bottom);
+                @include fluid-props(332px, 756px, max-width);
                 text-align: center;
                 z-index: 15;
             }
@@ -32,11 +33,18 @@
             .project-item-container {
                 h4, .eyebrow {
                     letter-spacing: 0;
+                    line-height: 1.4;
                 }
+
                 .image-container {
                     @include fluid-props(12px, 16px, margin-bottom);
                     img {
                         width: 100%;
+                    }
+                }
+
+                .title-container {
+                    h4 {
                     }
                 }
 
@@ -45,9 +53,7 @@
                 }
 
                 .description-container {
-
                     .desc-content {
-
                         @include fluid-props(16px, 24px, margin-bottom);
                     }
                 }
@@ -57,13 +63,37 @@
 
                 .project-item-container:not(.set-focus) {
                     opacity: 0.5;
-                    pointer-events: none;
-                    cursor: default;
+                    /* pointer-events: none;
+                    cursor: default; */
                 }
             }
             .small-description-container {
                 @include breakpoint(small only) {
                     margin-bottom: rem-calc(40);
+                }
+
+                
+                .desc-content {
+                    margin-bottom: rem-calc(16);
+                }
+            }
+        }
+    }
+}
+
+.no-touchevents {
+    #completed-projects {
+        .projects-container {
+            .project-item-container {
+                .button-show-desc:hover {
+                    .image-container {
+                        opacity: 0.65;
+                    }
+                    .show-desc-project-container {
+                        .button-plus {
+                            @extend :hover;
+                        }
+                    }
                 }
             }
         }

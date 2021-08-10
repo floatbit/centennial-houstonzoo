@@ -6,10 +6,13 @@
     $panel_color = $part_params['panel_color'];
     $specified_id = $part_params['specified_id'];
     $small_size = $part_params['small_size'];
+
 ?>
+
 <div class="dynamic-content-container">
+    <div class="bg-image-content background-cover <?php print ($small_size == true) ? 'small-size show-for-medium' : '' ?>" style="background-image:url(<?php print $image; ?>) <?php print $image_gradien; ?>" data-specified-id=<?php print $specified_id; ?>></div>
     <div class="half-transparent-panel <?php print ($small_size == true) ? 'small-size show-for-medium' : '' ?> <?php print $panel_color; ?>" data-specified-id=<?php print $specified_id; ?>></div>
-    <div class="bg-image-content background-cover <?php print ($small_size == true) ? 'small-size show-for-medium' : '' ?>" style="background-image:url(<?php print $image; ?>)" data-specified-id=<?php print $specified_id; ?>>
+    <div class="bg-content-container <?php print ($small_size == true) ? 'small-size show-for-medium' : '' ?>">
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell <?php print ($small_size == true) ? 'medium-6 large-offset-1' : 'small-9 medium-6 large-4 large-offset-1' ?>">
