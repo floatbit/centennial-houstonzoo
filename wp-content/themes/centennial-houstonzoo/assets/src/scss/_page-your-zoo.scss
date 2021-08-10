@@ -33,18 +33,17 @@
             .project-item-container {
                 h4, .eyebrow {
                     letter-spacing: 0;
-                    line-height: 1.4;
+                    line-height: 1.2;
+                }
+
+                .eyebrow {
+                    margin-top: rem-calc(8);
                 }
 
                 .image-container {
                     @include fluid-props(12px, 16px, margin-bottom);
                     img {
                         width: 100%;
-                    }
-                }
-
-                .title-container {
-                    h4 {
                     }
                 }
 
