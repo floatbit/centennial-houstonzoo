@@ -74,8 +74,15 @@
                 cursor: pointer;
                 .title-text {
                     margin-bottom: rem-calc(8);
+
+                    @include breakpoint (small only) {
+                        margin-left: -6px;
+                        white-space: nowrap;
+                    }
+
                     @include breakpoint (large) {
                         white-space: nowrap;
+                        @include fluid-props(-36px, 0px, margin-left);
                     }
                 }
                 p {
@@ -173,6 +180,7 @@
         .title-text {
             @extend .libre-regular-italic;
             @extend .color-white;
+            margin-left: 0;
         }
     }
 }

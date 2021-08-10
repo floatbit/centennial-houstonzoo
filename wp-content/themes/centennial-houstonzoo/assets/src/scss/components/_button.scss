@@ -41,7 +41,7 @@
             margin-right: rem-calc(10);
             position: absolute;
             left: 10%;
-            transition: right 250ms ease;
+            transition: all 250ms ease;
         }
     }
 
@@ -134,8 +134,11 @@
             right: 7%;
         }
 
-        &.button-back::before {
-            left: 5%;
+        &.button-back{
+            background: none;
+            &::before {
+                left: 2%;
+            }
         }
         &.button-close {
             background: none;

@@ -35,7 +35,7 @@
 								<?php foreach ($list_menus as $key => $list_menu): ?>
 									<div class="menu-item active" data-id="<?php print $key; ?>">
 										<a href="<?php print $list_menu['cta'] ?>" class="">
-											<h2 class="color-light-blue title-text"><?php print $list_menu['title'] ?></h2>
+											<div class="h2-style color-light-blue title-text"><?php print $list_menu['title'] ?></div>
 											<p class="color-white"><?php print $list_menu['text'] ?></p>
 										</a>
 									</div>
@@ -44,7 +44,7 @@
 						</div>
 						<div class="cell medium-7 right-section">
 							<div class="content-right default-content color-white active">
-								<h3 class="title"><?php print $menu_title; ?></h3>
+								<div class="h3-style title"><?php print $menu_title; ?></div>
 								<p class="text"><?php print $menu_text; ?></p>
 								<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green">Donate Now</a>
 							</div>
