@@ -53,7 +53,7 @@
 								<p class="caption color-white">The Houston Zoo is a registered 501(c)(3) organization.</p>
 							</div>
 							<div class="cell medium-shrink">
-								<p class="caption color-white">© <?php print date("Y"); ?> Houston Zoo&nbsp;&nbsp;<a href="/privacy" class="caption color-white underline" target="new">Privacy Policy</a></p>
+								<p class="caption color-white">© <?php print date("Y"); ?> Houston Zoo&nbsp;&nbsp;<a href="https://www.houstonzoo.org/privacy/" class="caption color-white underline" target="new">Privacy Policy</a></p>
 							</div>
 						</div>
 					</div>
