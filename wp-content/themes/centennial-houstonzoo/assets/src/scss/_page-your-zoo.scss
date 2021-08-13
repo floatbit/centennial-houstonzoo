@@ -7,9 +7,16 @@
             .intro-desc {
                 @include fluid-props(148px, 268px, margin-top);
                 @include fluid-props(48px, 158px, margin-bottom);
-                @include fluid-props(332px, 756px, max-width);
                 text-align: center;
                 z-index: 15;
+                .intro-desc-text {
+                    @include breakpoint(medium) {
+                        @include fluid-props(320px, 560px, max-width);
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;    
+                    }
+                }
             }
         }
     }

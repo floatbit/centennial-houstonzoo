@@ -1,40 +1,43 @@
-function clearShowProjectDesc() {
-	if (Foundation.MediaQuery.is('medium up')) {
-		if (jQuery(".description-container").hasClass('hide')) {
-			jQuery(".description-container").addClass('hide');
-		}
-	} else if (Foundation.MediaQuery.is('small only')) {
-		jQuery(".small-description-container").remove();
-	}
-
-	if (jQuery(".show-desc").hasClass('is-active')) {
-		jQuery(".show-desc").removeClass('is-active');
-	}
-
-	if (jQuery(".project-item-container").hasClass('set-focus')) {
-		jQuery(".project-item-container").removeClass('set-focus');
-	}
-
-	if (jQuery(".projects-container").hasClass('open-desc')) {
-		jQuery(".projects-container").removeClass('open-desc');
-	}
-};
 
 var yourZooHandler = {
+
+	clearShowProjectDesc: function() {
+		if (Foundation.MediaQuery.is('medium up')) {
+			if (jQuery(".description-container").hasClass('hide')) {
+				jQuery(".description-container").addClass('hide');
+			}
+		} else if (Foundation.MediaQuery.is('small only')) {
+			jQuery("#completed-projects .small-description-container").remove();
+		}
+	
+		if (jQuery(".show-desc").hasClass('is-active')) {
+			jQuery(".show-desc").removeClass('is-active');
+		}
+	
+		if (jQuery(".project-item-container").hasClass('set-focus')) {
+			jQuery(".project-item-container").removeClass('set-focus');
+		}
+	
+		if (jQuery(".projects-container").hasClass('open-desc')) {
+			jQuery(".projects-container").removeClass('open-desc');
+		}
+	},
+	
 	showDescription: function() {
+		var self = this;
 		jQuery('[href="#show-project-desc"]').on("click", function(e){
 			e.preventDefault();
 			var id = this.getAttribute('data-id');
 			var totalItem = this.getAttribute('data-count-item');
 			$button = jQuery(".show-desc[data-id="+id+"]");
 			$item = jQuery(".description-container[data-id="+id+"]");
-			$itemContainer = jQuery(".project-item-container[data-id="+id+"]");
-			$itemProjectContainer = jQuery(".projects-container");
+			$itemContainer = jQuery("#completed-projects .project-item-container[data-id="+id+"]");
+			$itemProjectContainer = jQuery("#completed-projects .projects-container");
 
 			if ($itemContainer.hasClass('set-focus')) {
-				clearShowProjectDesc();
+				self.clearShowProjectDesc();
 			} else {
-				clearShowProjectDesc();
+				self.clearShowProjectDesc();
 				if (Foundation.MediaQuery.is('medium up')) {
 					if ($item.hasClass('hide')) {
 						$item.removeClass('hide');
@@ -43,7 +46,7 @@ var yourZooHandler = {
 					}
 				} else if (Foundation.MediaQuery.is('small only')) {
 					if ($button.hasClass('is-active')) {
-						jQuery(".small-description-container").remove();
+						jQuery("#completed-projects .small-description-container").remove();
 					} else {
 						var oddEven = id % 2;
 						var nextId = id;

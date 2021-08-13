@@ -20,3 +20,4 @@
 		</div>
 	</div>
 </header>
+<div class="main-content-wrapper">

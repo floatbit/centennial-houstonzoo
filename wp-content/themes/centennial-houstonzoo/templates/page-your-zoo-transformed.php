@@ -16,10 +16,12 @@
 	<section id="intro">
 		<div class="intro-image background-cover" style="background-image:url(<?php print $intro_image; ?>)">
 			<div class="transparent-intro-panel blue"></div>
-			<div class="flex-container align-center">
-				<div class="intro-desc color-white hide-when-menu-active">
-					<h1 class="large"><?php print the_title(); ?></h1>
-					<?php print the_content(); ?>
+			<div class="grid-container">
+				<div class="grid-x grid-margin-x align-center">
+					<div class="cell intro-desc color-white hide-when-menu-active">
+						<h1 class="intro-desc-title large"><?php print the_title(); ?></h1>
+						<div class="intro-desc-text"><?php print the_content(); ?></div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <?php
-define( 'CSS_JS_VERSION', 1.01);
+define( 'CSS_JS_VERSION', 1.02);
 define( 'TEMPLATE_PATH', get_bloginfo('stylesheet_directory'));
 define( 'TEMPLATE_IMAGE_PATH', get_bloginfo('stylesheet_directory') . '/assets/img');
 
