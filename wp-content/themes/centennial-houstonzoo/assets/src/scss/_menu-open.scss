@@ -7,7 +7,9 @@
 	top: -100%;
 	left: 0;
 	z-index: 100;
-    transition: all 250ms;
+    opacity: 0;
+    transition: opacity 400ms;
+
     .menu-open-container-inner {
         @include fluid-props(44px, 52px, padding-top);
         @include fluid-props(72px, 124px, padding-bottom);
@@ -41,7 +43,10 @@
             @include breakpoint (small only) {
                 text-align: left;
             }
-
+               
+            a img {
+                @include fluid-props(44px, 76px, height);
+            }
         }
         .right-content {
             text-align: right;
@@ -108,6 +113,7 @@
             @include breakpoint(medium) {
                 display: flex;
                 align-items: center;    
+                justify-content: flex-end;
             }
             .content-right {
                 display: none;
@@ -129,6 +135,7 @@
 
     &.active {
         top: 0; 
+        opacity: 1;
     }
 }
 

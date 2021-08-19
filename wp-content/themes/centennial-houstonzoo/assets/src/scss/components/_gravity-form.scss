@@ -181,8 +181,12 @@
 
     .file-label {
         overflow: hidden;
-        margin: 0 rem-calc(16) 0 0 ;
+        padding-left: rem-calc(16);
+        margin: 0 rem-calc(16) 0 0;
         word-break: break-all;
+        .item-no {
+            margin-left: rem-calc(-16);    
+        }
     }
 
     .review-container, .review-container .flex-container {
@@ -192,7 +196,7 @@
             @include fluid-props(20px, 24px, height);
             @include fluid-props(22px, 26px, line-height);
             padding: 0 rem-calc(20);
-            
+            @include fluid-type(10px, 10px);
         }
     }
 
@@ -305,6 +309,10 @@
         }
         .ginput_container_textarea {
             margin-bottom: rem-calc(28);
+            .charleft {
+                font-style: italic;
+                opacity: 0.5;
+            }
         }
         textarea, .textarea-uploads {
             @extend .textarea-label;
@@ -363,14 +371,20 @@
             @extend .color-white;
             text-transform: capitalize;
         }
-        #field_1_5 .gfield_label {
-            &::after {
-                content: ' (Check all that apply)';
-                @include fluid-type(12px, 14px);
-                @include breakpoint(small only) {
-                    display: block;
-                    margin-bottom: rem-calc(8);
+        #field_1_5 {
+            .gfield_label {
+                &::after {
+                    content: ' (check all that apply)';
+                    text-transform: lowercase;
+                    @include fluid-type(12px, 14px);
+                    @include breakpoint(small only) {
+                        display: block;
+                        margin-bottom: rem-calc(8);
+                    }
                 }
+            }
+            .ginput_container {
+                padding-top: rem-calc(8);
             }
         }
 
@@ -397,6 +411,14 @@
         #field_1_5 , #field_1_17 {
             .validation_message {
                 margin: 0 !important;
+            }
+        }
+        .validation_message {
+            @extend .graphik-regular;
+            @extend .color-light-blue;
+            font-style: italic;
+            &::before {
+                content: "*";
             }
         }
 
@@ -437,7 +459,7 @@
             position: absolute;
             left: 16px;
             right: 24px;
-            border-top: 1px solid $white;
+            //border-top: 1px solid $white;
         }
         
         .gf_step {
@@ -463,7 +485,7 @@
                     z-index: -1;
                     margin-left: -11px;
                     margin-top: -6px;
-                    @extend .bg-color-darker-green;
+                    //@extend .bg-color-darker-green;
                 }
             }
 
@@ -481,7 +503,7 @@
         .gf_step_label {
             @extend .tiny-text;
             text-align: center;   
-            @include fluid-props (-6px, -13px, margin-top) ;
+            @include fluid-props (-6px, -5px, margin-top) ;
         }
         
         #gf_step_1_2, #gf_step_1_3 {
@@ -508,22 +530,31 @@
         padding: 0;
     }
 
-    #gform_next_button_1_1 {
-        width: 100%;
+    .gform_next_button {
+        .icon-arrow-right {
+            margin-left: rem-calc(10);
+            margin-right: rem-calc(10);
+            transition: all 200ms ease;
+            &::after {
+                content: url('../img/icon-arrow-right.svg');
+            }
+        }
     }
 
     .gform_previous_button {
-        span:first-of-type {
+        @extend .button.outline;
+        .icon-arrow-left{ 
+            margin-left: rem-calc(10);
             margin-right: rem-calc(10);
-            transition: transform 250ms;
+            transition: all 200ms ease;
+            &::after {
+                content: url('../img/icon-arrow-left-white.svg');
+            }
         }
     }
 
-    .gform_next_button {
-        span:last-of-type {
-            margin-left: rem-calc(10);
-            transition: transform 250ms;
-        }
+    #gform_next_button_1_1 {
+        width: 100%;
     }
 
     .gf_progressbar_percentage span,
@@ -551,13 +582,15 @@
         }
     }
     .gform_previous_button:hover {
-        span:first-of-type {
-            transform: translateX(-6px);
+        .icon-arrow-left {
+            margin-left: 0px;
+            margin-right: 20px;
         }
     }
     .gform_next_button:hover {
-        span:last-of-type {
-            transform: translateX(6px);
+        .icon-arrow-right {
+            margin-left: 20px;
+            margin-right: 0px;
         }
     }
 }

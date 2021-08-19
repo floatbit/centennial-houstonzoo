@@ -330,14 +330,14 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
 add_filter( 'gform_next_button', 'centennial_houstonzoo_form_next_button', 10, 2 );
 function centennial_houstonzoo_form_next_button( $button, $form ) {
   $button = str_replace('<input', '<button', $button);
-  $button .= '<span>Continue</span><span class="fas fa-arrow-right"></span></button>';
+  $button .= '<span>Continue</span><span class="icon-arrow-right"></span></button>';
   return $button;
 }
 
 add_filter( 'gform_previous_button', 'centennial_houstonzoo_form_previous_button', 10, 2 );
 function centennial_houstonzoo_form_previous_button( $button, $form ) {
   $button = str_replace('<input', '<button', $button);
-  $button .= '<span class="fas fa-arrow-left"></span><span>Back</span></button>';
+  $button .= '<span class="icon-arrow-left"></span><span>Back</span></button>';
   return $button;
 }
 
