@@ -6,7 +6,7 @@
         @extend .button-label;
     }
     padding: 0 rem-calc(42);
-    border-radius: rem-calc(26);
+    border-radius: 28px;
     line-height: rem-calc(42);
     height: rem-calc(40);
     display: inline-block;
@@ -35,12 +35,13 @@
         background: none;
         position: relative;
         padding-right: 0;
+        padding-left: rem-calc(24);
         @extend .color-light-green;
         &::before {
             content: url(../img/icon-arrow-left.svg);
-            margin-right: rem-calc(10);
             position: absolute;
-            left: 10%;
+            left: 0;
+            top: 1px;
             transition: all 250ms ease;
         }
     }
@@ -137,7 +138,7 @@
         &.button-back{
             background: none;
             &::before {
-                left: 2%;
+                left: -6px;
             }
         }
         &.button-close {

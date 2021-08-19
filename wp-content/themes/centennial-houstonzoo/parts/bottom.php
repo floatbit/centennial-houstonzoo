@@ -5,7 +5,7 @@
 ?>
 
 <footer class="bg-color-darker-green">
-	<div class="grid-container">
+	<div class="grid-container hide-when-menu-active">
 		<div class="grid-x grid-margin-x">
 			<div class="cell medium-5 large-4 large-offset-1 align-self-middle">
 				<a href="/">
@@ -78,10 +78,12 @@
 						<p class="caption color-white">The Houston Zoo is a registered 501(c)(3) organization.</p>
 					</div>
 					<div class="privacy-container">
-						<p class="caption color-white">© <?php print date('Y'); ?> Houston Zoo&nbsp;&nbsp;<a href="/privacy" class="caption color-white underline" target="new">Privacy Policy</a></p>
+						<p class="caption color-white">© <?php print date('Y'); ?> Houston Zoo&nbsp;&nbsp;<a href="https://www.houstonzoo.org/privacy/" class="caption color-white underline" target="new">Privacy Policy</a></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </footer>
+</div>
+<?php get_template_part( 'parts/menu-open' ); ?>

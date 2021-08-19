@@ -5,7 +5,7 @@
     @include breakpoint (medium) {
         padding: rem-calc(6) rem-calc(26) rem-calc(6);    
     }
-    border-radius: rem-calc(28);
+    border-radius: 28px;
     line-height: rem-calc(36);
     outline: none;
     border: 1px solid $white;
@@ -80,10 +80,11 @@
 	margin-bottom: rem-calc(36);
     background-image: url(../img/icon-arrow-up.svg);
     background-position: calc(100% - 16px) 20px;
-    backdrop-filter: brightness(0.5);
+    background-color: $darker-green;
     overflow: overlay;
     scrollbar-width: none;
     max-height: 40vh;
+    overflow: auto;
     @include breakpoint (medium) {
         max-height: 60vh;
     }
@@ -242,7 +243,7 @@
     }
 
     input#gform_submit_button_1 {
-        width: 50%;
+        width: 48%;
     }
 }
 
@@ -267,9 +268,10 @@
         #gform_page_1_4 {
             .gfield_checkbox {
                 column-count: 1;
-                margin-left: rem-calc(38);
+                margin-left: rem-calc(32);
                 label {
                     @extend .caption;
+                    font-size: rem-calc(12);
                     text-transform: none;
                     display: inherit;
                     position: relative;
@@ -282,7 +284,7 @@
                         vertical-align: sub;
                         margin-right: 5px;
                         position: absolute;
-                        left: -13px;
+                        left: -10px;
                         top: -4px;
                     }
                 }
@@ -310,7 +312,7 @@
             padding-top: rem-calc(16);
             padding-bottom: rem-calc(16);
             resize: none;
-            border-radius: rem-calc(16);
+            border-radius: 16px;
         }
         .textarea-uploads {
             height: rem-calc(100);
@@ -365,6 +367,10 @@
             &::after {
                 content: ' (Check all that apply)';
                 @include fluid-type(12px, 14px);
+                @include breakpoint(small only) {
+                    display: block;
+                    margin-bottom: rem-calc(8);
+                }
             }
         }
 

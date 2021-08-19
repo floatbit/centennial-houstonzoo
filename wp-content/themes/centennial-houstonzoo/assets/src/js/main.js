@@ -16,12 +16,13 @@ var mainHandler = {
     this.$menuOpenContainer.toggleClass('active');
     if (this.$menuOpenContainer.is('.active')) {
       this.$html.addClass('disable-scroll');
+      this.getScrollBarWidth();
 			jQuery("body, header").css({'padding-right': this.scrollBarWidth+'px'});
     } else {
       setTimeout(function() {
         self.$html.removeClass('disable-scroll');
         jQuery("body, header").css({'padding-right': 0});  
-      })
+      }, 250);
     }
     this.$yourStoryContainer.removeClass('active');
     this.$defaultContent.addClass('active');
@@ -49,12 +50,12 @@ var mainHandler = {
 		this.scrollBarWidth = 100 - widthWithScroll;
 	},
 
-  init = function(e){
+  init = function(e) {
     var self = this;
 
-    self.$menuItem.on("click", function(e){
+    this.$menuItem.on("click", function(e){
       e.stopPropagation();
-      var selectedId = this.getAttribute('data-id');
+      var selectedId = $(this).attr('data-id');
       var $menuSelected = $('.menu-item[data-id='+selectedId+']');
 
       self.$menuItem.removeClass('default');
@@ -69,10 +70,10 @@ var mainHandler = {
 
     $('[href="#share-your-story"]').on("click", function(e) {
       e.preventDefault();
-      self.$menuItem.removeClass('active');
       if (!self.$menuOpenContainer.hasClass('active')) {
         self.openMenu();
       }
+      $('.menu-item[data-id="1"]').trigger("click");
       self.$contentRight.removeClass('active');
       self.$yourStoryContainer.addClass('active');
       self.$leftSection.addClass('hide-for-small-only');      
