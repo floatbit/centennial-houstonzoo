@@ -62,7 +62,7 @@
 		<?php endforeach; ?>
 	</section>
 
-	<section id="completed-projects">
+	<section id="completed-projects" class="bg-color-gray">
 		<div class="grid-container">
 			<div class="projects-container">
 				<div class="grid-x grid-margin-x">

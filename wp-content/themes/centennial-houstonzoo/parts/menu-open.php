@@ -36,7 +36,7 @@
 									<div class="menu-item active" data-id="<?php print $key; ?>">
 										<a href="<?php print $list_menu['cta'] ?>" class="">
 											<div class="h2-style color-light-blue title-text"><?php print $list_menu['title'] ?></div>
-											<p class="color-white"><?php print $list_menu['text'] ?></p>
+											<p class="color-white desc-text"><?php print $list_menu['text'] ?></p>
 										</a>
 									</div>
 								<?php endforeach; ?>

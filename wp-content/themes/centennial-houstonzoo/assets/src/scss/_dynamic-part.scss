@@ -144,6 +144,7 @@
 
             .eyebrow {
                 @extend .color-white;
+                margin-bottom: rem-calc(4);
             }
 
             p {
