@@ -87,7 +87,7 @@ h2 {
 h3 {
   @extend .h3-style;
   &.medium {
-    @include fluid-type(18px, 32px);
+    @include fluid-type(18px, 28px);
   }
   &.small {
     @include fluid-type(18px, 24px);   
@@ -165,11 +165,11 @@ hr {
 }
 
 .h2-style {
-  @include fluid-type(26px, 42px);
+  @include fluid-type(26px, 38px);
 }
 
 .h3-style {
-  @include fluid-type(18px, 32px);
+  @include fluid-type(18px, 28px);
 }
 
 .h4-style {

@@ -145,9 +145,18 @@
             .eyebrow {
                 @extend .color-white;
             }
+
+            p {
+                @extend .graphik-semibold;
+            }
+
+            h2, p {
+                @include fluid-props(8px, 12px, margin-bottom);  
+            }
+
             hr {
-                @include fluid-props(32px, 48px, margin-top);
-                @include fluid-props(32px, 48px, margin-bottom);              
+                @include fluid-props(28px, 44px, margin-top);
+                @include fluid-props(28px, 44px, margin-bottom);              
             }
         }
     }
