@@ -7,7 +7,7 @@
 <footer class="bg-color-darker-green">
 	<div class="grid-container hide-when-menu-active">
 		<div class="grid-x grid-margin-x">
-			<div class="cell medium-5 large-4 large-offset-1 align-self-middle">
+			<div class="cell medium-5 large-4 large-offset-1">
 				<a href="/">
 					<div class="logo-container">
 						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
@@ -49,7 +49,7 @@
 					</div>
 					<div class="cell medium-14 show-for-medium bottom-content-container">
 						<div class="grid-x grid-margin-x">
-							<div class="cell medium-auto">
+							<div class="cell medium-shrink">
 								<p class="caption color-white">The Houston Zoo is a registered 501(c)(3) organization.</p>
 							</div>
 							<div class="cell medium-shrink">

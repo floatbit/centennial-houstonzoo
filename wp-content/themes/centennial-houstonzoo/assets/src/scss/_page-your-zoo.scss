@@ -28,8 +28,8 @@
     }
 
     #completed-projects {
-        @include fluid-props(48px, 128px, margin-top);
-        @include fluid-props(48px, 128px, margin-bottom);
+        @include fluid-props(48px, 128px, padding-top);
+        @include fluid-props(48px, 128px, padding-bottom);
 
         .projects-container {
             .project-id-container {

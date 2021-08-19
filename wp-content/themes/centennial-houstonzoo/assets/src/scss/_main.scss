@@ -87,7 +87,7 @@ h2 {
 h3 {
   @extend .h3-style;
   &.medium {
-    @include fluid-type(18px, 32px);
+    @include fluid-type(18px, 28px);
   }
   &.small {
     @include fluid-type(18px, 24px);   
@@ -161,15 +161,15 @@ hr {
 }
 
 .h1-style-large {
-  @include fluid-type(36px, 64px);
+  @include fluid-type(36px, 58px);
 }
 
 .h2-style {
-  @include fluid-type(26px, 42px);
+  @include fluid-type(26px, 38px);
 }
 
 .h3-style {
-  @include fluid-type(18px, 32px);
+  @include fluid-type(18px, 28px);
 }
 
 .h4-style {
@@ -250,20 +250,21 @@ header {
       }
 
       a img {
-        @include fluid-props(44px, 76px, height);
+        @include fluid-props(40px, 68px, height);
       }
     }
   
     .right-content {
       text-align: right;
-      font-size: 24px;
-      line-height: 1.2;
       @include breakpoint(medium) {
         line-height: 1.5;
       }
   
       a {
         @extend .color-white;
+        font-size: rem-calc(28);
+        line-height: 1.2;
+        font-weight: 500;
       }
     }
   }
@@ -355,10 +356,10 @@ footer {
     }
 
     .footer-address-container {
-      @extend .caption;
       @extend .color-white;
 
       p {
+        @extend .caption;
         &:first-of-type {
           @include fluid-props(8px, 16px, margin-bottom);
         }
