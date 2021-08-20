@@ -79,7 +79,15 @@ var mainHandler = {
       self.$leftSection.addClass('hide-for-small-only');      
       self.$buttonBack.removeClass('hide');
       self.$buttonInsideMenu.removeClass('hide');
-      
+    });
+
+    $('body').on("click", "[href='#btn-reload-story-form']", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var url = window.location.href.replace(/#[^#]*$/, "")+'#share-your-story';
+      window.location.href = url;
+      window.location.reload();
+      window.location.href = window.location.href.replace(/#[^#]*$/, "");
     });
     
     var urlHash = window.location.hash;
@@ -317,16 +325,21 @@ var gfHandler = {
     }
   },
 
-  onChangeEvents = function(){
+  onChangeEvents = function($obj = false){
     var self = this;
-    this.$input.on("change, keyup, input", function(e){
-      if (this.name == self.fieldName) {
+    if ( $obj == false ) {
+      $obj = self.$input;
+    }
+    $obj.on("input, keydown, change, keyup", function(e){
+      if ((this.name == self.fieldName) || (this.id == self.fieldName)) {
         self.name = this.value 
-      } else if (this.name == self.fieldEmail) {
+      } else if ((this.name == self.fieldEmail) || (this.id == self.fieldEmail)) {
         self.email = this.value;
-      } else if (this.name == self.fieldPhone) {
+      } else if ((this.name == self.fieldPhone) || (this.id == self.fieldPhone)) {
         self.phone = this.value;
       }
+      console.log(this);
+      console.log(this.value);
     });
   },
 
@@ -358,6 +371,9 @@ var gfHandler = {
     var conn = '';
     var $zooMemory = $('body').find('textarea[id="input_1_6"]');
     var zooMemory = $zooMemory.val();
+    var $input = $('.ginput_container').find('input');
+    
+    self.onChangeEvents($input);
 
     $zooMemory.on('change, keydown, keyup', function(){
       var str = $(this).val();
@@ -372,7 +388,7 @@ var gfHandler = {
 
     if (self.name) {
       var visit = $('body').find('input[id="input_1_13"]').val();
-      var visitTime = $('body').find('select[id="input_1_15"]').find(":selected").text();
+      var visitTime = $('body').find("input[type='radio'][name='input_22']:checked").val();
 
       $('body').find('.gfield_checkbox[id="input_1_5"]').children().each(function(){
         var val = $(this).find('input:checked').val();
@@ -396,7 +412,7 @@ var gfHandler = {
     if ($text) {
       $rev.append('<p>'+$text+'</p>');
     }      
-    $rev.append('<p class="zoo-memory"><i>'+zooMemory+'</i></p>');   
+    $rev.append('<p class="textarea-label zoo-memory"><i>'+zooMemory+'</i></p>');   
     if (self.$htmlHasInputedFile != null) {
       $rev.after().append(self.$htmlHasInputedFile[0]);
     }       
@@ -525,7 +541,7 @@ var gfHandler = {
             '</div>'+
             '<div class="image-container flex-container">'+
               '<img src="" class="img-review" data-id="'+id+'" >'+
-              '<p class="" >'+caption+'</p>'+
+              '<p class="textarea-label" >'+caption+'</p>'+
             '</div>'+
           '</li>';
 

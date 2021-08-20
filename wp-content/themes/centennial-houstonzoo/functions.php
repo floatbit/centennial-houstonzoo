@@ -237,7 +237,7 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
         'zoo_connection'  => $arr_result,
         'zoo_memory'      => rgar( $entry, '6' ),
         'visit_since'       => rgar( $entry, '13' ),
-        'visit_since_time'  => rgar( $entry, '15' ),
+        'visit_since_time'  => rgar( $entry, '22' ),
       )      
     )
   );

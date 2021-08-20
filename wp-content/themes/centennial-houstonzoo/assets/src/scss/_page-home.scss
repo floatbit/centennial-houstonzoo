@@ -1,4 +1,12 @@
 .page-template-page-home main {
+    .carousel-cell {
+        opacity: 0;
+        transition: opacity 600ms !important;
+        &.is-selected {
+            opacity: 1;
+        }
+    }
+
     .home-container {
         position: relative;
         min-height: 100vh;
