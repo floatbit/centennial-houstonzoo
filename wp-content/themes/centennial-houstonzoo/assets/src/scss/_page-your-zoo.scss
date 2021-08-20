@@ -11,8 +11,8 @@
                 z-index: 15;
                 .intro-desc-text {
                     @include breakpoint(medium) {
-                        @include fluid-props(320px, 560px, max-width);
                         display: block;
+                        width: 45%;
                         margin-left: auto;
                         margin-right: auto;    
                     }
