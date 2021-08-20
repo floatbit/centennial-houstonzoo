@@ -597,7 +597,10 @@ var gfHandler = {
 jQuery(document).ready(function($) {
 
   var myElement = document.querySelector("header");
-  var headroom  = new Headroom(myElement);
+  var options = {
+    offset : 300,
+  };
+  var headroom  = new Headroom(myElement, options);
   
   headroom.init();
 
@@ -608,10 +611,10 @@ jQuery(document).ready(function($) {
     if($(window).scrollTop() > $(window).height() / 2) {
         $("header").addClass("scrolled");
         $(".logo-white").addClass("hide");
-        $(".logo-black").removeClass("hide");
+        $(".compact-logo-white").removeClass("hide");
     } else {
         $("header").removeClass("scrolled");
-        $(".logo-black").addClass("hide");
+        $(".compact-logo-white").addClass("hide");
         $(".logo-white").removeClass("hide");
     }
   });
