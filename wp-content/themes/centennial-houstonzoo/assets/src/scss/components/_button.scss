@@ -66,6 +66,12 @@
         border: 1px solid $light-green;
         @extend .color-light-green;
     }
+
+    &.outline {
+        @extend .bg-color-transparent;
+        border: 1px solid $light-green;
+        @extend .color-white;
+    }
 }
 
 
@@ -99,6 +105,10 @@
 
     &.fill::before, &.white::before {
         background-image: url(../img/icon-plus-fill.svg);
+    }
+
+    &.green::before {
+        background-image: url(../img/icon-plus-white.svg);
     }
 
     &.no-text {
@@ -144,6 +154,9 @@
         &.button-close {
             background: none;
         }
+        &.outline {
+            @extend .bg-color-light-green;
+        }
     }
 
     .button-plus:hover {
@@ -161,6 +174,10 @@
         
         &.white::before {
             background-image: url(../img/icon-plus-white.svg);
+        }
+
+        &.green::before {
+            background-image: url(../img/icon-plus-fill.svg);
         }
     }
 

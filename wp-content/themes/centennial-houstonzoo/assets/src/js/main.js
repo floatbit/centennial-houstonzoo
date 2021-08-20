@@ -114,7 +114,7 @@ var gfHandler = {
   $htmlFileUpload = '<li id="field_uploads"></li>',
   $fieldBeforeDynamic = $('#field_1_20'),
   totalsItems = 10,
-  yearStart = 2000,
+  yearStart = 1922,
   $htmlHasInputedFile = null,
   $selectIdentifier = $('.ginput_container select'),
   name = '', email = '', phone = '', 
@@ -146,7 +146,7 @@ var gfHandler = {
         '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
         '<textarea name="input_caption[]" id="input_caption_'+i+'" data-id="'+i+'"  class="textarea textarea-uploads" tabindex="16" placeholder="200 characters max" aria-invalid="false" rows="10" cols="50"></textarea>'+
         ((i+1 == totalsItems) ? '' :
-          '<a href="#show-next-item" class="button-plus white"> '+
+          '<a href="#show-next-item" class="button-plus green"> '+
             '<span class="button-label color-white"> Add another photo or video </span>'+ 
           '</a>')+   
         '<div class="review-container flex-container">'+
@@ -356,7 +356,19 @@ var gfHandler = {
     var $rev = $('body').find('#field_1_12').after($htmlContainer).next();
     var visits = '';
     var conn = '';
-    var zooMemory = $('body').find('textarea[id="input_1_6"]').val();
+    var $zooMemory = $('body').find('textarea[id="input_1_6"]');
+    var zooMemory = $zooMemory.val();
+
+    $zooMemory.on('change, keydown, keyup', function(){
+      var str = $(this).val();
+      var words = str.split(' ');
+      var lastIndex = str.lastIndexOf(" ");
+
+      if (words.length == 500) {
+        str = str.substring(0, lastIndex);
+        $(this).val(str);        
+      }
+    });
 
     if (self.name) {
       var visit = $('body').find('input[id="input_1_13"]').val();
@@ -365,7 +377,7 @@ var gfHandler = {
       $('body').find('.gfield_checkbox[id="input_1_5"]').children().each(function(){
         var val = $(this).find('input:checked').val();
         if (val) {
-          conn += val + ',';
+          conn += val.replace("_", " ") + ',';
         }
       }); 
 
@@ -506,7 +518,7 @@ var gfHandler = {
           '<li class="item-review" data-id="'+id+'">'+
             '<div class="review-container flex-container">'+
               '<p class="file-label button-label color-light-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
-              '<div class="flex-container">'+
+              '<div class="flex-container align-self-top">'+
                 '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
                 '<a href="#delete-item" class="button button-close" data-id="'+id+'" ></a>'+
               '</div>'+
