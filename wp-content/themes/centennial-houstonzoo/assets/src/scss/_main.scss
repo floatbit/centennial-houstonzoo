@@ -184,6 +184,10 @@ hr {
   @include fluid-type(14px, 16px);
 }
 
+.p-style {
+  line-height: 1.5;
+}
+
 .eyebrow {
   @extend .color-dark-green;
   letter-spacing: 0;
@@ -249,7 +253,7 @@ header {
         text-align: center;
       }
 
-      a img {
+      .logo-white {
         @include fluid-props(40px, 68px, height);
       }
     }
@@ -270,13 +274,11 @@ header {
   }
 
   &.scrolled {
-    // background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.6));
-    background-color: $white;
-    border-bottom: 1px solid $light-gray;
-
-    .right-content {
-      a {
-        @extend .color-black;
+    @include fluid-props(28px, 36px, padding-top);
+    @extend .bg-color-darker-green;
+    .middle-content {
+      .compact-logo-white {
+        @include fluid-props(292px, 416px, width);
       }
     }
   }

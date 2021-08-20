@@ -35,6 +35,11 @@
                     margin-top: rem-calc(-84);
                 }
             }
+
+            &.right-image {
+                @include fluid-props(100px, 360px, width);
+                @include fluid-props(148px, 530px, height);
+            }
         }
 
         &.expand-content{
