@@ -10,7 +10,6 @@
     opacity: 0;
     transition: all 250ms ease-in-out;
     .menu-open-container-inner {
-        @include fluid-props(44px, 52px, padding-top);
         @include fluid-props(72px, 124px, padding-bottom);
         min-height: 100%;
         position: relative;

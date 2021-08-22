@@ -15,10 +15,14 @@ html {
     .hide-when-menu-active, .flickity-page-dots {
       opacity: 0;
     }
-    .main-content-wrapper {
-      filter: blur(6px) brightness(50%);
-    }
   } 
+  .main-content-wrapper.menu-opened {
+    filter: blur(6px) brightness(50%);
+    transform: scale(1.02);
+    @include breakpoint(medium) {
+      transform: scale(1.01);
+    }
+  }
 }
 
 .grid-container {
@@ -212,6 +216,10 @@ $blend-bg-color: #005851;
   }
 }
 
+header, .menu-open-container-inner {
+  @include fluid-props(44px, 52px, padding-top);
+}
+
 header {
   background-color: transparent;
   z-index: 100;
@@ -221,7 +229,6 @@ header {
   left:0;
   right:0;
 
-  @include fluid-props(44px, 52px, padding-top);
   @include fluid-props(28px, 36px, padding-bottom);
 
   &.headroom {

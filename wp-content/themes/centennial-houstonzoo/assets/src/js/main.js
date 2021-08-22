@@ -1,6 +1,7 @@
 $(document).foundation();
 var mainHandler = {
   $menuOpenContainer = $(".menu-open-container"),
+  $mainContentWrapper = $(".main-content-wrapper"),
   $html = $("html"),
   $body = $('body'),
   $menuItem = $(".menu-item"),
@@ -38,6 +39,15 @@ var mainHandler = {
 
     this.$leftSection.removeClass('hide-for-small-only');
     this.$buttonBack.addClass('hide');
+    if (this.$body.hasClass('modal--is-showing')) {
+      // menu modal is opened
+      this.$mainContentWrapper.removeClass('menu-opened');
+      $('.carousel-main').flickity('playPlayer');
+    } else {
+      // menu modal is closed
+      this.$mainContentWrapper.addClass('menu-opened');
+      $('.carousel-main').flickity('stopPlayer');
+    }
     this.$body.toggleClass('modal--is-showing');
   },
 

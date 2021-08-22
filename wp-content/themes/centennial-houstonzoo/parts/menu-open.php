@@ -21,7 +21,7 @@
 						BACK TO MENU
 					</a>
 				</div>
-				<div class="cell medium-4 small-7 right-content">
+				<div class="cell medium-4 small-7 right-content flex-container align-top align-right">
 					<a href="#menu-open" class="fal fa-times color-white"></a>
 				</div>
 			</div>
