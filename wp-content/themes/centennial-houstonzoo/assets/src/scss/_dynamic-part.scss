@@ -35,6 +35,11 @@
                     margin-top: rem-calc(-84);
                 }
             }
+
+            &.right-image {
+                @include fluid-props(100px, 360px, width);
+                @include fluid-props(148px, 530px, height);
+            }
         }
 
         &.expand-content{
@@ -90,11 +95,11 @@
         }
 
         &.dark-green {
-            background-image: linear-gradient(90deg, $dark-green 30%, rgba(255,255,255,0) 100%);
+            background-image: linear-gradient(90deg, $dark-green 45%, rgba(255,255,255,0) 100%), linear-gradient(90deg, $dark-green 40%, rgba(255,255,255,0) 100%);
         }
 
         &.darker-green {
-            background-image: linear-gradient(90deg, $darker-green 30%, rgba(255,255,255,0) 100%);
+            background-image: linear-gradient(90deg, $darker-green 45%, rgba(255,255,255,0) 100%), linear-gradient(90deg, $darker-green 40%, rgba(255,255,255,0) 100%);
         }
 
         &.small-size {
@@ -107,11 +112,11 @@
             }
             @include breakpoint(small only) {
                 &.dark-green {
-                    background: linear-gradient(to top, $dark-green 25%, rgba(255,255,255,0) 100%);
+                    background-image: linear-gradient(to top, $dark-green 25%, rgba(255,255,255,0) 100%), linear-gradient(to top, $dark-green 30%, rgba(255,255,255,0) 100%);
                 }
         
                 &.darker-green {
-                    background: linear-gradient(to top, $darker-green 25%, rgba(255,255,255,0) 100%);
+                    background-image: linear-gradient(to top, $darker-green 25%, rgba(255,255,255,0) 100%), linear-gradient(to top, $darker-green 30%, rgba(255,255,255,0) 100%);
                 }
             }
         }
@@ -144,10 +149,20 @@
 
             .eyebrow {
                 @extend .color-white;
+                margin-bottom: rem-calc(4);
             }
+
+            p {
+                @extend .graphik-semibold;
+            }
+
+            h2, p {
+                @include fluid-props(8px, 12px, margin-bottom);  
+            }
+
             hr {
-                @include fluid-props(32px, 48px, margin-top);
-                @include fluid-props(32px, 48px, margin-bottom);              
+                @include fluid-props(28px, 44px, margin-top);
+                @include fluid-props(28px, 44px, margin-bottom);              
             }
         }
     }

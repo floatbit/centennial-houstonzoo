@@ -4,10 +4,11 @@
     overflow-y: scroll;
     position: fixed;
 	width: 100%;
-	top: -100%;
+	top: 0;
 	left: 0;
-	z-index: 100;
-    transition: all 250ms;
+    z-index: -100;
+    opacity: 0;
+    transition: all 250ms ease-in-out;
     .menu-open-container-inner {
         @include fluid-props(44px, 52px, padding-top);
         @include fluid-props(72px, 124px, padding-bottom);
@@ -42,10 +43,14 @@
                 text-align: left;
             }
 
+            a img {
+                @include fluid-props(40px, 68px, height);
+            }
+
         }
         .right-content {
             text-align: right;
-            font-size: 24px;
+            font-size: rem-calc(36);
         }
     }
 
@@ -53,6 +58,7 @@
         .left-section, .right-section {
             @include breakpoint (medium) {
                 @include fluid-props(16px, 32px, padding-top);
+                @include fluid-props(16px, 32px, padding-bottom);
                 @include fluid-props(48px, 82px, padding-left);
                 @include fluid-props(48px, 82px, padding-right);
             }
@@ -85,8 +91,15 @@
                         @include fluid-props(-36px, 0px, margin-left);
                     }
                 }
-                p {
+                .desc-text {
                     margin: 0;
+                    width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                &:last-of-type {
+                    padding-bottom: 0;    
                 }
 
                 &.default {
@@ -108,6 +121,7 @@
             @include breakpoint(medium) {
                 display: flex;
                 align-items: center;    
+                justify-content: flex-end;
             }
             .content-right {
                 display: none;
@@ -128,7 +142,8 @@
     }
 
     &.active {
-        top: 0; 
+        z-index: 100;
+        opacity: 1;
     }
 }
 
@@ -174,6 +189,7 @@
         .title-text {
             @extend .libre-regular-italic;
             @extend .color-white;
+
             margin-left: 0;
         }
     }

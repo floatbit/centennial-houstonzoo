@@ -66,6 +66,12 @@
         border: 1px solid $light-green;
         @extend .color-light-green;
     }
+
+    &.outline {
+        @extend .bg-color-transparent;
+        border: 1px solid $light-green;
+        @extend .color-white;
+    }
 }
 
 
@@ -101,6 +107,10 @@
         background-image: url(../img/icon-plus-fill.svg);
     }
 
+    &.green::before {
+        background-image: url(../img/icon-plus-white.svg);
+    }
+
     &.no-text {
         justify-content: flex-end;
 
@@ -127,8 +137,8 @@
         }
 
         &.bright-green {
-            background: $darker-green;
-            border-color: $darker-green;
+            background: $medium-green;
+            border-color: $medium-green;
         }
 
         &.btn-arrow-right::after {
@@ -143,6 +153,9 @@
         }
         &.button-close {
             background: none;
+        }
+        &.outline {
+            @extend .bg-color-light-green;
         }
     }
 
@@ -161,6 +174,10 @@
         
         &.white::before {
             background-image: url(../img/icon-plus-white.svg);
+        }
+
+        &.green::before {
+            background-image: url(../img/icon-plus-fill.svg);
         }
     }
 

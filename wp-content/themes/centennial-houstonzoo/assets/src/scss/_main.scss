@@ -87,7 +87,7 @@ h2 {
 h3 {
   @extend .h3-style;
   &.medium {
-    @include fluid-type(18px, 32px);
+    @include fluid-type(18px, 28px);
   }
   &.small {
     @include fluid-type(18px, 24px);   
@@ -128,7 +128,7 @@ hr {
 }
 
 .form-input-text {
-  @include fluid-type(18px, 24px);   
+  @include fluid-type(18px, 22px);   
 } 
 
 .caption-semibold {
@@ -161,15 +161,15 @@ hr {
 }
 
 .h1-style-large {
-  @include fluid-type(36px, 64px);
+  @include fluid-type(36px, 58px);
 }
 
 .h2-style {
-  @include fluid-type(26px, 42px);
+  @include fluid-type(26px, 38px);
 }
 
 .h3-style {
-  @include fluid-type(18px, 32px);
+  @include fluid-type(18px, 28px);
 }
 
 .h4-style {
@@ -182,6 +182,10 @@ hr {
 
 .p-style, .eyebrow {
   @include fluid-type(14px, 16px);
+}
+
+.p-style {
+  line-height: 1.5;
 }
 
 .eyebrow {
@@ -249,33 +253,32 @@ header {
         text-align: center;
       }
 
-      a img {
-        @include fluid-props(44px, 76px, height);
+      .logo-white {
+        @include fluid-props(40px, 68px, height);
       }
     }
   
     .right-content {
       text-align: right;
-      font-size: 24px;
-      line-height: 1.2;
       @include breakpoint(medium) {
         line-height: 1.5;
       }
   
       a {
         @extend .color-white;
+        font-size: rem-calc(28);
+        line-height: 1.2;
+        font-weight: 500;
       }
     }
   }
 
   &.scrolled {
-    // background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.6));
-    background-color: $white;
-    border-bottom: 1px solid $light-gray;
-
-    .right-content {
-      a {
-        @extend .color-black;
+    @include fluid-props(28px, 36px, padding-top);
+    @extend .bg-color-darker-green;
+    .middle-content {
+      .compact-logo-white {
+        @include fluid-props(292px, 416px, width);
       }
     }
   }
@@ -355,10 +358,10 @@ footer {
     }
 
     .footer-address-container {
-      @extend .caption;
       @extend .color-white;
 
       p {
+        @extend .caption;
         &:first-of-type {
           @include fluid-props(8px, 16px, margin-bottom);
         }

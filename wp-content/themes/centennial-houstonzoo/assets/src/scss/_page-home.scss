@@ -1,21 +1,40 @@
 .page-template-page-home main {
+    .carousel-cell {
+        opacity: 0;
+        transition: opacity 600ms !important;
+        &.is-selected {
+            opacity: 1;
+        }
+    }
+
     .home-container {
         position: relative;
         min-height: 100vh;
         .hero-container {
             position: absolute;
             min-width: 100vw;
-    
-            .hero-item-container {
-                min-height: 100vh;
-                min-width: 100vw;
-                z-index: 15;
 
-                .title-container {
-                    position: absolute;
-                    z-index: 15;
-                    bottom: rem-calc(51);
-                    left: rem-calc(56);
+            .carousel-main {
+                .carousel-cell {
+                    opacity: 0;
+                    transition: opacity 250ms !important;
+                    
+                    &.is-selected {
+                        opacity: 1 !important;
+                    }
+
+                    .hero-item-container {
+                        min-height: 100vh;
+                        min-width: 100vw;
+                        z-index: 15;
+        
+                        .title-container {
+                            position: absolute;
+                            z-index: 15;
+                            bottom: rem-calc(80);
+                            left: rem-calc(56);
+                        }
+                    }
                 }
             }
         }

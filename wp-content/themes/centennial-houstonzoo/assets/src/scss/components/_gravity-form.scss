@@ -177,12 +177,17 @@
         .zoo-memory {
             @include fluid-props(48px, 60px, margin-bottom);
         }
+
     }
 
     .file-label {
         overflow: hidden;
-        margin: 0 rem-calc(16) 0 0 ;
+        padding-left: rem-calc(16);
+        margin: 0 rem-calc(16) 0 0;
         word-break: break-all;
+        .item-no {
+            margin-left: rem-calc(-16);    
+        }
     }
 
     .review-container, .review-container .flex-container {
@@ -192,7 +197,7 @@
             @include fluid-props(20px, 24px, height);
             @include fluid-props(22px, 26px, line-height);
             padding: 0 rem-calc(20);
-            
+            @include fluid-type(10px, 10px);
         }
     }
 
@@ -270,8 +275,9 @@
                 column-count: 1;
                 margin-left: rem-calc(32);
                 label {
-                    @extend .caption;
-                    font-size: rem-calc(12);
+                    @extend .textarea-label;
+                    //@extend .caption;
+                    //font-size: rem-calc(12);
                     text-transform: none;
                     display: inherit;
                     position: relative;
@@ -305,6 +311,10 @@
         }
         .ginput_container_textarea {
             margin-bottom: rem-calc(28);
+            .charleft {
+                font-style: italic;
+                opacity: 0.5;
+            }
         }
         textarea, .textarea-uploads {
             @extend .textarea-label;
@@ -363,14 +373,20 @@
             @extend .color-white;
             text-transform: capitalize;
         }
-        #field_1_5 .gfield_label {
-            &::after {
-                content: ' (Check all that apply)';
-                @include fluid-type(12px, 14px);
-                @include breakpoint(small only) {
-                    display: block;
-                    margin-bottom: rem-calc(8);
+        #field_1_5 {
+            .gfield_label {
+                &::after {
+                    content: ' (check all that apply)';
+                    text-transform: lowercase;
+                    @include fluid-type(12px, 14px);
+                    @include breakpoint(small only) {
+                        display: block;
+                        margin-bottom: rem-calc(8);
+                    }
                 }
+            }
+            .ginput_container {
+                padding-top: rem-calc(8);
             }
         }
 
@@ -386,18 +402,83 @@
                 @include fluid-props(-31px, -34px, top);
             }
         }
+
+        #field_1_22 {
+            width: 65%;
+            display: inline-block;
+            @include breakpoint (medium) {
+                width: 70%;
+            }
+            .gfield_radio {
+                @extend .input-style;
+                display: flex;
+                justify-content: space-between;
+                padding: rem-calc(6) 0;
+                overflow: hidden;
+                li {
+                    flex: 0 0 50%;
+                }
+                input[type=radio] {
+                    width: 0;
+                }
+                input + label {
+                    @extend .input-style;
+                    border-color: transparent;
+                    padding: rem-calc(12) rem-calc(18);
+                    @include breakpoint (medium) {
+                        padding: rem-calc(10) rem-calc(38);
+                    } 
+                    opacity: 0.5;
+                    cursor: pointer;
+                }
+                input:checked + label {
+                    @extend .bg-color-white;
+                    @extend .color-dark-green;
+                    opacity: 1;
+                }
+                #choice_1_22_1 + label {
+                    padding: rem-calc(12) rem-calc(22) !important;   
+                    @include breakpoint (medium) {
+                        padding: rem-calc(10) rem-calc(57) !important;   
+                    }  
+                }
+            }
+        }
         
         #field_1_15, #field_1_13 {
             display: inline-table;
             @include breakpoint (small only) {
-                width: 47.5%;
+                width: 30%;
+                //width: 47.5%;
             }
         }
 
-        #field_1_5 , #field_1_17 {
+        #field_1_17 {
             .validation_message {
-                margin: 0 !important;
+                margin: rem-calc(4) 0 0 rem-calc(29) !important;
             }
+        }
+        
+        #field_1_5 {
+            .validation_message {
+                margin: rem-calc(4) 0 0 0 !important;
+            }
+        }
+
+        .validation_message {
+            @extend .graphik-regular;
+            @extend .color-light-blue;
+            @extend .textarea-label;
+            font-style: italic;
+            //font-size: rem-calc(12);
+            margin-top: rem-calc(4);
+            &::before {
+                content: "*";
+            }
+        }
+
+        #label_1_17_1 {
+            @extend .textarea-label;
         }
 
     }
@@ -446,12 +527,14 @@
             align-items: center;
             margin-top: rem-calc(-10);
             z-index: 1;
+            position: relative;
 
             .gf_step_number {
                 @extend .caption-semibold; 
                 font-size: rem-calc(12);
                 text-align: center;
                 display: inline-block;
+                position: relative;
                 &::before {
                     content: '';
                     display: block;
@@ -465,6 +548,17 @@
                     margin-top: -6px;
                     @extend .bg-color-darker-green;
                 }
+                /*
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: rem-calc(75);
+                    height: 1px;
+                    background-color: $white;
+                    left: rem-calc(18);
+                    top: rem-calc(8);
+                }
+                */
             }
 
             &.gf_step_active {
@@ -476,12 +570,47 @@
                     @extend .color-light-green;
                 }
             }
+            /*
+            &#gf_step_1_1 {
+                .gf_step_number::after {
+                    @include fluid-props(40px, 430px, width);
+                    @include breakpoint (medium) {
+                        @include fluid-props(0px, 85px, width);
+                    }
+                }
+            }
+
+            &#gf_step_1_2 {
+                .gf_step_number::after {
+                    @include fluid-props(50px, 500px, width);
+                    @include breakpoint (medium) {
+                        @include fluid-props(0px, 100px, width);
+                    }
+                }
+            }
+
+            &#gf_step_1_3 {
+                .gf_step_number::after {
+                    @include fluid-props(45px, 450px, width);
+                    @include breakpoint (medium) {
+                        @include fluid-props(0px, 95px, width);
+                    }
+                }
+            }
+
+            &#gf_step_1_4 {
+                .gf_step_number::after {
+                    content: none !important;
+                    width: 0;
+                }
+            }
+            */
         }
 
         .gf_step_label {
             @extend .tiny-text;
             text-align: center;   
-            @include fluid-props (-6px, -13px, margin-top) ;
+            @include fluid-props (-6px, -5px, margin-top) ;
         }
         
         #gf_step_1_2, #gf_step_1_3 {
@@ -508,22 +637,31 @@
         padding: 0;
     }
 
-    #gform_next_button_1_1 {
-        width: 100%;
+    .gform_next_button {
+        .icon-arrow-right {
+            margin-left: rem-calc(10);
+            margin-right: rem-calc(10);
+            transition: all 200ms ease;
+            &::after {
+                content: url('../img/icon-arrow-right.svg');
+            }
+        }
     }
 
     .gform_previous_button {
-        span:first-of-type {
+        @extend .button.outline;
+        .icon-arrow-left{ 
+            margin-left: rem-calc(10);
             margin-right: rem-calc(10);
-            transition: transform 250ms;
+            transition: all 200ms ease;
+            &::after {
+                content: url('../img/icon-arrow-left-white.svg');
+            }
         }
     }
 
-    .gform_next_button {
-        span:last-of-type {
-            margin-left: rem-calc(10);
-            transition: transform 250ms;
-        }
+    #gform_next_button_1_1 {
+        width: 100%;
     }
 
     .gf_progressbar_percentage span,
@@ -534,6 +672,7 @@
 }
 
 .gform_confirmation_message_1  {
+    @extend .p-style;
     h2 {
         @extend .color-light-green;
         //margin: 0;
@@ -541,6 +680,11 @@
     a {
         @extend .color-white;
         text-decoration: underline;
+    }
+    .button {
+        text-decoration: none;
+        margin-top: rem-calc(54);
+    
     }
 }
 
@@ -551,13 +695,15 @@
         }
     }
     .gform_previous_button:hover {
-        span:first-of-type {
-            transform: translateX(-6px);
+        .icon-arrow-left {
+            margin-left: 0px;
+            margin-right: 20px;
         }
     }
     .gform_next_button:hover {
-        span:last-of-type {
-            transform: translateX(6px);
+        .icon-arrow-right {
+            margin-left: 20px;
+            margin-right: 0px;
         }
     }
 }
