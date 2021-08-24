@@ -398,7 +398,7 @@ var gfHandler = {
 
     if (self.name) {
       var visit = $('body').find('input[id="input_1_13"]').val();
-      var visitTime = $('body').find("input[type='radio'][name='input_22']:checked").val();
+      var visitTime = $('body').find("input[type='radio'][name='input_23']:checked").val();
 
       $('body').find('.gfield_checkbox[id="input_1_5"]').children().each(function(){
         var val = $(this).find('input:checked').val();
