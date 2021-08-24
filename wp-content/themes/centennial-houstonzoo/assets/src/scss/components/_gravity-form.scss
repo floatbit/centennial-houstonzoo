@@ -420,7 +420,7 @@
             }
         }
 
-        #field_1_22 {
+        #field_1_23 {
             width: 46%;
             max-width: rem-calc(280);
             @include breakpoint (medium) {
@@ -458,7 +458,7 @@
                     @extend .color-dark-green;
                     opacity: 1;
                 }
-                #choice_1_22_1 + label {
+                #choice_1_23_1 + label {
                     padding: rem-calc(12) rem-calc(12) !important;   
                     @include breakpoint (medium) {
                          padding: rem-calc(10) rem-calc(34) !important;   
