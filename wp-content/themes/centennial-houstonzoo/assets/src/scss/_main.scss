@@ -292,9 +292,12 @@ header {
   
       a {
         @extend .color-white;
-        font-size: rem-calc(28);
+        font-size: rem-calc(20);
         line-height: 1.2;
         font-weight: 500;
+        @include breakpoint(medium) {
+          font-size: rem-calc(28);
+        }
       }
     }
   }
