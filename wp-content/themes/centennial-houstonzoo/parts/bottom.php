@@ -66,7 +66,7 @@
 				</a>
 				<div class="footer-address-container">
 					<div class="grid-x">
-						<div class="cell small-7 medium-12">
+						<div class="cell small-7 medium-12 color-white">
 							<?php print $address; ?>
 						</div>
 					</div>

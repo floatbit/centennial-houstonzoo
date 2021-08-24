@@ -37,7 +37,7 @@ var mainHandler = {
       }
     })
 
-    this.$leftSection.removeClass('hide-for-small-only');
+    this.$leftSection.removeClass('show-for-large');
     this.$buttonBack.addClass('hide');
     if (this.$body.hasClass('modal--is-showing')) {
       // menu modal is opened
@@ -86,7 +86,7 @@ var mainHandler = {
       $('.menu-item[data-id="1"]').trigger("click");
       self.$contentRight.removeClass('active');
       self.$yourStoryContainer.addClass('active');
-      self.$leftSection.addClass('hide-for-small-only');      
+      self.$leftSection.addClass('show-for-large');      
       self.$buttonBack.removeClass('hide');
       self.$buttonInsideMenu.removeClass('hide');
     });
@@ -113,7 +113,7 @@ var mainHandler = {
       e.preventDefault();
       e.stopPropagation();
       self.$menuItem.addClass('active');
-      self.$leftSection.removeClass('hide-for-small-only');            
+      self.$leftSection.removeClass('show-for-large');            
       self.$contentRight.addClass('active');
       self.$yourStoryContainer.removeClass('active');
       self.$buttonBack.addClass('hide');
@@ -149,7 +149,7 @@ var gfHandler = {
     for (let i = 0; i < totalsItems; i++) {  
       $items += 
       '<div class="uploads-item input '+((i>0) ? 'hide': '')+'" data-id="'+i+'">'+
-        '<div class="grid-x grid-margin-x grid-input">'+
+        '<div class="grid-x grid-input">'+
           '<div class="cell small-9 input-field">'+
             '<input type="file" class="input_file hide" id="input_file_'+i+'" data-id="'+i+'" name="file_upload[]" size="25" accept=".jpg,.png,.giv,.mov" />'+
             '<label class="label-input" data-id="'+i+'" for="input_file_'+i+'">Upload file</label>'+
@@ -348,8 +348,8 @@ var gfHandler = {
       } else if ((this.name == self.fieldPhone) || (this.id == self.fieldPhone)) {
         self.phone = this.value;
       }
-      console.log(this);
-      console.log(this.value);
+      // console.log(this);
+      // console.log(this.value);
     });
   },
 

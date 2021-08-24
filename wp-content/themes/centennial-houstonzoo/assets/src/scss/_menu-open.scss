@@ -19,7 +19,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: $darker-green;
+            background-color: $green-gradation;//$darker-green;
             opacity: 0.6;
         }
         > &:not(.overlay) {
@@ -50,6 +50,12 @@
         .right-content {
             text-align: right;
             font-size: rem-calc(36);
+
+            .icon-close {
+                display: block;
+                @include fluid-props(21px, 27px, width);
+                @include fluid-props(19px, 24px, height);
+            }
         }
     }
 
@@ -64,13 +70,14 @@
         }
         .left-section {
             text-align: center;
-            @include breakpoint (small only) {
+            @include breakpoint (small only, medium only) {
                 border-bottom: 1px solid $white;
+                @include fluid-props(45px, 45px, padding-bottom);
                 .menu-item:last-of-type {
                     padding-bottom: rem-calc(45);    
                 }
             }
-            @include breakpoint (medium) {
+            @include breakpoint (large) {
                 border-right: 1px solid $white;
             }
             .menu-item {
@@ -95,6 +102,9 @@
                     width: 80%;
                     margin-left: auto;
                     margin-right: auto;
+                    @include breakpoint (small only) {
+                        width: 98%;
+                    }
                 }
 
                 &:last-of-type {
@@ -124,7 +134,8 @@
             }
             .content-right {
                 display: none;
-                @include breakpoint (small only) {
+                width: 100%;
+                @include breakpoint (small only, medium only) {
                     padding-top: rem-calc(30);                        
                 }
                 .title {
@@ -132,6 +143,9 @@
                 }
                 &.active {
                     display: block;
+                }
+                .button {
+                    @include fluid-props(64px, 80px, margin-bottom);
                 }
             }
             .default-content {

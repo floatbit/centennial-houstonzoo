@@ -247,6 +247,26 @@ header {
     transform: translateY(-100%);
   }
 
+  @include breakpoint(small only) {
+    &.headroom {
+      height: rem-calc(60);
+      padding: 0 !important;
+      display: flex;
+      align-items: center;
+      
+      .head-container {
+        margin: 0 rem-calc(20);
+        width: stretch;
+        .grid-head {
+          align-items: center;
+          .compact-logo-white {
+            width: rem-calc(240);
+          }
+        }
+      }
+    }
+  }
+
   p {
     margin: 0;
   }
@@ -368,7 +388,8 @@ footer {
       @extend .color-white;
 
       p {
-        @extend .caption;
+        //@extend .caption;
+        @include fluid-type(12px, 12px);
         &:first-of-type {
           @include fluid-props(8px, 16px, margin-bottom);
         }
