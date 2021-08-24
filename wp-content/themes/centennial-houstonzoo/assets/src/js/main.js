@@ -142,7 +142,7 @@ var gfHandler = {
     var $years = '<option>Year</option>';
     var currentYear = new Date().getFullYear() ;
 
-    for (let i = currentYear; i > yearStart; i--) {
+    for (let i = currentYear; i >= yearStart; i--) {
       $years += '<option value="'+i+'">'+i+'</option>';      
     }
 
