@@ -250,7 +250,6 @@ header {
   @include breakpoint(small only) {
     &.headroom {
       height: rem-calc(60);
-      padding: 0 !important;
       display: flex;
       align-items: center;
       
