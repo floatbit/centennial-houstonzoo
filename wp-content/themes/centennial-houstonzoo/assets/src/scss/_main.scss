@@ -233,7 +233,7 @@ header {
 
   &.headroom {
     will-change: transform;
-    transition: transform 250ms linear, padding 250ms;
+    transition: transform 250ms linear, padding-top 250ms;
   }
   
   &.headroom--pinned {
