@@ -22,6 +22,15 @@
 }
 
 @font-face {
+    font-family: "Graphik-RegularItalic";
+    src: url('../webfonts/Graphik-RegularItalic.eot'); /* IE9 */
+    src: url('../webfonts/Graphik-RegularItalic.eot?#iefix') format('embedded-opentype'), /* IE8 */
+        url('../webfonts/Graphik-RegularItalic.woff2') format('woff2'), /* Modern */
+        url('../webfonts/Graphik-RegularItalic.woff') format('woff'), /* Standard */
+        url('../webfonts/Graphik-RegularItalic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
     font-family: "Graphik-Bold";    
     src: url('../webfonts/Graphik-Bold.eot'); /* IE9 */
     src: url('../webfonts/Graphik-Bold.eot?#iefix') format('embedded-opentype'), /* IE8 */
@@ -56,6 +65,10 @@
 
 .graphik-regular {
     font-family: "Graphik-Regular";
+}
+    
+.graphik-regular-italic {
+    font-family: "Graphik-RegularItalic";
 }
     
 

@@ -489,11 +489,9 @@
         }
 
         .validation_message {
-            @extend .graphik-regular;
+            @extend .graphik-regular-italic;
             @extend .color-light-blue;
             @extend .textarea-label;
-            font-style: italic;
-            //font-size: rem-calc(12);
             margin-top: rem-calc(4);
             &::before {
                 content: "*";
