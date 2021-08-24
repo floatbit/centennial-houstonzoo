@@ -96,8 +96,6 @@ var mainHandler = {
       e.stopPropagation();
       var url = window.location.href.replace(/#[^#]*$/, "")+'#share-your-story';
       window.location.href = url;
-      window.location.reload();
-      window.location.href = window.location.href.replace(/#[^#]*$/, "");
     });
     
     var urlHash = window.location.hash;
