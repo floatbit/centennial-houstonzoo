@@ -124,6 +124,9 @@ p {
   &:last-child {
     margin-bottom: 0
   }
+  em, i {
+    @extend .graphik-regular-italic;
+  }
 }
 
 hr {
