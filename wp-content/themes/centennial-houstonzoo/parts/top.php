@@ -11,7 +11,7 @@
 			<div class="cell small-10 medium-8 middle-content">
 				<a href="/">
 					<img class="logo-white" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
-					<img class="compact-logo-white hide" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main-compact.png"; ?>">
+					<img class="compact-logo-white hide" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main-compact.svg"; ?>">
 				</a>
 			</div>
 			<div class="cell small-4 medium-3 right-content">
