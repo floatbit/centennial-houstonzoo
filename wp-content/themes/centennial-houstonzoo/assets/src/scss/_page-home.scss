@@ -31,8 +31,8 @@
                         .title-container {
                             position: absolute;
                             z-index: 15;
-                            bottom: rem-calc(80);
-                            left: rem-calc(56);
+                            @include fluid-props(72px, 80px, bottom, 1024px);
+                            @include fluid-props(52px, 56px, left, 1024px);
                         }
                     }
                 }
