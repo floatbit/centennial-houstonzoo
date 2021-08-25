@@ -14,13 +14,17 @@
             position: absolute;
             min-width: 100vw;
 
-            .carousel-main {                
+            .carousel-main {    
+                .flickity-slider {
+                    background-color: $darker-green;
+                }            
                 .carousel-cell {
                     opacity: 0;
-                    //transition: opacity 180ms !important;
+                    transition: opacity 1500ms !important;
                     
                     &.is-selected {
                         opacity: 1 !important;
+                        transition: opacity 1500ms !important;
                     }
 
                     .hero-item-container {

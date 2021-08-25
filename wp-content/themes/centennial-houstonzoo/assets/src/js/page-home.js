@@ -31,9 +31,9 @@ jQuery(document).ready(function($) {
 		pageDots: true,
         autoPlay: 6000,
 		fade: true,
-		//hash: true,
+        wrapAround: true,
 		prevNextButtons: false,
-		//selectedAttraction: 0.1, 
+		selectedAttraction: 0, 
 	});
 
     $(window).on('resize, load, scroll', function() {
