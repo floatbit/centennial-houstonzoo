@@ -12,7 +12,7 @@
 
 <main>
 	<section id="home">
-		<div class="home-container show-for-medium">
+		<div class="home-container show-for-large">
 			<div class="hero-container">
 				<div class="carousel carousel-main">
 					<?php foreach($hero_item as $item): ?>
@@ -33,7 +33,7 @@
 			</div>
 			<div class="grid-container desc-container hide-when-menu-active">
 				<div class="grid-x grid-margin-x">
-					<div class="cell medium-5 large-offset-1 color-white">
+					<div class="cell large-5 large-offset-1 color-white">
 						<?php print the_content(); ?>
 						<a href="#share-your-story" class="button transparent">
 							SHARE YOUR STORY
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="small-home-container show-for-small-only">
+		<div class="small-home-container hide-for-large">
 			<div class="small-hero-container">
 				<div class="carousel carousel-main">
 					<?php foreach($hero_item as $item): ?>
@@ -57,13 +57,14 @@
 								</div>
 							</div>
 							<div class="small-hero-transparent-panel"></div>
+							<div class="small-hero-darker-panel"></div>
 						</div>
 					<?php endforeach; ?>	
 				</div>
 			</div>
 			<div class="small-desc-container bg-color-cyan">
 				<div class="grid-x hide-when-menu-active">
-					<div class="cell medium-5 color-white small-content-container">
+					<div class="cell large-5 color-white small-content-container">
 						<?php print the_content(); ?>
 						<a href="#menu-open" class="button transparent">
 							SHARE YOUR STORY

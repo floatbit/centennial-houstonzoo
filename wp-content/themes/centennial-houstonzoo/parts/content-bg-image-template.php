@@ -14,7 +14,7 @@
     <div class="bg-content-container <?php print ($small_size == true) ? 'small-size show-for-medium' : '' ?>">
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
-                <div class="cell <?php print ($small_size == true) ? 'medium-6 large-offset-1' : 'small-9 medium-6 large-4 large-offset-1' ?>">
+                <div class="cell <?php print ($small_size == true) ? 'medium-6 large-offset-1' : 'small-9 medium-6 large-4 large-offset-1 cell-container' ?>">
                     <div class="desc-container color-white">
                         <?php if($eyebrow != null): ?>
                             <p class="eyebrow color-white"><?php print $eyebrow; ?></p>

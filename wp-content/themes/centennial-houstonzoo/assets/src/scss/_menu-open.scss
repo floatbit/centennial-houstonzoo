@@ -10,6 +10,7 @@
     opacity: 0;
     transition: all 250ms ease-in-out;
     .menu-open-container-inner {
+        @include fluid-props(24px, 52px, padding-top);
         @include fluid-props(72px, 124px, padding-bottom);
         min-height: 100%;
         position: relative;
@@ -32,8 +33,8 @@
 
     .header-container {
         @include fluid-props(46px, 124px, padding-bottom);
-        @include fluid-props(28px, 56px, margin-right);
-        @include fluid-props(28px, 56px, margin-left);
+        @include fluid-props(20px, 56px, margin-right);
+        @include fluid-props(20px, 56px, margin-left);
         
         position: relative;
         .logo-content {

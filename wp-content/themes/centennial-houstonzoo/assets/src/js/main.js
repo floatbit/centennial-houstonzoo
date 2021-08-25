@@ -169,7 +169,7 @@ var gfHandler = {
           '</a>')+   
         '<div class="review-container flex-container">'+
           '<p class="file-label button-label color-light-green" data-id="'+i+'"></p>'+ 
-          '<div class="flex-container">'+
+          '<div class="flex-container act-container">'+
             '<a href="#actions-button" class="button btn-act editmode" data-id="'+i+'" >EDIT</a>'+
             '<a href="#delete-item" class="button button-close" data-id="'+i+'" ></a>'+
           '</div>'+
@@ -544,7 +544,7 @@ var gfHandler = {
           '<li class="item-review" data-id="'+id+'">'+
             '<div class="review-container flex-container">'+
               '<p class="file-label button-label color-light-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
-              '<div class="flex-container align-self-top">'+
+              '<div class="flex-container align-self-top act-container">'+
                 '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
                 '<a href="#delete-item" class="button button-close" data-id="'+id+'" ></a>'+
               '</div>'+
@@ -608,7 +608,7 @@ jQuery(document).ready(function($) {
 
   var myElement = document.querySelector("header");
   var options = {
-    offset : 300,
+    offset : 200,
   };
   var headroom  = new Headroom(myElement, options);
   

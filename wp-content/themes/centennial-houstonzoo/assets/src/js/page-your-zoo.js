@@ -56,7 +56,7 @@ var yourZooHandler = {
 						$clonedContent = $item.clone();
 						$clonedContent.removeClass('hide');
 						var $newCell = document.createElement('div');
-						$newCell.className = "cell small-12 small-description-container";
+						$newCell.className = "cell small-14 small-description-container";
 						$theCell = jQuery($newCell).append($clonedContent);
 						$itemAfter = jQuery(".project-id-container[data-id="+nextId+"]");
 						$itemAfter.after($theCell);

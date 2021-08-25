@@ -62,7 +62,7 @@
 		<?php endforeach; ?>
 	</section>
 
-	<section id="completed-projects" class="bg-color-gray">
+	<section id="completed-projects" class="">
 		<div class="grid-container">
 			<div class="projects-container">
 				<div class="grid-x grid-margin-x">
@@ -101,7 +101,7 @@
 											</div>
 											<?php if ($item['cta'] != null): ?>
 												<div class="link-content">
-													<a href="<?php print $item['cta']; ?>" class="button green-outer">
+													<a href="<?php print $item['cta']; ?>" class="button green-outer" target="_new">
 														LEARN MORE
 													</a>
 												</div>

@@ -108,6 +108,7 @@
         @include breakpoint (medium) {
             padding: rem-calc(6) rem-calc(26) rem-calc(6);    
         }
+        line-height: 32px;
         &::before {
             content: '';
         }        
@@ -151,6 +152,7 @@
             .gfield_label {
                 @extend .caption-semibold;
                 @extend .color-light-green;
+                letter-spacing: 0.6px;
             }
 
             .input-field {
@@ -175,6 +177,10 @@
                 @include fluid-props(9px, 16px, right);
                 display: none;
             }
+
+            .act-container {
+                height: rem-calc(23);
+            }
         }
         .label-input {
             cursor: pointer;
@@ -188,7 +194,12 @@
         .zoo-memory {
             @include fluid-props(48px, 60px, margin-bottom);
         }
+    }
 
+    #field_review { 
+        .form-input-text {
+            margin-bottom: rem-calc(6);
+        }
     }
 
     .file-label {
@@ -197,7 +208,7 @@
         margin: 0 rem-calc(16) 0 0;
         word-break: break-all;
         .item-no {
-            margin-left: rem-calc(-16);    
+            @include fluid-props(-10px, -13px, margin-left);
         }
     }
 
@@ -218,6 +229,7 @@
         }
         .review-container {
             align-items: center; 
+            @include fluid-props (24px, 24px, height);
         }
         .image-container {
             @include fluid-props (24px, 22px, margin-top);
@@ -278,6 +290,7 @@
                     @extend .color-light-green;
                     padding-bottom: rem-calc(8);
                     display: block;
+                    letter-spacing: 0.6px;
                 }
             }
         }
@@ -287,8 +300,6 @@
                 margin-left: rem-calc(32);
                 label {
                     @extend .textarea-label;
-                    //@extend .caption;
-                    //font-size: rem-calc(12);
                     text-transform: none;
                     display: inherit;
                     position: relative;
@@ -302,7 +313,7 @@
                         margin-right: 5px;
                         position: absolute;
                         left: -10px;
-                        top: -4px;
+                        @include fluid-props(-1px, -4px, top);
                     }
                 }
             }
@@ -387,9 +398,9 @@
         }
         #field_1_5 {
             .gfield_label {
+                text-transform: initial;
                 &::after {
-                    content: ' (check all that apply)';
-                    text-transform: lowercase;
+                    content: ' (Check all that apply.)';
                     @include fluid-type(12px, 14px);
                     @include breakpoint(small only) {
                         display: block;
@@ -400,17 +411,15 @@
             .ginput_container {
                 padding-top: rem-calc(8);
             }
+            label::before {
+                @include fluid-props(2px, 5px, margin-top);
+            }
         }
 
         #input_1_6 {
             min-height: rem-calc(305);
         }
 
-        #field_1_13 {
-            width: 25%;
-            margin-right: 5%;
-        }
-        
         #field_1_15 {
             width: 70%;
             .select-options,
@@ -421,17 +430,21 @@
 
         #field_1_23 {
             width: 46%;
-            max-width: rem-calc(280);
             @include breakpoint (medium) {
                 width: 63%;
             }
             display: inline-block;
             .gfield_radio {
-                @extend .input-style;
+                @include fluid-props(146px, 242px, max-width);
+                @include breakpoint (large) {
+                    max-width: fit-content;
+                }
+                @extend .input-style;   
                 display: flex;
                 justify-content: space-between;
-                padding: rem-calc(6) 0;
-                overflow: hidden;
+                padding: 0;
+                overflow: hidden;    
+                width: fit-content;
                 li {
                     flex: 0 0 50%;
                     text-align: center;
@@ -446,11 +459,20 @@
                     padding-bottom: rem-calc(12);
                     @include fluid-props(0px, 34px, padding-left);
                     @include fluid-props(0px, 34px, padding-right);
-                    @include breakpoint (medium) {
-                        padding: rem-calc(10) rem-calc(34);
+                    @include fluid-props(72px, 120px, width);
+                    @include fluid-type(14px, 20px);
+
+                    @include breakpoint (large) {
+                        @include fluid-props(72px, 166px, width);
                     } 
                     opacity: 0.5;
                     cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    align-content: flex-start;
+                    text-align: center;
+                    justify-content: center;
+                    margin-top: -1px;
                 }
                 input:checked + label {
                     @extend .bg-color-white;
@@ -466,13 +488,14 @@
             }
         }
         
-        #field_1_15, #field_1_13 {
+        #field_1_13 {
             display: inline-table;
-            //width: 30%;
-            //width: 47.5%;
             width: rem-calc(155);
             margin-right: rem-calc(15);
-            
+            @include breakpoint (large) {
+                width: 27%;
+                margin-right: 5%;
+            }            
         }
 
         #field_1_17 {
@@ -499,6 +522,12 @@
 
         #label_1_17_1 {
             @extend .textarea-label;
+        }
+
+        #field_1_20 {
+            h5 {
+                line-height: 1;
+            }
         }
 
     }
@@ -593,16 +622,13 @@
                     @extend .color-light-green;
                 }
             }
-            /*
             &#gf_step_1_1 {
-                .gf_step_number::after {
-                    @include fluid-props(40px, 430px, width);
-                    @include breakpoint (medium) {
-                        @include fluid-props(0px, 85px, width);
-                    }
+                .gf_step_number::before {
+                    left: -1px;
                 }
             }
 
+            /*
             &#gf_step_1_2 {
                 .gf_step_number::after {
                     @include fluid-props(50px, 500px, width);
@@ -671,15 +697,15 @@
             justify-content: center;
             &::after {
                 content: "";
-                @include fluid-props (8px, 10px, height);
-                @include fluid-props (13px, 15px, width);
+                @include fluid-props (6px, 10px, height);
+                @include fluid-props (12px, 15px, width);
                 @extend .background-cover;
                 background-image: url('../img/icon-arrow-right.svg');
                 display: block;
                 margin-left: .5rem;
                 position: relative;
                 right: 0;
-                top: -1px;
+                top: 0px;
                 transition: right 250ms ease;
             }
         }
@@ -697,15 +723,15 @@
             justify-content: center;
             &::before {
                 content: "";
-                @include fluid-props (8px, 10px, height);
-                @include fluid-props (13px, 15px, width);
+                @include fluid-props (6px, 10px, height);
+                @include fluid-props (12px, 15px, width);
                 @extend .background-cover;
                 background-image: url('../img/icon-arrow-left-white.svg');
                 display: block;
                 margin-right: .5rem;
                 position: relative;
                 left: 0;
-                top: -1px;
+                top: 0px;
                 transition: left 250ms ease;
             }
         }

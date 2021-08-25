@@ -143,6 +143,14 @@
             padding-bottom : rem-calc(84);
         }
 
+        .cell-container {
+            .desc-container {
+                @include breakpoint (medium) {
+                    width: rem-calc(261);
+                }
+            }
+        }
+
         .desc-container {
             position: relative;
             z-index: 15;
@@ -153,7 +161,7 @@
             }
 
             p {
-                @extend .graphik-semibold;
+                //@extend .graphik-semibold;
             }
 
             h2, p {
@@ -184,6 +192,14 @@
 
                     .eyebrow {
                         @extend .color-white;
+                    }
+                    @include breakpoint (small only) {
+                        p {
+                            margin-bottom: 0;
+                        }
+                        h3 {
+                            font-size: 26px;
+                        }
                     }
                 }
             }

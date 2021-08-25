@@ -25,6 +25,7 @@
     &.bright-green {
         @extend .bg-color-bright-green;   
         border: 1px solid $bright-green;     
+        @include fluid-props(37px, 39px, line-height);
     }
 
     &.btn-arrow-right {
