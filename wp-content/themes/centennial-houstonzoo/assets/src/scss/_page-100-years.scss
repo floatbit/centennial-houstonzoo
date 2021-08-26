@@ -52,9 +52,26 @@
                 .info-logo {
                     @include fluid-props(58px, 68px, width);
                 }
-                .info-desc {
-                    //margin-top: rem-calc(8);
-                    margin-bottom: rem-calc(8);
+                .content-inner-container {
+                    align-items: center;
+                    .info-desc {
+                        margin-bottom: rem-calc(8);
+                        margin-top: rem-calc(24);
+                    }
+                    .title-content {
+                        transition: margin-top 300ms ease;
+                    }
+                    .info-title {
+                        height: fit-content;
+                    }
+                }
+                &.set-focus {
+                    .content-inner-container {
+                        align-items: flex-start;
+                        .title-content {
+                            margin-top: rem-calc(18);
+                        }
+                    }
                 }
             }
 

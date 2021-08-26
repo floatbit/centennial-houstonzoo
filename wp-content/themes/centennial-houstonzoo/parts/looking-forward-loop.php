@@ -17,11 +17,6 @@
                         <h4 class="title-content color-black"><?php print $item['title'] ?></h4>
                     </a>
                 </div>
-            </div>
-        </div>
-        <div class="grid-x grid-margin-x">
-            <div class="cell small-3"></div>
-            <div class="cell small-11">
                 <div class="info-desc hide" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
                     <?php print $item['description'] ?>
                 </div>
