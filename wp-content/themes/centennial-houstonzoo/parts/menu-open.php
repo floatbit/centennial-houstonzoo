@@ -10,10 +10,10 @@
 		<div class="overlay"></div>
 		<div class="header-container">
 			<div class="grid-x grid-margin-x align-top">
-				<div class="cell medium-4 show-for-medium">
+				<div class="cell medium-3 show-for-medium">
 					<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green button-inside-menu hide"><?php print $donate['title']; ?></a>
 				</div>
-				<div class="cell medium-6 small-7 logo-content">
+				<div class="cell medium-8 small-10 logo-content">
 					<a href="/" class="">
 						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
 					</a>
@@ -21,7 +21,7 @@
 						BACK TO MENU
 					</a>
 				</div>
-				<div class="cell medium-4 small-7 right-content flex-container align-top align-right">
+				<div class="cell medium-3 small-4 right-content flex-container align-top align-right">
 					<a href="#menu-open">
 						<img src="<?php print TEMPLATE_IMAGE_PATH."/icon-menu-close.svg" ?>" class="icon-close" alt="Close" title="Close">
 					</a>

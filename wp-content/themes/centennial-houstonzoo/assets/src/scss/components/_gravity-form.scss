@@ -430,16 +430,25 @@
             }
         }
 
-        #field_1_23 {
-            width: 46%;
-            @include breakpoint (medium) {
-                width: 63%;
-            }
+        #field_1_13, #field_1_23 {
             display: inline-block;
+            width: rem-calc(50% - 8px);
+        }
+
+        #field_1_13 {
+            margin-right: 8px;
+            @include breakpoint (large) {
+                // width: 27%;
+                // margin-right: 5%;
+            }            
+        }
+
+        #field_1_23 {
+            margin-left: 8px;
             .gfield_radio {
-                @include fluid-props(146px, 242px, max-width);
+                // @include fluid-props(146px, 242px, max-width);
                 @include breakpoint (large) {
-                    max-width: fit-content;
+                    // max-width: fit-content;
                 }
                 @extend .input-style;   
                 display: flex;
@@ -491,16 +500,6 @@
             }
         }
         
-        #field_1_13 {
-            display: inline-table;
-            width: rem-calc(155);
-            margin-right: rem-calc(15);
-            @include breakpoint (large) {
-                width: 27%;
-                margin-right: 5%;
-            }            
-        }
-
         #field_1_17 {
             .validation_message {
                 margin: rem-calc(4) 0 0 rem-calc(29) !important;
