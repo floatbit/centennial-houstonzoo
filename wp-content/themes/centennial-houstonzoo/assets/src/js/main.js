@@ -385,6 +385,10 @@ var gfHandler = {
     
     self.onChangeEvents($input);
 
+    // trigger radio selection for month/year
+    // so selection visual can be achieved
+    $('body').find('ul#input_1_23').trigger("click");
+
     $zooMemory.on('change, keydown, keyup', function(){
       var str = $(this).val();
       var words = str.split(' ');
@@ -600,6 +604,11 @@ var gfHandler = {
       self.reRender();
     });
 
+    // set background to selected radio button for month/year selection
+    $('body').on("click", "#input_1_23", function() {
+      $(this).find('li').css({'background': 'transparent'});
+      $(this).find('input:checked').parent().css({'background': '#FFFFFF'});
+    });
     
   }
 }
@@ -611,7 +620,6 @@ jQuery(document).ready(function($) {
     offset : 200,
   };
   var headroom  = new Headroom(myElement, options);
-  
   headroom.init();
 
   mainHandler.init();
