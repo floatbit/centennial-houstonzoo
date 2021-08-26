@@ -14,6 +14,14 @@ var mainHandler = {
 
   openMenu = function(e){
     var self = this;
+
+    var $obj = $('body').find('.headroom--not-top');
+    if ($obj.length > 0) {
+      this.$menuOpenContainer.toggleClass('logo-compact'); 
+    } else {
+      this.$menuOpenContainer.removeClass('logo-compact');
+    }
+
     this.$menuOpenContainer.toggleClass('active');
     if (this.$menuOpenContainer.is('.active')) {
       this.$html.addClass('disable-scroll');
@@ -27,6 +35,7 @@ var mainHandler = {
     }
     this.$yourStoryContainer.removeClass('active');
     this.$defaultContent.addClass('active');
+    
     
     this.$menuItem.each(function(){
       $(this).removeClass('active');
@@ -88,7 +97,7 @@ var mainHandler = {
       self.$yourStoryContainer.addClass('active');
       self.$leftSection.addClass('show-for-large');      
       self.$buttonBack.removeClass('hide');
-      self.$buttonInsideMenu.removeClass('hide');
+      self.$buttonInsideMenu.removeClass('hide-transparent');
     });
 
     $('body').on("click", "[href='#btn-reload-story-form']", function(e) {
@@ -627,11 +636,11 @@ jQuery(document).ready(function($) {
 
   $(window).on("load, scroll", function() {
     if($(window).scrollTop() > $(window).height() / 2) {
-        $("header").addClass("scrolled");
+        $("header, .menu-open-container-inner").addClass("scrolled");
         $(".logo-white").addClass("hide");
         $(".compact-logo-white").removeClass("hide");
     } else {
-        $("header").removeClass("scrolled");
+        $("header, .menu-open-container-inner").removeClass("scrolled");
         $(".compact-logo-white").addClass("hide");
         $(".logo-white").removeClass("hide");
     }

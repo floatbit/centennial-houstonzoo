@@ -9,11 +9,30 @@
     z-index: -100;
     opacity: 0;
     transition: all 250ms ease-in-out;
+
+    .compact-logo-white {
+        display: none;
+    }
+    &.logo-compact {
+        .logo-white {
+            display: none;
+        }
+        .compact-logo-white {
+            display: inline;
+        }
+    }
+
+    &:not(.logo-compact) {
+        .header-container {
+            .logo-content {
+                a img {
+                    @include fluid-props(40px, 68px, height);
+                }
+            }
+        }
+    }
+
     .menu-open-container-inner {
-        @include fluid-props(24px, 52px, padding-top);  
-        @include breakpoint (medium) {
-            @include fluid-props(44px, 52px, padding-top);
-        }  
         @include fluid-props(72px, 124px, padding-bottom);
         min-height: 100%;
         position: relative;
@@ -23,7 +42,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: $green-gradation;//$darker-green;
+            background-color: $green-gradation;
             opacity: 0.6;
         }
         > &:not(.overlay) {
@@ -35,9 +54,6 @@
     }
 
     .header-container {
-        @include fluid-props(46px, 124px, padding-bottom);
-        @include fluid-props(20px, 56px, margin-right);
-        @include fluid-props(20px, 56px, margin-left);
         
         position: relative;
         .logo-content {
@@ -45,11 +61,6 @@
             @include breakpoint (small only) {
                 text-align: left;
             }
-
-            a img {
-                @include fluid-props(40px, 68px, height);
-            }
-
         }
         .right-content {
             text-align: right;

@@ -9,13 +9,14 @@
 	<div class="menu-open-container-inner">
 		<div class="overlay"></div>
 		<div class="header-container">
-			<div class="grid-x grid-margin-x align-top">
+			<div class="grid-x grid-margin-x align-middle">
 				<div class="cell medium-3 show-for-medium">
-					<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green button-inside-menu hide"><?php print $donate['title']; ?></a>
+					<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green button-inside-menu hide-transparent"><?php print $donate['title']; ?></a>
 				</div>
 				<div class="cell medium-8 small-10 logo-content">
 					<a href="/" class="">
-						<img src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
+						<img class="logo-white" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
+						<img class="compact-logo-white" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main-compact.svg"; ?>">
 					</a>
 					<a href="#menu-open-back" class="button button-label button-back show-for-small-only">
 						BACK TO MENU

@@ -221,8 +221,27 @@ $blend-bg-color: #005851;
   }
 }
 
-header {
-  @include fluid-props(44px, 52px, padding-top);  
+.hide-transparent {
+  visibility: hidden;
+}
+
+header , .menu-open-container-inner {
+  .header-container, .head-container {
+    @include fluid-props(24px, 52px, padding-top);  
+    @include fluid-props(24px, 52px, padding-bottom);
+    @include fluid-props(20px, 52px, margin-right);
+    @include fluid-props(20px, 52px, margin-left);
+
+    .compact-logo-white {
+      @include fluid-props(16px, 32px, height);
+    }
+  }
+  &.scrolled {
+    .header-container, .head-container {
+      @include fluid-props(18px, 32px, padding-top);  
+      @include fluid-props(18px, 32px, padding-bottom);  
+    }
+  }
 }
 
 header {
@@ -234,11 +253,9 @@ header {
   left:0;
   right:0;
 
-  @include fluid-props(28px, 36px, padding-bottom);
-
   &.headroom {
     will-change: transform;
-    transition: transform 250ms linear, padding-top 250ms;
+    transition: transform 250ms linear;//, padding-top 250ms;
   }
   
   &.headroom--pinned {
@@ -254,19 +271,8 @@ header {
 
   @include breakpoint(small only) {
     &.headroom {
-      height: rem-calc(60);
-      display: flex;
-      align-items: center;
       
       .head-container {
-        margin: 0 rem-calc(20);
-        width: stretch;
-        .grid-head {
-          align-items: flex-start;
-          .compact-logo-white {
-            width: rem-calc(240);
-          }
-        }
       }
     }
   }
@@ -276,8 +282,6 @@ header {
   }
 
   .head-container {
-    @include fluid-props(28px, 56px, margin-right);
-    @include fluid-props(28px, 56px, margin-left);
 
     .middle-content {
       @include breakpoint (medium) {
@@ -296,13 +300,6 @@ header {
       }
   
       a {
-        // @extend .color-white;
-        // font-size: rem-calc(20);
-        // line-height: 1.2;
-        // font-weight: 500;
-        // @include breakpoint(medium) {
-        //   font-size: rem-calc(28);
-        // }
         .menu-burger {
           @include fluid-props(27px, 32px, width);
           @include fluid-props(16px, 20px, height);
@@ -312,13 +309,7 @@ header {
   }
 
   &.scrolled {
-    @include fluid-props(28px, 36px, padding-top);
     @extend .bg-color-darker-green;
-    .middle-content {
-      .compact-logo-white {
-        @include fluid-props(292px, 416px, width);
-      }
-    }
   }
 }
 

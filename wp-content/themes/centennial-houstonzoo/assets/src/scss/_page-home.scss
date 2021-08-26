@@ -119,8 +119,6 @@
         text-align: left;
         z-index: 15;
         @include fluid-props(92px, 136px, margin-bottom);
-        //@include fluid-props(32px, 56px, margin-left);
-        //@include fluid-props(33px, 56px, left);
         left: rem-calc(33);
         @include breakpoint (large) {
             @include fluid-props(50px, 56px, left);
