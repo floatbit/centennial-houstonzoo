@@ -22,8 +22,8 @@
 						BACK TO MENU
 					</a>
 				</div>
-				<div class="cell medium-3 small-4 right-content flex-container align-top align-right">
-					<a href="#menu-open">
+				<div class="cell medium-3 small-4 right-content flex-container align-middle align-right">
+					<a href="#menu-open" class="flex-container">
 						<img src="<?php print TEMPLATE_IMAGE_PATH."/icon-menu-close.svg" ?>" class="icon-close" alt="Close" title="Close">
 					</a>
 				</div>

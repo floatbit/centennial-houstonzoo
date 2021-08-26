@@ -189,9 +189,6 @@
             overflow: hidden;
             word-wrap: break-word;
             line-break: anywhere;
-            @include breakpoint (small only) {
-                min-width: rem-calc(200);
-            }
         }
         .zoo-memory {
             @include fluid-props(48px, 60px, margin-bottom);
@@ -378,6 +375,7 @@
         }
         .gfield_html {
             margin-bottom: rem-calc(8);
+            line-height: 1.25;
         }
         .gfield_checkbox {
             @include breakpoint (medium) {

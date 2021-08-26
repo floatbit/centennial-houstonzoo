@@ -635,7 +635,13 @@ jQuery(document).ready(function($) {
   gfHandler.init();
 
   $(window).on("load, scroll", function() {
-    if($(window).scrollTop() > $(window).height() / 2) {
+    var topTreshold = 0;
+    if (Foundation.MediaQuery.is('small')) {
+      topTreshold = $('header').outerHeight();
+    } else {
+      topTreshold = $(window).height() / 2;
+    }
+    if($(window).scrollTop() > topTreshold) {
         $("header, .menu-open-container-inner").addClass("scrolled");
         $(".logo-white").addClass("hide");
         $(".compact-logo-white").removeClass("hide");

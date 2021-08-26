@@ -14,8 +14,8 @@
 					<img class="compact-logo-white hide" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main-compact.svg"; ?>">
 				</a>
 			</div>
-			<div class="cell small-4 medium-3 right-content">
-				<a href="#menu-open" class="">
+			<div class="cell small-4 medium-3 right-content flex-container align-middle align-right">
+				<a href="#menu-open" class="flex-container">
 					<img src="<?php print TEMPLATE_IMAGE_PATH.'/icon-burger.svg'; ?>" class="menu-burger" alt="Menu">
 				</a>
 			</div>
