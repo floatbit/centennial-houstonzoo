@@ -5,14 +5,14 @@
 
 <?php foreach ($looping_item as $key => $item): ?>
     <div class="content-container" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
-        <div class="grid-x grid-margin-x align-middle content-inner-container">
-            <div class="cell small-3">
+        <div class="grid-x grid-margin-x align-top content-inner-container">
+            <div class="cell shrink image-show-desc-container">
                 <a href="#show-description" class="image-show-desc" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
                     <img class="info-logo" src="<?php print $item['image']; ?>">
                 </a>
             </div>
-            <div class="cell small-11">
-                <div class="info-title flex-container align-middle">
+            <div class="cell auto">
+                <div class="info-title">
                     <a href="#show-description" class="title-open-button" data-id=<?php print $key; ?> data-specific-id=<?php print $specific_id; ?>>
                         <h4 class="title-content color-black"><?php print $item['title'] ?></h4>
                     </a>

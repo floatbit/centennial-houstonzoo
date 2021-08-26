@@ -11,6 +11,7 @@ function clearShowDesc() {
     if (jQuery(".info-item-container").hasClass('open-desc')) {
         jQuery(".info-item-container").removeClass('open-desc');
     }
+    // jQuery(".content-container").find('.title-content').css({'margin-top': 0});
 };
 
 var yearHandler = {
@@ -119,6 +120,19 @@ var yearHandler = {
 
 jQuery(document).ready(function($) {
     yearHandler.onHoverClick();
+
+    $('#looking-forward .content-container').each(function() {
+        var $item = $(this);
+        var iconHeight = $item.find('.info-logo').outerHeight();
+        var $titleHeading = $item.find('.title-content');
+        var titleHeight = $titleHeading.outerHeight();
+        console.log(iconHeight, titleHeight);
+        var topMargin = (iconHeight - titleHeight) / 2.0;
+        console.log(topMargin);
+        $titleHeading.css({'margin-top': topMargin+'px'});    
+    })
+
+
 
     $(window).on('load', function() {
         yearHandler.resizeLookingForwardItems();

@@ -50,26 +50,27 @@
                 }
 
                 .info-logo {
-                    @include fluid-props(58px, 68px, width);
+                    @include fluid-props(58px, 68px, height);
                 }
                 .content-inner-container {
-                    align-items: center;
+                    // align-items: center;
                     .info-desc {
-                        margin-bottom: rem-calc(8);
-                        margin-top: rem-calc(24);
+                        margin-bottom: rem-calc(16);
+                        margin-top: rem-calc(12);
                     }
                     .title-content {
-                        transition: margin-top 300ms ease;
+                        margin-bottom: 0;
+                        // transition: margin-top 300ms ease;
                     }
                     .info-title {
-                        height: fit-content;
+                        // height: fit-content;
                     }
                 }
                 &.set-focus {
                     .content-inner-container {
                         align-items: flex-start;
                         .title-content {
-                            margin-top: rem-calc(18);
+                            // @include fluid-props(19px, 20px, margin-top);
                         }
                     }
                 }
