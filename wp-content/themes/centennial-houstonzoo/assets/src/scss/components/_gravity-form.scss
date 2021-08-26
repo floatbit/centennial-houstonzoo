@@ -432,7 +432,7 @@
 
         #field_1_13, #field_1_23 {
             display: inline-block;
-            width: rem-calc(50% - 8px);
+            width: calc(50% - 8px);
         }
 
         #field_1_13 {
