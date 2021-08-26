@@ -447,6 +447,7 @@
             margin-left: 8px;
             .gfield_radio {
                 // @include fluid-props(146px, 242px, max-width);
+                width: 100%;
                 @include breakpoint (large) {
                     // max-width: fit-content;
                 }
@@ -455,7 +456,7 @@
                 justify-content: space-between;
                 padding: 0;
                 overflow: hidden;    
-                width: fit-content;
+                // width: fit-content;
                 li {
                     flex: 0 0 50%;
                     text-align: center;
@@ -465,17 +466,17 @@
                     display: none;
                 }
                 input + label {
-                    @extend .input-style;
+                    // @extend .input-style;
                     border-color: transparent;
-                    padding-top: rem-calc(12);
-                    padding-bottom: rem-calc(12);
-                    @include fluid-props(0px, 34px, padding-left);
-                    @include fluid-props(0px, 34px, padding-right);
-                    @include fluid-props(72px, 120px, width);
+                    // padding-top: rem-calc(12);
+                    // padding-bottom: rem-calc(12);
+                    // @include fluid-props(0px, 34px, padding-left);
+                    // @include fluid-props(0px, 34px, padding-right);
+                    // @include fluid-props(72px, 120px, width);
                     @include fluid-type(14px, 20px);
 
                     @include breakpoint (large) {
-                        @include fluid-props(72px, 166px, width);
+                        // @include fluid-props(72px, 166px, width);
                     } 
                     opacity: 0.5;
                     cursor: pointer;
@@ -484,19 +485,19 @@
                     align-content: flex-start;
                     text-align: center;
                     justify-content: center;
-                    margin-top: -1px;
+                    // margin-top: -1px;
                 }
                 input:checked + label {
                     @extend .bg-color-white;
                     @extend .color-dark-green;
                     opacity: 1;
                 }
-                #choice_1_23_1 + label {
-                    padding: rem-calc(12) rem-calc(12) !important;   
-                    @include breakpoint (medium) {
-                         padding: rem-calc(10) rem-calc(34) !important;   
-                    }  
-                }
+                // #choice_1_23_1 + label {
+                //     padding: rem-calc(12) rem-calc(12) !important;   
+                //     @include breakpoint (medium) {
+                //          padding: rem-calc(10) rem-calc(34) !important;   
+                //     }  
+                // }
             }
         }
         
