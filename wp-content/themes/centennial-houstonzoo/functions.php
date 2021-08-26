@@ -352,4 +352,15 @@ function centennial_houstonzoo_custom_phone_format($phone_formats) {
 }
 add_filter( 'gform_phone_formats', 'centennial_houstonzoo_custom_phone_format');
 
+add_filter( 'gform_counter_script_1', 'set_counter_script', 10, 5 );
+function set_counter_script( $script, $form_id, $input_id, $max_length, $field ) {
+  $script = "jQuery('#{$input_id}').textareaCount(" .
+              "    {" .
+              "    'maxCharacterSize': {$max_length}," .
+              "    'originalStyle': 'ginput_counter'," .
+              "    'displayFormat' : '#input " . esc_js( __( 'of', 'gravityforms' ) ) . ' #max ' . esc_js( __( 'characters', 'gravityforms' ) ) . "'" .
+              "    });";
+  return $script;
+}
+
 require_once(__DIR__.'/shortcodes.php');

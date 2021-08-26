@@ -15,7 +15,9 @@
 				</a>
 			</div>
 			<div class="cell small-4 medium-3 right-content">
-				<a href="#menu-open" class="fal fa-bars"></a>
+				<a href="#menu-open" class="">
+					<img src="<?php print TEMPLATE_IMAGE_PATH.'/icon-burger.svg'; ?>" class="menu-burger" alt="Menu">
+				</a>
 			</div>
 		</div>
 	</div>

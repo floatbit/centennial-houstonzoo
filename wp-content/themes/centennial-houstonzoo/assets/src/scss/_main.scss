@@ -222,7 +222,7 @@ $blend-bg-color: #005851;
 }
 
 header {
-  @include fluid-props(44px, 52px, padding-top);
+  @include fluid-props(44px, 52px, padding-top);  
 }
 
 header {
@@ -262,7 +262,7 @@ header {
         margin: 0 rem-calc(20);
         width: stretch;
         .grid-head {
-          align-items: center;
+          align-items: flex-start;
           .compact-logo-white {
             width: rem-calc(240);
           }
@@ -296,12 +296,16 @@ header {
       }
   
       a {
-        @extend .color-white;
-        font-size: rem-calc(20);
-        line-height: 1.2;
-        font-weight: 500;
-        @include breakpoint(medium) {
-          font-size: rem-calc(28);
+        // @extend .color-white;
+        // font-size: rem-calc(20);
+        // line-height: 1.2;
+        // font-weight: 500;
+        // @include breakpoint(medium) {
+        //   font-size: rem-calc(28);
+        // }
+        .menu-burger {
+          @include fluid-props(27px, 32px, width);
+          @include fluid-props(16px, 20px, height);
         }
       }
     }

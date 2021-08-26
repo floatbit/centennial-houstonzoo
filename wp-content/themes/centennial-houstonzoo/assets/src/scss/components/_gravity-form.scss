@@ -87,7 +87,9 @@
     overflow: overlay;
     scrollbar-width: none;
     min-height: 40vh;
+    height: 40vh;
     overflow: auto;
+    z-index: 1;
 
     @include breakpoint (small only) {
         background-position: calc(100% - 10px) 15px;
@@ -451,6 +453,7 @@
                 }
                 input[type=radio] {
                     width: 0;
+                    display: none;
                 }
                 input + label {
                     @extend .input-style;

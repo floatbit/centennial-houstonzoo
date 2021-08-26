@@ -9,7 +9,7 @@
 	<div class="menu-open-container-inner">
 		<div class="overlay"></div>
 		<div class="header-container">
-			<div class="grid-x grid-margin-x align-middle">
+			<div class="grid-x grid-margin-x align-top">
 				<div class="cell medium-4 show-for-medium">
 					<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green button-inside-menu hide"><?php print $donate['title']; ?></a>
 				</div>
