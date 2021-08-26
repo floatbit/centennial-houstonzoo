@@ -11,7 +11,7 @@
     border: 1px solid $white;
     background: none;
     width: 100%;
-    @include fluid-props(27px, 36px, line-height);
+    @include fluid-props(28px, 36px, line-height);
     @include fluid-props(40px, 50px, height);
     &::placeholder {
         @extend .color-white;
@@ -700,7 +700,7 @@
             justify-content: center;
             &::after {
                 content: "";
-                @include fluid-props (6px, 10px, height);
+                @include fluid-props (8px, 10px, height);
                 @include fluid-props (12px, 15px, width);
                 @extend .background-cover;
                 background-image: url('../img/icon-arrow-right.svg');
