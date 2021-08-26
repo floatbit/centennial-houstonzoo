@@ -9,6 +9,36 @@
     z-index: -100;
     opacity: 0;
     transition: all 250ms ease-in-out;
+
+    .compact-logo-white {
+        display: none;
+        width: rem-calc(240);
+        @include breakpoint (medium) {
+            @include fluid-props(292px, 416px, width);
+        }
+    }
+    &.logo-compact {
+        .logo-white {
+            display: none;
+        }
+        .compact-logo-white {
+            display: inline;
+        }
+        .menu-open-container-inner {
+            @include fluid-props(20px, 36px, padding-top);
+        }  
+    }
+
+    &:not(.logo-compact) {
+        .header-container {
+            .logo-content {
+                a img {
+                    @include fluid-props(40px, 68px, height);
+                }
+            }
+        }
+    }
+
     .menu-open-container-inner {
         @include fluid-props(24px, 52px, padding-top);  
         @include breakpoint (medium) {
@@ -47,7 +77,7 @@
             }
 
             a img {
-                @include fluid-props(40px, 68px, height);
+                //@include fluid-props(40px, 68px, height);
             }
 
         }
@@ -59,6 +89,10 @@
                 display: block;
                 @include fluid-props(21px, 27px, width);
                 @include fluid-props(19px, 24px, height);
+                //@include breakpoint (small only) {
+                @include fluid-props(6px, 3px, margin-right);
+                @include fluid-props(4px, 3px, margin-top);
+                //}
             }
         }
     }

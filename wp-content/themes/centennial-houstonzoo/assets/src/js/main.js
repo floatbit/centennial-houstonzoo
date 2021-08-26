@@ -14,6 +14,14 @@ var mainHandler = {
 
   openMenu = function(e){
     var self = this;
+
+    var $obj = $('body').find('.headroom--not-top');
+    if ($obj.length > 0) {
+      this.$menuOpenContainer.toggleClass('logo-compact'); 
+    } else {
+      this.$menuOpenContainer.removeClass('logo-compact');
+    }
+
     this.$menuOpenContainer.toggleClass('active');
     if (this.$menuOpenContainer.is('.active')) {
       this.$html.addClass('disable-scroll');
@@ -27,6 +35,7 @@ var mainHandler = {
     }
     this.$yourStoryContainer.removeClass('active');
     this.$defaultContent.addClass('active');
+    
     
     this.$menuItem.each(function(){
       $(this).removeClass('active');
