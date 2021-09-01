@@ -23,8 +23,9 @@ var homeHandler = {
         });
     }
 }
+
 jQuery(document).ready(function($) {
-    $('.carousel-main').flickity({
+    var flickityOptions = {
 		cellSelector: '.carousel-cell',
 		cellAlign: 'left',
 		draggable: false,
@@ -34,7 +35,12 @@ jQuery(document).ready(function($) {
         wrapAround: true,
 		prevNextButtons: false,
 		selectedAttraction: 0, 
-	});
+	};
+    $('.small-home-container .carousel-main').on("select.flickity,ready.flickity", function(event, index) {
+        var selectedSlide = $(this).find('.carousel-cell .hero-item-container').eq(index);
+        $(this).find('.title-container p').html(selectedSlide.data('slide-title'));
+    });
+    $('.carousel-main').flickity(flickityOptions);
 
     $(window).on('resize, load, scroll', function() {
         homeHandler.resizeHero();

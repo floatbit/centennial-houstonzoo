@@ -51,15 +51,15 @@
 							$tiny_title = $item['title'];
 						?>
 						<div class="carousel-cell">
-							<div class="hero-item-container background-cover" style="background-image:url(<?php print $image_url; ?>)">
-								<div class="title-container hide-when-menu-active">
-									<p class="bold color-light-blue"><?php print $tiny_title; ?></p>
-								</div>
+							<div class="hero-item-container background-cover" style="background-image:url(<?php print $image_url; ?>)" data-slide-title="<?php print $tiny_title; ?>">
 							</div>
 							<div class="small-hero-transparent-panel"></div>
 							<div class="small-hero-darker-panel"></div>
 						</div>
 					<?php endforeach; ?>	
+					<div class="title-container hide-when-menu-active">
+						<p class="bold color-light-blue">Testing</p>
+					</div>
 				</div>
 			</div>
 			<div class="small-desc-container bg-color-cyan">

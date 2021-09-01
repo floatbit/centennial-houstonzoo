@@ -70,30 +70,27 @@
 
     .small-home-container {
         position: relative;
-        .small-hero-container{
+        .small-hero-container {
             position: relative;
 
-            .carousel-main {
-                z-index: 1;
-            }
             .hero-item-container {
                 height: rem-calc(392);
                 width: 100vw;
                 padding-top: rem-calc(332);
                 padding-left: rem-calc(32);
 
-                .title-container {
-                    position: relative;
-                    z-index: 15;
-                }
             }
 
+            .title-container {
+                position: relative;
+                z-index: 15;
+            }
             .small-hero-transparent-panel {
                 position: absolute;
                 width: 100%;
                 top: 0;
                 bottom: 0;
-                background: linear-gradient(to top, $cyan 6%, rgba(255,255,255,0) 35%);
+                background: linear-gradient(to top, $cyan, rgba(255,255,255,0) 35%);
             }
 
             .small-hero-darker-panel {
@@ -101,6 +98,7 @@
                 width: 100%;
                 top: 0;
                 bottom: 0;
+                display: none;
                 
                 background: linear-gradient(to top, #001311 -167%, rgba(255,255,255,0) 80%);
                 @include breakpoint (medium) {
@@ -119,18 +117,27 @@
         }
     }
 
+    .small-home-container .small-hero-container .title-container, 
+    .flickity-page-dots {
+        text-align: left;
+        z-index: 15;
+        left: rem-calc(33);
+        position: absolute;
+    }
+
+    .small-home-container .small-hero-container .title-container {
+        @include fluid-props(40px, 80px, margin-bottom);
+        bottom: 0;
+    }
+
     .flickity-page-dots {
         @extend .hide-when-menu-active;
         width: auto;
-        text-align: left;
-        z-index: 15;
         @include fluid-props(92px, 136px, margin-bottom);
-        left: rem-calc(33);
         @include breakpoint (large) {
             @include fluid-props(50px, 56px, left);
             @include fluid-props(110px, 136px, margin-bottom);
         }
-        position: absolute;
 
         .dot {
             @include fluid-props(12px, 16px, height);
