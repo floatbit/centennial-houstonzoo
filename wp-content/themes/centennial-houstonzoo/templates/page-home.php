@@ -33,7 +33,7 @@
 			</div>
 			<div class="grid-container desc-container hide-when-menu-active">
 				<div class="grid-x grid-margin-x">
-					<div class="cell large-5 large-offset-1 color-white">
+					<div class="cell large-6 xlarge-5 large-offset-1 color-white">
 						<?php print the_content(); ?>
 						<a href="#share-your-story" class="button transparent">
 							SHARE YOUR STORY
@@ -64,7 +64,7 @@
 			</div>
 			<div class="small-desc-container bg-color-cyan">
 				<div class="grid-x hide-when-menu-active">
-					<div class="cell large-5 color-white small-content-container">
+					<div class="cell large-6 xlarge-5 color-white small-content-container">
 						<?php print the_content(); ?>
 						<a href="#share-your-story" class="button transparent">
 							SHARE YOUR STORY

@@ -376,8 +376,8 @@
            
             &::after {
                 content: url(../img/icon-upload.svg);
-                @include fluid-props(24px, 30px, height);
-                @include fluid-props(20px, 30px, width);
+                // @include fluid-props(24px, 30px, height);
+                // @include fluid-props(20px, 30px, width);
                 margin-left: rem-calc(10);
             }
             &.selected {

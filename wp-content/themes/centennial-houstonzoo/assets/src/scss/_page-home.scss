@@ -10,6 +10,7 @@
     .home-container {
         position: relative;
         min-height: 100vh;
+        display: flex;
         .hero-container {
             position: absolute;
             min-width: 100vw;
@@ -45,8 +46,13 @@
 
         .desc-container {
             position: relative;
-            @include fluid-props(440px, 240px, padding-top);
-            @include fluid-props(48px, 238px, padding-bottom);
+            align-self: center;
+            @include breakpoint(large) {
+                padding-top: rem-calc(192);
+                padding-bottom: rem-calc(192);
+            }
+            // @include fluid-props(440px, 240px, padding-top);
+            // @include fluid-props(48px, 240px, padding-bottom);
         }
     }
 
