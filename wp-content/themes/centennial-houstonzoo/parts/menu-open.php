@@ -29,7 +29,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="grid-container">	
+		<div class="grid-container flex-container align-middle">	
 			<div class="menu-container">
 				<div class="grid-y">
 					<div class="grid-x grid-padding-x">

@@ -23,6 +23,22 @@ var mainHandler = {
     }
 
     this.$menuOpenContainer.toggleClass('active');
+
+    // adjust menu open height so inner stuff is vertically aligned
+    var $innerOpenMenu = this.$menuOpenContainer.find('.header-container + .grid-container');
+    var $innerInnerOpenMenu = this.$menuOpenContainer.find('.menu-open-container-inner');
+    var $innerMenuHeader = this.$menuOpenContainer.find('.header-container');
+    var innerMenuHeight = ($(window).height() - $innerMenuHeader.outerHeight());
+    var headerPadding = $innerMenuHeader.css('padding-bottom');
+    console.log(headerPadding);
+    if (innerMenuHeight > this.$menuOpenContainer.find('.menu-container').height()) {
+      $innerInnerOpenMenu.css('padding-bottom', '0px');
+    } else {
+      $innerInnerOpenMenu.css('padding-bottom', headerPadding);
+    }
+
+    $innerOpenMenu.css({'min-height': 'calc('+innerMenuHeight+'px - '+headerPadding+')'});
+
     if (this.$menuOpenContainer.is('.active')) {
       this.$html.addClass('disable-scroll');
       this.getScrollBarWidth();
