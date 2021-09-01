@@ -75,6 +75,10 @@
     }
 
     .menu-container {
+        @include breakpoint(small only) {
+            margin-top: rem-calc(28);
+        }
+        
         .left-section, .right-section {
             @include breakpoint (medium) {
                 @include fluid-props(16px, 32px, padding-top);

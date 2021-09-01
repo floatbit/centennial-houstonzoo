@@ -176,9 +176,9 @@ var gfHandler = {
           '<a href="#show-next-item" class="button-plus green"> '+
             '<span class="button-label color-white"> Add another photo or video </span>'+ 
           '</a>')+   
-        '<div class="review-container flex-container">'+
+        '<div class="review-container flex-container align-middle">'+
           '<p class="file-label button-label color-light-green" data-id="'+i+'"></p>'+ 
-          '<div class="flex-container act-container">'+
+          '<div class="flex-container align-middle act-container">'+
             '<a href="#actions-button" class="button btn-act editmode" data-id="'+i+'" >EDIT</a>'+
             '<a href="#delete-item" class="button button-close" data-id="'+i+'" ></a>'+
           '</div>'+

@@ -70,7 +70,9 @@
 .select-styled{
     &.active {
         display: none;
-    }    
+    }
+    display: flex;
+    align-items: center;
     background-repeat: no-repeat !important;
     background-position: 95% 50% !important;
     background-image: url(../img/icon-arrow-down.svg) !important;
@@ -181,7 +183,17 @@
             }
 
             .act-container {
-                height: rem-calc(23);
+                height: rem-calc(20);
+
+                .button {
+                    margin-bottom: 0;
+
+                    &:first-of-type {
+                        @include breakpoint(small only) {
+                            margin-top: 2px;    
+                        }
+                    }
+                }
             }
         }
         .label-input {
@@ -189,6 +201,9 @@
             overflow: hidden;
             word-wrap: break-word;
             line-break: anywhere;
+            display: flex;
+            align-items: center;
+            justify-content: center
         }
         .zoo-memory {
             @include fluid-props(48px, 60px, margin-bottom);
@@ -361,7 +376,7 @@
            
             &::after {
                 content: url(../img/icon-upload.svg);
-                @include fluid-props(20px, 30px, height);
+                @include fluid-props(24px, 30px, height);
                 @include fluid-props(20px, 30px, width);
                 margin-left: rem-calc(10);
             }

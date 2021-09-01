@@ -17,7 +17,7 @@
                                 <img src="<?php print $image; ?>">
                                 <div class="image-reveal full reveal" id="example" data-reveal>
                                     <div class="flex-container">
-                                        <a class="close-button" data-close type="button">                                      
+                                        <a class="close-button" data-close>
                                             <img src="<?php print TEMPLATE_IMAGE_PATH."/icon-menu-close-black.svg" ?>" class="icon-close" alt="Close" title="Close">
                                         </a>
                                         <img src="<?php print $image; ?>">

@@ -87,7 +87,7 @@
                 width: 100%;
                 top: 0;
                 bottom: 0;
-                background: linear-gradient(to top, $cyan 3%, rgba(255,255,255,0) 35%);
+                background: linear-gradient(to top, $cyan 6%, rgba(255,255,255,0) 35%);
             }
 
             .small-hero-darker-panel {
@@ -96,9 +96,9 @@
                 top: 0;
                 bottom: 0;
                 
-                background: linear-gradient(to top, #001311 -157%, rgba(255,255,255,0) 80%);
+                background: linear-gradient(to top, #001311 -167%, rgba(255,255,255,0) 80%);
                 @include breakpoint (medium) {
-                    background: linear-gradient(to top, #001311 -113%, rgba(255,255,255,0) 80%);
+                    background: linear-gradient(to top, #001311 -123%, rgba(255,255,255,0) 80%);
                 }
             }
         }   
