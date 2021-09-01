@@ -47,8 +47,6 @@ html {
 
   &.blue {
     background-color: #231F20;
-    //@extend .bg-color-darker-blue;
-
   }
 
   &.green {
@@ -399,8 +397,6 @@ footer {
       }
 
       p {
-        //@extend .caption;
-        //@extend .color-white;
         @include fluid-type(12px, 12px);
         &:first-of-type {
           @include fluid-props(8px, 16px, margin-bottom);

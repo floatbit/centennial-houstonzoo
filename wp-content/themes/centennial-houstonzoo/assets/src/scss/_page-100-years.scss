@@ -53,25 +53,17 @@
                     @include fluid-props(58px, 68px, height);
                 }
                 .content-inner-container {
-                    // align-items: center;
                     .info-desc {
                         margin-bottom: rem-calc(16);
                         margin-top: rem-calc(12);
                     }
                     .title-content {
                         margin-bottom: 0;
-                        // transition: margin-top 300ms ease;
-                    }
-                    .info-title {
-                        // height: fit-content;
                     }
                 }
                 &.set-focus {
                     .content-inner-container {
                         align-items: flex-start;
-                        .title-content {
-                            // @include fluid-props(19px, 20px, margin-top);
-                        }
                     }
                 }
             }

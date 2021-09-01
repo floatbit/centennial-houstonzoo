@@ -6,7 +6,6 @@
         padding: 0 rem-calc(26);
     }
     border-radius: 28px;
-    //line-height: rem-calc(36);
     outline: none;
     border: 1px solid $white;
     background: none;
@@ -411,7 +410,6 @@
             }
         }
         .gfield_label {
-            //@extend .h5-style;
             @extend .graphik-regular;
             @extend .color-white;
             @include fluid-type(16px, 20px);
@@ -457,10 +455,6 @@
 
         #field_1_13 {
             margin-right: 8px;
-            @include breakpoint (large) {
-                // width: 27%;
-                // margin-right: 5%;
-            }            
         }
 
         #field_1_23 {
@@ -468,16 +462,11 @@
             .gfield_radio {
                 @extend .input-style;
                 margin-bottom: rem-calc(28);
-                // @include fluid-props(146px, 242px, max-width);
                 width: 100%;
-                @include breakpoint (large) {
-                    // max-width: fit-content;
-                }
                 display: inline-flex;
                 justify-content: space-between;
                 padding: 0;
                 overflow: hidden;    
-                // width: fit-content;
                 li {
                     flex: 0 0 50%;
                     text-align: center;
@@ -489,16 +478,7 @@
                 input + label {
                     border-color: transparent;
                     @include fluid-props(38px, 48px, height);
-                    // padding-top: rem-calc(12);
-                    // padding-bottom: rem-calc(12);
-                    // @include fluid-props(0px, 34px, padding-left);
-                    // @include fluid-props(0px, 34px, padding-right);
-                    // @include fluid-props(72px, 120px, width);
                     @include fluid-type(14px, 20px);
-
-                    @include breakpoint (large) {
-                        // @include fluid-props(72px, 166px, width);
-                    } 
                     opacity: 0.5;
                     cursor: pointer;
                     display: inline-flex;
@@ -506,19 +486,11 @@
                     align-content: flex-start;
                     text-align: center;
                     justify-content: center;
-                    // margin-top: -1px;
                 }
                 input:checked + label {
-                    // @extend .bg-color-white;
                     @extend .color-dark-green;
                     opacity: 1;
                 }
-                // #choice_1_23_1 + label {
-                //     padding: rem-calc(12) rem-calc(12) !important;   
-                //     @include breakpoint (medium) {
-                //          padding: rem-calc(10) rem-calc(34) !important;   
-                //     }  
-                // }
             }
         }
         
@@ -718,17 +690,11 @@
         @extend .background-cover;
         display: block;
         position: relative;
-        top: -1px;
-        @include breakpoint(large) {
-            // top: 0px;
-        }
         transition: right 250ms ease;
     }
 
     .gform_next_button {
         .icon-arrow-right {
-            //margin-left: rem-calc(10);
-            //margin-right: rem-calc(10);
             transition: all 200ms ease;
             display: flex;
             align-content: center;
@@ -745,8 +711,6 @@
     .gform_previous_button {
         @extend .button.outline;
         .icon-arrow-left { 
-            // margin-left: rem-calc(10);
-            // margin-right: rem-calc(10);
             transition: all 200ms ease;
             display: flex;
             align-content: center;
@@ -776,7 +740,6 @@
     @extend .p-style;
     h2 {
         @extend .color-light-green;
-        //margin: 0;
     }
     a {
         @extend .color-white;
@@ -798,15 +761,11 @@
     .gform_previous_button:hover {
         .icon-arrow-left::before {
             left: -6px;
-            // margin-left: 0px;
-            // margin-right: 20px;
         }
     }
     .gform_next_button:hover {
         .icon-arrow-right::after {
             right: -6px;
-            //margin-left: 20px;
-            //margin-right: 0px;
         }
     }
 }

@@ -135,9 +135,6 @@
         @include fluid-props(56px, 144px, padding-top);
         @include fluid-props(48px, 136px, padding-bottom);
         
-        //background-image: linear-gradient(90deg, #005851 25%, #FFFFFF 70%) !important;
-        //background-blend-mode: multiply;
-
         &.small-size {
             padding-top : rem-calc(88);
             padding-bottom : rem-calc(84);
@@ -158,10 +155,6 @@
             .eyebrow {
                 @extend .color-white;
                 margin-bottom: rem-calc(4);
-            }
-
-            p {
-                //@extend .graphik-semibold;
             }
 
             h2, p {
