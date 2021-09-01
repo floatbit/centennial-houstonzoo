@@ -156,7 +156,7 @@
             .gfield_label {
                 @extend .caption-semibold;
                 @extend .color-light-green;
-                letter-spacing: 0.6px;
+                letter-spacing: 0.08em;
             }
 
             .input-field {
@@ -199,8 +199,6 @@
         .label-input {
             cursor: pointer;
             overflow: hidden;
-            word-wrap: break-word;
-            line-break: anywhere;
             display: flex;
             align-items: center;
             justify-content: center
@@ -234,6 +232,16 @@
             @include fluid-props(22px, 26px, line-height);
             padding: 0 rem-calc(20);
             @include fluid-type(10px, 10px);
+        }
+        .button-close {
+            @include fluid-props(20px, 24px, width);
+            padding: 0;
+            margin-left: rem-calc(8);
+            background: none;
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 
@@ -304,7 +312,7 @@
                     @extend .color-light-green;
                     padding-bottom: rem-calc(8);
                     display: block;
-                    letter-spacing: 0.6px;
+                    letter-spacing: 0.08em;
                 }
             }
         }
@@ -354,7 +362,6 @@
             }
         }
         textarea, .textarea-uploads {
-            @extend .textarea-label;
             margin-bottom: rem-calc(16);
             padding-top: rem-calc(16);
             padding-bottom: rem-calc(16);
@@ -376,9 +383,8 @@
            
             &::after {
                 content: url(../img/icon-upload.svg);
-                // @include fluid-props(24px, 30px, height);
-                // @include fluid-props(20px, 30px, width);
-                margin-left: rem-calc(10);
+                @include fluid-props(24px, 34px, height);
+                margin-left: rem-calc(8);
             }
             &.selected {
                 &::after {
@@ -704,6 +710,21 @@
         padding: 0;
     }
 
+    .gform_next_button .icon-arrow-right::after,
+    .gform_previous_button .icon-arrow-left::before {
+        content: "";
+        @include fluid-props (8px, 10px, height);
+        @include fluid-props (12px, 15px, width);
+        @extend .background-cover;
+        display: block;
+        position: relative;
+        top: -1px;
+        @include breakpoint(large) {
+            // top: 0px;
+        }
+        transition: right 250ms ease;
+    }
+
     .gform_next_button {
         .icon-arrow-right {
             //margin-left: rem-calc(10);
@@ -714,24 +735,16 @@
             align-items: center;
             justify-content: center;
             &::after {
-                content: "";
-                @include fluid-props (8px, 10px, height);
-                @include fluid-props (12px, 15px, width);
-                @extend .background-cover;
                 background-image: url('../img/icon-arrow-right.svg');
-                display: block;
                 margin-left: .5rem;
-                position: relative;
                 right: 0;
-                top: 0px;
-                transition: right 250ms ease;
             }
         }
     }
 
     .gform_previous_button {
         @extend .button.outline;
-        .icon-arrow-left{ 
+        .icon-arrow-left { 
             // margin-left: rem-calc(10);
             // margin-right: rem-calc(10);
             transition: all 200ms ease;
@@ -740,17 +753,10 @@
             align-items: center;
             justify-content: center;
             &::before {
-                content: "";
-                @include fluid-props (6px, 10px, height);
-                @include fluid-props (12px, 15px, width);
-                @extend .background-cover;
                 background-image: url('../img/icon-arrow-left-white.svg');
-                display: block;
                 margin-right: .5rem;
                 position: relative;
                 left: 0;
-                top: 0px;
-                transition: left 250ms ease;
             }
         }
     }

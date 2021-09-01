@@ -180,7 +180,7 @@ var gfHandler = {
           '<p class="file-label button-label color-light-green" data-id="'+i+'"></p>'+ 
           '<div class="flex-container align-middle act-container">'+
             '<a href="#actions-button" class="button btn-act editmode" data-id="'+i+'" >EDIT</a>'+
-            '<a href="#delete-item" class="button button-close" data-id="'+i+'" ></a>'+
+            '<a href="#delete-item" class="button button-close" data-id="'+i+'" ><img src="/wp-content/themes/centennial-houstonzoo/assets/img/icon-close-rounded.svg"></a>'+
           '</div>'+
         '</div>'+
       '</div>';        
@@ -559,7 +559,7 @@ var gfHandler = {
               '<p class="file-label button-label color-light-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
               '<div class="flex-container align-self-top act-container">'+
                 '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
-                '<a href="#delete-item" class="button button-close" data-id="'+id+'" ></a>'+
+                '<a href="#delete-item" class="button button-close" data-id="'+id+'" ><img src="/wp-content/themes/centennial-houstonzoo/assets/img/icon-close-rounded.svg"></a>'+
               '</div>'+
             '</div>'+
             '<div class="image-container flex-container">'+

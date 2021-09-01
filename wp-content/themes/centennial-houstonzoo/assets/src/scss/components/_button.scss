@@ -47,16 +47,16 @@
         }
     }
 
-    &.button-close {
-        background: none;
-        padding: 0 !important;
-        &::after {
-            content: url(../img/icon-close-rounded.svg);
-            margin-left: rem-calc(10);
-            @include fluid-props(20px, 24px, height);
-            @include fluid-props(20px, 24px, width);
-        }
-    }
+    // &.button-close {
+    //     background: none;
+    //     padding: 0 !important;
+    //     &::after {
+    //         content: url(../img/icon-close-rounded.svg);
+    //         margin-left: rem-calc(10);
+    //         @include fluid-props(20px, 24px, height);
+    //         @include fluid-props(20px, 24px, width);
+    //     }
+    // }
 
     &.plus {
         @extend .button-plus;
@@ -152,9 +152,9 @@
                 left: -6px;
             }
         }
-        &.button-close {
-            background: none;
-        }
+        // &.button-close {
+        //     background: none;
+        // }
         &.outline {
             @extend .bg-color-light-green;
         }

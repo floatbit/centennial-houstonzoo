@@ -341,7 +341,7 @@ footer {
     .footer-link {
       @include fluid-props(12px, 16px, margin-bottom);
       @include fluid-type(12px, 14px);
-      letter-spacing: 1.6px;
+      letter-spacing: 0.08em;
       
       @include breakpoint (large) {
         &:last-of-type {
@@ -359,7 +359,7 @@ footer {
     }
 
     .donate-button, .icon-desc {
-      letter-spacing: 1.6px;
+      letter-spacing: 0.08em;
     }
 
     .donate-button {

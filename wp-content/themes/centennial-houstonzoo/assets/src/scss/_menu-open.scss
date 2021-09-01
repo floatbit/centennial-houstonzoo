@@ -76,7 +76,7 @@
 
     .menu-container {
         @include breakpoint(small only) {
-            margin-top: rem-calc(28);
+            margin-top: rem-calc(40);
         }
         
         .left-section, .right-section {
