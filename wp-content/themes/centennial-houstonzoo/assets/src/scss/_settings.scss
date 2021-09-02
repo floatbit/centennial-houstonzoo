@@ -84,12 +84,14 @@ $white: #fefefe;
 
 $darker-green: #005851;
 $light-blue: #99D8E9;
-$cyan : #1A92AF;
+$cyan : rgba(26, 146, 175, 1); // 1A92AF
+$cyan-2: rgba(26, 146, 175, 0);
 $bright-green: #76BC43;
 $light-green: #00B189;
 $dark-green: #00867C;
 $darker-blue: #231F20;
-$green-gradation: #001311;
+$green-gradation: rgba(0, 19, 17, 1); // 001311
+$green-gradation-2: rgba(0, 19, 17, 0);
 $gray: #F7F4F2;
 $medium-green : #00B189;
 

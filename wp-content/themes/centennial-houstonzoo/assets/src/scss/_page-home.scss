@@ -60,9 +60,9 @@
         top: 0;
         bottom: 0;
         opacity: 0.75;
-        background: linear-gradient(to top, $green-gradation 15%, rgba(255,255,255,0) 80%);
+        background: linear-gradient(to top, $green-gradation 15%, $green-gradation-2 80%);
         @include breakpoint (large) {
-            background: linear-gradient(90deg, $green-gradation 10%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(90deg, $green-gradation 10%, $green-gradation-2 100%);
         }
     }
 
@@ -88,7 +88,7 @@
                 width: 100%;
                 top: 0;
                 bottom: 0;
-                background: linear-gradient(to top, $cyan, rgba(255,255,255,0) 35%);
+                background: linear-gradient(to top, $cyan, $cyan-2 35%);
             }
 
             .small-hero-darker-panel {
@@ -98,9 +98,9 @@
                 bottom: 0;
                 display: none;
                 
-                background: linear-gradient(to top, #001311 -167%, rgba(255,255,255,0) 80%);
+                background: linear-gradient(to top, $green-gradation -167%, $green-gradation-2 80%);
                 @include breakpoint (medium) {
-                    background: linear-gradient(to top, #001311 -123%, rgba(255,255,255,0) 80%);
+                    background: linear-gradient(to top, $green-gradation -123%, $green-gradation-2 80%);
                 }
             }
         }   
