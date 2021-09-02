@@ -122,7 +122,7 @@ jQuery(document).ready(function($) {
     yearHandler.onHoverClick();
 
     $(window).on('load', function() {
-        yearHandler.resizeLookingForwardItems();
+        // yearHandler.resizeLookingForwardItems();
         $('#looking-forward .content-container').each(function() {
             var $item = $(this);
             var iconHeight = $item.find('.info-logo').outerHeight();
