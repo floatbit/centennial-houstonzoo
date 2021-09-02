@@ -23,6 +23,7 @@ var mainHandler = {
     }
 
     this.$menuOpenContainer.toggleClass('active');
+    $('.logo-image-container').removeClass('logo-compressed');
 
     // adjust menu open height so inner stuff is vertically aligned
     var $innerOpenMenu = this.$menuOpenContainer.find('.header-container + .grid-container');
@@ -111,6 +112,9 @@ var mainHandler = {
       $('.menu-item[data-id="1"]').trigger("click");
       self.$contentRight.removeClass('active');
       self.$yourStoryContainer.addClass('active');
+      if (Foundation.MediaQuery.is('small')) {
+        $('.logo-image-container').addClass('logo-compressed');
+      }
       self.$leftSection.addClass('show-for-large');      
       self.$buttonBack.removeClass('hide');
       self.$buttonInsideMenu.removeClass('hide-transparent');
@@ -141,6 +145,7 @@ var mainHandler = {
       self.$leftSection.removeClass('show-for-large');            
       self.$contentRight.addClass('active');
       self.$yourStoryContainer.removeClass('active');
+      $('.logo-image-container').removeClass('logo-compressed');
       self.$buttonBack.addClass('hide');
     })
   }

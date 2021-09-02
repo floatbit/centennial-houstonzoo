@@ -370,6 +370,8 @@
             }
         }
         textarea, .textarea-uploads {
+            @extend .graphik-regular;
+            font-size: 1rem;
             margin-bottom: rem-calc(16);
             padding-top: rem-calc(16);
             padding-bottom: rem-calc(16);
@@ -407,6 +409,9 @@
             line-height: 1.25;
         }
         .gfield_checkbox {
+            li {
+                margin-bottom: rem-calc(4);
+            }
             @include breakpoint (medium) {
                 column-count: 2;
             }

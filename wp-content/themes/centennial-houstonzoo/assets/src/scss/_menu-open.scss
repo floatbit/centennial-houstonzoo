@@ -51,15 +51,26 @@
         > .grid-container {
             position: relative;
         }
+        &.scrolled {
+            .button-back {
+                height: 19px;
+                line-height: 19px;
+            }
+        }
     }
 
     .header-container {
         
         position: relative;
         .logo-content {
-            text-align: center;
-            @include breakpoint (small only) {
-                text-align: left;
+            align-items: flex-start;
+            @include breakpoint(medium) {
+                align-items: center;
+            }
+            .logo-image-container.logo-compressed {
+                img {
+                    width: 0;
+                }
             }
         }
         .right-content {

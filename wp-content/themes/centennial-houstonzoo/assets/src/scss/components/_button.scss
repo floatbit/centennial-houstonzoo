@@ -37,6 +37,7 @@
         position: relative;
         padding-right: 0;
         padding-left: rem-calc(24);
+        align-self: center;
         @extend .color-light-green;
         &::before {
             content: url(../img/icon-arrow-left.svg);
