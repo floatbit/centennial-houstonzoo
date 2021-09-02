@@ -303,7 +303,16 @@
         margin: 0;
     }
 
+    #gform_1 .gform_body {
+        .gform_page_footer {
+            @include breakpoint(medium down) {
+                margin-bottom: rem-calc(128);
+            }
+        }
+    }
+
     .gform_body {
+
         #gform_page_1_1, #gform_page_1_3 {
             #field_1_16, #field_1_3, #field_1_4, #field_1_9, #field_uploads {
                 .gfield_label {
@@ -541,6 +550,9 @@
                 background-image: url(../img/icon-arrow-right.svg);
                 margin-left: rem-calc(10);
             }
+        }
+        .button {
+            margin-bottom: 0 !important;
         }
     }
     .gform_heading .gform_title {
