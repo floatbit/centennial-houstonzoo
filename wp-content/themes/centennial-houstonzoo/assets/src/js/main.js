@@ -201,7 +201,10 @@ var gfHandler = {
           '<p class="file-label button-label color-light-green" data-id="'+i+'"></p>'+ 
           '<div class="flex-container align-middle act-container">'+
             '<a href="#actions-button" class="button btn-act editmode" data-id="'+i+'" >EDIT</a>'+
-            '<a href="#delete-item" class="button button-close" data-id="'+i+'" ><img src="/wp-content/themes/centennial-houstonzoo/assets/img/icon-close-rounded.svg"></a>'+
+            '<a href="#delete-item" class="button button-close" data-id="'+i+'" >'+
+              '<img src="/wp-content/themes/centennial-houstonzoo/assets/img/icon-close-rounded.svg">'+
+              '<img class="hover" src="/wp-content/themes/centennial-houstonzoo/assets/img/icon-close-rounded-hover.svg">'+
+            '</a>'+
           '</div>'+
         '</div>'+
       '</div>';        

@@ -241,6 +241,9 @@
                 width: 100%;
                 height: 100%;
             }
+            img.hover {
+                display: none;
+            }
         }
     }
 
@@ -783,6 +786,17 @@
     .gform_next_button:hover {
         .icon-arrow-right::after {
             right: -6px;
+        }
+    }
+    .gform_body .review-container .button-close, 
+    .gform_body .review-container .flex-container .button-close {
+        &:hover {
+            img {
+                display: none;
+            }
+            img.hover {
+                display: inline-block;
+            }    
         }
     }
 }
