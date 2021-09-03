@@ -324,7 +324,7 @@ var gfHandler = {
     
     $currInputFile.val('');
     $currInputFileText.val('');
-    $labelInput.text('Select file');
+    $labelInput.text('Upload file');
     $currInputFile.parent().removeClass('selected');
 
     if (file_only == false) { 
@@ -363,7 +363,7 @@ var gfHandler = {
     }
 
     if (filename == '') {
-      $labelInput.text('Select file');
+      $labelInput.text('Upload file');
       $labelInput.parent().removeClass('selected');
     }
   },
