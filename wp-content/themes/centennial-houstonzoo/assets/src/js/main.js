@@ -347,10 +347,10 @@ var gfHandler = {
     var $uploadsItem = $('.uploads-item[data-id="'+id+'"]');
     var $nextItem = $('.uploads-item[data-id='+nextID+']');
     
-    $fileLabel.text('.  '+filename);
-    $fileLabel.prepend('<span class="item-no" data-id="'+id+'">'+nextID+'</span>');
+    $fileLabel.html('<span class="item-name">'+filename+'</span>');
+    $fileLabel.prepend('<span class="item-no" data-id="'+id+'">'+nextID+'.</span>');
     
-    $labelInput.text(filename);
+    $labelInput.html('<span>'+filename+'</span>');
     $labelInput.parent().addClass('selected');
 
     if ((filename !== '') && (!$uploadsItem.hasClass('edit'))) {
@@ -593,7 +593,7 @@ var gfHandler = {
           var $html = 
           '<li class="item-review" data-id="'+id+'">'+
             '<div class="review-container flex-container">'+
-              '<p class="file-label button-label color-light-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'</span>.  '+filename+'</p>'+
+              '<p class="file-label button-label color-light-green" data-id="'+id+'" > <span class="item-no" data-id="'+id+'">'+count+'.</span><span class="item-name">'+filename+'</span></p>'+
               '<div class="flex-container align-self-top act-container">'+
                 '<a href="#review-edit-button" class="button editmode" data-id="'+id+'" >EDIT</a>'+
                 '<a href="#delete-item" class="button button-close" data-id="'+id+'" ><img src="/wp-content/themes/centennial-houstonzoo/assets/img/icon-close-rounded.svg"></a>'+

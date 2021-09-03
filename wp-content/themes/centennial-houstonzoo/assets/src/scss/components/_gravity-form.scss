@@ -200,7 +200,14 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            justify-content: center
+            justify-content: center;
+            > span {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin-right: rem-calc(12);
+            }
         }
         .zoo-memory {
             @include fluid-props(48px, 60px, margin-bottom);
@@ -214,12 +221,13 @@
     }
 
     .file-label {
-        overflow: hidden;
-        padding-left: rem-calc(16);
         margin: 0 rem-calc(16) 0 0;
-        word-break: break-all;
+        display: flex;
         .item-no {
-            @include fluid-props(-10px, -13px, margin-left);
+            flex: 0 0 24px;
+        }
+        .item-name {
+            flex: 1 1 100%;
         }
     }
 
