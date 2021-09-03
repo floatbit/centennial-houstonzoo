@@ -363,6 +363,7 @@ var gfHandler = {
   },
 
   getFilename = function(id){
+    var self = this;
     var $obj = $('.input_file[data-id="'+id+'"]');
 
     if ($obj) {
@@ -371,12 +372,20 @@ var gfHandler = {
       var totalSizeMb = 0;
       if (file !== undefined) {
         totalSizeMb = file.size  / Math.pow(1024,2);
+
+        if (totalSizeMb > 1) {
+          alert("Please keep your uploaded file under 1MB in size.");
+          self.clearItems(id, true);
+          return "";
+        } 
       }
+
       if (tmpName != '') {
         return tmpName  + ' (' + totalSizeMb.toFixed(2) + ' MB)';
       } else {
         return "";
       }
+
     } else {
       return "";
     }
@@ -532,8 +541,12 @@ var gfHandler = {
         reader.onload = function (e) {
           $previewContainer.find('img').attr('src', e.target.result);
         }
-        reader.readAsDataURL( $input.files[0] );	
-        self.$htmlHasInputedFile = $uploads;
+
+        if ($input.files[0]) {
+          reader.readAsDataURL( $input.files[0] );	
+          self.$htmlHasInputedFile = $uploads;
+          console.log("aaaa aaaa aaaa");
+        }
       });
 
       $($yearInput).on("change", function(e){

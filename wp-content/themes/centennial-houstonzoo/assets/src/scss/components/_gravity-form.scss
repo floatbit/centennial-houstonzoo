@@ -373,11 +373,13 @@
             display: block;
             text-align: center;
             position: relative;
+            line-height: 1.4;
            
             &::after {
                 content: url(../img/icon-upload.svg);
                 @include fluid-props(24px, 30px, height);
                 @include fluid-props(20px, 30px, width);
+                @include fluid-props(11px, 11px, margin-top);
                 margin-left: rem-calc(10);
             }
             &.selected {
