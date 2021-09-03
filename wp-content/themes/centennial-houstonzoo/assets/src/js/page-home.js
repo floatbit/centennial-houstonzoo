@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
 		fade: true,
         wrapAround: true,
 		prevNextButtons: false,
-		selectedAttraction: 0, 
+		selectedAttraction: 0,
 	};
     $('.small-home-container .carousel-main').on("select.flickity,ready.flickity", function(event, index) {
         var selectedSlide = $(this).find('.carousel-cell .hero-item-container').eq(index);

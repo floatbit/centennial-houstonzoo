@@ -393,10 +393,12 @@
             display: block;
             text-align: center;
             position: relative;
+            line-height: 1.4;
            
             &::after {
                 content: url(../img/icon-upload.svg);
                 @include fluid-props(24px, 34px, height);
+                @include fluid-props(11px, 11px, margin-top);
                 margin-left: rem-calc(8);
             }
             &.selected {
