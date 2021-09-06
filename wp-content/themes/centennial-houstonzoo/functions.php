@@ -102,11 +102,11 @@ if( function_exists('acf_add_options_page') ) {
 function centennial_houstonzoo_zoo_connection() {
   return array(
     'member'    => 'Member', 
-    'zoo_crew'  => 'Zoo Crew', 
     'volunteer' => 'Volunteer', 
     'staff'     => 'Staff',
     'zoo_guest' => 'Zoo Guest',
     'donor'     => 'Donor',
+    'other'     => 'Other',
   );
 }
 
@@ -127,7 +127,19 @@ function centennial_houstonzoo_zoo_connection_field( $form ) {
 			}
 
 			$field->choices = $choices;
+
+    } elseif ($field->inputName == 'memory-year') {
+
+			$choices = [];
+      $current_year = intval(date('Y'));
+      for ($year=$current_year; $year>=1922; $year--) {
+				$choices[] = ['text' => $year, 'value' => $year];
+			}
+
+			$field->choices = $choices;
+
     } elseif ($field->inputName == 'terms-and-condition') {
+
 			$choices = [];
 
       $choices[] = [
@@ -136,6 +148,7 @@ function centennial_houstonzoo_zoo_connection_field( $form ) {
       ];
 			
       $field->choices = $choices;
+
     }
 	}
 	return $form;

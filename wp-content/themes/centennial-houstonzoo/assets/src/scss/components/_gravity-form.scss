@@ -1,3 +1,7 @@
+.input-style-height {
+    @include fluid-props(40px, 50px, height);
+}
+
 .input-style {
     @extend .form-input-text;
     @extend .color-white;
@@ -11,7 +15,7 @@
     background: none;
     width: 100%;
     @include fluid-props(28px, 36px, line-height);
-    @include fluid-props(40px, 50px, height);
+    @extend .input-style-height;
     &::placeholder {
         @extend .color-white;
         opacity: 0.5;
@@ -370,24 +374,32 @@
         .label-input,
         textarea {
             @extend .input-style;
+        }
+        .select-styled,
+        .ginput_container_textarea,
+        .ginput_container_email,
+        .ginput_container_select,
+        .ginput_container_phone,
+        .ginput_container_text,
+        .uploads-item .input-field {
             margin-bottom: rem-calc(28);
         }
-        .ginput_container_textarea {
-            margin-bottom: rem-calc(28);
-            .charleft {
-                font-style: italic;
-                opacity: 0.5;    
-                margin-top: -18px;
-            }
+        .ginput_container_select {
+            @extend .input-style-height;
+        }
+        .charleft {
+            font-style: italic;
+            opacity: 0.5;   
+            margin-top: rem-calc(4);
         }
         textarea, .textarea-uploads {
             @extend .graphik-regular;
             font-size: 1rem;
-            margin-bottom: rem-calc(16);
             padding-top: rem-calc(16);
             padding-bottom: rem-calc(16);
             resize: none;
             border-radius: 16px;
+            display: block;
         }
         .textarea-uploads {
             height: rem-calc(100);
@@ -466,6 +478,10 @@
             min-height: rem-calc(305);
         }
 
+        #input_25 .charleft {
+            display: none;
+        }
+
         #field_1_15 {
             width: 70%;
             .select-options,
@@ -477,7 +493,7 @@
         #field_1_13, #field_1_23 {
             display: inline-block;
             width: calc(50% - 8px);
-            vertical-align: middle;
+            vertical-align: top;
         }
 
         #field_1_13 {
