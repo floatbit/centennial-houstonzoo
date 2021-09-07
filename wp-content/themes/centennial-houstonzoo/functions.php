@@ -1,5 +1,5 @@
 <?php
-define( 'CSS_JS_VERSION', '1.12.1');
+define( 'CSS_JS_VERSION', '1.13');
 define( 'TEMPLATE_PATH', get_bloginfo('stylesheet_directory'));
 define( 'TEMPLATE_IMAGE_PATH', get_bloginfo('stylesheet_directory') . '/assets/img');
 
@@ -249,6 +249,8 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
         'phone'           => rgar( $entry, '4' ),
         'zoo_connection'  => $arr_result,
         'zoo_memory'      => rgar( $entry, '6' ),
+        'zoo_memory_title'=> rgar( $entry, '25' ),
+        'zoo_memory_year'=> rgar( $entry, '26' ),
         'visit_since'       => rgar( $entry, '13' ),
         'visit_since_time'  => rgar( $entry, '23' ),
       )      
@@ -257,7 +259,7 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
 
   // handle for repeater of files
   $inputCapt = array_values(array_filter($_POST['input_caption']));
-  $inputYr = array_values(array_filter($_POST['input_year']));
+  // $inputYr = array_values(array_filter($_POST['input_year']));
 
   $wordpress_upload_dir = wp_upload_dir();
   // $wordpress_upload_dir['path'] is the full server path to wp-content/uploads/2017/05, for multisite works good as well
@@ -329,7 +331,7 @@ function centennial_houstonzoo_set_post_content( $entry, $form ) {
       
       $row = array(
         'file'    => $upload_id,
-        'year'    => $inputYr[$idx],
+        // 'year'    => $inputYr[$idx],
         'caption' => $inputCapt[$idx]
       );
       add_row('photos_n_video', $row, $post_id); 

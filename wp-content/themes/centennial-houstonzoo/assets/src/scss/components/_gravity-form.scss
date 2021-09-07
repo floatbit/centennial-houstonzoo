@@ -146,6 +146,10 @@
                     display: none;
                 }
             }
+
+            textarea + .button-plus {
+                margin-top: rem-calc(16);
+            }
                     
             &.edit {
                 .button-plus {

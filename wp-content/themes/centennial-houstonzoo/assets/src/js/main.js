@@ -180,16 +180,17 @@ var gfHandler = {
       $items += 
       '<div class="uploads-item input '+((i>0) ? 'hide': '')+'" data-id="'+i+'">'+
         '<div class="grid-x grid-input">'+
-          '<div class="cell small-9 input-field">'+
+          // '<div class="cell small-9 input-field">'+
+          '<div class="cell input-field">'+
             '<input type="file" class="input_file hide" id="input_file_'+i+'" data-id="'+i+'" name="file_upload[]" size="25" accept=".jpg,.png,.giv,.mov" />'+
             '<label class="label-input" data-id="'+i+'" for="input_file_'+i+'">Upload file</label>'+
             '<span class="clear-img" data-id="'+i+'" ></span>'+
           '</div>'+
-          '<div class="cell small-5 input-field-cmb">'+
-            '<select name="input_year[]" id="input_year_'+i+'" data-id="'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
-              $years+
-            '</select>'+
-          '</div>'+
+          // '<div class="cell small-5 input-field-cmb">'+
+          //   '<select name="input_year[]" id="input_year_'+i+'" data-id="'+i+'" class="medium gfield_select select-year" aria-invalid="false">'+
+          //     $years+
+          //   '</select>'+
+          // '</div>'+
         '</div>'+
         '<label class="gfield_label" for="input_caption_'+i+'">Add a caption</label>'+
         '<textarea name="input_caption[]" id="input_caption_'+i+'" data-id="'+i+'"  class="textarea textarea-uploads" tabindex="16" placeholder="200 characters max" aria-invalid="false" rows="10" cols="50"></textarea>'+

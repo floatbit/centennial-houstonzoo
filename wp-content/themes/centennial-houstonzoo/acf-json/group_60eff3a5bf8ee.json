@@ -73,11 +73,11 @@
             },
             "choices": {
                 "member": "Member",
-                "zoo_crew": "Zoo Crew",
                 "volunteer": "Volunteer",
                 "staff": "Staff",
                 "zoo_guest": "Zoo Guest",
-                "donor": "Donor"
+                "donor": "Donor",
+                "other": "Other"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -85,6 +85,25 @@
             "toggle": 0,
             "return_format": "value",
             "save_custom": 0
+        },
+        {
+            "key": "field_61361d2dee122",
+            "label": "Zoo Memory Title",
+            "name": "zoo_memory_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_60eff4351e0f8",
@@ -104,6 +123,25 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_61361cfaee121",
+            "label": "Zoo Memory Year",
+            "name": "zoo_memory_year",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_60eff69f1e0fa",
@@ -165,7 +203,7 @@
             "collapsed": "",
             "min": 0,
             "max": 0,
-            "layout": "block",
+            "layout": "table",
             "button_label": "",
             "sub_fields": [
                 {
@@ -186,25 +224,6 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": ""
-                },
-                {
-                    "key": "field_60eff911ba598",
-                    "label": "Year",
-                    "name": "year",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
                 },
                 {
                     "key": "field_60eff94bba599",
@@ -245,5 +264,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626450344
+    "modified": 1631003419
 }
