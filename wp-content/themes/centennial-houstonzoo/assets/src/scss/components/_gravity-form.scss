@@ -384,9 +384,10 @@
         .ginput_container_email,
         .ginput_container_select,
         .ginput_container_phone,
+        .ginput_container_checkbox,
         .ginput_container_text,
         .uploads-item .input-field {
-            margin-bottom: rem-calc(28);
+            @include fluid-props(32px, 40px, margin-bottom);
         }
         .ginput_container_select {
             @extend .input-style-height;
@@ -422,7 +423,7 @@
             &::after {
                 content: url(../img/icon-upload.svg);
                 @include fluid-props(24px, 34px, height);
-                @include fluid-props(11px, 11px, margin-top);
+                @include fluid-props(11px, 15px, margin-top);
                 margin-left: rem-calc(8);
             }
             &.selected {
