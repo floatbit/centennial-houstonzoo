@@ -475,7 +475,7 @@
                 padding-top: rem-calc(8);
             }
             label::before {
-                @include fluid-props(2px, 5px, margin-top);
+                @include fluid-props(3px, 5px, margin-top);
             }
         }
 
