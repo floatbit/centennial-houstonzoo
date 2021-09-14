@@ -58,7 +58,7 @@
 						</div>
 					<?php endforeach; ?>	
 					<div class="title-container hide-when-menu-active">
-						<p class="bold color-white">Testing</p>
+						<p class="bold color-white">&nbsp;</p>
 					</div>
 				</div>
 			</div>
