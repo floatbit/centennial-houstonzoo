@@ -6,7 +6,6 @@
 	<div class="head-container">
 		<div class="grid-x grid-margin-x grid-head align-middle">
 			<div class="cell medium-3 left-content show-for-medium">
-				<a href="<?php print $donate['url']; ?>" target="_blank" class="button bright-green"><?php print $donate['title']; ?></a>
 			</div>
 			<div class="cell small-10 medium-8 middle-content">
 				<a href="/">
