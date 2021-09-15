@@ -12,7 +12,7 @@
 			<div class="grid-x grid-margin-x align-middle">
 				<div class="cell medium-3 show-for-medium">
 				</div>
-				<div class="cell medium-8 small-10 logo-content flex-container align-middle align-center">
+				<div class="cell medium-8 small-10 logo-content flex-container">
 					<a href="/" class="logo-image-container">
 						<img class="logo-white" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main.svg"; ?>">
 						<img class="compact-logo-white" src="<?php print TEMPLATE_IMAGE_PATH."/logo-main-compact.svg"; ?>">
